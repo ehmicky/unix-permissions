@@ -75,8 +75,12 @@ const checkError = function({ t, output, error, code, stdout, stderr }) {
 
   t.is(code, 1)
   t.is(stdout, '')
-  t.is(stderr, output)
+  // CLI is stricter than programmatic usage for arguments length validation.
+  // I.e. error message might differ there
+  t.true(stderr === output || stderr.includes(CLI_ARGS_ERROR))
 }
+
+const CLI_ARGS_ERROR = 'Not enough non-option arguments'
 
 module.exports = {
   testCli,

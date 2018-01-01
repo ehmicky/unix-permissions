@@ -35,12 +35,12 @@
     "examples": [["type 422", "Output: octal"]]
   },
   {
-    "command": "set <permission> <permissions...>",
+    "command": "set <permission> [permissions...]",
     "describe": "Returns the result of setting `permissions` on `permission`.",
     "examples": [["set a=w a+r", "Output: a=rw"]]
   },
   {
-    "command": "unset <permission> <permissions...>",
+    "command": "unset <permission> [permissions...]",
     "describe": "Returns the result of unsetting `permissions` on `permission`.",
     "examples": [["unset a=wr a+r", "Output: a=w"]]
   },
