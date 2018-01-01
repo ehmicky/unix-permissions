@@ -1,6 +1,6 @@
 'use strict'
 
-const { CATEGORIES } = require('../../constants')
+const { NODES } = require('../../constants')
 const { hasDuplicate } = require('../../utils')
 
 const { tokenize, tokenizeCategory } = require('./tokenize')
@@ -13,10 +13,7 @@ const parse = function(stat) {
     return
   }
 
-  const nodes = CATEGORIES.map(category =>
-    getCategory({ category, tokens }),
-  ).flatMap(parseNode)
-  return nodes
+  return NODES.map(node => parseNode({ node, tokens }))
 }
 
 const parseCategory = function(catStat) {
@@ -26,8 +23,7 @@ const parseCategory = function(catStat) {
     return
   }
 
-  const nodes = addPermissions({ part })
-  return nodes
+  return NODES.map(node => parsePart({ node, part }))
 }
 
 // We do not allow duplicates within a category as it indicates typos
@@ -39,26 +35,15 @@ const hasDuplicateChars = function(string) {
   return hasDuplicate(string.split(''))
 }
 
-// Retrieve the permissions for each category
-const getCategory = function({ category, tokens }) {
-  return { category, part: tokens[category] }
+// Parse a `stat` character to a single `node`
+const parseNode = function({ node, node: { category }, tokens }) {
+  const part = tokens[category]
+  return parsePart({ node, part })
 }
 
-// Parse a category's permission to `nodes`
-const parseNode = function({ category, part }) {
-  const nodes = addPermissions({ part })
-  const nodesA = nodes.map(node => ({ ...node, category }))
-  return nodesA
-}
-
-// `stat` does not allow distinguishing between `add: undefined` and
-// `add: false`
-const addPermissions = function({ part }) {
-  return part.split('').map(addPermission)
-}
-
-const addPermission = function(permission) {
-  return { permission, add: true }
+const parsePart = function({ node, node: { permission }, part }) {
+  const add = part.includes(permission)
+  return { ...node, add }
 }
 
 module.exports = {
