@@ -1,6 +1,6 @@
 'use strict'
 
-const PARTIAL_DATA = [
+const POSITIVE_DATA = [
   // Each permission
   'o=x',
   'o=w',
@@ -37,5 +37,5 @@ const PARTIAL_DATA = [
 ]
 
 module.exports = {
-  PARTIAL_DATA,
+  POSITIVE_DATA,
 }

@@ -68,9 +68,9 @@
     "examples": [["full a+rw", "Output: a=rw"]]
   },
   {
-    "command": "partial <permission>",
-    "describe": "Remove all the negative permissions.",
-    "examples": [["partial a=rw", "Output: a+rw"]]
+    "command": "positive <permission>",
+    "describe": "Only keep the positive permissions.",
+    "examples": [["positive a=rw", "Output: a+rw"]]
   },
   {
     "command": "invert <permission>",
