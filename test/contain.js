@@ -1,10 +1,10 @@
 'use strict'
 
-const { CONTAINS_DATA, performTests } = require('./helpers')
+const { CONTAIN_DATA, performTests } = require('./helpers')
 
 performTests({
   title: ([arg, ...args]) =>
     `should test whether ${arg} contains ${args.join(' ')}`,
-  command: 'contains',
-  data: CONTAINS_DATA,
+  command: 'contain',
+  data: CONTAIN_DATA,
 })

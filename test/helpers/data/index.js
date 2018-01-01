@@ -8,7 +8,7 @@ module.exports = {
   ...require('./simple'),
   ...require('./partial'),
   ...require('./min_max'),
-  ...require('./contains'),
+  ...require('./contain'),
   ...require('./equal'),
   ...require('./set_unset'),
 }

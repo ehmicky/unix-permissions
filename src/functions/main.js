@@ -3,7 +3,7 @@
 const { normalize } = require('./normalize')
 const { full } = require('./full')
 const { partial } = require('./partial')
-const { contains } = require('./contains')
+const { contain } = require('./contain')
 const { equal } = require('./equal')
 const { set } = require('./set')
 const { unset } = require('./unset')
@@ -15,7 +15,7 @@ module.exports = {
   normalize,
   full,
   partial,
-  contains,
+  contain,
   equal,
   set,
   unset,

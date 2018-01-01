@@ -45,9 +45,9 @@
     "examples": [["unset a=wr a+r", "Output: a=w"]]
   },
   {
-    "command": "contains <permission> <permissions...>",
+    "command": "contain <permission> <permissions...>",
     "describe": "Tests whether `permission` includes `permissions`. Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.",
-    "examples": [["contains 744 005", "Exit code: 1"]]
+    "examples": [["contain 744 005", "Exit code: 1"]]
   },
   {
     "command": "equal <permission> <permissions...>",

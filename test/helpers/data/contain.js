@@ -2,7 +2,7 @@
 
 const { BASE_SET_DATA } = require('./set_unset')
 
-const CONTAINS_DATA = [
+const CONTAIN_DATA = [
   ...BASE_SET_DATA,
 
   // Equal operator
@@ -31,5 +31,5 @@ const CONTAINS_DATA = [
 ]
 
 module.exports = {
-  CONTAINS_DATA,
+  CONTAIN_DATA,
 }

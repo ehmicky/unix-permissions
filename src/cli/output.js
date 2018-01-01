@@ -3,7 +3,7 @@
 const { exit } = require('process')
 
 // Print stringified output.
-// For test functions like `contains()`, we use exit code 0|1 instead.
+// For test functions like `contain()`, we use exit code 0|1 instead.
 const handleOutput = function({ output }) {
   if (output === true) {
     exit()
