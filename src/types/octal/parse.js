@@ -1,6 +1,5 @@
 'use strict'
 
-const { NODES_MAP, CAT_NODES_MAP, getNodesMap } = require('../../nodes')
 const number = require('../number')
 
 const { tokenize } = require('./tokenize')
@@ -10,7 +9,7 @@ const {
 } = require('./constants')
 
 // Parse an `octal` permission to `nodes`
-const parsePerm = function({ funcName, nodesMap }, octal) {
+const parsePerm = function(funcName, octal) {
   const { operator, string } = tokenize({ octal, funcName })
 
   if (string === undefined) {
@@ -21,7 +20,7 @@ const parsePerm = function({ funcName, nodesMap }, octal) {
   // Re-use `number` parsing logic
   const nodes = number[funcName](integer)
   // Each operator has its own logic
-  const nodesA = parseOperator[operator]({ nodes, nodesMap })
+  const nodesA = parseOperator[operator]({ nodes })
   return nodesA
 }
 
@@ -31,33 +30,24 @@ const octalToDecimal = function(string) {
 }
 
 const parsePlus = function({ nodes }) {
-  return nodes
+  return nodes.filter(hasAdd)
 }
 
 const parseMinus = function({ nodes }) {
-  return nodes.map(invertAdd)
+  return nodes.filter(hasAdd).map(invertAdd)
 }
 
 const invertAdd = function(node) {
   return { ...node, add: false }
 }
 
-// =octal means that some permissions are +, others -
-const parseEqual = function({ nodes, nodesMap: allNodesMap }) {
-  const nodesMap = getNodesMap(nodes)
-
-  return Object.entries(allNodesMap).map(([nodeKey, node]) =>
-    getEqualNode({ node, nodeKey, nodesMap }),
-  )
+const hasAdd = function({ add }) {
+  return add
 }
 
-const getEqualNode = function({
-  node: { category, permission },
-  nodeKey,
-  nodesMap,
-}) {
-  const add = nodesMap[nodeKey] !== undefined
-  return { category, permission, add }
+// =octal means that some permissions are +, others -
+const parseEqual = function({ nodes }) {
+  return nodes
 }
 
 const parseOperator = {
@@ -66,11 +56,8 @@ const parseOperator = {
   [EQUAL]: parseEqual,
 }
 
-const parse = parsePerm.bind(null, { funcName: 'parse', nodesMap: NODES_MAP })
-const parseCategory = parsePerm.bind(null, {
-  funcName: 'parseCategory',
-  nodesMap: CAT_NODES_MAP,
-})
+const parse = parsePerm.bind(null, 'parse')
+const parseCategory = parsePerm.bind(null, 'parseCategory')
 
 module.exports = {
   parse,
