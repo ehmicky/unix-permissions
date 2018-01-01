@@ -13,7 +13,7 @@ const serializeNodes = function(values, nodes) {
 }
 
 const hasAdd = function({ add }) {
-  return add
+  return add === true
 }
 
 const sum = function(memo, number) {

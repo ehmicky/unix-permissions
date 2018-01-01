@@ -42,7 +42,7 @@ const invertAdd = function(node) {
 }
 
 const hasAdd = function({ add }) {
-  return add
+  return add === true
 }
 
 // =octal means that some permissions are +, others -
