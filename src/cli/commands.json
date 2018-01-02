@@ -69,8 +69,13 @@
   },
   {
     "command": "not <permission>",
-    "describe": "Inverts permission",
-    "examples": [["not 744", "Output: =0033"]]
+    "describe": "Inverts permission including special permissions",
+    "examples": [["not 660", "Output: 7117"]]
+  },
+  {
+    "command": "invert <permission>",
+    "describe": "Inverts permission and removes special permissions",
+    "examples": [["invert 660", "Output: 0117"]]
   },
   {
     "command": "min <permission> [permissions...]",
