@@ -84,14 +84,14 @@ specified by prepending another digit.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.convert.stat('720') // 'rwx-w----'
-unixPermissions.convert.stat('7000') // '--S--S--T'
-unixPermissions.convert.stat('\\720') // 'rwx-w----'
-unixPermissions.convert.stat('0720') // 'rwx-w----'
-unixPermissions.convert.stat('0o720') // 'rwx-w----'
-unixPermissions.convert.symbolic('+720') // 'u+rwx,g+w'
-unixPermissions.convert.symbolic('-720') // 'u-rwx,g-w'
-unixPermissions.convert.symbolic('=720') // 'u=rwx,g=w,o='
+convert.stat('720') // 'rwx-w----'
+convert.stat('7000') // '--S--S--T'
+convert.stat('\\720') // 'rwx-w----'
+convert.stat('0720') // 'rwx-w----'
+convert.stat('0o720') // 'rwx-w----'
+convert.symbolic('+720') // 'u+rwx,g+w'
+convert.symbolic('-720') // 'u-rwx,g-w'
+convert.symbolic('=720') // 'u=rwx,g=w,o='
 ```
 
 # number
@@ -104,11 +104,11 @@ It is the same as `octal` but as a decimal number.
 <!-- eslint-disable line-comment-position, no-inline-comments, no-magic-numbers -->
 
 ```js
-unixPermissions.convert.stat(0) // '---------'
-unixPermissions.convert.stat(1) // '--------x'
-unixPermissions.convert.stat(3) // '-------wx'
-unixPermissions.convert.stat(8) // '-----x---'
-unixPermissions.convert.stat(512) // '--------T'
+convert.stat(0) // '---------'
+convert.stat(1) // '--------x'
+convert.stat(3) // '-------wx'
+convert.stat(8) // '-----x---'
+convert.stat(512) // '--------T'
 ```
 
 # stat
@@ -126,14 +126,14 @@ Optionally a first character can be specified to indicate the file type (e.g.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.convert.symbolic('--------x') // 'o+x'
-unixPermissions.convert.symbolic('--x--x--x') // 'a+x'
-unixPermissions.convert.symbolic('--------T') // 'o+t'
-unixPermissions.convert.symbolic('--------t') // 'o+xt'
-unixPermissions.convert.symbolic('d--------x') // 'o+x'
-unixPermissions.convert.symbolic('--x --x --x') // 'a+x'
-unixPermissions.convert.symbolic('rwx --- ---') // 'u+rwx'
-unixPermissions.convert.symbolic('xwr --- ---') // 'u+rwx'
+convert.symbolic('--------x') // 'o+x'
+convert.symbolic('--x--x--x') // 'a+x'
+convert.symbolic('--------T') // 'o+t'
+convert.symbolic('--------t') // 'o+xt'
+convert.symbolic('d--------x') // 'o+x'
+convert.symbolic('--x --x --x') // 'a+x'
+convert.symbolic('rwx --- ---') // 'u+rwx'
+convert.symbolic('xwr --- ---') // 'u+rwx'
 ```
 
 # symbolic
@@ -155,15 +155,15 @@ User classes can be concatenated like `go+x`.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.convert.stat('o+wx') // '-------wx'
-unixPermissions.convert.stat('o=wx') // '-------wx'
-unixPermissions.convert.stat('o-wx') // '---------'
-unixPermissions.convert.stat('go+x') // '-----x--x'
-unixPermissions.convert.stat('g+x,o+x') // '-----x--x'
-unixPermissions.convert.stat('a+x') // '--x--x--x'
-unixPermissions.convert.stat('+x') // '--x--x--x'
-unixPermissions.convert.stat('a+s') // '--S--S---'
-unixPermissions.convert.stat('o+') // '---------'
+convert.stat('o+wx') // '-------wx'
+convert.stat('o=wx') // '-------wx'
+convert.stat('o-wx') // '---------'
+convert.stat('go+x') // '-----x--x'
+convert.stat('g+x,o+x') // '-----x--x'
+convert.stat('a+x') // '--x--x--x'
+convert.stat('+x') // '--x--x--x'
+convert.stat('a+s') // '--S--S---'
+convert.stat('o+') // '---------'
 ```
 
 # object
@@ -180,11 +180,11 @@ permissions as is while `false` unsets them.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.convert.stat({ others: { execute: true } }) // '--------x'
-unixPermissions.convert.stat({ others: { execute: false } }) // '---------'
-unixPermissions.convert.stat({ others: { execute: undefined } }) // '---------'
-unixPermissions.convert.stat({}) // '---------'
-unixPermissions.convert.stat({
+convert.stat({ others: { execute: true } }) // '--------x'
+convert.stat({ others: { execute: false } }) // '---------'
+convert.stat({ others: { execute: undefined } }) // '---------'
+convert.stat({}) // '---------'
+convert.stat({
   user: { setuid: true },
   group: { setgid: true },
   others: { sticky: true },
@@ -216,10 +216,10 @@ mean "unset permissions". However you can use
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.convert.symbolic('111') // 'a=x'
-unixPermissions.positive(unixPermissions.convert.symbolic('111')) // 'a+x'
-unixPermissions.convert.octal('o+x') // '+0001'
-unixPermissions.convert.octal('o=x') // '0001'
+convert.symbolic('111') // 'a=x'
+positive(convert.symbolic('111')) // 'a+x'
+convert.octal('o+x') // '+0001'
+convert.octal('o=x') // '0001'
 ```
 
 ## `type(permission)`
@@ -229,10 +229,10 @@ Returns the `permission`'s [`type`](#types) or `'invalid'`.
 <!-- eslint-disable line-comment-position, no-inline-comments, no-magic-numbers -->
 
 ```js
-unixPermissions.type('1') // 'octal'
-unixPermissions.type(1) // 'number'
-unixPermissions.type(0.5) // 'invalid'
-unixPermissions.type('a+x') // 'symbolic'
+type('1') // 'octal'
+type(1) // 'number'
+type(0.5) // 'invalid'
+type('a+x') // 'symbolic'
 ```
 
 ## `normalize(permission)`
@@ -244,12 +244,12 @@ Throw an exception if `permission` is invalid.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.normalize('1') // '0001'
-unixPermissions.normalize('g+x,o+x') // 'go+x'
-unixPermissions.normalize('d--- --- ---') // '---------'
-unixPermissions.normalize({ user: { read: undefined, write: true } })
+normalize('1') // '0001'
+normalize('g+x,o+x') // 'go+x'
+normalize('d--- --- ---') // '---------'
+normalize({ user: { read: undefined, write: true } })
 // { user: { write: true } }
-unixPermissions.normalize('z+x') // Throws an exception
+normalize('z+x') // Throws an exception
 ```
 
 ## `positive(permission)`
@@ -260,11 +260,11 @@ Remove all negative permissions. See
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.positive('o+x,o-rw') // 'o+x'
-unixPermissions.positive('o=x') // 'o+x'
-unixPermissions.positive('660') // '+0660'
-unixPermissions.invert('660') // '0117'
-unixPermissions.invert(unixPermissions.positive('660')) // '-0117'
+positive('o+x,o-rw') // 'o+x'
+positive('o=x') // 'o+x'
+positive('660') // '+0660'
+invert('660') // '0117'
+invert(positive('660')) // '-0117'
 ```
 
 ## `contain(permission, permissions...)`
@@ -276,15 +276,15 @@ Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.contain('--------x', 'o+x') // `true`
-unixPermissions.contain('--------x', 'o-x') // `false`
-unixPermissions.contain('--------x', 'o-w') // `false`
-unixPermissions.contain('o+x', 'o+x') // `true`
-unixPermissions.contain('o+x', 'o+x,o+x') // `true`
-unixPermissions.contain('o+x', 'o=w') // `false`
-unixPermissions.contain('o+x,o-w', 'o-w,o+x') // `true`
-unixPermissions.contain('o+x,o-w', 'o-w') // `true`
-unixPermissions.contain('o+x,o-w', 'o+x', 'o-w') // `true`
+contain('--------x', 'o+x') // `true`
+contain('--------x', 'o-x') // `false`
+contain('--------x', 'o-w') // `false`
+contain('o+x', 'o+x') // `true`
+contain('o+x', 'o+x,o+x') // `true`
+contain('o+x', 'o=w') // `false`
+contain('o+x,o-w', 'o-w,o+x') // `true`
+contain('o+x,o-w', 'o-w') // `true`
+contain('o+x,o-w', 'o+x', 'o-w') // `true`
 ```
 
 ## `equal(permission, permissions...)`
@@ -296,15 +296,15 @@ Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.equal('--------x', 'o+x') // `true`
-unixPermissions.equal('--------x', 'o-x') // `false`
-unixPermissions.equal('--------x', 'o-w') // `false`
-unixPermissions.equal('o+x', 'o+x') // `true`
-unixPermissions.equal('o+x', 'o+x,o+x') // `true`
-unixPermissions.equal('o+x', 'o=w') // `false`
-unixPermissions.equal('o+x,o-w', 'o-w,o+x') // `true`
-unixPermissions.equal('o+x,o-w', 'o-w') // `false`
-unixPermissions.equal('o+x,o-w', 'o+x', 'o-w') // `false`
+equal('--------x', 'o+x') // `true`
+equal('--------x', 'o-x') // `false`
+equal('--------x', 'o-w') // `false`
+equal('o+x', 'o+x') // `true`
+equal('o+x', 'o+x,o+x') // `true`
+equal('o+x', 'o=w') // `false`
+equal('o+x,o-w', 'o-w,o+x') // `true`
+equal('o+x,o-w', 'o-w') // `false`
+equal('o+x,o-w', 'o+x', 'o-w') // `false`
 ```
 
 ## `set(permission, permissions...)`
@@ -320,11 +320,11 @@ This can also be used to remove special permissions using
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.set('---------', 'a+x') // '--x--x--x'
-unixPermissions.set('---------', 'a+x', 'a+r') // 'r-xr-xr-x'
-unixPermissions.set('--x--x--x', 'o-x') // '--x--x---'
-unixPermissions.set('a+x', 'a+r') // 'a+rx'
-unixPermissions.set('4660', 'a-st') // '=0660'
+set('---------', 'a+x') // '--x--x--x'
+set('---------', 'a+x', 'a+r') // 'r-xr-xr-x'
+set('--x--x--x', 'o-x') // '--x--x---'
+set('a+x', 'a+r') // 'a+rx'
+set('4660', 'a-st') // '=0660'
 ```
 
 ## `not(permission)`
@@ -337,16 +337,16 @@ setting them.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.not('u+xs') // 'u-xs'
-unixPermissions.not('u-xs') // 'u+xs'
-unixPermissions.not('u=x') // 'u=rws'
-unixPermissions.not('a=x') // 'ug=rws,o=rwt'
-unixPermissions.not('rws-ws-w-') // '---r--r-t'
-unixPermissions.not('0660') // '7117'
-unixPermissions.not('1660') // '6117'
-unixPermissions.set('rwxrwxrwx', unixPermissions.not('a+x')) // 'rw-rw-rw-'
-unixPermissions.set('---------', unixPermissions.not('a-x')) // '--x--x--x'
-unixPermissions.set('a+xr', unixPermissions.not('a+r')) // 'a+x,a-r'
+not('u+xs') // 'u-xs'
+not('u-xs') // 'u+xs'
+not('u=x') // 'u=rws'
+not('a=x') // 'ug=rws,o=rwt'
+not('rws-ws-w-') // '---r--r-t'
+not('0660') // '7117'
+not('1660') // '6117'
+set('rwxrwxrwx', not('a+x')) // 'rw-rw-rw-'
+set('---------', not('a-x')) // '--x--x--x'
+set('a+xr', not('a+r')) // 'a+x,a-r'
 ```
 
 ## `invert(permission)`
@@ -359,13 +359,13 @@ files will be created with `661` permissions.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.invert('u+xs') // 'u-x'
-unixPermissions.invert('u-xs') // 'u+x'
-unixPermissions.invert('u=x') // 'u+rw,u-x'
-unixPermissions.invert('a=x') // 'a+rw,a-x'
-unixPermissions.invert('rws-ws-w-') // '---r--r-x'
-unixPermissions.invert('0660') // '0117'
-unixPermissions.invert('1660') // '0117'
+invert('u+xs') // 'u-x'
+invert('u-xs') // 'u+x'
+invert('u=x') // 'u+rw,u-x'
+invert('a=x') // 'a+rw,a-x'
+invert('rws-ws-w-') // '---r--r-x'
+invert('0660') // '0117'
+invert('1660') // '0117'
 ```
 
 ## `min(permissions...)`
@@ -381,7 +381,7 @@ files, e.g. during a directory recursion.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.min('404', '440', '402') // '0400'
+min('404', '440', '402') // '0400'
 ```
 
 ## `max(permissions...)`
@@ -391,7 +391,7 @@ Inverse of [`min()`](#minpermissions).
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.max('404', '440', '402') // '0446'
+max('404', '440', '402') // '0446'
 ```
 
 ## `select.user(permission)`
@@ -408,10 +408,10 @@ library except `deselect()`.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.select.user('u+wr,g+x') // '+rw'
-unixPermissions.select.group('421') // '2'
-unixPermissions.select.others({ others: { read: true } }) // { read: true }
-unixPermissions.select.others('rw-rw-r--') // 'r--'
+select.user('u+wr,g+x') // '+rw'
+select.group('421') // '2'
+select.others({ others: { read: true } }) // { read: true }
+select.others('rw-rw-r--') // 'r--'
 ```
 
 ## `deselect.user(permission)`
@@ -427,10 +427,10 @@ Inverse of [`select.user()`](#selectuserpermission),
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.deselect.user('+wr') // 'u+rw'
-unixPermissions.deselect.group('2') // '0020'
-unixPermissions.deselect.others({ read: true }) // { others: { read: true } }
-unixPermissions.deselect.others('r--') // '------r--'
+deselect.user('+wr') // 'u+rw'
+deselect.group('2') // '0020'
+deselect.others({ read: true }) // { others: { read: true } }
+deselect.others('r--') // '------r--'
 ```
 
 # Examples
@@ -443,24 +443,23 @@ than numbers with Node.js.
 <!-- eslint-disable handle-callback-err -->
 
 ```js
-fs.stat('/etc/passwd', (error, stat) =>
-  unixPermissions.convert.object(stat.mode),
-)
+// Retrieve a file's permission as an `object` instead of a number
+fs.stat('/etc/passwd', (error, stat) => convert.object(stat.mode))
+```
+
+```js
+// Set a file's permission using `symbolic` notation instead of a number
+fs.chmod('/etc/passwd', convert.number('a-r'))
+```
+
+```js
+// Set a file's permission using `symbolic` notation instead of a number
+fs.writeFile('/my/file', content, { mode: convert.number('a-r') })
 ```
 
 <!-- eslint-disable node/prefer-global/process -->
 
 ```js
 // Disallow executing new files using `umask`
-process.umask(unixPermissions.convert.number(unixPermissions.invert('a-x')))
-```
-
-```js
-fs.chmod('/etc/passwd', unixPermissions.convert.number('a-r'))
-```
-
-```js
-fs.writeFile('/my/file', content, {
-  mode: unixPermissions.convert.number('a-r'),
-})
+process.umask(convert.number(invert('a-x')))
 ```
