@@ -260,10 +260,10 @@ Remove all negative permissions. See
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
+unixPermissions.positive('o+x,o-rw') // 'o+x'
 unixPermissions.positive('o=x') // 'o+x'
-unixPermissions.positive('o+x,o-r') // 'o+x'
-unixPermissions.invert('660') // '0117'
 unixPermissions.positive('660') // '+0660'
+unixPermissions.invert('660') // '0117'
 unixPermissions.invert(unixPermissions.positive('660')) // '-0117'
 ```
 
