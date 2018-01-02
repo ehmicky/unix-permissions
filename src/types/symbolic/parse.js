@@ -25,14 +25,16 @@ const parse = function(symbolic) {
 }
 
 const parseCategory = function(part) {
-  const node = tokenizeCategory(part)
+  const tokens = tokenizeCategory(part)
 
-  if (node === undefined || hasDuplicatePermissions(node)) {
+  if (tokens === undefined || hasDuplicates({ tokens })) {
     return
   }
 
-  const nodeA = normalizeX(node)
-  const nodes = normalizeOperator(nodeA).flatMap(splitPermissions)
+  const nodes = tokens
+    .map(normalizeX)
+    .flatMap(normalizeOperator)
+    .flatMap(splitPermissions)
   return nodes
 }
 

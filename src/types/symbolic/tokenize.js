@@ -1,12 +1,12 @@
 'use strict'
 
 // Tokenize `symbolic` string using a RegExp
-const tokenize = function(symbolic) {
+const tokenizePerm = function(tokenPart, symbolic) {
   if (typeof symbolic !== 'string') {
     return
   }
 
-  const tokens = symbolic.split(COMMA_REGEXP).map(tokenizePart)
+  const tokens = symbolic.split(COMMA_REGEXP).map(tokenPart)
 
   const isMatching = tokens.every(token => token !== undefined)
 
@@ -32,11 +32,7 @@ const tokenizePart = function(part) {
   return { categories, operator, permissions }
 }
 
-const tokenizeCategory = function(part) {
-  if (typeof part !== 'string') {
-    return
-  }
-
+const tokenizeCatPart = function(part) {
   const tokens = CAT_PART_REGEXP.exec(part)
 
   if (tokens === null) {
@@ -55,6 +51,9 @@ const tokenizeCategory = function(part) {
 // The permissions are a string composed of `xwrXst`, and defaults to ''.
 const PART_REGEXP = /^\s*([augo]*)\s*([=+-])\s*([xwrXst]*)\s*$/u
 const CAT_PART_REGEXP = /^\s*([=+-])\s*([xwrXst]*)\s*$/u
+
+const tokenize = tokenizePerm.bind(null, tokenizePart)
+const tokenizeCategory = tokenizePerm.bind(null, tokenizeCatPart)
 
 module.exports = {
   tokenize,
