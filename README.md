@@ -45,10 +45,10 @@ $ npm install unix-permissions
 # Usage (JavaScript)
 
 ```js
-const unixPermissions = require('unix-permissions')
+const { convert } = require('unix-permissions')
 
 // `permission` will be set to `rw-rw----`
-const permission = unixPermissions.convert.stat('660')
+const permission = convert.stat('660')
 ```
 
 Several methods are available but they mostly follow the same pattern.
