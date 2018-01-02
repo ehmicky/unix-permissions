@@ -58,11 +58,6 @@
     ]
   },
   {
-    "command": "full <permission>",
-    "describe": "Converts all the omitted permissions to negative permissions",
-    "examples": [["full a+rw", "Output: a=rw"]]
-  },
-  {
     "command": "positive <permission>",
     "describe": "Only keep the positive permissions.",
     "examples": [["positive a=rw", "Output: a+rw"]]

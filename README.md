@@ -210,16 +210,16 @@ leaving permissions as is (omitting them or using `undefined`) and unsetting
 them (using `-` or `false`). [`number`](#number) and [`stat`](#stat) do not
 make this distinction. If you convert between them, you might lose this
 information as we assume `-` and `0` in [`number`](#number) and [`stat`](#stat)
-mean "leave permissions as is". However you can use [`full()`](#fullpermission)
-and [`positive()`](#positivepermission) to overcome this issue.
+mean "unset permissions". However you can use
+[`positive()`](#positivepermission) to overcome this issue.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.convert.symbolic('001') // 'o+x'
-unixPermissions.full(unixPermissions.convert.symbolic('001')) // 'o=x'
-unixPermissions.convert.octal('o+x') // '0001'
-unixPermissions.convert.octal('o=x') // '=0001'
+unixPermissions.convert.symbolic('111') // 'a=x'
+unixPermissions.positive(unixPermissions.convert.symbolic('111')) // 'a+x'
+unixPermissions.convert.octal('o+x') // '+0001'
+unixPermissions.convert.octal('o=x') // '0001'
 ```
 
 ## `type(permission)`
@@ -252,30 +252,19 @@ unixPermissions.normalize({ user: { read: undefined, write: true } })
 unixPermissions.normalize('z+x') // Throws an exception
 ```
 
-## `full(permission)`
-
-Converts all the omitted permissions to negative permissions. See
-[convert()](#convertoctalpermission) for more explanation.
-
-<!-- eslint-disable line-comment-position, no-inline-comments -->
-
-```js
-unixPermissions.full('a+x') // 'a=x'
-unixPermissions.convert.symbolic('001') // 'o+x'
-unixPermissions.full(unixPermissions.convert.symbolic('001')) // 'ug=,o=x'
-```
-
 ## `positive(permission)`
 
-Inverse of [`full()`](#fullpermission). Only keep the positive permissions.
+Remove all negative permissions. See
+[convert()](#convertoctalpermission) for more explanation.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
 unixPermissions.positive('o=x') // 'o+x'
 unixPermissions.positive('o+x,o-r') // 'o+x'
-unixPermissions.invert('660') // '=0117'
-unixPermissions.positive(unixPermissions.invert('660')) // '0117'
+unixPermissions.invert('660') // '0117'
+unixPermissions.positive('660') // '+0660'
+unixPermissions.invert(unixPermissions.positive('660')) // '-0117'
 ```
 
 ## `contain(permission, permissions...)`
