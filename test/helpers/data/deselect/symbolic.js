@@ -21,6 +21,9 @@ module.exports = [
 
   // Combining
   '=rw',
+  '+x,+x',
+  '+x,-x',
+  '+x,-r',
 
   // Operators
   '=x',
@@ -32,4 +35,5 @@ module.exports = [
 
   // Whitespace
   ' +x ',
+  ' +x, +x ',
 ]
