@@ -30,6 +30,7 @@ const SIMPLE_DATA = [
   'a+x',
   'og+x',
   'o+x,g+w',
+  'o+x,g-w',
 
   // Operators
   'o-x',
