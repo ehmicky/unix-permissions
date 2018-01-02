@@ -38,7 +38,8 @@ const serializeOperator = function({ nodes, nodesMap }) {
 }
 
 const isPartial = function({ nodes, nodesMap }) {
-  return Object.keys(nodes).length !== Object.keys(nodesMap).length
+  // `- 1` because `nodesMap` includes both `s` and `t`
+  return Object.keys(nodes).length !== Object.keys(nodesMap).length - 1
 }
 
 const isAdded = function({ add }) {
