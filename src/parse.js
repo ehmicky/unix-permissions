@@ -11,7 +11,7 @@ const { isPlainObject, omitBy } = require('./utils')
 // the first one that does not return `undefined`
 const parse = function(perm) {
   const { type, nodes } = parsePerm({ perm, funcName: 'parse' })
-  const nodesMap = getNodesMap(nodes)
+  const nodesMap = normalizeNodes({ nodes })
   return { type, nodesMap }
 }
 
@@ -22,9 +22,8 @@ const parseCategory = function(perm, category) {
     category,
   })
   const nodes = catNodes.map(catNode => addCategory({ catNode, category }))
-  const nodesMap = getNodesMap(nodes)
-  const nodesMapA = omitBy(nodesMap, isInvalidNode)
-  return { type, nodesMap: nodesMapA }
+  const nodesMap = normalizeNodes({ nodes })
+  return { type, nodesMap }
 }
 
 const parsePerm = function({ perm, funcName, category }) {
@@ -64,6 +63,12 @@ const addCategory = function({
   catNode: { category = defaultCategory },
 }) {
   return { ...catNode, category }
+}
+
+const normalizeNodes = function({ nodes }) {
+  const nodesMap = getNodesMap(nodes)
+  const nodesMapA = omitBy(nodesMap, isInvalidNode)
+  return nodesMapA
 }
 
 // Exclude special flags not valid for current category

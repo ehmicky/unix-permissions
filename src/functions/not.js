@@ -1,20 +1,50 @@
 'use strict'
 
+const { unaryMap } = require('../helpers')
+const { SPECIAL_PERMISSIONS } = require('../constants')
+const { NODES_MAP } = require('../nodes')
 const { mapValues } = require('../utils')
 
-// Similar to invert() except keep omitted permissions as is.
-// We do not export not() because:
-//  - on types that do not support `add:false` like `stat` or `number`, it
-//    would always result in 0, which is confusing.
-//  - `unset()`, `invert()` and `flip()` should cover most use cases
+// Invert a permission's `+` and `-`.
+// Missing permissions are not inverted.
+// Special flags are unset unless the permission is partial. This is because:
+//  - `not()` or `unset()` on `u+s` should be `u-s`, `-1555` should be `+1555`
+//  - but `not()` or `unset()` on `1555` should be `0222`
+// I.e. setting special flags as part of `not()` or `unset()` should only be
+// done when explicit.
 const notMap = function(nodesMap) {
-  return mapValues(nodesMap, invertAdd)
+  const nodesMapA = mapValues(nodesMap, node => notNode({ node }))
+
+  if (isPartial({ nodesMap })) {
+    return nodesMapA
+  }
+
+  const nodesMapB = mapValues(nodesMapA, unsetSpecial)
+  return nodesMapB
 }
 
-const invertAdd = function({ add, ...node }) {
+const notNode = function({ node, node: { add } }) {
   return { ...node, add: !add }
 }
 
+const isPartial = function({ nodesMap }) {
+  return Object.keys(nodesMap).length !== Object.keys(NODES_MAP).length
+}
+
+const unsetSpecial = function(node) {
+  if (!isSpecial(node)) {
+    return node
+  }
+
+  return { ...node, add: false }
+}
+
+const isSpecial = function({ permission }) {
+  return SPECIAL_PERMISSIONS.includes(permission)
+}
+
+const not = unaryMap.bind(null, notMap)
+
 module.exports = {
-  notMap,
+  not,
 }

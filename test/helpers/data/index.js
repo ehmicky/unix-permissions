@@ -10,5 +10,5 @@ module.exports = {
   ...require('./min_max'),
   ...require('./contain'),
   ...require('./equal'),
-  ...require('./set_unset'),
+  ...require('./set'),
 }
