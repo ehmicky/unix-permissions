@@ -21,7 +21,7 @@ const parseCategory = function(perm, category) {
     funcName: 'parseCategory',
     category,
   })
-  const nodes = catNodes.map(catNode => ({ ...catNode, category }))
+  const nodes = catNodes.map(catNode => addCategory({ catNode, category }))
   const nodesMap = getNodesMap(nodes)
   const nodesMapA = omitBy(nodesMap, isInvalidNode)
   return { type, nodesMap: nodesMapA }
@@ -55,6 +55,15 @@ const validateNodes = function({ nodes, perm }) {
 
   const permA = isPlainObject(perm) ? JSON.stringify(perm) : perm
   throw new Error(`Permissions syntax is invalid: ${permA}`)
+}
+
+// Some `parseCategory()` like `octal` might already add `node.category`
+const addCategory = function({
+  category: defaultCategory,
+  catNode,
+  catNode: { category = defaultCategory },
+}) {
+  return { ...catNode, category }
 }
 
 // Exclude special flags not valid for current category

@@ -20,6 +20,7 @@ const serializeCategory = function(type, nodesMap, category) {
   return catPerm
 }
 
+// `serializeCategory()` get `catNodes` as input
 const getCatNodes = function({ nodes, category }) {
   return nodes.filter(node => node.category === category).map(removeCategory)
 }

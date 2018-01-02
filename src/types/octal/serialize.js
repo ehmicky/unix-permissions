@@ -12,8 +12,8 @@ const {
 } = require('./constants')
 
 // Serialize from `nodes` to a `octal` permission
-const serializePerm = function({ funcName, padLength, nodesMap }, nodes) {
-  const operator = serializeOperator({ nodes, nodesMap })
+const serializePerm = function({ funcName, padLength, nodesLength }, nodes) {
+  const operator = serializeOperator({ nodes, nodesLength })
   const string = serializeInteger({ operator, nodes, funcName, padLength })
   const octal = `${operator}${string}`
   return octal
@@ -21,8 +21,8 @@ const serializePerm = function({ funcName, padLength, nodesMap }, nodes) {
 
 // `octal` can be prefixed with `-` or `+` if partial and only negative|positive
 // `=` is the default operator, i.e. is never serialized.
-const serializeOperator = function({ nodes, nodesMap }) {
-  if (!isPartial({ nodes, nodesMap })) {
+const serializeOperator = function({ nodes, nodesLength }) {
+  if (!isPartial({ nodes, nodesLength })) {
     return NONE
   }
 
@@ -37,9 +37,8 @@ const serializeOperator = function({ nodes, nodesMap }) {
   return NONE
 }
 
-const isPartial = function({ nodes, nodesMap }) {
-  // `- 1` because `nodesMap` includes both `s` and `t`
-  return Object.keys(nodes).length !== Object.keys(nodesMap).length - 1
+const isPartial = function({ nodes, nodesLength }) {
+  return Object.keys(nodes).length !== nodesLength
 }
 
 const isAdded = function({ add }) {
@@ -72,12 +71,13 @@ const serializeMinus = function({ operator, nodes }) {
 const serialize = serializePerm.bind(null, {
   funcName: 'serialize',
   padLength: SERIALIZE_LENGTH,
-  nodesMap: NODES_MAP,
+  nodesLength: Object.keys(NODES_MAP).length,
 })
 const serializeCategory = serializePerm.bind(null, {
   funcName: 'serializeCategory',
   padLength: CAT_SERIALIZE_LENGTH,
-  nodesMap: CAT_NODES_MAP,
+  // `- 1` because `nodesMap` includes both `s` and `t`
+  nodesLength: Object.keys(CAT_NODES_MAP).length - 1,
 })
 
 module.exports = {
