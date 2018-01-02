@@ -12,7 +12,7 @@ const containTest = function(nodesMapA, nodesMapB) {
   )
 }
 
-const containNode = function(nodeA = {}, nodeB = {}) {
+const containNode = function(nodeA, nodeB = {}) {
   return nodeA.add === nodeB.add
 }
 
