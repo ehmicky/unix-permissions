@@ -14,13 +14,14 @@ const testGroup = function(group) {
 }
 
 const COMMA_REGEXP = /\s*,\*/gu
-const GROUP_REGEXP = /^\s*([augo]*)\s*([=+-]?)\s*([xwr]*)\s*$/u
+const GROUP_REGEXP = /^\s*([augo]*)\s*([=+-]?)\s*([xwrX]*)\s*$/u
 
 const parse = function(symbolic) {
   const groups = symbolic
     .split(COMMA_REGEXP)
     .map(parseGroup)
     .map(addDefaults)
+    .map(normalizeX)
     .flatMap(splitCategories)
     .flatMap(splitAll)
     .flatMap(normalizeOperator)
@@ -49,6 +50,13 @@ const ifEmpty = function(string, defaultValue) {
 
 const DEFAULT_CATEGORIES = 'a'
 const DEFAULT_OPERATOR = '='
+
+const normalizeX = function({ categories, operator, permissions }) {
+  const permissionsA = permissions.replace(X_REGEXP, 'x')
+  return { categories, operator, permissions: permissionsA }
+}
+
+const X_REGEXP = /X/gu
 
 const splitCategories = function({ categories, operator, permissions }) {
   return categories
