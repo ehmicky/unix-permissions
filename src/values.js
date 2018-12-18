@@ -11,6 +11,9 @@ const VALUES = [
   { category: 'u', permission: 'x', value: 2 ** 6 },
   { category: 'u', permission: 'w', value: 2 ** 7 },
   { category: 'u', permission: 'r', value: 2 ** 8 },
+  { category: 'o', permission: 't', value: 2 ** 9 },
+  { category: 'g', permission: 's', value: 2 ** 10 },
+  { category: 'u', permission: 's', value: 2 ** 11 },
 ]
 /* eslint-enable no-magic-numbers */
 
@@ -23,6 +26,11 @@ const getValuesMap = function() {
 
 const VALUES_MAP = getValuesMap()
 
+const CATEGORIES = ['o', 'g', 'u']
+const PERMISSIONS = ['x', 'w', 'r', 't', 's']
+
 module.exports = {
   VALUES_MAP,
+  CATEGORIES,
+  PERMISSIONS,
 }

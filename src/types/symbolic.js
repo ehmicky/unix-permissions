@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 'use strict'
 
-const { VALUES_MAP } = require('../values')
+const { VALUES_MAP, CATEGORIES, PERMISSIONS } = require('../values')
 
 const name = 'symbolic'
 
@@ -14,7 +14,7 @@ const testGroup = function(group) {
 }
 
 const COMMA_REGEXP = /\s*,\*/gu
-const GROUP_REGEXP = /^\s*([augo]*)\s*([=+-]?)\s*([xwrX]*)\s*$/u
+const GROUP_REGEXP = /^\s*([augo]*)\s*([=+-]?)\s*([xwrXst]*)\s*$/u
 
 const parse = function(symbolic) {
   const groups = symbolic
@@ -26,6 +26,7 @@ const parse = function(symbolic) {
     .flatMap(splitAll)
     .flatMap(normalizeOperator)
     .flatMap(splitPermissions)
+    .filter(filterInvalidFlag)
     .map(addValue)
     .filter(isUnique)
   return groups
@@ -69,7 +70,7 @@ const splitAll = function({ category, operator, permissions }) {
     return { category, operator, permissions }
   }
 
-  return ['u', 'g', 'o'].map(categoryA => ({
+  return CATEGORIES.map(categoryA => ({
     category: categoryA,
     operator,
     permissions,
@@ -85,7 +86,7 @@ const normalizeOperator = function({ category, operator, permissions }) {
     return { category, permissions, add: false }
   }
 
-  return ['x', 'w', 'r'].map(permission => ({
+  return PERMISSIONS.map(permission => ({
     category,
     permissions: permission,
     add: permissions.includes(permission),
@@ -100,6 +101,13 @@ const splitPermissions = function({ category, permissions, add }) {
   return permissions
     .split('')
     .map(permission => ({ category, permission, add }))
+}
+
+const filterInvalidFlag = function({ category, permission }) {
+  return (
+    (permission !== 't' || category === 'o') &&
+    (permission !== 's' || category !== 'o')
+  )
 }
 
 const addValue = function({ category, permission, add }) {
