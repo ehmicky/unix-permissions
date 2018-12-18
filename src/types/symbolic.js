@@ -25,8 +25,8 @@ const parse = function(symbolic) {
     .flatMap(splitAll)
     .flatMap(normalizeOperator)
     .flatMap(splitPermissions)
-    .filter(isUnique)
     .map(addValue)
+    .filter(isUnique)
   return groups
 }
 
@@ -94,17 +94,6 @@ const splitPermissions = function({ category, permissions, add }) {
     .map(permission => ({ category, permission, add }))
 }
 
-const isUnique = function(value, index, array) {
-  return !array.slice(index + 1).some(valueB => isSameGroup(value, valueB))
-}
-
-const isSameGroup = function(valueA, valueB) {
-  return (
-    valueA.category === valueB.category &&
-    valueA.permission === valueB.permission
-  )
-}
-
 const addValue = function({ category, permission, add }) {
   const value = getValue({ category, permission })
   return { category, permission, add, value }
@@ -112,6 +101,14 @@ const addValue = function({ category, permission, add }) {
 
 const getValue = function({ category, permission }) {
   return VALUES[`${category} ${permission}`]
+}
+
+const isUnique = function(value, index, array) {
+  return !array.slice(index + 1).some(valueB => isSameGroup(value, valueB))
+}
+
+const isSameGroup = function(valueA, valueB) {
+  return valueA.value === valueB.value
 }
 
 const serialize = function(tokens) {
