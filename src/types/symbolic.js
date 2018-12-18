@@ -142,9 +142,14 @@ const compare = function(groupA, groupB, attribute) {
   return 0
 }
 
+const serialize = function(tokens) {
+  return tokens
+}
+
 module.exports = {
   name,
   test,
   parse,
+  serialize,
 }
 /* eslint-enable max-lines */

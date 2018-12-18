@@ -1,3 +1,9 @@
 'use strict'
 
-module.exports = require('./main')
+const { getType, isValid } = require('./type')
+
+module.exports = {
+  getType,
+  isValid,
+  ...require('./converters'),
+}
