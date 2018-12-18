@@ -3,8 +3,6 @@
 
 const assert = require('assert')
 
-const moize = require('moize').default
-
 const parse = function(flags) {
   assert(flags, `umask must be a string: ${flags}`)
 
@@ -22,8 +20,6 @@ const parse = function(flags) {
     .sort(compareGroups)
   return groups
 }
-
-const mParse = moize(parse)
 
 const parseGroup = function({ group, flags }) {
   const tokens = regexp.exec(group)
@@ -157,8 +153,6 @@ const validate = function(flags) {
   return typeof flags === 'string' && flags.split(',').every(testGroup)
 }
 
-const mValidate = moize(validate)
-
 const testGroup = function(group) {
   return regexp.test(group)
 }
@@ -166,8 +160,8 @@ const testGroup = function(group) {
 const regexp = /^\s*([augo]*)\s*([=+-]?)\s*([xwr]*)\s*$/u
 
 module.exports = {
-  parse: mParse,
-  validate: mValidate,
+  parse,
+  validate,
   regexp,
 }
 /* eslint-enable max-lines */
