@@ -1,0 +1,16 @@
+{
+  "CHECK": [
+    "{index,gulpfile.babel}.js",
+    "{src,test}/**/*.js",
+    "gulp/*.js",
+    "gulp/utils/*.js",
+    "gulp/tasks/**/*.js",
+    "*.md"
+  ],
+  "UNIT": ["localpack"],
+  "TEST": ["{index,gulpfile.babel,.babelrc}.js", "src", "gulp", "test", "*.md"],
+  "BUILD": ["{index,gulpfile.babel,.babelrc}.js", "src"],
+  "BUILD_SRC": ["src"],
+  "BUILD_DIST": ["dist"],
+  "DEV": ["{index,gulpfile.babel,.babelrc}.js", "src", "gulp", "test", "*.md"]
+}

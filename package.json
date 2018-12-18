@@ -1,0 +1,85 @@
+{
+  "name": "easy-umask",
+  "version": "0.0.1",
+  "main": "index.js",
+  "files": [
+    "bin",
+    "dist",
+    "!*~"
+  ],
+  "bin": {
+    "easy-umask": "bin/easy_umask.js"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "test": "npm run build && gulp test",
+    "release": "npm test && release-it",
+    "check-coverage": "gulp checkCoverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "gulp check"
+    }
+  },
+  "description": "Test, set and get umask using the symbolic notation",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "homepage": "https://git.io/fppk8",
+  "repository": "ehmicky/easy-umask",
+  "bugs": {
+    "url": "https://github.com/ehmicky/easy-umask/issues"
+  },
+  "author": "ehmicky <ehmicky@gmail.com> (https://github.com/ehmicky)",
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.2.0",
+    "core-js": "^2.6.0",
+    "jest-validate": "^23.6.0",
+    "yargs": "^12.0.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/register": "^7.0.0",
+    "ava": "^1.0.1",
+    "cross-fetch": "^3.0.0",
+    "eslint": "^5.10.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-config-standard-prettier-fp": "^7.0.0",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-plugin-ava": "^5.1.1",
+    "eslint-plugin-eslint-comments": "^3.0.1",
+    "eslint-plugin-filenames": "^1.3.2",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-html": "^5.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-markdown": "^1.0.0-rc.1",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-unicorn": "^6.0.1",
+    "eslint-plugin-you-dont-need-lodash-underscore": "^6.4.0",
+    "execa": "^1.0.0",
+    "fs-extra": "^7.0.1",
+    "gulp": "^4.0.0",
+    "gulp-jscpd": "0.0.8",
+    "husky": "^1.2.1",
+    "is-ci": "^2.0.0",
+    "moize": "^5.4.1",
+    "nyc": "^13.1.0",
+    "pkg-dir": "^3.0.0",
+    "plugin-error": "^1.0.1",
+    "prettier": "^1.15.3",
+    "release-it": "^9.1.0",
+    "tar": "^4.4.8",
+    "util.promisify": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=6.5.0"
+  }
+}
