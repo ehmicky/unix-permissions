@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 'use strict'
 
-const { VALUES } = require('../constants')
+const { VALUES_MAP } = require('../values')
 
 const name = 'symbolic'
 
@@ -100,7 +100,7 @@ const addValue = function({ category, permission, add }) {
 }
 
 const getValue = function({ category, permission }) {
-  return VALUES[`${category} ${permission}`]
+  return VALUES_MAP[`${category} ${permission}`]
 }
 
 const isUnique = function(value, index, array) {
