@@ -2,8 +2,8 @@
 
 const test = require('ava')
 
-const { parse } = require('../localpack')
+const { getType } = require('../localpack')
 
 test('Dummy test', t => {
-  t.is(typeof parse, 'function')
+  t.is(typeof getType, 'function')
 })

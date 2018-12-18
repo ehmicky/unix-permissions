@@ -1,7 +1,7 @@
 'use strict'
 
-const { parse } = require('./parse')
+const { getType } = require('./parse')
 
 module.exports = {
-  parse,
+  getType,
 }

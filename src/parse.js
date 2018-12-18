@@ -4,6 +4,10 @@ const assert = require('assert')
 
 const TYPES = require('./types')
 
+const getType = function({ perm }) {
+  return TYPES.find(({ test }) => test(perm))
+}
+
 const parse = function(perm) {
   const type = getType({ perm })
 
@@ -13,10 +17,7 @@ const parse = function(perm) {
   return tokens
 }
 
-const getType = function({ perm }) {
-  return TYPES.find(({ test }) => test(perm))
-}
-
 module.exports = {
+  getType,
   parse,
 }
