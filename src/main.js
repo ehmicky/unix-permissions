@@ -1,4 +1,21 @@
-// eslint-disable-next-line filenames/match-exported
 'use strict'
 
-module.exports = {}
+const { umask } = require('process')
+
+const set = function(flags) {
+  umask(flags)
+}
+
+const get = function() {
+  return umask()
+}
+
+const test = function(flags) {
+  return umask() === flags
+}
+
+module.exports = {
+  set,
+  get,
+  test,
+}
