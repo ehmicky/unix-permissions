@@ -1,5 +1,5 @@
 {
-  "name": "easy-umask",
+  "name": "unix-permissions",
   "version": "0.0.1",
   "main": "index.js",
   "files": [
@@ -8,7 +8,7 @@
     "!*~"
   ],
   "bin": {
-    "easy-umask": "bin/easy_umask.js"
+    "unix-permissions": "bin/unix_permissions.js"
   },
   "scripts": {
     "build": "gulp build",
@@ -21,34 +21,13 @@
       "pre-push": "gulp check"
     }
   },
-  "description": "Test, set and get umask using the symbolic notation",
-  "keywords": [
-    "umask",
-    "symbolic",
-    "permissions",
-    "chmod",
-    "read",
-    "write",
-    "execute",
-    "access",
-    "test",
-    "get",
-    "set",
-    "access-control",
-    "unix",
-    "posix",
-    "octal",
-    "process",
-    "user",
-    "setuid",
-    "setgid",
-    "user-mark"
-  ],
+  "description": "Test, set and get unix permissions",
+  "keywords": [],
   "license": "Apache-2.0",
-  "homepage": "https://git.io/fppk8",
-  "repository": "ehmicky/easy-umask",
+  "homepage": "https://git.io/fppEv",
+  "repository": "ehmicky/unix-permissions",
   "bugs": {
-    "url": "https://github.com/ehmicky/easy-umask/issues"
+    "url": "https://github.com/ehmicky/unix-permissions/issues"
   },
   "author": "ehmicky <ehmicky@gmail.com> (https://github.com/ehmicky)",
   "directories": {
