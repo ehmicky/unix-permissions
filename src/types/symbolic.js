@@ -17,7 +17,6 @@ const COMMA_REGEXP = /\s*,\*/gu
 const GROUP_REGEXP = /^\s*([augo]*)\s*([=+-]?)\s*([xwr]*)\s*$/u
 
 const parse = function(symbolic) {
-  // eslint-disable-next-line fp/no-mutating-methods
   const groups = symbolic
     .split(COMMA_REGEXP)
     .map(parseGroup)
@@ -28,7 +27,6 @@ const parse = function(symbolic) {
     .flatMap(splitPermissions)
     .filter(isUnique)
     .map(addValue)
-    .sort(compareGroups)
   return groups
 }
 
@@ -114,32 +112,6 @@ const addValue = function({ category, permission, add }) {
 
 const getValue = function({ category, permission }) {
   return VALUES[`${category} ${permission}`]
-}
-
-const compareGroups = function(groupA, groupB) {
-  const attributeA = ATTRIBUTES.find(
-    attribute => compare(groupA, groupB, attribute) !== 0,
-  )
-
-  if (attributeA === undefined) {
-    return 0
-  }
-
-  return compare(groupA, groupB, attributeA)
-}
-
-const ATTRIBUTES = ['add', 'value']
-
-const compare = function(groupA, groupB, attribute) {
-  if (groupA[attribute] > groupB[attribute]) {
-    return 1
-  }
-
-  if (groupA[attribute] < groupB[attribute]) {
-    return -1
-  }
-
-  return 0
 }
 
 const serialize = function(tokens) {
