@@ -21,7 +21,7 @@
       "pre-push": "gulp check"
     }
   },
-  "description": "Test, set and get Unix permissions",
+  "description": "Convert, test and manipulate Unix permissions",
   "keywords": [],
   "license": "Apache-2.0",
   "homepage": "https://git.io/fppEv",
