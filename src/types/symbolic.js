@@ -4,6 +4,7 @@
 const {
   VALUES_MAP,
   PERMISSION_CATEGORIES,
+  CATEGORY_PERMISSIONS,
   CATEGORIES,
   ALL_CATEGORIES,
   PERMISSIONS,
@@ -185,7 +186,36 @@ const serializeGroup = function({ category, tokens }) {
     return []
   }
 
+  if (shouldUseEqual({ category, tokens: tokensA })) {
+    return serializeEqualGroup({ category, tokens: tokensA })
+  }
+
   return serializeAddGroups({ category, tokens: tokensA })
+}
+
+const shouldUseEqual = function({ category, tokens }) {
+  const permissions = CATEGORY_PERMISSIONS[category]
+  return permissions.every(permission =>
+    containsPermission({ tokens, permission }),
+  )
+}
+
+const containsPermission = function({ tokens, permission }) {
+  return tokens.some(token => token.permission === permission)
+}
+
+const serializeEqualGroup = function({ category, tokens }) {
+  const group = tokens.map(serializeEqualPerm).join('')
+  const groupA = `${category}=${group}`
+  return groupA
+}
+
+const serializeEqualPerm = function({ add, permission }) {
+  if (!add) {
+    return ''
+  }
+
+  return permission
 }
 
 const serializeAddGroups = function({ category, tokens }) {
