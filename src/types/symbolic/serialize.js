@@ -3,13 +3,27 @@
 const { CATEGORY_PERMISSIONS, CATEGORIES, ADDS } = require('../../values')
 
 const serialize = function(tokens) {
+  // eslint-disable-next-line fp/no-mutating-methods
+  const tokensA = tokens.sort(compareTokens)
   const perm = CATEGORIES.flatMap(category =>
-    serializeGroup({ category, tokens }),
+    serializeGroup({ category, tokens: tokensA }),
   )
     .flatMap(joinCategories)
     .map(finalizeGroup)
     .join(',')
   return perm
+}
+
+const compareTokens = function(tokenA, tokenB) {
+  if (tokenA.order > tokenB.order) {
+    return 1
+  }
+
+  if (tokenA.order < tokenB.order) {
+    return -1
+  }
+
+  return 0
 }
 
 const serializeGroup = function({ category, tokens }) {
