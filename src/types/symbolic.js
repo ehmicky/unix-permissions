@@ -13,12 +13,12 @@ const testGroup = function(group) {
   return GROUP_REGEXP.test(group)
 }
 
-const COMMA_REGEXP = /\s*,\*/gu
+const COMMA_REGEXP = /\s*,\s*/gu
 const GROUP_REGEXP = /^\s*([augo]*)\s*([=+-]?)\s*([xwrXst]*)\s*$/u
 
 const parse = function(symbolic) {
   // eslint-disable-next-line fp/no-mutating-methods
-  const groups = symbolic
+  const tokens = symbolic
     .split(COMMA_REGEXP)
     .map(parseGroup)
     .map(addDefaults)
@@ -30,8 +30,8 @@ const parse = function(symbolic) {
     .filter(filterInvalidFlag)
     .map(addValue)
     .filter(isUnique)
-    .sort(compareGroups)
-  return groups
+    .sort(compareTokens)
+  return tokens
 }
 
 const parseGroup = function(group) {
@@ -118,37 +118,37 @@ const addValue = function({ category, permission, add }) {
 }
 
 const getValue = function({ category, permission }) {
-  return VALUES_MAP[`${category} ${permission}`]
+  return VALUES_MAP[`${category} ${permission}`].value
 }
 
 const isUnique = function(value, index, array) {
-  return !array.slice(index + 1).some(valueB => isSameGroup(value, valueB))
+  return !array.slice(index + 1).some(valueB => hasSameValue(value, valueB))
 }
 
-const isSameGroup = function(valueA, valueB) {
+const hasSameValue = function(valueA, valueB) {
   return valueA.value === valueB.value
 }
 
-const compareGroups = function(groupA, groupB) {
+const compareTokens = function(tokenA, tokenB) {
   const attributeA = ATTRIBUTES.find(
-    attribute => compare(groupA, groupB, attribute) !== 0,
+    attribute => compare(tokenA, tokenB, attribute) !== 0,
   )
 
   if (attributeA === undefined) {
     return 0
   }
 
-  return compare(groupA, groupB, attributeA)
+  return compare(tokenA, tokenB, attributeA)
 }
 
 const ATTRIBUTES = ['add', 'value']
 
-const compare = function(groupA, groupB, attribute) {
-  if (groupA[attribute] > groupB[attribute]) {
+const compare = function(tokenA, tokenB, attribute) {
+  if (tokenA[attribute] > tokenB[attribute]) {
     return 1
   }
 
-  if (groupA[attribute] < groupB[attribute]) {
+  if (tokenA[attribute] < tokenB[attribute]) {
     return -1
   }
 
@@ -156,7 +156,35 @@ const compare = function(groupA, groupB, attribute) {
 }
 
 const serialize = function(tokens) {
-  return tokens
+  return tokens.flatMap(joinAll)
+}
+
+const joinAll = function(token, index, tokens) {
+  const sameTokens = Object.entries(tokens).filter(([, tokenB]) =>
+    canJoinTokens(token, tokenB),
+  )
+
+  if (!shouldJoin(sameTokens)) {
+    return token
+  }
+
+  if (Number(sameTokens[0][0]) !== index) {
+    return []
+  }
+
+  return { ...token, category: 'a' }
+}
+
+const canJoinTokens = function(tokenA, tokenB) {
+  return tokenA.permission === tokenB.permission && tokenA.add === tokenB.add
+}
+
+const shouldJoin = function(tokens) {
+  return CATEGORIES.every(category => hasCategory({ tokens, category }))
+}
+
+const hasCategory = function({ tokens, category }) {
+  return tokens.some(([, token]) => token.category === category)
 }
 
 module.exports = {
