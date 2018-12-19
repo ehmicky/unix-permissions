@@ -41,7 +41,6 @@ const CATEGORY_PERMISSIONS = {
 /* eslint-enable id-length */
 
 const CATEGORIES = ['u', 'g', 'o']
-const ALL_CATEGORIES = ['a', ...CATEGORIES]
 const PERMISSIONS = ['r', 'w', 'x', 't', 's']
 
 const ADDS = {
@@ -54,7 +53,6 @@ module.exports = {
   PERMISSION_CATEGORIES,
   CATEGORY_PERMISSIONS,
   CATEGORIES,
-  ALL_CATEGORIES,
   PERMISSIONS,
   ADDS,
 }

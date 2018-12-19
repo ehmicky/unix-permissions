@@ -24,7 +24,17 @@ const keyByAttr = function(object, attr) {
   return { [object[attr]]: object }
 }
 
+// Like lodash _.uniq()
+const uniq = function(array) {
+  return array.filter(isUnique)
+}
+
+const isUnique = function(value, index, array) {
+  return !array.slice(index + 1).some(valueB => value === valueB)
+}
+
 module.exports = {
   omitBy,
   keyBy,
+  uniq,
 }

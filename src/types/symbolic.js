@@ -6,10 +6,10 @@ const {
   PERMISSION_CATEGORIES,
   CATEGORY_PERMISSIONS,
   CATEGORIES,
-  ALL_CATEGORIES,
   PERMISSIONS,
   ADDS,
 } = require('../values')
+const { uniq } = require('../utils')
 
 const name = 'symbolic'
 
@@ -143,63 +143,67 @@ const compareTokens = function(tokenA, tokenB) {
 }
 
 const serialize = function(tokens) {
-  const tokensA = tokens.flatMap(joinAll)
-  const perm = ALL_CATEGORIES.flatMap(category =>
-    serializeGroup({ category, tokens: tokensA }),
-  ).join(',')
+  const tokensA = tokens.flatMap(joinCategories)
+  const allCategories = getAllCategories({ tokens: tokensA })
+  const perm = allCategories
+    .flatMap(categories => serializeGroup({ categories, tokens: tokensA }))
+    .join(',')
   return perm
 }
 
-const joinAll = function(token, index, tokens) {
+const joinCategories = function({ category, ...token }, index, tokens) {
   const sameTokens = Object.entries(tokens).filter(([, tokenB]) =>
     canJoinTokens(token, tokenB),
   )
-
-  if (!shouldJoin(sameTokens, token)) {
-    return token
-  }
 
   if (Number(sameTokens[0][0]) !== index) {
     return []
   }
 
-  return { ...token, category: 'a' }
+  const categories = sameTokens.map(([, tokenA]) => tokenA.category).join('')
+  const permissionCategories = PERMISSION_CATEGORIES[token.permission]
+
+  if (categories.length === permissionCategories.length) {
+    return { ...token, categories: 'a' }
+  }
+
+  if (categories.length === 1) {
+    return { ...token, categories: category }
+  }
+
+  return { ...token, categories }
 }
 
 const canJoinTokens = function(tokenA, tokenB) {
   return tokenA.permission === tokenB.permission && tokenA.add === tokenB.add
 }
 
-const shouldJoin = function(tokens, { permission }) {
-  const categories = PERMISSION_CATEGORIES[permission]
-  return (
-    // To avoid `a+t`, `a+s`, etc.
-    categories.length > 1 &&
-    categories.every(category => hasCategory({ tokens, category }))
-  )
+const getAllCategories = function({ tokens }) {
+  const allCategoriesA = tokens.map(({ categories }) => categories)
+  const allCategoriesB = uniq(allCategoriesA)
+  return allCategoriesB
 }
 
-const hasCategory = function({ tokens, category }) {
-  return tokens.some(([, token]) => token.category === category)
-}
-
-const serializeGroup = function({ category, tokens }) {
-  const tokensA = tokens.filter(token => token.category === category)
+const serializeGroup = function({ categories, tokens }) {
+  const tokensA = tokens.filter(token => token.categories === categories)
 
   if (tokensA.length === 0) {
     return []
   }
 
-  if (shouldUseEqual({ category, tokens: tokensA })) {
-    return serializeEqualGroup({ category, tokens: tokensA })
+  if (shouldUseEqual({ categories, tokens: tokensA })) {
+    return serializeEqualGroup({ categories, tokens: tokensA })
   }
 
-  return serializeAddGroups({ category, tokens: tokensA })
+  return serializeAddGroups({ categories, tokens: tokensA })
 }
 
-const shouldUseEqual = function({ category, tokens }) {
-  const permissions = CATEGORY_PERMISSIONS[category]
-  return permissions.every(permission =>
+const shouldUseEqual = function({ categories, tokens }) {
+  const permissions = categories
+    .split('')
+    .flatMap(category => CATEGORY_PERMISSIONS[category])
+  const permissionsA = uniq(permissions)
+  return permissionsA.every(permission =>
     containsPermission({ tokens, permission }),
   )
 }
@@ -208,9 +212,9 @@ const containsPermission = function({ tokens, permission }) {
   return tokens.some(token => token.permission === permission)
 }
 
-const serializeEqualGroup = function({ category, tokens }) {
+const serializeEqualGroup = function({ categories, tokens }) {
   const group = tokens.map(serializeEqualPerm).join('')
-  const groupA = `${category}=${group}`
+  const groupA = `${categories}=${group}`
   return groupA
 }
 
@@ -222,13 +226,13 @@ const serializeEqualPerm = function({ add, permission }) {
   return permission
 }
 
-const serializeAddGroups = function({ category, tokens }) {
+const serializeAddGroups = function({ categories, tokens }) {
   return Object.keys(ADDS)
-    .map(add => seralizeAddGroup({ category, tokens, add }))
+    .map(add => seralizeAddGroup({ categories, tokens, add }))
     .filter(Boolean)
 }
 
-const seralizeAddGroup = function({ category, tokens, add }) {
+const seralizeAddGroup = function({ categories, tokens, add }) {
   const tokensA = tokens.filter(token => String(token.add) === add)
 
   if (tokensA.length === 0) {
@@ -236,7 +240,7 @@ const seralizeAddGroup = function({ category, tokens, add }) {
   }
 
   const group = tokensA.map(({ permission }) => permission).join('')
-  const groupA = `${category}${ADDS[add]}${group}`
+  const groupA = `${categories}${ADDS[add]}${group}`
   return groupA
 }
 
