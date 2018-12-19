@@ -1,5 +1,7 @@
 'use strict'
 
+const { keyBy } = require('./utils')
+
 /* eslint-disable no-magic-numbers */
 const VALUES = [
   { category: 'o', permission: 'x', value: 2 ** 0 },
@@ -17,14 +19,7 @@ const VALUES = [
 ]
 /* eslint-enable no-magic-numbers */
 
-const getValuesMap = function() {
-  const values = VALUES.map(({ category, permission, value }) => ({
-    [`${category} ${permission}`]: value,
-  }))
-  return Object.assign({}, ...values)
-}
-
-const VALUES_MAP = getValuesMap()
+const VALUES_MAP = keyBy(VALUES, ['category', 'permission'])
 
 const CATEGORIES = ['o', 'g', 'u']
 const PERMISSIONS = ['x', 'w', 'r', 't', 's']
