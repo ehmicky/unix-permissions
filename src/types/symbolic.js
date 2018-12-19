@@ -1,7 +1,12 @@
 /* eslint-disable max-lines */
 'use strict'
 
-const { VALUES_MAP, CATEGORIES, PERMISSIONS } = require('../values')
+const {
+  VALUES_MAP,
+  PERMISSION_CATEGORIES,
+  CATEGORIES,
+  PERMISSIONS,
+} = require('../values')
 
 const name = 'symbolic'
 
@@ -106,10 +111,7 @@ const splitPermissions = function({ category, permissions, add }) {
 }
 
 const filterInvalidFlag = function({ category, permission }) {
-  return (
-    (permission !== 't' || category === 'o') &&
-    (permission !== 's' || category !== 'o')
-  )
+  return PERMISSION_CATEGORIES[permission].includes(category)
 }
 
 const addValue = function({ category, permission, add }) {
@@ -164,7 +166,7 @@ const joinAll = function(token, index, tokens) {
     canJoinTokens(token, tokenB),
   )
 
-  if (!shouldJoin(sameTokens)) {
+  if (!shouldJoin(sameTokens, token)) {
     return token
   }
 
@@ -179,8 +181,9 @@ const canJoinTokens = function(tokenA, tokenB) {
   return tokenA.permission === tokenB.permission && tokenA.add === tokenB.add
 }
 
-const shouldJoin = function(tokens) {
-  return CATEGORIES.every(category => hasCategory({ tokens, category }))
+const shouldJoin = function(tokens, { permission }) {
+  const categories = PERMISSION_CATEGORIES[permission]
+  return categories.every(category => hasCategory({ tokens, category }))
 }
 
 const hasCategory = function({ tokens, category }) {

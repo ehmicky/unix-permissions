@@ -21,11 +21,22 @@ const VALUES = [
 
 const VALUES_MAP = keyBy(VALUES, ['category', 'permission'])
 
+/* eslint-disable id-length */
+const PERMISSION_CATEGORIES = {
+  x: ['o', 'g', 'u'],
+  w: ['o', 'g', 'u'],
+  r: ['o', 'g', 'u'],
+  t: ['o'],
+  s: ['g', 'u'],
+}
+/* eslint-enable id-length */
+
 const CATEGORIES = ['o', 'g', 'u']
 const PERMISSIONS = ['x', 'w', 'r', 't', 's']
 
 module.exports = {
   VALUES_MAP,
+  PERMISSION_CATEGORIES,
   CATEGORIES,
   PERMISSIONS,
 }
