@@ -117,12 +117,8 @@ const filterInvalidFlag = function({ category, permission }) {
 }
 
 const addValue = function({ category, permission, add }) {
-  const value = getValue({ category, permission })
-  return { category, permission, add, value }
-}
-
-const getValue = function({ category, permission }) {
-  return VALUES_MAP[`${category} ${permission}`].value
+  const { value, order } = VALUES_MAP[`${category} ${permission}`]
+  return { category, permission, add, value, order }
 }
 
 const isUnique = function(value, index, array) {
@@ -134,25 +130,11 @@ const hasSameValue = function(valueA, valueB) {
 }
 
 const compareTokens = function(tokenA, tokenB) {
-  const attributeA = ATTRIBUTES.find(
-    attribute => compare(tokenA, tokenB, attribute) !== 0,
-  )
-
-  if (attributeA === undefined) {
-    return 0
-  }
-
-  return compare(tokenA, tokenB, attributeA)
-}
-
-const ATTRIBUTES = ['add', 'value']
-
-const compare = function(tokenA, tokenB, attribute) {
-  if (tokenA[attribute] > tokenB[attribute]) {
+  if (tokenA.order > tokenB.order) {
     return 1
   }
 
-  if (tokenA[attribute] < tokenB[attribute]) {
+  if (tokenA.order < tokenB.order) {
     return -1
   }
 
@@ -161,10 +143,10 @@ const compare = function(tokenA, tokenB, attribute) {
 
 const serialize = function(tokens) {
   const tokensA = tokens.flatMap(joinAll)
-  const groups = ALL_CATEGORIES.flatMap(category =>
+  const perm = ALL_CATEGORIES.flatMap(category =>
     serializeGroup({ category, tokens: tokensA }),
   ).join(',')
-  return groups
+  return perm
 }
 
 const joinAll = function(token, index, tokens) {
@@ -203,10 +185,13 @@ const serializeGroup = function({ category, tokens }) {
     return []
   }
 
-  const group = Object.keys(ADDS)
-    .map(add => seralizeAddGroup({ category, tokens: tokensA, add }))
+  return serializeAddGroups({ category, tokens: tokensA })
+}
+
+const serializeAddGroups = function({ category, tokens }) {
+  return Object.keys(ADDS)
+    .map(add => seralizeAddGroup({ category, tokens, add }))
     .filter(Boolean)
-  return group
 }
 
 const seralizeAddGroup = function({ category, tokens, add }) {

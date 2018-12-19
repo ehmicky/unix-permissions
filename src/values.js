@@ -4,18 +4,18 @@ const { keyBy } = require('./utils')
 
 /* eslint-disable no-magic-numbers */
 const VALUES = [
-  { category: 'o', permission: 'x', value: 2 ** 0 },
-  { category: 'o', permission: 'w', value: 2 ** 1 },
-  { category: 'o', permission: 'r', value: 2 ** 2 },
-  { category: 'g', permission: 'x', value: 2 ** 3 },
-  { category: 'g', permission: 'w', value: 2 ** 4 },
-  { category: 'g', permission: 'r', value: 2 ** 5 },
-  { category: 'u', permission: 'x', value: 2 ** 6 },
-  { category: 'u', permission: 'w', value: 2 ** 7 },
-  { category: 'u', permission: 'r', value: 2 ** 8 },
-  { category: 'o', permission: 't', value: 2 ** 9 },
-  { category: 'g', permission: 's', value: 2 ** 10 },
-  { category: 'u', permission: 's', value: 2 ** 11 },
+  { category: 'o', permission: 'x', value: 2 ** 0, order: 10 },
+  { category: 'o', permission: 'w', value: 2 ** 1, order: 9 },
+  { category: 'o', permission: 'r', value: 2 ** 2, order: 8 },
+  { category: 'g', permission: 'x', value: 2 ** 3, order: 6 },
+  { category: 'g', permission: 'w', value: 2 ** 4, order: 5 },
+  { category: 'g', permission: 'r', value: 2 ** 5, order: 4 },
+  { category: 'u', permission: 'x', value: 2 ** 6, order: 2 },
+  { category: 'u', permission: 'w', value: 2 ** 7, order: 1 },
+  { category: 'u', permission: 'r', value: 2 ** 8, order: 0 },
+  { category: 'o', permission: 't', value: 2 ** 9, order: 11 },
+  { category: 'g', permission: 's', value: 2 ** 10, order: 7 },
+  { category: 'u', permission: 's', value: 2 ** 11, order: 3 },
 ]
 /* eslint-enable no-magic-numbers */
 
@@ -31,9 +31,18 @@ const PERMISSION_CATEGORIES = {
 }
 /* eslint-enable id-length */
 
-const CATEGORIES = ['o', 'g', 'u']
+/* eslint-disable id-length */
+const CATEGORY_PERMISSIONS = {
+  a: ['x', 'w', 'r', 't', 's'],
+  o: ['x', 'w', 'r', 't'],
+  g: ['x', 'w', 'r', 's'],
+  u: ['x', 'w', 'r', 's'],
+}
+/* eslint-enable id-length */
+
+const CATEGORIES = ['u', 'g', 'o']
 const ALL_CATEGORIES = ['a', ...CATEGORIES]
-const PERMISSIONS = ['x', 'w', 'r', 't', 's']
+const PERMISSIONS = ['r', 'w', 'x', 't', 's']
 
 const ADDS = {
   true: '+',
@@ -43,6 +52,7 @@ const ADDS = {
 module.exports = {
   VALUES_MAP,
   PERMISSION_CATEGORIES,
+  CATEGORY_PERMISSIONS,
   CATEGORIES,
   ALL_CATEGORIES,
   PERMISSIONS,
