@@ -32,11 +32,19 @@ const PERMISSION_CATEGORIES = {
 /* eslint-enable id-length */
 
 const CATEGORIES = ['o', 'g', 'u']
+const ALL_CATEGORIES = ['a', ...CATEGORIES]
 const PERMISSIONS = ['x', 'w', 'r', 't', 's']
+
+const ADDS = {
+  true: '+',
+  false: '-',
+}
 
 module.exports = {
   VALUES_MAP,
   PERMISSION_CATEGORIES,
   CATEGORIES,
+  ALL_CATEGORIES,
   PERMISSIONS,
+  ADDS,
 }

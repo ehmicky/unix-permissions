@@ -5,7 +5,9 @@ const {
   VALUES_MAP,
   PERMISSION_CATEGORIES,
   CATEGORIES,
+  ALL_CATEGORIES,
   PERMISSIONS,
+  ADDS,
 } = require('../values')
 
 const name = 'symbolic'
@@ -158,7 +160,11 @@ const compare = function(tokenA, tokenB, attribute) {
 }
 
 const serialize = function(tokens) {
-  return tokens.flatMap(joinAll)
+  const tokensA = tokens.flatMap(joinAll)
+  const groups = ALL_CATEGORIES.flatMap(category =>
+    serializeGroup({ category, tokens: tokensA }),
+  ).join(',')
+  return groups
 }
 
 const joinAll = function(token, index, tokens) {
@@ -188,6 +194,31 @@ const shouldJoin = function(tokens, { permission }) {
 
 const hasCategory = function({ tokens, category }) {
   return tokens.some(([, token]) => token.category === category)
+}
+
+const serializeGroup = function({ category, tokens }) {
+  const tokensA = tokens.filter(token => token.category === category)
+
+  if (tokensA.length === 0) {
+    return []
+  }
+
+  const group = Object.keys(ADDS)
+    .map(add => seralizeAddGroup({ category, tokens: tokensA, add }))
+    .filter(Boolean)
+  return group
+}
+
+const seralizeAddGroup = function({ category, tokens, add }) {
+  const tokensA = tokens.filter(token => String(token.add) === add)
+
+  if (tokensA.length === 0) {
+    return ''
+  }
+
+  const group = tokensA.map(({ permission }) => permission).join('')
+  const groupA = `${category}${ADDS[add]}${group}`
+  return groupA
 }
 
 module.exports = {
