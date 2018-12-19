@@ -172,7 +172,11 @@ const canJoinTokens = function(tokenA, tokenB) {
 
 const shouldJoin = function(tokens, { permission }) {
   const categories = PERMISSION_CATEGORIES[permission]
-  return categories.every(category => hasCategory({ tokens, category }))
+  return (
+    // To avoid `a+t`, `a+s`, etc.
+    categories.length > 1 &&
+    categories.every(category => hasCategory({ tokens, category }))
+  )
 }
 
 const hasCategory = function({ tokens, category }) {
