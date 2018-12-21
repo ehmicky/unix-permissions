@@ -1,6 +1,6 @@
 'use strict'
 
-const { TOKENS } = require('../tokens')
+const { TOKENS, TOKENS_MAP } = require('../tokens')
 
 const name = 'number'
 
@@ -30,7 +30,16 @@ const addAdd = function({ category, permission }) {
 }
 
 const serialize = function(tokens) {
-  return tokens
+  return tokens.map(getValue).reduce(sum, 0)
+}
+
+const getValue = function({ category, permission }) {
+  const { value } = TOKENS_MAP[`${category} ${permission}`]
+  return value
+}
+
+const sum = function(memo, number) {
+  return memo + number
 }
 
 module.exports = {
