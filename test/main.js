@@ -2,12 +2,18 @@
 
 const test = require('ava')
 
-const { getType, isValid, convert, symbolic, number } = require('../localpack')
+const {
+  getType,
+  isValid,
+  convert,
+  symbolic,
+  number,
+  stat,
+} = require('../localpack')
 
 test('Dummy test', t => {
-  t.is(typeof getType, 'function')
-  t.is(typeof isValid, 'function')
-  t.is(typeof convert, 'function')
-  t.is(typeof symbolic, 'function')
-  t.is(typeof number, 'function')
+  // eslint-disable-next-line max-nested-callbacks
+  ;[getType, isValid, convert, symbolic, number, stat].forEach(func =>
+    t.is(func, 'function'),
+  )
 })

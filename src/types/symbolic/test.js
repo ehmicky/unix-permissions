@@ -1,15 +1,15 @@
 'use strict'
 
-const { COMMA_REGEXP, GROUP_REGEXP } = require('./regexp')
+const { COMMA_REGEXP, PART_REGEXP } = require('./regexp')
 
 const name = 'symbolic'
 
 const test = function(perm) {
-  return typeof perm === 'string' && perm.split(COMMA_REGEXP).every(testGroup)
+  return typeof perm === 'string' && perm.split(COMMA_REGEXP).every(testPart)
 }
 
-const testGroup = function(group) {
-  return GROUP_REGEXP.test(group)
+const testPart = function(part) {
+  return PART_REGEXP.test(part)
 }
 
 module.exports = {

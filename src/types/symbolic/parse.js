@@ -14,7 +14,7 @@ const parse = function(symbolic) {
   // eslint-disable-next-line fp/no-mutating-methods
   const tokens = symbolic
     .split(COMMA_REGEXP)
-    .map(parseGroup)
+    .map(parsePart)
     .map(addDefaults)
     .map(normalizeX)
     .flatMap(splitCategories)
@@ -27,8 +27,8 @@ const parse = function(symbolic) {
   return tokens
 }
 
-const parseGroup = function(group) {
-  const [, categories, operator, permissions] = GROUP_REGEXP.exec(group)
+const parsePart = function(part) {
+  const [, categories, operator, permissions] = GROUP_REGEXP.exec(part)
   return { categories, operator, permissions }
 }
 

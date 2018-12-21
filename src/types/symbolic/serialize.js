@@ -9,10 +9,10 @@ const serialize = function(tokens) {
   }
 
   const perm = CATEGORIES.flatMap(category =>
-    serializeGroup({ category, tokens }),
+    serializePart({ category, tokens }),
   )
     .flatMap(joinCategories)
-    .map(finalizeGroup)
+    .map(finalizePart)
     .join(',')
   return perm
 }
@@ -21,7 +21,7 @@ const serialize = function(tokens) {
 // Empty string is possible as well on intput, but this is clearer in output.
 const DEFAULT_SERIALIZE = 'a+'
 
-const serializeGroup = function({ category, tokens }) {
+const serializePart = function({ category, tokens }) {
   const tokensA = tokens.filter(token => token.category === category)
 
   if (tokensA.length === 0) {
@@ -29,10 +29,10 @@ const serializeGroup = function({ category, tokens }) {
   }
 
   if (shouldUseEqual({ category, tokens: tokensA })) {
-    return serializeEqualGroup({ category, tokens: tokensA })
+    return serializeEqualPart({ category, tokens: tokensA })
   }
 
-  return serializeAddGroups({ category, tokens: tokensA })
+  return serializeAddParts({ category, tokens: tokensA })
 }
 
 const shouldUseEqual = function({ category, tokens }) {
@@ -45,7 +45,7 @@ const containsPermission = function({ tokens, permission }) {
   return tokens.some(token => token.permission === permission)
 }
 
-const serializeEqualGroup = function({ category, tokens }) {
+const serializeEqualPart = function({ category, tokens }) {
   const permissions = tokens.map(serializeEqualPerm).join('')
   return { category, operator: '=', permissions }
 }
@@ -58,13 +58,13 @@ const serializeEqualPerm = function({ add, permission }) {
   return permission
 }
 
-const serializeAddGroups = function({ category, tokens }) {
+const serializeAddParts = function({ category, tokens }) {
   return Object.keys(OPERATORS)
-    .map(add => seralizeAddGroup({ category, tokens, add }))
+    .map(add => seralizeAddPart({ category, tokens, add }))
     .filter(Boolean)
 }
 
-const seralizeAddGroup = function({ category, tokens, add }) {
+const seralizeAddPart = function({ category, tokens, add }) {
   const tokensA = tokens.filter(token => String(token.add) === add)
 
   if (tokensA.length === 0) {
@@ -102,7 +102,7 @@ const canJoinTokens = function(tokenA, tokenB) {
   )
 }
 
-const finalizeGroup = function({ category, operator, permissions }) {
+const finalizePart = function({ category, operator, permissions }) {
   return `${category}${operator}${permissions}`
 }
 
