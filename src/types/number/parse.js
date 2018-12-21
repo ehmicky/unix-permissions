@@ -1,6 +1,6 @@
 'use strict'
 
-const { NODES, getNode } = require('../nodes')
+const { NODES } = require('../../nodes')
 
 const name = 'number'
 
@@ -35,31 +35,7 @@ const addAdd = function({ category, permission }) {
   return { category, permission, add: true }
 }
 
-const serialize = function(nodes) {
-  const nodesA = nodes.filter(hasAdd)
-  return serializeNodes(nodesA)
-}
-
-const serializeNodes = function(nodes) {
-  return nodes.map(getValue).reduce(sum, 0)
-}
-
-const hasAdd = function({ add }) {
-  return add
-}
-
-const getValue = function({ category, permission }) {
-  const { value } = getNode({ category, permission })
-  return value
-}
-
-const sum = function(memo, number) {
-  return memo + number
-}
-
 module.exports = {
   name,
   parse,
-  serialize,
-  serializeNodes,
 }
