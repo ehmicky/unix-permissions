@@ -4,6 +4,10 @@ const { CATEGORY_PERMISSIONS, CATEGORIES, OPERATORS } = require('../../tokens')
 
 // Input `tokens` must always be sorted
 const serialize = function(tokens) {
+  if (tokens.length === 0) {
+    return DEFAULT_SERIALIZE
+  }
+
   const perm = CATEGORIES.flatMap(category =>
     serializeGroup({ category, tokens }),
   )
@@ -12,6 +16,10 @@ const serialize = function(tokens) {
     .join(',')
   return perm
 }
+
+// Noop symbolic format.
+// Empty string is possible as well on intput, but this is clearer in output.
+const DEFAULT_SERIALIZE = 'a+'
 
 const serializeGroup = function({ category, tokens }) {
   const tokensA = tokens.filter(token => token.category === category)
