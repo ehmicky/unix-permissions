@@ -3,9 +3,9 @@
 const { keyBy } = require('./utils')
 
 // Must be sorted by `order` because some types' serialization relies on
-// `tokens` being sorted accordingly.
+// nodes being sorted accordingly.
 /* eslint-disable no-magic-numbers */
-const TOKENS = [
+const NODES = [
   { category: 'u', permission: 'r', value: 2 ** 8, order: 0 },
   { category: 'u', permission: 'w', value: 2 ** 7, order: 1 },
   { category: 'u', permission: 'x', value: 2 ** 6, order: 2 },
@@ -21,7 +21,7 @@ const TOKENS = [
 ]
 /* eslint-enable no-magic-numbers */
 
-const TOKENS_MAP = keyBy(TOKENS, ['category', 'permission'])
+const NODES_MAP = keyBy(NODES, ['category', 'permission'])
 
 /* eslint-disable id-length */
 const PERMISSION_CATEGORIES = {
@@ -51,8 +51,8 @@ const OPERATORS = {
 }
 
 module.exports = {
-  TOKENS,
-  TOKENS_MAP,
+  NODES,
+  NODES_MAP,
   PERMISSION_CATEGORIES,
   CATEGORY_PERMISSIONS,
   CATEGORIES,

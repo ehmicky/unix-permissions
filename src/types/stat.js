@@ -46,8 +46,8 @@ const isDuplicate = function(char, index, chars) {
 // eslint-disable-next-line no-unused-vars, no-empty-function
 const parse = function(stat) {}
 
-const serialize = function(tokens) {
-  return tokens
+const serialize = function(nodes) {
+  return nodes
 }
 
 module.exports = {

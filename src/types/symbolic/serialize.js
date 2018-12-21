@@ -2,17 +2,17 @@
 
 const { CATEGORY_PERMISSIONS, CATEGORIES, OPERATORS } = require('../../nodes')
 
-// Input `tokens` must always be sorted
-const serialize = function(tokens) {
-  if (tokens.length === 0) {
+// Input `nodes` must always be sorted
+const serialize = function(nodes) {
+  if (nodes.length === 0) {
     return DEFAULT_SERIALIZE
   }
 
   const perm = CATEGORIES.flatMap(category =>
-    serializePart({ category, tokens }),
+    serializePart({ category, nodes }),
   )
     .flatMap(joinCategories)
-    .map(finalizePart)
+    .map(stringifyPart)
     .join(',')
   return perm
 }
@@ -21,32 +21,32 @@ const serialize = function(tokens) {
 // Empty string is possible as well on intput, but this is clearer in output.
 const DEFAULT_SERIALIZE = 'a+'
 
-const serializePart = function({ category, tokens }) {
-  const tokensA = tokens.filter(token => token.category === category)
+const serializePart = function({ category, nodes }) {
+  const nodesA = nodes.filter(node => node.category === category)
 
-  if (tokensA.length === 0) {
+  if (nodesA.length === 0) {
     return []
   }
 
-  if (shouldUseEqual({ category, tokens: tokensA })) {
-    return serializeEqualPart({ category, tokens: tokensA })
+  if (shouldUseEqual({ category, nodes: nodesA })) {
+    return serializeEqualPart({ category, nodes: nodesA })
   }
 
-  return serializeAddParts({ category, tokens: tokensA })
+  return serializeAddParts({ category, nodes: nodesA })
 }
 
-const shouldUseEqual = function({ category, tokens }) {
+const shouldUseEqual = function({ category, nodes }) {
   return CATEGORY_PERMISSIONS[category].every(permission =>
-    containsPermission({ tokens, permission }),
+    containsPermission({ nodes, permission }),
   )
 }
 
-const containsPermission = function({ tokens, permission }) {
-  return tokens.some(token => token.permission === permission)
+const containsPermission = function({ nodes, permission }) {
+  return nodes.some(node => node.permission === permission)
 }
 
-const serializeEqualPart = function({ category, tokens }) {
-  const permissions = tokens.map(serializeEqualPerm).join('')
+const serializeEqualPart = function({ category, nodes }) {
+  const permissions = nodes.map(serializeEqualPerm).join('')
   return { category, operator: '=', permissions }
 }
 
@@ -58,51 +58,50 @@ const serializeEqualPerm = function({ add, permission }) {
   return permission
 }
 
-const serializeAddParts = function({ category, tokens }) {
+const serializeAddParts = function({ category, nodes }) {
   return Object.keys(OPERATORS)
-    .map(add => seralizeAddPart({ category, tokens, add }))
+    .map(add => seralizeAddPart({ category, nodes, add }))
     .filter(Boolean)
 }
 
-const seralizeAddPart = function({ category, tokens, add }) {
-  const tokensA = tokens.filter(token => String(token.add) === add)
+const seralizeAddPart = function({ category, nodes, add }) {
+  const nodesA = nodes.filter(node => String(node.add) === add)
 
-  if (tokensA.length === 0) {
+  if (nodesA.length === 0) {
     return ''
   }
 
-  const permissions = tokensA.map(({ permission }) => permission).join('')
+  const permissions = nodesA.map(({ permission }) => permission).join('')
   return { category, operator: OPERATORS[add], permissions }
 }
 
-const joinCategories = function(token, index, tokens) {
-  const sameTokens = tokens.filter(tokenA => canJoinTokens(token, tokenA))
+const joinCategories = function(node, index, nodes) {
+  const sameNodes = nodes.filter(nodeA => canJoinNodes(node, nodeA))
 
-  if (sameTokens.length === 1) {
-    return token
+  if (sameNodes.length === 1) {
+    return node
   }
 
-  const categories = sameTokens.map(tokenA => tokenA.category)
+  const categories = sameNodes.map(nodeA => nodeA.category)
 
-  if (categories[0] !== token.category) {
+  if (categories[0] !== node.category) {
     return []
   }
 
   if (categories.length === CATEGORIES.length) {
-    return { ...token, category: 'a' }
+    return { ...node, category: 'a' }
   }
 
-  return { ...token, category: categories.join('') }
+  return { ...node, category: categories.join('') }
 }
 
-const canJoinTokens = function(tokenA, tokenB) {
+const canJoinNodes = function(nodeA, nodeB) {
   return (
-    tokenA.operator === tokenB.operator &&
-    tokenA.permissions === tokenB.permissions
+    nodeA.operator === nodeB.operator && nodeA.permissions === nodeB.permissions
   )
 }
 
-const finalizePart = function({ category, operator, permissions }) {
+const stringifyPart = function({ category, operator, permissions }) {
   return `${category}${operator}${permissions}`
 }
 

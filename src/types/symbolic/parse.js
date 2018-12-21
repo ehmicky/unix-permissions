@@ -2,7 +2,7 @@
 'use strict'
 
 const {
-  TOKENS_MAP,
+  NODES_MAP,
   PERMISSION_CATEGORIES,
   CATEGORIES,
   PERMISSIONS,
@@ -13,14 +13,14 @@ const { tokenize } = require('./tokenize')
 const name = 'symbolic'
 
 const parse = function(symbolic) {
-  const parts = tokenize(symbolic)
+  const tokens = tokenize(symbolic)
 
-  if (parts === undefined) {
+  if (tokens === undefined) {
     return
   }
 
   // eslint-disable-next-line fp/no-mutating-methods
-  const tokens = parts
+  const nodes = tokens
     .map(addDefaults)
     .map(normalizeX)
     .flatMap(splitCategories)
@@ -29,8 +29,8 @@ const parse = function(symbolic) {
     .flatMap(splitPermissions)
     .filter(filterInvalidFlag)
     .filter(isUnique)
-    .sort(compareTokens)
-  return tokens
+    .sort(compareNodes)
+  return nodes
 }
 
 const addDefaults = function({ categories, operator, permissions }) {
@@ -103,24 +103,19 @@ const filterInvalidFlag = function({ category, permission }) {
   return PERMISSION_CATEGORIES[permission].includes(category)
 }
 
-const isUnique = function(token, index, array) {
-  return !array.slice(index + 1).some(tokenB => isSameToken(token, tokenB))
+const isUnique = function(node, index, array) {
+  return !array.slice(index + 1).some(nodeB => isSameNode(node, nodeB))
 }
 
-const isSameToken = function(tokenA, tokenB) {
+const isSameNode = function(nodeA, nodeB) {
   return (
-    tokenA.category === tokenB.category &&
-    tokenA.permission === tokenB.permission
+    nodeA.category === nodeB.category && nodeA.permission === nodeB.permission
   )
 }
 
-const compareTokens = function(tokenA, tokenB) {
-  const { order: orderA } = TOKENS_MAP[
-    `${tokenA.category} ${tokenA.permission}`
-  ]
-  const { order: orderB } = TOKENS_MAP[
-    `${tokenB.category} ${tokenB.permission}`
-  ]
+const compareNodes = function(nodeA, nodeB) {
+  const { order: orderA } = NODES_MAP[`${nodeA.category} ${nodeB.permission}`]
+  const { order: orderB } = NODES_MAP[`${nodeA.category} ${nodeB.permission}`]
 
   if (orderA > orderB) {
     return 1

@@ -1,6 +1,6 @@
 'use strict'
 
-const { TOKENS, TOKENS_MAP } = require('../nodes')
+const { NODES, NODES_MAP } = require('../nodes')
 
 const name = 'number'
 
@@ -9,7 +9,7 @@ const parse = function(number) {
     return
   }
 
-  return TOKENS.filter(token => hasToken({ number, token })).map(addAdd)
+  return NODES.filter(node => hasNode({ number, node })).map(addAdd)
 }
 
 const isValidNumber = function(number) {
@@ -24,7 +24,7 @@ const MIN_NUMBER = 0
 // eslint-disable-next-line no-magic-numbers
 const MAX_NUMBER = 2 ** 16 - 1
 
-const hasToken = function({ number, token: { value } }) {
+const hasNode = function({ number, node: { value } }) {
   // eslint-disable-next-line no-bitwise
   return (number & value) !== 0
 }
@@ -35,8 +35,8 @@ const addAdd = function({ category, permission }) {
   return { category, permission, add: true }
 }
 
-const serialize = function(tokens) {
-  return tokens
+const serialize = function(nodes) {
+  return nodes
     .filter(hasAdd)
     .map(getValue)
     .reduce(sum, 0)
@@ -47,7 +47,7 @@ const hasAdd = function({ add }) {
 }
 
 const getValue = function({ category, permission }) {
-  const { value } = TOKENS_MAP[`${category} ${permission}`]
+  const { value } = NODES_MAP[`${category} ${permission}`]
   return value
 }
 

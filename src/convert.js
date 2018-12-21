@@ -6,10 +6,10 @@ const { TYPES, TYPES_MAP } = require('./types')
 const { mapValues } = require('./utils')
 
 const convert = function(typeName, perm) {
-  const tokens = parse(perm)
-  assert(tokens !== undefined, `Permissions syntax is invalid: ${perm}`)
+  const nodes = parse(perm)
+  assert(nodes !== undefined, `Permissions syntax is invalid: ${perm}`)
 
-  const permA = serialize(typeName, tokens)
+  const permA = serialize(typeName, nodes)
   return permA
 }
 
@@ -25,11 +25,11 @@ const parseReduce = function(memo, type, perm) {
   return type.parse(perm)
 }
 
-const serialize = function(typeName, tokens) {
+const serialize = function(typeName, nodes) {
   const type = TYPES_MAP[typeName]
   assert(type !== undefined, `Invalid type: ${typeName}`)
 
-  const perm = type.serialize(tokens)
+  const perm = type.serialize(nodes)
   return perm
 }
 

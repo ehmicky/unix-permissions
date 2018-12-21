@@ -5,15 +5,15 @@ const tokenize = function(symbolic) {
     return
   }
 
-  const parts = symbolic.split(COMMA_REGEXP).map(tokenizePart)
+  const tokens = symbolic.split(COMMA_REGEXP).map(tokenizePart)
 
-  const isMatching = parts.every(part => part !== undefined)
+  const isMatching = tokens.every(token => token !== undefined)
 
   if (!isMatching) {
     return
   }
 
-  return parts
+  return tokens
 }
 
 const COMMA_REGEXP = /\s*,\s*/gu
