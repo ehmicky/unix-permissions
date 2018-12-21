@@ -1,6 +1,6 @@
 'use strict'
 
-const { TOKENS, TOKENS_MAP } = require('../tokens')
+const { TOKENS, TOKENS_MAP } = require('../nodes')
 
 const name = 'number'
 

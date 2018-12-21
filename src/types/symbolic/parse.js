@@ -6,7 +6,7 @@ const {
   PERMISSION_CATEGORIES,
   CATEGORIES,
   PERMISSIONS,
-} = require('../../tokens')
+} = require('../../nodes')
 
 const { tokenize } = require('./tokenize')
 

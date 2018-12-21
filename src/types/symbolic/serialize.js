@@ -1,6 +1,6 @@
 'use strict'
 
-const { CATEGORY_PERMISSIONS, CATEGORIES, OPERATORS } = require('../../tokens')
+const { CATEGORY_PERMISSIONS, CATEGORIES, OPERATORS } = require('../../nodes')
 
 // Input `tokens` must always be sorted
 const serialize = function(tokens) {
