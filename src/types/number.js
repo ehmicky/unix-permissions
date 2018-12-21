@@ -36,10 +36,12 @@ const addAdd = function({ category, permission }) {
 }
 
 const serialize = function(nodes) {
-  return nodes
-    .filter(hasAdd)
-    .map(getValue)
-    .reduce(sum, 0)
+  const nodesA = nodes.filter(hasAdd)
+  return serializeNodes(nodesA)
+}
+
+const serializeNodes = function(nodes) {
+  return nodes.map(getValue).reduce(sum, 0)
 }
 
 const hasAdd = function({ add }) {
@@ -59,4 +61,5 @@ module.exports = {
   name,
   parse,
   serialize,
+  serializeNodes,
 }
