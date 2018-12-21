@@ -13,9 +13,9 @@ const parse = function(stat) {
     return
   }
 
-  const nodes = CATEGORIES.map(category => getCategory({ category, tokens }))
-    .flatMap(addPermissions)
-    .map(addAdd)
+  const nodes = CATEGORIES.map(category =>
+    getCategory({ category, tokens }),
+  ).flatMap(addPermissions)
   return nodes
 }
 
@@ -36,11 +36,9 @@ const getCategory = function({ category, tokens }) {
 }
 
 const addPermissions = function({ category, tokens }) {
-  return tokens.split('').map(permission => ({ category, permission }))
-}
-
-const addAdd = function({ category, permission }) {
-  return { category, permission, add: true }
+  return tokens
+    .split('')
+    .map(permission => ({ category, permission, add: true }))
 }
 
 module.exports = {
