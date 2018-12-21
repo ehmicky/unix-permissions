@@ -11,6 +11,7 @@ const {
 const { COMMA_REGEXP, GROUP_REGEXP } = require('./regexp')
 
 const parse = function(symbolic) {
+  // eslint-disable-next-line fp/no-mutating-methods
   const tokens = symbolic
     .split(COMMA_REGEXP)
     .map(parseGroup)
@@ -22,7 +23,7 @@ const parse = function(symbolic) {
     .flatMap(splitPermissions)
     .filter(filterInvalidFlag)
     .filter(isUnique)
-    .map(addValue)
+    .sort(compareTokens)
   return tokens
 }
 
@@ -112,9 +113,23 @@ const isSameToken = function(tokenA, tokenB) {
   )
 }
 
-const addValue = function({ category, permission, add }) {
-  const { value, order } = VALUES_MAP[`${category} ${permission}`]
-  return { category, permission, add, value, order }
+const compareTokens = function(tokenA, tokenB) {
+  const { order: orderA } = VALUES_MAP[
+    `${tokenA.category} ${tokenA.permission}`
+  ]
+  const { order: orderB } = VALUES_MAP[
+    `${tokenB.category} ${tokenB.permission}`
+  ]
+
+  if (orderA > orderB) {
+    return 1
+  }
+
+  if (orderA < orderB) {
+    return -1
+  }
+
+  return 0
 }
 
 module.exports = {
