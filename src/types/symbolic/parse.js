@@ -21,8 +21,8 @@ const parse = function(symbolic) {
     .flatMap(normalizeOperator)
     .flatMap(splitPermissions)
     .filter(filterInvalidFlag)
-    .map(addValue)
     .filter(isUnique)
+    .map(addValue)
   return tokens
 }
 
@@ -101,17 +101,20 @@ const filterInvalidFlag = function({ category, permission }) {
   return PERMISSION_CATEGORIES[permission].includes(category)
 }
 
+const isUnique = function(token, index, array) {
+  return !array.slice(index + 1).some(tokenB => isSameToken(token, tokenB))
+}
+
+const isSameToken = function(tokenA, tokenB) {
+  return (
+    tokenA.category === tokenB.category &&
+    tokenA.permission === tokenB.permission
+  )
+}
+
 const addValue = function({ category, permission, add }) {
   const { value, order } = VALUES_MAP[`${category} ${permission}`]
   return { category, permission, add, value, order }
-}
-
-const isUnique = function(value, index, array) {
-  return !array.slice(index + 1).some(valueB => hasSameValue(value, valueB))
-}
-
-const hasSameValue = function(valueA, valueB) {
-  return valueA.value === valueB.value
 }
 
 module.exports = {
