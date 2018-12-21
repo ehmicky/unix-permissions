@@ -1,6 +1,6 @@
 'use strict'
 
-const { VALUES } = require('../values')
+const { TOKENS } = require('../values')
 
 const name = 'number'
 
@@ -15,7 +15,7 @@ const MIN_NUMBER = 0
 const MAX_NUMBER = 2 ** 16 - 1
 
 const parse = function(number) {
-  return VALUES.filter(token => hasToken({ number, token })).map(addAdd)
+  return TOKENS.filter(token => hasToken({ number, token })).map(addAdd)
 }
 
 const hasToken = function({ number, token: { value } }) {

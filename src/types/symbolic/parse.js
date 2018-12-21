@@ -2,7 +2,7 @@
 'use strict'
 
 const {
-  VALUES_MAP,
+  TOKENS_MAP,
   PERMISSION_CATEGORIES,
   CATEGORIES,
   PERMISSIONS,
@@ -114,10 +114,10 @@ const isSameToken = function(tokenA, tokenB) {
 }
 
 const compareTokens = function(tokenA, tokenB) {
-  const { order: orderA } = VALUES_MAP[
+  const { order: orderA } = TOKENS_MAP[
     `${tokenA.category} ${tokenA.permission}`
   ]
-  const { order: orderB } = VALUES_MAP[
+  const { order: orderB } = TOKENS_MAP[
     `${tokenB.category} ${tokenB.permission}`
   ]
 

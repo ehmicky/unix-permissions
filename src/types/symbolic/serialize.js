@@ -1,6 +1,6 @@
 'use strict'
 
-const { CATEGORY_PERMISSIONS, CATEGORIES, ADDS } = require('../../values')
+const { CATEGORY_PERMISSIONS, CATEGORIES, OPERATORS } = require('../../values')
 
 // Input `tokens` must always be sorted
 const serialize = function(tokens) {
@@ -51,7 +51,7 @@ const serializeEqualPerm = function({ add, permission }) {
 }
 
 const serializeAddGroups = function({ category, tokens }) {
-  return Object.keys(ADDS)
+  return Object.keys(OPERATORS)
     .map(add => seralizeAddGroup({ category, tokens, add }))
     .filter(Boolean)
 }
@@ -64,7 +64,7 @@ const seralizeAddGroup = function({ category, tokens, add }) {
   }
 
   const permissions = tokensA.map(({ permission }) => permission).join('')
-  return { category, operator: ADDS[add], permissions }
+  return { category, operator: OPERATORS[add], permissions }
 }
 
 const joinCategories = function(token, index, tokens) {
