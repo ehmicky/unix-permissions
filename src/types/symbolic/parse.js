@@ -6,7 +6,7 @@ const {
   PERMISSION_CATEGORIES,
   CATEGORIES,
   PERMISSIONS,
-} = require('../../values')
+} = require('../../tokens')
 
 const { COMMA_REGEXP, GROUP_REGEXP } = require('./regexp')
 

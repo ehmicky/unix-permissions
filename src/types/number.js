@@ -1,6 +1,6 @@
 'use strict'
 
-const { TOKENS } = require('../values')
+const { TOKENS } = require('../tokens')
 
 const name = 'number'
 
