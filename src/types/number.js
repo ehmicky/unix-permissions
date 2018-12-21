@@ -1,6 +1,6 @@
 'use strict'
 
-const { NODES, NODES_MAP } = require('../nodes')
+const { NODES, getNode } = require('../nodes')
 
 const name = 'number'
 
@@ -47,7 +47,7 @@ const hasAdd = function({ add }) {
 }
 
 const getValue = function({ category, permission }) {
-  const { value } = NODES_MAP[`${category} ${permission}`]
+  const { value } = getNode({ category, permission })
   return value
 }
 

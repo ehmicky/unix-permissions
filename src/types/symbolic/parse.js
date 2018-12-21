@@ -2,7 +2,7 @@
 'use strict'
 
 const {
-  NODES_MAP,
+  getNode,
   PERMISSION_CATEGORIES,
   CATEGORIES,
   PERMISSIONS,
@@ -114,8 +114,8 @@ const isSameNode = function(nodeA, nodeB) {
 }
 
 const compareNodes = function(nodeA, nodeB) {
-  const { order: orderA } = NODES_MAP[`${nodeA.category} ${nodeB.permission}`]
-  const { order: orderB } = NODES_MAP[`${nodeA.category} ${nodeB.permission}`]
+  const { order: orderA } = getNode(nodeA)
+  const { order: orderB } = getNode(nodeB)
 
   if (orderA > orderB) {
     return 1

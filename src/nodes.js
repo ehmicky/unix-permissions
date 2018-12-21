@@ -21,6 +21,15 @@ const NODES = [
 ]
 /* eslint-enable no-magic-numbers */
 
+const getNode = function({ category, permission }) {
+  const nodeKey = getNodeKey({ category, permission })
+  return NODES_MAP[nodeKey]
+}
+
+const getNodeKey = function({ category, permission }) {
+  return `${category} ${permission}`
+}
+
 const NODES_MAP = keyBy(NODES, ['category', 'permission'])
 
 /* eslint-disable id-length */
@@ -44,6 +53,7 @@ const CATEGORY_PERMISSIONS = {
 
 const CATEGORIES = ['u', 'g', 'o']
 const PERMISSIONS = ['r', 'w', 'x', 't', 's']
+const SPECIAL_PERMISSIONS = ['t', 's']
 
 const OPERATORS = {
   true: '+',
@@ -52,10 +62,12 @@ const OPERATORS = {
 
 module.exports = {
   NODES,
-  NODES_MAP,
+  getNodeKey,
+  getNode,
   PERMISSION_CATEGORIES,
   CATEGORY_PERMISSIONS,
   CATEGORIES,
   PERMISSIONS,
+  SPECIAL_PERMISSIONS,
   OPERATORS,
 }

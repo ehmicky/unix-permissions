@@ -1,6 +1,11 @@
 'use strict'
 
-const { CATEGORIES } = require('../nodes')
+const {
+  NODES,
+  getNodeKey,
+  CATEGORIES,
+  SPECIAL_PERMISSIONS,
+} = require('../nodes')
 
 const name = 'stat'
 
@@ -31,7 +36,7 @@ const tokenize = function(stat) {
   const [u, g, o] = tokens
     .slice(1)
     .map(removeDashes)
-    .map(replaceSpecial)
+    .map(expandSpecial)
   // eslint-disable-next-line id-length
   return { u, g, o }
 }
@@ -46,7 +51,7 @@ const removeDashes = function(part) {
 
 const DASH_REGEXP = /-/gu
 
-const replaceSpecial = function(part) {
+const expandSpecial = function(part) {
   return part
     .replace(X_REGEXP, 'x')
     .replace(SMALL_S_REGEXP, 'xs')
@@ -60,6 +65,19 @@ const BIG_S_REGEXP = /S/gu
 const SMALL_S_REGEXP = /s/gu
 const BIG_T_REGEXP = /T/gu
 const SMALL_T_REGEXP = /t/gu
+
+const contractSpecial = function(part) {
+  return part
+    .replace(T_REGEXP, 'T')
+    .replace(XT_REGEXP, 't')
+    .replace(S_REGEXP, 'S')
+    .replace(XS_REGEXP, 's')
+}
+
+const T_REGEXP = /-t/gu
+const XT_REGEXP = /xt/gu
+const S_REGEXP = /-s/gu
+const XS_REGEXP = /xs/gu
 
 const hasDuplicates = function({ tokens }) {
   return Object.values(tokens).some(hasDuplicate)
@@ -86,7 +104,34 @@ const addAdd = function({ category, permission }) {
 }
 
 const serialize = function(nodes) {
-  return nodes
+  const addedNodes = getAddedNodes({ nodes })
+
+  const stat = NODES.map(node => serializeNode({ node, addedNodes })).join('')
+  const statA = contractSpecial(stat)
+  return statA
+}
+
+const getAddedNodes = function({ nodes }) {
+  return nodes.filter(hasAdd).map(getNodeKey)
+}
+
+const hasAdd = function({ add }) {
+  return add
+}
+
+const serializeNode = function({ node, node: { permission }, addedNodes }) {
+  const nodeKey = getNodeKey(node)
+  const added = addedNodes.includes(nodeKey)
+
+  if (added) {
+    return permission
+  }
+
+  if (SPECIAL_PERMISSIONS.includes(permission)) {
+    return ''
+  }
+
+  return '-'
 }
 
 module.exports = {
