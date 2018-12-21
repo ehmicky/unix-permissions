@@ -5,7 +5,7 @@ const { COMMA_REGEXP, GROUP_REGEXP } = require('./regexp')
 const name = 'symbolic'
 
 const test = function(perm) {
-  return perm.split(COMMA_REGEXP).every(testGroup)
+  return typeof perm === 'string' && perm.split(COMMA_REGEXP).every(testGroup)
 }
 
 const testGroup = function(group) {
