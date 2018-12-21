@@ -7,7 +7,7 @@ const { keyBy } = require('./utils')
 
 const guessType = function(perm) {
   const type = getTypeByPerm(perm)
-  assert(type !== undefined, `Invalid permissions: ${perm}`)
+  assert(type !== undefined, `Permissions syntax is invalid: ${perm}`)
   return type
 }
 
