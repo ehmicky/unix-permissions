@@ -8,13 +8,19 @@ const {
   PERMISSIONS,
 } = require('../../tokens')
 
-const { COMMA_REGEXP, GROUP_REGEXP } = require('./regexp')
+const { tokenize } = require('./tokenize')
+
+const name = 'symbolic'
 
 const parse = function(symbolic) {
+  const parts = tokenize(symbolic)
+
+  if (parts === undefined) {
+    return
+  }
+
   // eslint-disable-next-line fp/no-mutating-methods
-  const tokens = symbolic
-    .split(COMMA_REGEXP)
-    .map(parsePart)
+  const tokens = parts
     .map(addDefaults)
     .map(normalizeX)
     .flatMap(splitCategories)
@@ -25,11 +31,6 @@ const parse = function(symbolic) {
     .filter(isUnique)
     .sort(compareTokens)
   return tokens
-}
-
-const parsePart = function(part) {
-  const [, categories, operator, permissions] = GROUP_REGEXP.exec(part)
-  return { categories, operator, permissions }
 }
 
 const addDefaults = function({ categories, operator, permissions }) {
@@ -133,6 +134,7 @@ const compareTokens = function(tokenA, tokenB) {
 }
 
 module.exports = {
+  name,
   parse,
 }
 /* eslint-enable max-lines */

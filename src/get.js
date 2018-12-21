@@ -1,19 +1,13 @@
 'use strict'
 
-const { getTypeByPerm } = require('./type')
+const { TYPES } = require('./types')
 
 const getType = function(perm) {
-  const type = getTypeByPerm(perm)
-
-  if (type === undefined) {
-    return 'invalid'
-  }
-
-  return type.name
+  return TYPES.find(({ parse }) => parse(perm) !== undefined)
 }
 
 const isValid = function(perm) {
-  return getTypeByPerm(perm) !== undefined
+  return getType(perm) !== undefined
 }
 
 module.exports = {

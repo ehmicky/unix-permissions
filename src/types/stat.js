@@ -52,7 +52,6 @@ const serialize = function(tokens) {
 
 module.exports = {
   name,
-  test,
   parse,
   serialize,
 }
