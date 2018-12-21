@@ -27,4 +27,5 @@ module.exports = {
   guessType,
   getTypeByPerm,
   getTypeByName,
+  TYPES_MAP,
 }

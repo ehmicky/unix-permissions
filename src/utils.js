@@ -24,7 +24,16 @@ const keyByAttr = function(object, attr) {
   return { [object[attr]]: object }
 }
 
+// Like lodash _.mapValues()
+const mapValues = function(object, mapper) {
+  const pairs = Object.entries(object).map(([key, value]) => ({
+    [key]: mapper(value, key, object),
+  }))
+  return Object.assign({}, ...pairs)
+}
+
 module.exports = {
   omitBy,
   keyBy,
+  mapValues,
 }

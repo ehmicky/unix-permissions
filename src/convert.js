@@ -1,7 +1,7 @@
 'use strict'
 
-const { guessType, getTypeByName } = require('./type')
-const TYPES = require('./types')
+const { guessType, getTypeByName, TYPES_MAP } = require('./type')
+const { mapValues } = require('./utils')
 
 const convert = function(typeName, perm) {
   const tokens = parse(perm)
@@ -22,13 +22,11 @@ const serialize = function(typeName, tokens) {
 }
 
 const getConverters = function() {
-  const convertersA = TYPES.map(getConverter)
-  return Object.assign({}, ...convertersA)
+  return mapValues(TYPES_MAP, getConverter)
 }
 
 const getConverter = function({ name }) {
-  const convertA = convert.bind(null, name)
-  return { [name]: convertA }
+  return convert.bind(null, name)
 }
 
 const converters = getConverters()
