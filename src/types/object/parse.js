@@ -1,12 +1,9 @@
 'use strict'
 
 const { isPlainObject } = require('../../utils')
+const { CATEGORY_PERMISSIONS } = require('../../constants')
 
-const {
-  SHORT_CATEGORIES,
-  SHORT_PERMISSIONS,
-  CATEGORY_PERMISSIONS,
-} = require('./constants')
+const { SHORT_CATEGORIES, SHORT_PERMISSIONS } = require('./constants')
 
 const name = 'object'
 
