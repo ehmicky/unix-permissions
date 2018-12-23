@@ -1,8 +1,7 @@
 'use strict'
 
-const { NODES, getNodeKey } = require('../../nodes')
+const { NODES, getNodeKey, SPECIAL_PERMISSIONS } = require('../../nodes')
 
-const { SPECIAL_PERMISSIONS } = require('./constants.json')
 const { contractSpecial } = require('./tokenize')
 
 const serialize = function(nodes) {
