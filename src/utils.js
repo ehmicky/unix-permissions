@@ -34,9 +34,10 @@ const mapValues = function(object, mapper) {
 
 // Like lodash _.mapKeys()
 const mapKeys = function(object, mapper) {
-  const pairs = Object.entries(object).map(([key, value]) => ({
-    [mapper(value, key, object)]: value,
-  }))
+  const pairs = Object.entries(object).map(([key, value]) => {
+    const keyA = mapper(value, key, object)
+    return { [keyA]: value }
+  })
   return Object.assign({}, ...pairs)
 }
 
