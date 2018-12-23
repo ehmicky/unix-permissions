@@ -1,8 +1,8 @@
 /* eslint-disable max-lines */
 'use strict'
 
-const { CATEGORIES } = require('../../constants')
-const { getNode, PERMISSIONS, PERMISSION_CATEGORIES } = require('../../nodes')
+const { CATEGORIES, PERMISSIONS } = require('../../constants')
+const { getNode, PERMISSION_CATEGORIES } = require('../../nodes')
 
 const { tokenize } = require('./tokenize')
 

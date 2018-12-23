@@ -13,5 +13,7 @@
     { "category": "o", "permission": "x", "value": 1, "order": 10 },
     { "category": "o", "permission": "t", "value": 512, "order": 11 }
   ],
-  "CATEGORIES": ["u", "g", "o"]
+  "CATEGORIES": ["u", "g", "o"],
+  "PERMISSIONS": ["r", "w", "x", "t", "s"],
+  "SPECIAL_PERMISSIONS": ["t", "s"]
 }

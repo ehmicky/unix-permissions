@@ -1,7 +1,7 @@
 'use strict'
 
-const { NODES } = require('../../constants')
-const { getNodeKey, SPECIAL_PERMISSIONS } = require('../../nodes')
+const { NODES, SPECIAL_PERMISSIONS } = require('../../constants')
+const { getNodeKey } = require('../../nodes')
 
 const { contractSpecial } = require('./tokenize')
 
