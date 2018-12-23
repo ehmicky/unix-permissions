@@ -53,7 +53,6 @@ const CATEGORY_PERMISSIONS = {
 
 const CATEGORIES = ['u', 'g', 'o']
 const PERMISSIONS = ['r', 'w', 'x', 't', 's']
-const SPECIAL_PERMISSIONS = ['t', 's']
 
 module.exports = {
   NODES,
@@ -63,5 +62,4 @@ module.exports = {
   CATEGORY_PERMISSIONS,
   CATEGORIES,
   PERMISSIONS,
-  SPECIAL_PERMISSIONS,
 }
