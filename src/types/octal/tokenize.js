@@ -2,13 +2,13 @@
 
 const tokenize = function(octal) {
   if (typeof octal !== 'string') {
-    return
+    return {}
   }
 
   const tokens = OCTAL_REGEXP.exec(octal)
 
   if (tokens === null) {
-    return
+    return {}
   }
 
   const [, operator, string] = tokens
