@@ -32,6 +32,14 @@ const mapValues = function(object, mapper) {
   return Object.assign({}, ...pairs)
 }
 
+// Like lodash _.mapKeys()
+const mapKeys = function(object, mapper) {
+  const pairs = Object.entries(object).map(([key, value]) => ({
+    [mapper(value, key, object)]: value,
+  }))
+  return Object.assign({}, ...pairs)
+}
+
 // Is a plain object, including `Object.create(null)`
 const isPlainObject = function(val) {
   return (
@@ -41,9 +49,23 @@ const isPlainObject = function(val) {
   )
 }
 
+// Group array of objects together according to a specific key
+const groupBy = function(array, key) {
+  return array.reduce(groupByReducer.bind(null, key), {})
+}
+
+const groupByReducer = function(key, groups, obj) {
+  const groupName = obj[key]
+  const { [groupName]: currentGroup = [] } = groups
+  const newGroup = [...currentGroup, obj]
+  return { ...groups, [groupName]: newGroup }
+}
+
 module.exports = {
   omitBy,
   keyBy,
   mapValues,
+  mapKeys,
   isPlainObject,
+  groupBy,
 }

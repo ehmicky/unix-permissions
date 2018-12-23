@@ -1,5 +1,6 @@
 {
   "SHORT_CATEGORIES": { "user": "u", "group": "g", "others": "o" },
+  "LONG_CATEGORIES": { "u": "user", "g": "group", "o": "others" },
   "SHORT_PERMISSIONS": {
     "read": "r",
     "write": "w",
@@ -7,5 +8,10 @@
     "setuid": "s",
     "setgid": "s",
     "sticky": "t"
+  },
+  "LONG_PERMISSIONS": {
+    "user": { "r": "read", "w": "write", "x": "execute", "s": "setuid" },
+    "group": { "r": "read", "w": "write", "x": "execute", "s": "setgid" },
+    "others": { "r": "read", "w": "write", "x": "execute", "t": "sticky" }
   }
 }
