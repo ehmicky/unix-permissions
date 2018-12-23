@@ -1,6 +1,6 @@
 'use strict'
 
-const { CATEGORIES } = require('../../nodes')
+const { CATEGORIES } = require('../../constants')
 
 const { tokenize } = require('./tokenize')
 

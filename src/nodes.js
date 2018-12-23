@@ -16,7 +16,6 @@ const getNodeKey = function({ category, permission }) {
 
 const NODES_MAP = keyBy(NODES, ['category', 'permission'])
 
-const CATEGORIES = ['u', 'g', 'o']
 const PERMISSIONS = ['r', 'w', 'x', 't', 's']
 const SPECIAL_PERMISSIONS = ['t', 's']
 
@@ -40,7 +39,6 @@ const CATEGORY_PERMISSIONS = {
 module.exports = {
   getNodeKey,
   getNode,
-  CATEGORIES,
   PERMISSIONS,
   PERMISSION_CATEGORIES,
   CATEGORY_PERMISSIONS,

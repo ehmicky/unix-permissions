@@ -1,6 +1,7 @@
 'use strict'
 
-const { CATEGORIES, CATEGORY_PERMISSIONS } = require('../../nodes')
+const { CATEGORIES } = require('../../constants')
+const { CATEGORY_PERMISSIONS } = require('../../nodes')
 
 const { OPERATORS } = require('./constants')
 
