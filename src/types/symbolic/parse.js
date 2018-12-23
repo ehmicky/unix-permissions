@@ -1,9 +1,13 @@
 /* eslint-disable max-lines */
 'use strict'
 
-const { getNode, CATEGORIES, PERMISSIONS } = require('../../nodes')
+const {
+  getNode,
+  CATEGORIES,
+  PERMISSIONS,
+  PERMISSION_CATEGORIES,
+} = require('../../nodes')
 
-const { PERMISSION_CATEGORIES } = require('./constants')
 const { tokenize } = require('./tokenize')
 
 const name = 'symbolic'

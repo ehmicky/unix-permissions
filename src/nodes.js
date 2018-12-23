@@ -36,11 +36,30 @@ const CATEGORIES = ['u', 'g', 'o']
 const PERMISSIONS = ['r', 'w', 'x', 't', 's']
 const SPECIAL_PERMISSIONS = ['t', 's']
 
+/* eslint-disable id-length */
+const PERMISSION_CATEGORIES = {
+  r: ['o', 'g', 'u'],
+  w: ['o', 'g', 'u'],
+  x: ['o', 'g', 'u'],
+  t: ['o'],
+  s: ['g', 'u'],
+}
+
+const CATEGORY_PERMISSIONS = {
+  a: ['x', 'w', 'r', 't', 's'],
+  u: ['x', 'w', 'r', 's'],
+  g: ['x', 'w', 'r', 's'],
+  o: ['x', 'w', 'r', 't'],
+}
+/* eslint-enable id-length */
+
 module.exports = {
   NODES,
   getNodeKey,
   getNode,
   CATEGORIES,
   PERMISSIONS,
+  PERMISSION_CATEGORIES,
+  CATEGORY_PERMISSIONS,
   SPECIAL_PERMISSIONS,
 }

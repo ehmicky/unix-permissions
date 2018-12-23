@@ -2,18 +2,5 @@
   "OPERATORS": {
     "true": "+",
     "false": "-"
-  },
-  "PERMISSION_CATEGORIES": {
-    "r": ["o", "g", "u"],
-    "w": ["o", "g", "u"],
-    "x": ["o", "g", "u"],
-    "t": ["o"],
-    "s": ["g", "u"]
-  },
-  "CATEGORY_PERMISSIONS": {
-    "a": ["x", "w", "r", "t", "s"],
-    "u": ["x", "w", "r", "s"],
-    "g": ["x", "w", "r", "s"],
-    "o": ["x", "w", "r", "t"]
   }
 }
