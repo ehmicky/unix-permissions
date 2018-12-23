@@ -1,0 +1,11 @@
+{
+  "SHORT_CATEGORIES": { "user": "u", "group": "g", "others": "o" },
+  "SHORT_PERMISSIONS": {
+    "read": "r",
+    "write": "w",
+    "execute": "x",
+    "setuid": "s",
+    "setgid": "s",
+    "sticky": "t"
+  }
+}

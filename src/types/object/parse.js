@@ -1,7 +1,9 @@
 'use strict'
 
 const { isPlainObject } = require('../../utils')
-const { PARSE_CONSTANTS } = require('../../nodes')
+const { CATEGORY_PERMISSIONS } = require('../../nodes')
+
+const { SHORT_CATEGORIES, SHORT_PERMISSIONS } = require('./constants')
 
 const name = 'object'
 
@@ -20,16 +22,16 @@ const parse = function(object) {
 }
 
 const parsePermissions = function([category, permissions]) {
-  const parseConstant = PARSE_CONSTANTS[category]
+  const categoryA = SHORT_CATEGORIES[category]
 
-  if (parseConstant === undefined) {
+  if (categoryA === undefined) {
     return
   }
 
   return Object.entries(permissions)
     .filter(hasDefinedValue)
     .map(([permission, add]) =>
-      parsePermission({ permission, add, parseConstant }),
+      parsePermission({ permission, add, category: categoryA }),
     )
 }
 
@@ -37,14 +39,16 @@ const hasDefinedValue = function([, value]) {
   return value !== undefined
 }
 
-const parsePermission = function({
-  permission,
-  add,
-  parseConstant: { category, permissions },
-}) {
-  const permissionA = permissions[permission]
+const parsePermission = function({ permission, add, category }) {
+  const permissionA = SHORT_PERMISSIONS[permission]
 
   if (permissionA === undefined) {
+    return
+  }
+
+  const isValidPermission = CATEGORY_PERMISSIONS[category].includes(permissionA)
+
+  if (!isValidPermission) {
     return
   }
 
