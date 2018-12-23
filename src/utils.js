@@ -9,19 +9,9 @@ const omitBy = function(object, condition) {
 }
 
 // Similar to lodash _.keyBy()
-const keyBy = function(array, attrs) {
-  const mapper = Array.isArray(attrs) ? keyByAttrs : keyByAttr
-  const pairs = array.map(object => mapper(object, attrs))
+const keyBy = function(array, attr) {
+  const pairs = array.map(object => ({ [object[attr]]: object }))
   return Object.assign({}, ...pairs)
-}
-
-const keyByAttrs = function(object, attrs) {
-  const key = attrs.map(attr => object[attr]).join(' ')
-  return { [key]: object }
-}
-
-const keyByAttr = function(object, attr) {
-  return { [object[attr]]: object }
 }
 
 // Like lodash _.mapValues()
