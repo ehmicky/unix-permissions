@@ -1,0 +1,6 @@
+{
+  "OPERATORS": {
+    "true": "+",
+    "false": "-"
+  }
+}

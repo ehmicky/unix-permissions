@@ -55,11 +55,6 @@ const CATEGORIES = ['u', 'g', 'o']
 const PERMISSIONS = ['r', 'w', 'x', 't', 's']
 const SPECIAL_PERMISSIONS = ['t', 's']
 
-const OPERATORS = {
-  true: '+',
-  false: '-',
-}
-
 module.exports = {
   NODES,
   getNodeKey,
@@ -69,5 +64,4 @@ module.exports = {
   CATEGORIES,
   PERMISSIONS,
   SPECIAL_PERMISSIONS,
-  OPERATORS,
 }

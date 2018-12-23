@@ -1,6 +1,8 @@
 'use strict'
 
-const { CATEGORY_PERMISSIONS, CATEGORIES, OPERATORS } = require('../../nodes')
+const { CATEGORY_PERMISSIONS, CATEGORIES } = require('../../nodes')
+
+const { OPERATORS } = require('./constants')
 
 // Input `nodes` must always be sorted
 const serialize = function(nodes) {
