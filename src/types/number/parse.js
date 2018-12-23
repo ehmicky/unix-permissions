@@ -2,6 +2,8 @@
 
 const { NODES } = require('../../constants')
 
+const { MIN_NUMBER, MAX_NUMBER } = require('./constants')
+
 const name = 'number'
 
 const parse = function(number) {
@@ -12,17 +14,13 @@ const parse = function(number) {
   return NODES.filter(node => hasNode({ number, node })).map(addAdd)
 }
 
+// We allow `stat` bitfields as input but ignore the bits related to file
+// types. See `man inode (7)` for information on those file types.
 const isValidNumber = function(number) {
   return (
     Number.isInteger(number) && number >= MIN_NUMBER && number <= MAX_NUMBER
   )
 }
-
-const MIN_NUMBER = 0
-// We allow `stat` bitfields as input but ignore the bits related to file
-// types. See `man inode (7)` for information on those file types.
-// eslint-disable-next-line no-magic-numbers
-const MAX_NUMBER = 2 ** 16 - 1
 
 const hasNode = function({ number, node: { value } }) {
   // eslint-disable-next-line no-bitwise
