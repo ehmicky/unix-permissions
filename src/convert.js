@@ -3,14 +3,23 @@
 const assert = require('assert')
 
 const { TYPES, TYPES_MAP } = require('./types')
-const { mapValues } = require('./utils')
+const { mapValues, isPlainObject } = require('./utils')
 
 const convert = function(typeName, perm) {
   const nodes = parse(perm)
-  assert(nodes !== undefined, `Permissions syntax is invalid: ${perm}`)
+  validateNodes({ nodes, perm })
 
   const permA = serialize(typeName, nodes)
   return permA
+}
+
+const validateNodes = function({ nodes, perm }) {
+  if (nodes !== undefined) {
+    return
+  }
+
+  const permA = isPlainObject(perm) ? JSON.stringify(perm) : perm
+  throw new Error(`Permissions syntax is invalid: ${permA}`)
 }
 
 const parse = function(perm) {
