@@ -1,6 +1,7 @@
 'use strict'
 
-const { NODES, getNodeKey } = require('../../nodes')
+const { NODES } = require('../../constants')
+const { getNodeKey } = require('../../nodes')
 const number = require('../number')
 
 const { tokenize } = require('./tokenize')

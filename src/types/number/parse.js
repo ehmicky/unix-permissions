@@ -1,6 +1,6 @@
 'use strict'
 
-const { NODES } = require('../../nodes')
+const { NODES } = require('../../constants')
 
 const name = 'number'
 
