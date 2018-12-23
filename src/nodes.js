@@ -20,11 +20,11 @@ const addKey = function(node) {
   return { ...node, key }
 }
 
-const NODES_MAP = getNodesMap()
-
 const getNodeKey = function({ category, permission }) {
   return `${category} ${permission}`
 }
+
+const NODES_MAP = getNodesMap()
 
 module.exports = {
   getNode,
