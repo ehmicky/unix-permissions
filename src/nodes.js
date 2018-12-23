@@ -34,9 +34,9 @@ const NODES_MAP = keyBy(NODES, ['category', 'permission'])
 
 /* eslint-disable id-length */
 const PERMISSION_CATEGORIES = {
-  x: ['o', 'g', 'u'],
-  w: ['o', 'g', 'u'],
   r: ['o', 'g', 'u'],
+  w: ['o', 'g', 'u'],
+  x: ['o', 'g', 'u'],
   t: ['o'],
   s: ['g', 'u'],
 }
@@ -45,9 +45,9 @@ const PERMISSION_CATEGORIES = {
 /* eslint-disable id-length */
 const CATEGORY_PERMISSIONS = {
   a: ['x', 'w', 'r', 't', 's'],
-  o: ['x', 'w', 'r', 't'],
-  g: ['x', 'w', 'r', 's'],
   u: ['x', 'w', 'r', 's'],
+  g: ['x', 'w', 'r', 's'],
+  o: ['x', 'w', 'r', 't'],
 }
 /* eslint-enable id-length */
 
