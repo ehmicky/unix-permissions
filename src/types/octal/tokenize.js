@@ -1,5 +1,10 @@
 'use strict'
 
+const {
+  DEFAULT_OPERATOR,
+  OPERATORS: { NONE },
+} = require('./constants')
+
 const tokenize = function(octal) {
   if (typeof octal !== 'string') {
     return {}
@@ -20,14 +25,12 @@ const tokenize = function(octal) {
 const OCTAL_REGEXP = /^([=+-]?)\\?0?[oO]?([0-7]{1,4})$/gu
 
 const addDefaultOperator = function({ operator }) {
-  if (operator === '') {
+  if (operator === NONE) {
     return DEFAULT_OPERATOR
   }
 
   return operator
 }
-
-const DEFAULT_OPERATOR = '+'
 
 module.exports = {
   tokenize,

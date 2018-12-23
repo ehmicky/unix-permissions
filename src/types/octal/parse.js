@@ -5,6 +5,10 @@ const { getNodeKey } = require('../../nodes')
 const number = require('../number')
 
 const { tokenize } = require('./tokenize')
+const {
+  OCTAL_BASE,
+  OPERATORS: { PLUS, MINUS, EQUAL },
+} = require('./constants')
 
 const name = 'octal'
 
@@ -24,8 +28,6 @@ const parse = function(octal) {
 const octalToDecimal = function(string) {
   return Number.parseInt(string, OCTAL_BASE)
 }
-
-const OCTAL_BASE = 8
 
 const parsePlus = function({ nodes }) {
   return nodes
@@ -56,9 +58,9 @@ const getEqualNode = function({
 }
 
 const parseOperator = {
-  '+': parsePlus,
-  '-': parseMinus,
-  '=': parseEqual,
+  [PLUS]: parsePlus,
+  [MINUS]: parseMinus,
+  [EQUAL]: parseEqual,
 }
 
 module.exports = {

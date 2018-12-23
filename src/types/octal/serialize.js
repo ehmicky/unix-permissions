@@ -2,6 +2,13 @@
 
 const number = require('../number')
 
+const {
+  OCTAL_BASE,
+  SERIALIZE_LENGTH,
+  SERIALIZE_PAD,
+  OPERATORS: { MINUS, EQUAL, NONE },
+} = require('./constants')
+
 const serialize = function(nodes) {
   const operator = serializeOperator({ nodes })
   const string = serializeInteger({ operator, nodes })
@@ -11,22 +18,22 @@ const serialize = function(nodes) {
 
 const serializeOperator = function({ nodes }) {
   if (nodes.length === 0) {
-    return ''
+    return NONE
   }
 
   const isMinus = nodes.every(isRemoved)
 
   if (isMinus) {
-    return '-'
+    return MINUS
   }
 
   const isEqual = nodes.some(isRemoved)
 
   if (isEqual) {
-    return '='
+    return EQUAL
   }
 
-  return ''
+  return NONE
 }
 
 const isRemoved = function({ add }) {
@@ -35,13 +42,12 @@ const isRemoved = function({ add }) {
 
 const serializeInteger = function({ operator, nodes }) {
   const integer =
-    operator === '-' ? number.serializeNodes(nodes) : number.serialize(nodes)
-  const string = integer.toString(OCTAL_BASE).padStart(SERIALIZE_LENGTH, '0')
+    operator === MINUS ? number.serializeNodes(nodes) : number.serialize(nodes)
+  const string = integer
+    .toString(OCTAL_BASE)
+    .padStart(SERIALIZE_LENGTH, SERIALIZE_PAD)
   return string
 }
-
-const OCTAL_BASE = 8
-const SERIALIZE_LENGTH = 4
 
 module.exports = {
   serialize,
