@@ -2,10 +2,16 @@
 
 const { CATEGORIES, CATEGORY_PERMISSIONS } = require('../../constants')
 
-const { OPERATORS } = require('./constants')
+const {
+  OPERATORS,
+  OPERATORS: { EQUAL },
+  DEFAULT_SERIALIZE,
+} = require('./constants')
 
 // Input `nodes` must always be sorted
 const serialize = function(nodes) {
+  // Noop symbolic format.
+  // Empty string is possible as well on intput, but this is clearer in output.
   if (nodes.length === 0) {
     return DEFAULT_SERIALIZE
   }
@@ -18,10 +24,6 @@ const serialize = function(nodes) {
     .join(',')
   return perm
 }
-
-// Noop symbolic format.
-// Empty string is possible as well on intput, but this is clearer in output.
-const DEFAULT_SERIALIZE = 'a+'
 
 const serializePart = function({ category, nodes }) {
   const nodesA = nodes.filter(node => node.category === category)
@@ -49,7 +51,7 @@ const containsPermission = function({ nodes, permission }) {
 
 const serializeEqualPart = function({ category, nodes }) {
   const permissions = nodes.map(serializeEqualPerm).join('')
-  return { category, operator: '=', permissions }
+  return { category, operator: EQUAL, permissions }
 }
 
 const serializeEqualPerm = function({ add, permission }) {

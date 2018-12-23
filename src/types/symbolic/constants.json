@@ -1,6 +1,10 @@
 {
   "OPERATORS": {
     "true": "+",
-    "false": "-"
-  }
+    "false": "-",
+    "EQUAL": "="
+  },
+  "DEFAULT_CATEGORIES": "a",
+  "DEFAULT_OPERATOR": "=",
+  "DEFAULT_SERIALIZE": "a+"
 }

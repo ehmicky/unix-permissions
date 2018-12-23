@@ -8,6 +8,7 @@ const {
 } = require('../../constants')
 const { getNode } = require('../../nodes')
 
+const { DEFAULT_OPERATOR, DEFAULT_CATEGORIES } = require('./constants')
 const { tokenize } = require('./tokenize')
 
 const name = 'symbolic'
@@ -44,9 +45,6 @@ const addDefaults = function({ categories, operator, permissions }) {
 const ifEmpty = function(string, defaultValue) {
   return string === '' ? defaultValue : string
 }
-
-const DEFAULT_CATEGORIES = 'a'
-const DEFAULT_OPERATOR = '='
 
 const normalizeX = function({ categories, operator, permissions }) {
   const permissionsA = permissions.replace(X_REGEXP, 'x')
