@@ -14,8 +14,8 @@ const {
 } = require('../localpack')
 
 test('Dummy test', t => {
-  // eslint-disable-next-line max-nested-callbacks
   ;[getType, isValid, convert, symbolic, number, stat, octal, object].forEach(
+    // eslint-disable-next-line max-nested-callbacks
     func => t.is(typeof func, 'function'),
   )
 })
