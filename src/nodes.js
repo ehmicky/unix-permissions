@@ -32,25 +32,6 @@ const getNodeKey = function({ category, permission }) {
 
 const NODES_MAP = keyBy(NODES, ['category', 'permission'])
 
-/* eslint-disable id-length */
-const PERMISSION_CATEGORIES = {
-  r: ['o', 'g', 'u'],
-  w: ['o', 'g', 'u'],
-  x: ['o', 'g', 'u'],
-  t: ['o'],
-  s: ['g', 'u'],
-}
-/* eslint-enable id-length */
-
-/* eslint-disable id-length */
-const CATEGORY_PERMISSIONS = {
-  a: ['x', 'w', 'r', 't', 's'],
-  u: ['x', 'w', 'r', 's'],
-  g: ['x', 'w', 'r', 's'],
-  o: ['x', 'w', 'r', 't'],
-}
-/* eslint-enable id-length */
-
 const CATEGORIES = ['u', 'g', 'o']
 const PERMISSIONS = ['r', 'w', 'x', 't', 's']
 
@@ -58,8 +39,6 @@ module.exports = {
   NODES,
   getNodeKey,
   getNode,
-  PERMISSION_CATEGORIES,
-  CATEGORY_PERMISSIONS,
   CATEGORIES,
   PERMISSIONS,
 }
