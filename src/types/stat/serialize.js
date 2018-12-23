@@ -3,6 +3,7 @@
 const { NODES, SPECIAL_PERMISSIONS } = require('../../constants')
 const { getNodeKey } = require('../../nodes')
 
+const { NO_PERMISSION } = require('./constants')
 const { contractSpecial } = require('./tokenize')
 
 const serialize = function(nodes) {
@@ -33,7 +34,7 @@ const serializeNode = function({ node, node: { permission }, addedNodes }) {
     return ''
   }
 
-  return '-'
+  return NO_PERMISSION
 }
 
 module.exports = {

@@ -30,32 +30,31 @@ const removeDashes = function(part) {
 const DASH_REGEXP = /-/gu
 
 const expandSpecial = function(part) {
-  return part
-    .replace(X_REGEXP, 'x')
-    .replace(SMALL_S_REGEXP, 'xs')
-    .replace(BIG_S_REGEXP, 's')
-    .replace(SMALL_T_REGEXP, 'xt')
-    .replace(BIG_T_REGEXP, 't')
+  return EXPAND_REGEXPS.reduce(specialReduce, part)
 }
 
-const X_REGEXP = /X/gu
-const BIG_S_REGEXP = /S/gu
-const SMALL_S_REGEXP = /s/gu
-const BIG_T_REGEXP = /T/gu
-const SMALL_T_REGEXP = /t/gu
+const EXPAND_REGEXPS = [
+  [/X/gu, 'x'],
+  [/s/gu, 'xs'],
+  [/S/gu, 's'],
+  [/t/gu, 'xt'],
+  [/T/gu, 't'],
+]
 
 const contractSpecial = function(part) {
-  return part
-    .replace(T_REGEXP, 'T')
-    .replace(XT_REGEXP, 't')
-    .replace(S_REGEXP, 'S')
-    .replace(XS_REGEXP, 's')
+  return CONTRACT_REGEXPS.reduce(specialReduce, part)
 }
 
-const T_REGEXP = /-t/gu
-const XT_REGEXP = /xt/gu
-const S_REGEXP = /-s/gu
-const XS_REGEXP = /xs/gu
+const CONTRACT_REGEXPS = [
+  [/-t/gu, 'T'],
+  [/xt/gu, 't'],
+  [/-s/gu, 'S'],
+  [/xs/gu, 's'],
+]
+
+const specialReduce = function(part, [regexp, chars]) {
+  return part.replace(regexp, chars)
+}
 
 module.exports = {
   tokenize,
