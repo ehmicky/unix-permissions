@@ -5,12 +5,24 @@ const assert = require('assert')
 const { TYPES, TYPES_MAP } = require('./types')
 const { isPlainObject } = require('./utils')
 
-const convert = function(typeName, perm) {
-  const nodes = parse(perm)
+const parse = function(perm) {
+  const { type, nodes } = TYPES.reduce(
+    (memo, typeA) => parseReduce(memo, typeA, perm),
+    {},
+  )
+
   validateNodes({ nodes, perm })
 
-  const permA = serialize(typeName, nodes)
-  return permA
+  return { type, nodes }
+}
+
+const parseReduce = function(memo, type, perm) {
+  if (memo.nodes !== undefined) {
+    return memo
+  }
+
+  const nodes = type.parse(perm)
+  return { type, nodes }
 }
 
 const validateNodes = function({ nodes, perm }) {
@@ -22,18 +34,6 @@ const validateNodes = function({ nodes, perm }) {
   throw new Error(`Permissions syntax is invalid: ${permA}`)
 }
 
-const parse = function(perm) {
-  return TYPES.reduce((memo, type) => parseReduce(memo, type, perm), undefined)
-}
-
-const parseReduce = function(memo, type, perm) {
-  if (memo !== undefined) {
-    return memo
-  }
-
-  return type.parse(perm)
-}
-
 const serialize = function(typeName, nodes) {
   const type = TYPES_MAP[typeName]
   assert(type !== undefined, `Invalid type: ${typeName}`)
@@ -43,5 +43,6 @@ const serialize = function(typeName, nodes) {
 }
 
 module.exports = {
-  convert,
+  parse,
+  serialize,
 }

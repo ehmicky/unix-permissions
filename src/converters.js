@@ -2,7 +2,7 @@
 
 const { TYPES_MAP } = require('./types')
 const { mapValues } = require('./utils')
-const { convert } = require('./convert')
+const { convert } = require('./helpers')
 
 const getConverters = function() {
   return mapValues(TYPES_MAP, getConverter)
