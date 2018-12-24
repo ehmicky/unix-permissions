@@ -53,6 +53,5 @@ const getConverter = function({ name }) {
 const converters = getConverters()
 
 module.exports = {
-  convert,
   ...converters,
 }
