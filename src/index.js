@@ -2,5 +2,5 @@
 
 module.exports = {
   ...require('./get'),
-  ...require('./convert'),
+  ...require('./converters'),
 }

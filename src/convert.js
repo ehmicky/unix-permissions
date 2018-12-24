@@ -3,7 +3,7 @@
 const assert = require('assert')
 
 const { TYPES, TYPES_MAP } = require('./types')
-const { mapValues, isPlainObject } = require('./utils')
+const { isPlainObject } = require('./utils')
 
 const convert = function(typeName, perm) {
   const nodes = parse(perm)
@@ -42,16 +42,6 @@ const serialize = function(typeName, nodes) {
   return perm
 }
 
-const getConverters = function() {
-  return mapValues(TYPES_MAP, getConverter)
-}
-
-const getConverter = function({ name }) {
-  return convert.bind(null, name)
-}
-
-const converters = getConverters()
-
 module.exports = {
-  ...converters,
+  convert,
 }
