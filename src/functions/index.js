@@ -5,4 +5,5 @@ module.exports = {
   ...require('./full'),
   ...require('./contains'),
   ...require('./set'),
+  ...require('./not'),
 }
