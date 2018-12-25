@@ -1,5 +1,7 @@
 'use strict'
 
+const assert = require('assert')
+
 const { keyBy } = require('../utils')
 
 const number = require('./number')
@@ -13,7 +15,14 @@ const TYPES = [number, octal, stat, symbolic, object]
 
 const TYPES_MAP = keyBy(TYPES, 'name')
 
+const getTypeByName = function(typeName) {
+  const type = TYPES_MAP[typeName]
+  assert(type !== undefined, `Invalid type: ${typeName}`)
+  return type
+}
+
 module.exports = {
   TYPES,
   TYPES_MAP,
+  getTypeByName,
 }
