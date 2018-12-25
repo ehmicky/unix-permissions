@@ -10,9 +10,9 @@ const getNode = function(node) {
   return NODES_MAP[nodeKey]
 }
 
-const getNodesMap = function() {
-  const nodes = NODES.map(addKey)
-  return keyBy(nodes, 'key')
+const getNodesMap = function(nodes) {
+  const nodesA = nodes.map(addKey)
+  return keyBy(nodesA, 'key')
 }
 
 const addKey = function(node) {
@@ -24,9 +24,11 @@ const getNodeKey = function({ category, permission }) {
   return `${category} ${permission}`
 }
 
-const NODES_MAP = getNodesMap()
+const NODES_MAP = getNodesMap(NODES)
 
 module.exports = {
   getNode,
   getNodeKey,
+  getNodesMap,
+  NODES_MAP,
 }
