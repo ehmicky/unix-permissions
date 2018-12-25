@@ -15,4 +15,5 @@ const not = unaryMap.bind(null, notMap)
 
 module.exports = {
   not,
+  notMap,
 }

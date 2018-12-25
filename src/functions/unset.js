@@ -1,15 +1,12 @@
 'use strict'
 
 const { binaryMap } = require('../helpers')
-const { mapValues } = require('../utils')
+
+const { setMap } = require('./set')
+const { notMap } = require('./not')
 
 const unsetMap = function(nodesMap, nodesMapA) {
-  const nodesMapB = mapValues(nodesMapA, invertAdd)
-  return { ...nodesMap, ...nodesMapB }
-}
-
-const invertAdd = function({ add, ...node }) {
-  return { ...node, add: !add }
+  return setMap(nodesMap, notMap(nodesMapA))
 }
 
 const unset = binaryMap.bind(null, unsetMap)
