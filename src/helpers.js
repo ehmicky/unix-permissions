@@ -28,11 +28,14 @@ const binaryMapReduce = function(mapFunc, nodes, perm) {
   return nodesB
 }
 
-const binaryTest = function(testFunc, permA, permB) {
+const binaryTest = function(testFunc, permA, ...perms) {
   const { nodes } = parse(permA)
-  const { nodes: nodesA } = parse(permB)
-  const bool = testFunc(nodes, nodesA)
-  return bool
+  return perms.every(permB => binaryTestEach(testFunc, nodes, permB))
+}
+
+const binaryTestEach = function(testFunc, nodes, perm) {
+  const { nodes: nodesA } = parse(perm)
+  return testFunc(nodes, nodesA)
 }
 
 module.exports = {
