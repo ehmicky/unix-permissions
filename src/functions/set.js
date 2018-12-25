@@ -10,4 +10,5 @@ const set = binaryMap.bind(null, setMap)
 
 module.exports = {
   set,
+  setMap,
 }

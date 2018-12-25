@@ -22,4 +22,5 @@ const full = unaryMap.bind(null, fullMap)
 
 module.exports = {
   full,
+  fullMap,
 }
