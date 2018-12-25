@@ -5,11 +5,7 @@ const test = require('ava')
 const {
   getType,
   isValid,
-  symbolic,
-  number,
-  stat,
-  octal,
-  object,
+  convert: { symbolic, number, stat, octal, object },
 } = require('../localpack')
 
 test('Dummy test', t => {

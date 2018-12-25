@@ -14,4 +14,6 @@ const getConverter = function({ name }) {
 
 const converters = getConverters()
 
-module.exports = converters
+module.exports = {
+  convert: converters,
+}
