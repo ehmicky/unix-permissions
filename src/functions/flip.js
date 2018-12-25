@@ -13,4 +13,5 @@ const flip = unaryMap.bind(null, flipMap)
 
 module.exports = {
   flip,
+  flipMap,
 }

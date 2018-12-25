@@ -7,6 +7,7 @@ const { set } = require('./set')
 const { unset } = require('./unset')
 const { not } = require('./not')
 const { flip } = require('./flip')
+const { invert } = require('./invert')
 
 module.exports = {
   normalize,
@@ -16,4 +17,5 @@ module.exports = {
   unset,
   not,
   flip,
+  invert,
 }
