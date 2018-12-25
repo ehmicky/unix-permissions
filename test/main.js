@@ -4,8 +4,8 @@ const test = require('ava')
 
 const {
   getType,
-  isValid,
   convert: { symbolic, number, stat, octal, object },
+  normalize,
   full,
   contains,
   set,
@@ -14,12 +14,12 @@ const {
 test('Dummy test', t => {
   ;[
     getType,
-    isValid,
     symbolic,
     number,
     stat,
     octal,
     object,
+    normalize,
     full,
     contains,
     set,
