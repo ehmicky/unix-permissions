@@ -15,12 +15,17 @@ const unaryMap = function(mapFunc, perm) {
   return permA
 }
 
-const binaryMap = function(mapFunc, permA, permB) {
+const binaryMap = function(mapFunc, permA, ...perms) {
   const { type, nodes } = parse(permA)
-  const { nodes: nodesA } = parse(permB)
+  const nodesA = perms.reduce(binaryMapReduce.bind(null, mapFunc), nodes)
+  const permB = type.serialize(nodesA)
+  return permB
+}
+
+const binaryMapReduce = function(mapFunc, nodes, perm) {
+  const { nodes: nodesA } = parse(perm)
   const nodesB = mapFunc(nodes, nodesA)
-  const permC = type.serialize(nodesB)
-  return permC
+  return nodesB
 }
 
 const binaryTest = function(testFunc, permA, permB) {
