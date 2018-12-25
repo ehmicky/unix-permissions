@@ -1,24 +1,31 @@
 'use strict'
 
-const { parse, serialize } = require('./parse')
+const assert = require('assert')
+
+const { parse } = require('./parse')
+const { serialize } = require('./serialize')
+const { TYPES_MAP } = require('./types')
 
 const convert = function(typeName, perm) {
+  const type = TYPES_MAP[typeName]
+  assert(type !== undefined, `Invalid type: ${typeName}`)
+
   const { nodes } = parse(perm)
-  const permA = serialize(typeName, nodes)
+  const permA = serialize(type, nodes)
   return permA
 }
 
 const unaryMap = function(mapFunc, perm) {
   const { type, nodes } = parse(perm)
   const nodesA = mapFunc(nodes)
-  const permA = type.serialize(nodesA)
+  const permA = serialize(type, nodesA)
   return permA
 }
 
 const binaryMap = function(mapFunc, permA, ...perms) {
   const { type, nodes } = parse(permA)
   const nodesA = perms.reduce(binaryMapReduce.bind(null, mapFunc), nodes)
-  const permB = type.serialize(nodesA)
+  const permB = serialize(type, nodesA)
   return permB
 }
 
