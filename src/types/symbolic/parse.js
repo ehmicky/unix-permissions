@@ -8,7 +8,6 @@ const {
 
 const { DEFAULT_OPERATOR, DEFAULT_CATEGORIES } = require('./constants')
 const { tokenize } = require('./tokenize')
-const { isUnique } = require('./unique')
 
 const name = 'symbolic'
 
@@ -27,7 +26,6 @@ const parse = function(symbolic) {
     .flatMap(normalizeOperator)
     .flatMap(splitPermissions)
     .filter(filterInvalidFlag)
-    .filter(isUnique)
   return nodes
 }
 

@@ -2,6 +2,7 @@
 
 const { TYPES } = require('./types')
 const { isPlainObject } = require('./utils')
+const { getNodesMap } = require('./nodes')
 
 const parse = function(perm) {
   const { type, nodes } = TYPES.reduce(
@@ -11,7 +12,9 @@ const parse = function(perm) {
 
   validateNodes({ nodes, perm })
 
-  return { type, nodes }
+  const nodesMap = getNodesMap(nodes)
+
+  return { type, nodesMap }
 }
 
 const parseReduce = function(memo, type, perm) {

@@ -1,15 +1,14 @@
 'use strict'
 
 const { binaryTest } = require('../helpers')
-const { getNodesMap, getNodeKey } = require('../nodes')
 
-const containsTest = function(nodes, nodesA) {
-  const nodesMap = getNodesMap(nodes)
-  return nodesA.every(node => containsNode({ nodesMap, node }))
+const containsTest = function(nodesMap, nodesMapA) {
+  return Object.entries(nodesMapA).every(([nodeKey, node]) =>
+    containsNode({ nodesMap, nodeKey, node }),
+  )
 }
 
-const containsNode = function({ nodesMap, node }) {
-  const nodeKey = getNodeKey(node)
+const containsNode = function({ nodesMap, nodeKey, node }) {
   const { add } = nodesMap[nodeKey] || {}
   return addMatch(node.add, add)
 }

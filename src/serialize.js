@@ -2,7 +2,8 @@
 
 const { getNode } = require('./nodes')
 
-const serialize = function(type, nodes) {
+const serialize = function(type, nodesMap) {
+  const nodes = Object.values(nodesMap)
   const nodesA = sortNodes(nodes)
   const perm = type.serialize(nodesA)
   return perm
