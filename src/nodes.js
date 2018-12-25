@@ -1,7 +1,7 @@
 'use strict'
 
 const { NODES } = require('./constants')
-const { keyBy, mapValues } = require('./utils')
+const { keyBy } = require('./utils')
 
 const getNode = function(node) {
   const nodeKey = getNodeKey(node)
@@ -24,20 +24,9 @@ const getNodeKey = function({ category, permission }) {
 
 const NODES_MAP = getNodesMap(NODES)
 
-const getEmptyNodesMap = function() {
-  return mapValues(NODES_MAP, getEmptyNode)
-}
-
-const getEmptyNode = function({ category, permission }) {
-  return { category, permission, add: false }
-}
-
-const EMPTY_NODES_MAP = getEmptyNodesMap()
-
 module.exports = {
   getNode,
   getNodeKey,
   getNodesMap,
   NODES_MAP,
-  EMPTY_NODES_MAP,
 }
