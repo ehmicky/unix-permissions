@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 'use strict'
 
 const {
@@ -6,10 +5,10 @@ const {
   PERMISSIONS,
   PERMISSION_CATEGORIES,
 } = require('../../constants')
-const { getNode } = require('../../nodes')
 
 const { DEFAULT_OPERATOR, DEFAULT_CATEGORIES } = require('./constants')
 const { tokenize } = require('./tokenize')
+const { isUnique } = require('./unique')
 
 const name = 'symbolic'
 
@@ -20,7 +19,6 @@ const parse = function(symbolic) {
     return
   }
 
-  // eslint-disable-next-line fp/no-mutating-methods
   const nodes = tokens
     .map(addDefaults)
     .map(normalizeX)
@@ -30,7 +28,6 @@ const parse = function(symbolic) {
     .flatMap(splitPermissions)
     .filter(filterInvalidFlag)
     .filter(isUnique)
-    .sort(compareNodes)
   return nodes
 }
 
@@ -101,33 +98,7 @@ const filterInvalidFlag = function({ category, permission }) {
   return PERMISSION_CATEGORIES[permission].includes(category)
 }
 
-const isUnique = function(node, index, array) {
-  return !array.slice(index + 1).some(nodeB => isSameNode(node, nodeB))
-}
-
-const isSameNode = function(nodeA, nodeB) {
-  return (
-    nodeA.category === nodeB.category && nodeA.permission === nodeB.permission
-  )
-}
-
-const compareNodes = function(nodeA, nodeB) {
-  const { order: orderA } = getNode(nodeA)
-  const { order: orderB } = getNode(nodeB)
-
-  if (orderA > orderB) {
-    return 1
-  }
-
-  if (orderA < orderB) {
-    return -1
-  }
-
-  return 0
-}
-
 module.exports = {
   name,
   parse,
 }
-/* eslint-enable max-lines */

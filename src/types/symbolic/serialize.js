@@ -8,7 +8,6 @@ const {
   DEFAULT_SERIALIZE,
 } = require('./constants')
 
-// Input `nodes` must always be sorted
 const serialize = function(nodes) {
   // Noop symbolic format.
   // Empty string is possible as well on intput, but this is clearer in output.
