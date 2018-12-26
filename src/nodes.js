@@ -9,13 +9,13 @@ const getNode = function({ category, permission }) {
 }
 
 const getNodesMap = function(nodes) {
-  const nodesA = nodes.map(addKey)
-  return keyBy(nodesA, 'key')
+  const pairs = nodes.map(getNodePair)
+  return Object.assign({}, ...pairs)
 }
 
-const addKey = function(node) {
+const getNodePair = function(node) {
   const key = getNodeKey(node)
-  return { ...node, key }
+  return { [key]: node }
 }
 
 const getNodeKey = function({ category, permission }) {
@@ -32,12 +32,18 @@ const getCatNodesMap = function(nodes) {
   return keyBy(nodes, 'permission')
 }
 
+const getCatNodeKey = function({ permission }) {
+  return permission
+}
+
 const CAT_NODES_MAP = getCatNodesMap(CAT_NODES)
 
 module.exports = {
   getNode,
   getNodesMap,
+  getNodeKey,
   NODES_MAP,
   getCatNode,
+  getCatNodeKey,
   CAT_NODES_MAP,
 }
