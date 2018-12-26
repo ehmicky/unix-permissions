@@ -7,10 +7,10 @@ const { NO_PERMISSION } = require('./constants')
 const { contractSpecial } = require('./tokenize')
 
 const serialize = function(nodes) {
-  const nodesMap = getAddedNodes({ nodes })
+  const addedNodes = getAddedNodes({ nodes })
 
   const stat = Object.entries(NODES_MAP)
-    .map(([nodeKey, node]) => serializeNode({ node, nodeKey, nodesMap }))
+    .map(([nodeKey, node]) => serializeNode({ node, nodeKey, addedNodes }))
     .join('')
   const statA = contractSpecial(stat)
   return statA
@@ -25,8 +25,8 @@ const hasAdd = function({ add }) {
   return add
 }
 
-const serializeNode = function({ node: { permission }, nodeKey, nodesMap }) {
-  if (nodesMap[nodeKey] !== undefined) {
+const serializeNode = function({ node: { permission }, nodeKey, addedNodes }) {
+  if (addedNodes[nodeKey] !== undefined) {
     return permission
   }
 
