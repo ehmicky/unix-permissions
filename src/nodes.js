@@ -3,11 +3,6 @@
 const { NODES, CAT_NODES } = require('./constants')
 const { keyBy } = require('./utils')
 
-const getNode = function({ category, permission }) {
-  const nodeKey = getNodeKey({ category, permission })
-  return NODES_MAP[nodeKey]
-}
-
 const getNodesMap = function(nodes) {
   const pairs = nodes.map(getNodePair)
   return Object.assign({}, ...pairs)
@@ -35,7 +30,6 @@ const getCatNodeKey = function({ permission }) {
 const CAT_NODES_MAP = getCatNodesMap(CAT_NODES)
 
 module.exports = {
-  getNode,
   getNodesMap,
   getNodeKey,
   NODES_MAP,

@@ -1,8 +1,8 @@
 'use strict'
 
 const { TYPES } = require('./types')
-const { isPlainObject } = require('./utils')
-const { getNodesMap, getNode } = require('./nodes')
+const { getNodesMap, NODES_MAP } = require('./nodes')
+const { isPlainObject, omitBy } = require('./utils')
 
 const parse = function(perm) {
   const { type, nodes } = parsePerm({ perm, funcName: 'parse' })
@@ -15,16 +15,15 @@ const parseCategory = function(perm, category) {
     perm,
     funcName: 'parseCategory',
   })
-  const nodes = catNodes
-    .map(catNode => ({ ...catNode, category }))
-    .filter(isValidNode)
+  const nodes = catNodes.map(catNode => ({ ...catNode, category }))
   const nodesMap = getNodesMap(nodes)
-  return { type, nodesMap }
+  const nodesMapA = omitBy(nodesMap, isInvalidNode)
+  return { type, nodesMap: nodesMapA }
 }
 
 // Exclude special flags not valid for current category
-const isValidNode = function(node) {
-  return getNode(node) !== undefined
+const isInvalidNode = function(node, nodeKey) {
+  return NODES_MAP[nodeKey] === undefined
 }
 
 const parsePerm = function({ perm, funcName }) {
