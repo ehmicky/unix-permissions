@@ -13,7 +13,15 @@
     { "category": "o", "permission": "x", "value": 1, "order": 10 },
     { "category": "o", "permission": "t", "value": 512, "order": 11 }
   ],
+  "CAT_NODES": [
+    { "permission": "r", "value": 4 },
+    { "permission": "w", "value": 2 },
+    { "permission": "x", "value": 1 },
+    { "permission": "s", "value": 8 },
+    { "permission": "t", "value": 8 }
+  ],
   "CATEGORIES": ["u", "g", "o"],
+  "LONG_CATEGORIES": { "u": "user", "g": "group", "o": "others" },
   "PERMISSIONS": ["r", "w", "x", "t", "s"],
   "SPECIAL_PERMISSIONS": ["t", "s"],
   "PERMISSION_CATEGORIES": {

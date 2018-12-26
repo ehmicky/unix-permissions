@@ -2,27 +2,43 @@
 
 const { TYPES } = require('./types')
 const { isPlainObject } = require('./utils')
-const { getNodesMap } = require('./nodes')
+const { getNodesMap, getNode } = require('./nodes')
 
 const parse = function(perm) {
-  const { type, nodes } = TYPES.reduce(
-    (memo, typeA) => parseReduce(memo, typeA, perm),
+  const { type, nodes } = parsePerm({ perm, funcName: 'parse' })
+  const nodesMap = getNodesMap(nodes)
+  return { type, nodesMap }
+}
+
+const parseCategory = function(perm, category) {
+  const { type, nodes } = parsePerm({ perm, funcName: 'parseCategory' })
+  const nodesA = nodes.map(node => ({ ...node, category })).filter(isValidNode)
+  const nodesMap = getNodesMap(nodesA)
+  return { type, nodesMap }
+}
+
+// Exclude special flags not valid for current category
+const isValidNode = function(node) {
+  return getNode(node) !== undefined
+}
+
+const parsePerm = function({ perm, funcName }) {
+  const { type: typeA, nodes } = TYPES.reduce(
+    (memo, type) => parseReduce({ memo, type, perm, funcName }),
     {},
   )
 
   validateNodes({ nodes, perm })
 
-  const nodesMap = getNodesMap(nodes)
-
-  return { type, nodesMap }
+  return { type: typeA, nodes }
 }
 
-const parseReduce = function(memo, type, perm) {
+const parseReduce = function({ memo, type, perm, funcName }) {
   if (memo.nodes !== undefined) {
     return memo
   }
 
-  const nodes = type.parse(perm)
+  const nodes = type[funcName](perm)
   return { type, nodes }
 }
 
@@ -37,4 +53,5 @@ const validateNodes = function({ nodes, perm }) {
 
 module.exports = {
   parse,
+  parseCategory,
 }

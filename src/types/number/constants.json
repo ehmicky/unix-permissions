@@ -1,4 +1,5 @@
 {
   "MIN_NUMBER": 0,
-  "MAX_NUMBER": 65535
+  "MAX_NUMBER": 65535,
+  "MAX_CAT_NUMBER": 15
 }

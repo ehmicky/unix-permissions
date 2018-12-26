@@ -41,12 +41,20 @@ const isRemoved = function({ add }) {
 }
 
 const serializeInteger = function({ operator, nodes }) {
-  const integer =
-    operator === MINUS ? number.serializeNodes(nodes) : number.serialize(nodes)
+  const nodesA = serializeMinus({ operator, nodes })
+  const integer = number.serialize(nodesA)
   const string = integer
     .toString(OCTAL_BASE)
     .padStart(SERIALIZE_LENGTH, SERIALIZE_PAD)
   return string
+}
+
+const serializeMinus = function({ operator, nodes }) {
+  if (operator !== MINUS) {
+    return nodes
+  }
+
+  return nodes.map(node => ({ ...node, add: true }))
 }
 
 module.exports = {

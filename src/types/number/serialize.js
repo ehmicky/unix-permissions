@@ -1,30 +1,26 @@
 'use strict'
 
-const { getNode } = require('../../nodes')
+const { getNode, getCatNode } = require('../../nodes')
 
-const serialize = function(nodes) {
-  const nodesA = nodes.filter(hasAdd)
-  return serializeNodes(nodesA)
-}
-
-const serializeNodes = function(nodes) {
-  return nodes.map(getValue).reduce(sum, 0)
+const serializeNodes = function(getNodeValue, nodes) {
+  return nodes
+    .filter(hasAdd)
+    .map(node => getNodeValue(node).value)
+    .reduce(sum, 0)
 }
 
 const hasAdd = function({ add }) {
   return add
 }
 
-const getValue = function({ category, permission }) {
-  const { value } = getNode({ category, permission })
-  return value
-}
-
 const sum = function(memo, number) {
   return memo + number
 }
 
+const serialize = serializeNodes.bind(null, getNode)
+const serializeCategory = serializeNodes.bind(null, getCatNode)
+
 module.exports = {
   serialize,
-  serializeNodes,
+  serializeCategory,
 }

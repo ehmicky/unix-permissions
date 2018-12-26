@@ -1,10 +1,10 @@
 'use strict'
 
-const { NODES } = require('./constants')
+const { NODES, CAT_NODES } = require('./constants')
 const { keyBy } = require('./utils')
 
-const getNode = function(node) {
-  const nodeKey = getNodeKey(node)
+const getNode = function({ category, permission }) {
+  const nodeKey = getNodeKey({ category, permission })
   return NODES_MAP[nodeKey]
 }
 
@@ -24,9 +24,20 @@ const getNodeKey = function({ category, permission }) {
 
 const NODES_MAP = getNodesMap(NODES)
 
+const getCatNode = function({ permission }) {
+  return CAT_NODES_MAP[permission]
+}
+
+const getCatNodesMap = function(nodes) {
+  return keyBy(nodes, 'permission')
+}
+
+const CAT_NODES_MAP = getCatNodesMap(CAT_NODES)
+
 module.exports = {
   getNode,
   getNodeKey,
   getNodesMap,
   NODES_MAP,
+  getCatNode,
 }
