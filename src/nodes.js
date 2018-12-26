@@ -24,10 +24,6 @@ const getNodeKey = function({ category, permission }) {
 
 const NODES_MAP = getNodesMap(NODES)
 
-const getCatNode = function({ permission }) {
-  return CAT_NODES_MAP[permission]
-}
-
 const getCatNodesMap = function(nodes) {
   return keyBy(nodes, 'permission')
 }
@@ -43,7 +39,6 @@ module.exports = {
   getNodesMap,
   getNodeKey,
   NODES_MAP,
-  getCatNode,
   getCatNodeKey,
   CAT_NODES_MAP,
 }
