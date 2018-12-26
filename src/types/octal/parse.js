@@ -1,7 +1,6 @@
 'use strict'
 
-const { NODES } = require('../../constants')
-const { getNodeKey } = require('../../nodes')
+const { NODES_MAP, getNodesMap } = require('../../nodes')
 const number = require('../number')
 
 const { tokenize } = require('./tokenize')
@@ -42,18 +41,19 @@ const revertAdd = function(node) {
 }
 
 const parseEqual = function({ nodes }) {
-  const addedNodes = nodes.map(getNodeKey)
+  const nodesMap = getNodesMap(nodes)
 
-  return NODES.map(node => getEqualNode({ node, addedNodes }))
+  return Object.entries(NODES_MAP).map(([nodeKey, node]) =>
+    getEqualNode({ node, nodeKey, nodesMap }),
+  )
 }
 
 const getEqualNode = function({
-  node,
   node: { category, permission },
-  addedNodes,
+  nodeKey,
+  nodesMap,
 }) {
-  const nodeKey = getNodeKey(node)
-  const add = addedNodes.includes(nodeKey)
+  const add = nodesMap[nodeKey] !== undefined
   return { category, permission, add }
 }
 
