@@ -12,6 +12,8 @@ const {
   unset,
   flip,
   invert,
+  min,
+  max,
 } = require('../localpack')
 
 test('Dummy test', t => {
@@ -29,6 +31,8 @@ test('Dummy test', t => {
     unset,
     flip,
     invert,
+    min,
+    max,
   ].forEach(
     // eslint-disable-next-line max-nested-callbacks
     func => t.is(typeof func, 'function'),
