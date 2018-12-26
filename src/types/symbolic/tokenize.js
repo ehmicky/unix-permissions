@@ -5,7 +5,10 @@ const tokenize = function(symbolic) {
     return
   }
 
-  const tokens = symbolic.split(COMMA_REGEXP).map(tokenizePart)
+  const tokens = symbolic
+    .trim()
+    .split(COMMA_REGEXP)
+    .map(tokenizePart)
 
   const isMatching = tokens.every(token => token !== undefined)
 
