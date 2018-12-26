@@ -2,19 +2,18 @@
 
 const { binaryTest } = require('../helpers')
 
-const containsTest = function(nodesMap, nodesMapA) {
-  return Object.entries(nodesMapA).every(([nodeKey, node]) =>
-    containsNode({ nodesMap, nodeKey, node }),
+const { fullMap } = require('./full')
+
+const containsTest = function(nodesMapA, nodesMapB) {
+  const nodesMapC = fullMap(nodesMapA)
+
+  return Object.entries(nodesMapB).every(([nodeKey, node]) =>
+    containsNode({ nodesMap: nodesMapC, nodeKey, node }),
   )
 }
 
 const containsNode = function({ nodesMap, nodeKey, node }) {
-  const { add } = nodesMap[nodeKey] || {}
-  return addMatch(node.add, add)
-}
-
-const addMatch = function(add, addB) {
-  return (add === true && addB === true) || (add === false && addB !== true)
+  return node.add === nodesMap[nodeKey].add
 }
 
 const contains = binaryTest.bind(null, containsTest)
