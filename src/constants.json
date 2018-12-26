@@ -1,24 +1,24 @@
 {
   "NODES": [
-    { "category": "u", "permission": "r", "value": 256 },
-    { "category": "u", "permission": "w", "value": 128 },
-    { "category": "u", "permission": "x", "value": 64 },
-    { "category": "u", "permission": "s", "value": 2048 },
-    { "category": "g", "permission": "r", "value": 32 },
-    { "category": "g", "permission": "w", "value": 16 },
-    { "category": "g", "permission": "x", "value": 8 },
-    { "category": "g", "permission": "s", "value": 1024 },
-    { "category": "o", "permission": "r", "value": 4 },
-    { "category": "o", "permission": "w", "value": 2 },
-    { "category": "o", "permission": "x", "value": 1 },
-    { "category": "o", "permission": "t", "value": 512 }
+    { "category": "u", "permission": "r" },
+    { "category": "u", "permission": "w" },
+    { "category": "u", "permission": "x" },
+    { "category": "u", "permission": "s" },
+    { "category": "g", "permission": "r" },
+    { "category": "g", "permission": "w" },
+    { "category": "g", "permission": "x" },
+    { "category": "g", "permission": "s" },
+    { "category": "o", "permission": "r" },
+    { "category": "o", "permission": "w" },
+    { "category": "o", "permission": "x" },
+    { "category": "o", "permission": "t" }
   ],
   "CAT_NODES": [
-    { "permission": "r", "value": 4 },
-    { "permission": "w", "value": 2 },
-    { "permission": "x", "value": 1 },
-    { "permission": "s", "value": 8 },
-    { "permission": "t", "value": 8 }
+    { "permission": "r" },
+    { "permission": "w" },
+    { "permission": "x" },
+    { "permission": "s" },
+    { "permission": "t" }
   ],
   "ORDER": [
     "u r",

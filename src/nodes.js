@@ -39,4 +39,5 @@ module.exports = {
   getNodesMap,
   NODES_MAP,
   getCatNode,
+  CAT_NODES_MAP,
 }

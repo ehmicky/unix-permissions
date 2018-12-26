@@ -1,17 +1,25 @@
 'use strict'
 
-const { NODES, CAT_NODES } = require('../../constants')
+const { NODES_MAP, CAT_NODES_MAP } = require('../../nodes')
 
-const { MIN_NUMBER, MAX_NUMBER, MAX_CAT_NUMBER } = require('./constants')
+const {
+  VALUES,
+  MIN_NUMBER,
+  MAX_NUMBER,
+  CAT_VALUES,
+  CAT_MAX_NUMBER,
+} = require('./constants')
 
 const name = 'number'
 
-const parseNumber = function(nodes, max, number) {
+const parseNumber = function({ nodesMap, max, values }, number) {
   if (!isValidNumber({ number, max })) {
     return
   }
 
-  return nodes.filter(node => hasNode({ number, node })).map(addAdd)
+  return Object.entries(nodesMap)
+    .filter(([nodeKey]) => hasNode({ number, nodeKey, values }))
+    .map(addAdd)
 }
 
 // We allow `stat` bitfields as input but ignore the bits related to file
@@ -20,19 +28,28 @@ const isValidNumber = function({ number, max }) {
   return Number.isInteger(number) && number >= MIN_NUMBER && number <= max
 }
 
-const hasNode = function({ number, node: { value } }) {
+const hasNode = function({ number, nodeKey, values }) {
+  const value = values[nodeKey]
   // eslint-disable-next-line no-bitwise
   return (number & value) !== 0
 }
 
 // We cannot know if unset bits mean `add: false` (must unset bits) or
 // `add: undefined` (leave bits as is), so we assume the later.
-const addAdd = function(node) {
+const addAdd = function([, node]) {
   return { ...node, add: true }
 }
 
-const parse = parseNumber.bind(null, NODES, MAX_NUMBER)
-const parseCategory = parseNumber.bind(null, CAT_NODES, MAX_CAT_NUMBER)
+const parse = parseNumber.bind(null, {
+  nodesMap: NODES_MAP,
+  max: MAX_NUMBER,
+  values: VALUES,
+})
+const parseCategory = parseNumber.bind(null, {
+  nodesMap: CAT_NODES_MAP,
+  max: CAT_MAX_NUMBER,
+  values: CAT_VALUES,
+})
 
 module.exports = {
   name,
