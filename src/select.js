@@ -1,6 +1,6 @@
 'use strict'
 
-const { LONG_CATEGORIES } = require('./constants')
+const { SHORT_CATEGORIES } = require('./constants')
 const { parse, parseCategory } = require('./parse')
 const { serialize, serializeCategory } = require('./serialize')
 const { mapValues } = require('./utils')
@@ -18,7 +18,7 @@ const deselectCategory = function(category, catPerm) {
 }
 
 const bindCategories = function(func) {
-  return mapValues(LONG_CATEGORIES, category => func.bind(null, category))
+  return mapValues(SHORT_CATEGORIES, category => func.bind(null, category))
 }
 
 const select = bindCategories(selectCategory)

@@ -1,8 +1,9 @@
 'use strict'
 
+const { LONG_CATEGORIES } = require('../../constants')
 const { groupBy, mapKeys, mapValues } = require('../../utils')
 
-const { LONG_CATEGORIES, LONG_PERMISSIONS } = require('./constants')
+const { LONG_PERMISSIONS } = require('./constants')
 
 const serialize = function(nodes) {
   const object = groupBy(nodes, 'category')

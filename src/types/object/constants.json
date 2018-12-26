@@ -1,6 +1,4 @@
 {
-  "SHORT_CATEGORIES": { "user": "u", "group": "g", "others": "o" },
-  "LONG_CATEGORIES": { "u": "user", "g": "group", "o": "others" },
   "SHORT_PERMISSIONS": {
     "read": "r",
     "write": "w",
