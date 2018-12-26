@@ -1,32 +1,32 @@
 'use strict'
 
-const { NODES, SPECIAL_PERMISSIONS } = require('../../constants')
-const { getNodeKey } = require('../../nodes')
+const { SPECIAL_PERMISSIONS } = require('../../constants')
+const { NODES_MAP, getNodesMap } = require('../../nodes')
 
 const { NO_PERMISSION } = require('./constants')
 const { contractSpecial } = require('./tokenize')
 
 const serialize = function(nodes) {
-  const addedNodes = getAddedNodes({ nodes })
+  const nodesMap = getAddedNodes({ nodes })
 
-  const stat = NODES.map(node => serializeNode({ node, addedNodes })).join('')
+  const stat = Object.entries(NODES_MAP)
+    .map(([nodeKey, node]) => serializeNode({ node, nodeKey, nodesMap }))
+    .join('')
   const statA = contractSpecial(stat)
   return statA
 }
 
 const getAddedNodes = function({ nodes }) {
-  return nodes.filter(hasAdd).map(getNodeKey)
+  const nodesA = nodes.filter(hasAdd)
+  return getNodesMap(nodesA)
 }
 
 const hasAdd = function({ add }) {
   return add
 }
 
-const serializeNode = function({ node, node: { permission }, addedNodes }) {
-  const nodeKey = getNodeKey(node)
-  const added = addedNodes.includes(nodeKey)
-
-  if (added) {
+const serializeNode = function({ node: { permission }, nodeKey, nodesMap }) {
+  if (nodesMap[nodeKey] !== undefined) {
     return permission
   }
 
