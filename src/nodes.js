@@ -13,14 +13,6 @@ const getNodePair = function(node) {
   return { [`${category} ${permission}`]: node }
 }
 
-const getNodeKey = function({ category, permission }) {
-  if (category === undefined) {
-    return permission
-  }
-
-  return `${category} ${permission}`
-}
-
 const NODES_MAP = getNodesMap(NODES)
 
 const getCatNodesMap = function(nodes) {
@@ -29,9 +21,17 @@ const getCatNodesMap = function(nodes) {
 
 const CAT_NODES_MAP = getCatNodesMap(CAT_NODES)
 
+const getNodeKey = function({ category, permission }) {
+  if (category === undefined) {
+    return permission
+  }
+
+  return `${category} ${permission}`
+}
+
 module.exports = {
   getNodesMap,
-  getNodeKey,
   NODES_MAP,
   CAT_NODES_MAP,
+  getNodeKey,
 }
