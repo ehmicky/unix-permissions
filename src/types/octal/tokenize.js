@@ -10,7 +10,7 @@ const tokenize = function(octal) {
     return {}
   }
 
-  const tokens = OCTAL_REGEXP.exec(octal)
+  const tokens = OCTAL_REGEXP.exec(octal.trim())
 
   if (tokens === null) {
     return {}
