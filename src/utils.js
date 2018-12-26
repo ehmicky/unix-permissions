@@ -3,7 +3,7 @@
 // Like lodash _.omitBy()
 const omitBy = function(object, condition) {
   const pairs = Object.entries(object)
-    .filter(([key, value]) => !condition(key, value))
+    .filter(([key, value]) => !condition(value, key))
     .map(([key, value]) => ({ [key]: value }))
   return Object.assign({}, ...pairs)
 }

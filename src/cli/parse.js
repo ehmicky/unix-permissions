@@ -17,7 +17,7 @@ const parseConfig = function({ yargs }) {
 }
 
 // Remove `yargs`-specific options, shortcuts and dash-cased
-const isInternalKey = function(key) {
+const isInternalKey = function(value, key) {
   return INTERNAL_KEYS.includes(key) || key.length === 1 || key.includes('-')
 }
 

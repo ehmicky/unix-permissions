@@ -8,7 +8,7 @@ const minMaxMap = function(values, nodesMap, nodesMapA) {
   const nodesMapB = mapValues(mergedNodes, (node, nodeKey) =>
     findNode({ values, nodesMap, nodesMapA, nodeKey }),
   )
-  const nodesMapC = omitBy(nodesMapB, (nodeKey, node) => node === undefined)
+  const nodesMapC = omitBy(nodesMapB, node => node === undefined)
   return nodesMapC
 }
 
