@@ -21,7 +21,7 @@
     { "permission": "t", "value": 8 }
   ],
   "CATEGORIES": ["u", "g", "o"],
-  "LONG_CATEGORIES": { "u": "user", "g": "group", "o": "others" },
+  "LONG_CATEGORIES": { "user": "u", "group": "g", "others": "o" },
   "PERMISSIONS": ["r", "w", "x", "t", "s"],
   "SPECIAL_PERMISSIONS": ["t", "s"],
   "PERMISSION_CATEGORIES": {

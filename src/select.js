@@ -3,6 +3,7 @@
 const { LONG_CATEGORIES } = require('./constants')
 const { parse, parseCategory } = require('./parse')
 const { serialize, serializeCategory } = require('./serialize')
+const { mapValues } = require('./utils')
 
 const selectCategory = function(category, perm) {
   const { type, nodesMap } = parse(perm)
@@ -17,12 +18,7 @@ const deselectCategory = function(category, catPerm) {
 }
 
 const bindCategories = function(func) {
-  const pairs = Object.entries(LONG_CATEGORIES).map(
-    ([category, longCategory]) => ({
-      [longCategory]: func.bind(null, category),
-    }),
-  )
-  return Object.assign({}, ...pairs)
+  return mapValues(LONG_CATEGORIES, category => func.bind(null, category))
 }
 
 const select = bindCategories(selectCategory)
