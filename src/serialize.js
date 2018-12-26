@@ -10,10 +10,10 @@ const serialize = function(type, nodesMap) {
 
 const serializeCategory = function(type, nodesMap, category) {
   const nodes = normalizeNodes({ nodesMap })
-  const nodesA = nodes
+  const catNodes = nodes
     .filter(node => node.category === category)
     .map(removeCategory)
-  const catPerm = type.serializeCategory(nodesA)
+  const catPerm = type.serializeCategory(catNodes)
   return catPerm
 }
 

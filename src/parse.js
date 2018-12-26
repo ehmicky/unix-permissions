@@ -11,9 +11,14 @@ const parse = function(perm) {
 }
 
 const parseCategory = function(perm, category) {
-  const { type, nodes } = parsePerm({ perm, funcName: 'parseCategory' })
-  const nodesA = nodes.map(node => ({ ...node, category })).filter(isValidNode)
-  const nodesMap = getNodesMap(nodesA)
+  const { type, nodes: catNodes } = parsePerm({
+    perm,
+    funcName: 'parseCategory',
+  })
+  const nodes = catNodes
+    .map(catNode => ({ ...catNode, category }))
+    .filter(isValidNode)
+  const nodesMap = getNodesMap(nodes)
   return { type, nodesMap }
 }
 
