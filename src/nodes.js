@@ -36,7 +36,6 @@ const CAT_NODES_MAP = getCatNodesMap(CAT_NODES)
 
 module.exports = {
   getNode,
-  getNodeKey,
   getNodesMap,
   NODES_MAP,
   getCatNode,
