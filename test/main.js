@@ -10,7 +10,6 @@ const {
   contains,
   set,
   unset,
-  not,
   flip,
   invert,
 } = require('../localpack')
@@ -28,7 +27,6 @@ test('Dummy test', t => {
     contains,
     set,
     unset,
-    not,
     flip,
     invert,
   ].forEach(
