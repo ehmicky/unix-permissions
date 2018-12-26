@@ -9,8 +9,8 @@ const getNodesMap = function(nodes) {
 }
 
 const getNodePair = function(node) {
-  const key = getNodeKey(node)
-  return { [key]: node }
+  const { category, permission } = node
+  return { [`${category} ${permission}`]: node }
 }
 
 const getNodeKey = function({ category, permission }) {
