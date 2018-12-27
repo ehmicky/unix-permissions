@@ -39,13 +39,6 @@
   "LONG_CATEGORIES": { "u": "user", "g": "group", "o": "others" },
   "PERMISSIONS": ["r", "w", "x", "t", "s"],
   "SPECIAL_PERMISSIONS": ["t", "s"],
-  "PERMISSION_CATEGORIES": {
-    "r": ["o", "g", "u"],
-    "w": ["o", "g", "u"],
-    "x": ["o", "g", "u"],
-    "t": ["o"],
-    "s": ["g", "u"]
-  },
   "CATEGORY_PERMISSIONS": {
     "a": ["x", "w", "r", "t", "s"],
     "u": ["x", "w", "r", "s"],

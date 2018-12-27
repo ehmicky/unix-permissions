@@ -1,13 +1,9 @@
 'use strict'
 
-const {
-  CATEGORIES,
-  PERMISSIONS,
-  PERMISSION_CATEGORIES,
-} = require('../../constants')
+const { CATEGORIES, PERMISSIONS } = require('../../constants')
 
 const { DEFAULT_OPERATOR, DEFAULT_CATEGORIES } = require('./constants')
-const { tokenize } = require('./tokenize')
+const { tokenize, tokenizeCategory } = require('./tokenize')
 
 const name = 'symbolic'
 
@@ -19,31 +15,46 @@ const parse = function(symbolic) {
   }
 
   const nodes = tokens
-    .map(addDefaults)
+    .map(addDefaultCategories)
+    .map(addDefaultOperator)
     .map(normalizeX)
     .flatMap(splitCategories)
     .flatMap(splitAll)
     .flatMap(normalizeOperator)
     .flatMap(splitPermissions)
-    .filter(filterInvalidFlag)
   return nodes
 }
 
-const addDefaults = function({ categories, operator, permissions }) {
-  return {
-    categories: ifEmpty(categories, DEFAULT_CATEGORIES),
-    operator: ifEmpty(operator, DEFAULT_OPERATOR),
-    permissions,
+const parseCategory = function(part) {
+  const node = tokenizeCategory(part)
+
+  if (node === undefined) {
+    return
   }
+
+  const nodeA = addDefaultOperator(node)
+  const nodeB = normalizeX(nodeA)
+  const nodes = normalizeOperator(nodeB).flatMap(splitPermissions)
+  return nodes
+}
+
+const addDefaultCategories = function(node) {
+  const categories = ifEmpty(node.categories, DEFAULT_CATEGORIES)
+  return { ...node, categories }
+}
+
+const addDefaultOperator = function(node) {
+  const operator = ifEmpty(node.operator, DEFAULT_OPERATOR)
+  return { ...node, operator }
 }
 
 const ifEmpty = function(string, defaultValue) {
   return string === '' ? defaultValue : string
 }
 
-const normalizeX = function({ categories, operator, permissions }) {
+const normalizeX = function({ permissions, ...node }) {
   const permissionsA = permissions.replace(X_REGEXP, 'x')
-  return { categories, operator, permissions: permissionsA }
+  return { ...node, permissions: permissionsA }
 }
 
 const X_REGEXP = /X/gu
@@ -66,37 +77,32 @@ const splitAll = function({ category, operator, permissions }) {
   }))
 }
 
-const normalizeOperator = function({ category, operator, permissions }) {
+const normalizeOperator = function({ operator, permissions, ...node }) {
   if (operator === '+') {
-    return { category, permissions, add: true }
+    return [{ ...node, permissions, add: true }]
   }
 
   if (operator === '-') {
-    return { category, permissions, add: false }
+    return [{ ...node, permissions, add: false }]
   }
 
   return PERMISSIONS.map(permission => ({
-    category,
+    ...node,
     permissions: permission,
     add: permissions.includes(permission),
   }))
 }
 
-const splitPermissions = function({ category, permissions, add }) {
+const splitPermissions = function({ permissions, add, ...node }) {
   if (permissions === '') {
     return []
   }
 
-  return permissions
-    .split('')
-    .map(permission => ({ category, permission, add }))
-}
-
-const filterInvalidFlag = function({ category, permission }) {
-  return PERMISSION_CATEGORIES[permission].includes(category)
+  return permissions.split('').map(permission => ({ ...node, permission, add }))
 }
 
 module.exports = {
   name,
   parse,
+  parseCategory,
 }
