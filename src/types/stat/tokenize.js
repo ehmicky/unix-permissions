@@ -51,6 +51,7 @@ const expandSpecial = function(part) {
   return EXPAND_REGEXPS.reduce(specialReduce, part)
 }
 
+// Array order matters. E.g. if S -> s was before s -> xs, it would not work
 const EXPAND_REGEXPS = [
   [/X/gu, 'x'],
   [/s/gu, 'xs'],
