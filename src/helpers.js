@@ -21,11 +21,11 @@ const unaryMap = function(mapFunc, perm) {
   return permA
 }
 
-const binaryMap = function(mapFunc, permA, ...perms) {
-  const { type, nodesMap } = parse(permA)
+const binaryMap = function(mapFunc, perm, ...perms) {
+  const { type, nodesMap } = parse(perm)
   const nodesMapA = perms.reduce(binaryMapReduce.bind(null, mapFunc), nodesMap)
-  const permB = serialize(type, nodesMapA)
-  return permB
+  const permA = serialize(type, nodesMapA)
+  return permA
 }
 
 const binaryMapReduce = function(mapFunc, nodesMap, perm) {
