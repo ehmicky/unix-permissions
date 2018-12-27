@@ -14,15 +14,15 @@ const USAGE = `$0 COMMAND PERMISSIONS...
 
 Convert, test and manipulate Unix permissions.`
 
-const addCommand = function(yargsA, { command, describe, usage, examples }) {
-  const builder = buildCommand.bind(null, { usage, examples })
+const addCommand = function(yargsA, { command, describe, examples }) {
+  const builder = buildCommand.bind(null, { command, describe, examples })
   const yargsB = yargsA.command({ command, describe, builder })
   const yargsC = addExamples(yargsB, examples)
   return yargsC
 }
 
-const buildCommand = function({ usage, examples }, yargsA) {
-  const yargsB = yargsA.usage(usage).strict()
+const buildCommand = function({ command, describe, examples }, yargsA) {
+  const yargsB = yargsA.usage(`$0 ${command}\n\n${describe}`).strict()
   const yargsC = addExamples(yargsB, examples)
   return yargsC
 }
@@ -32,7 +32,7 @@ const addExamples = function(yargsA, examples) {
 }
 
 const addExample = function(yargsA, [example, exampleDescription]) {
-  return yargsA.example(example, exampleDescription)
+  return yargsA.example(`$0 ${example}`, `Output: ${exampleDescription}`)
 }
 
 module.exports = {
