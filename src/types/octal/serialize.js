@@ -18,23 +18,16 @@ const serializePerm = function({ funcName, padLength }, nodes) {
 }
 
 const serializeOperator = function({ nodes }) {
-  if (nodes.length === 0) {
+  // Including empty array
+  if (!nodes.some(isRemoved)) {
     return NONE
   }
 
-  const isMinus = nodes.every(isRemoved)
-
-  if (isMinus) {
+  if (nodes.every(isRemoved)) {
     return MINUS
   }
 
-  const isEqual = nodes.some(isRemoved)
-
-  if (isEqual) {
-    return EQUAL
-  }
-
-  return NONE
+  return EQUAL
 }
 
 const isRemoved = function({ add }) {

@@ -1,10 +1,5 @@
 {
-  "OPERATORS": {
-    "PLUS": "+",
-    "MINUS": "-",
-    "EQUAL": "=",
-    "NONE": ""
-  },
+  "OPERATORS": { "PLUS": "+", "MINUS": "-", "EQUAL": "=", "NONE": "" },
   "DEFAULT_OPERATOR": "+",
   "SERIALIZE_LENGTH": 4,
   "CAT_SERIALIZE_LENGTH": 1,

@@ -10,7 +10,7 @@ const tokenize = function({ octal, funcName }) {
     return {}
   }
 
-  const tokens = OCTAL_REGEXP[funcName].exec(octal.trim())
+  const tokens = OCTAL_REGEXP[funcName].exec(octal)
 
   if (tokens === null) {
     return {}
@@ -23,8 +23,8 @@ const tokenize = function({ octal, funcName }) {
 }
 
 const OCTAL_REGEXP = {
-  parse: /^([=+-]?)\\?0?[oO]?([0-7]{1,4})$/gu,
-  parseCategory: /^([=+-]?)\\?0?[oO]?([0-7])$/gu,
+  parse: /^\s*([=+-]?)\\?0?[oO]?([0-7]{1,4})\s*$/gu,
+  parseCategory: /^\s*([=+-]?)\\?0?[oO]?([0-7])\s*$/gu,
 }
 
 const addDefaultOperator = function({ operator }) {

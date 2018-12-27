@@ -31,10 +31,10 @@ const parsePlus = function({ nodes }) {
 }
 
 const parseMinus = function({ nodes }) {
-  return nodes.map(revertAdd)
+  return nodes.map(invertAdd)
 }
 
-const revertAdd = function(node) {
+const invertAdd = function(node) {
   return { ...node, add: false }
 }
 
