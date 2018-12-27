@@ -1,15 +1,15 @@
 'use strict'
 
 const { SPECIAL_PERMISSIONS } = require('../../constants')
-const { NODES_MAP, getNodesMap } = require('../../nodes')
+const { NODES_MAP, CAT_NODES_MAP, getNodesMap } = require('../../nodes')
 
 const { NO_PERMISSION } = require('./constants')
 const { contractSpecial } = require('./tokenize')
 
-const serialize = function(nodes) {
+const serializePerm = function(nodesMap, nodes) {
   const addedNodes = getAddedNodes({ nodes })
 
-  const stat = Object.entries(NODES_MAP)
+  const stat = Object.entries(nodesMap)
     .map(([nodeKey, node]) => serializeNode({ node, nodeKey, addedNodes }))
     .join('')
   const statA = contractSpecial(stat)
@@ -37,6 +37,10 @@ const serializeNode = function({ node: { permission }, nodeKey, addedNodes }) {
   return NO_PERMISSION
 }
 
+const serialize = serializePerm.bind(null, NODES_MAP)
+const serializeCategory = serializePerm.bind(null, CAT_NODES_MAP)
+
 module.exports = {
   serialize,
+  serializeCategory,
 }
