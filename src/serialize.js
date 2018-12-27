@@ -13,7 +13,7 @@ const serializeCategory = function(type, nodesMap, category) {
   const catNodes = nodes
     .filter(node => node.category === category)
     .map(removeCategory)
-  const catPerm = type.serializeCategory(catNodes)
+  const catPerm = type.serializeCategory(catNodes, category)
   return catPerm
 }
 
