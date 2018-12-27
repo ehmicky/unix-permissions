@@ -19,7 +19,25 @@ const tokenize = function(stat) {
   return { u, g, o }
 }
 
+const tokenizeCategory = function(catStat) {
+  if (typeof catStat !== 'string') {
+    return
+  }
+
+  const tokens = CAT_STAT_REGEXP.exec(catStat)
+
+  if (tokens === null) {
+    return
+  }
+
+  const [, part] = tokens
+  const partA = removeDashes(part)
+  const partB = expandSpecial(partA)
+  return partB
+}
+
 const STAT_REGEXP = /^\s*[-dlpscbD]?\s*([-rwxXsS]{3})\s*([-rwxXsS]{3})\s*([-rwxXtT]{3})\s*$/u
+const CAT_STAT_REGEXP = /^\s*[-dlpscbD]?\s*([-rwxXsStT]{3})\s*$/u
 
 // We cannot know if `-` means `add: false` (must unset bits) or
 // `add: undefined` (leave bits as is), so we assume the later.
@@ -58,5 +76,6 @@ const specialReduce = function(part, [regexp, chars]) {
 
 module.exports = {
   tokenize,
+  tokenizeCategory,
   contractSpecial,
 }

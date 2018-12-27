@@ -2,7 +2,7 @@
 
 const { CATEGORIES } = require('../../constants')
 
-const { tokenize } = require('./tokenize')
+const { tokenize, tokenizeCategory } = require('./tokenize')
 
 const name = 'stat'
 
@@ -15,7 +15,18 @@ const parse = function(stat) {
 
   const nodes = CATEGORIES.map(category =>
     getCategory({ category, tokens }),
-  ).flatMap(addPermissions)
+  ).flatMap(parseNode)
+  return nodes
+}
+
+const parseCategory = function(catStat) {
+  const part = tokenizeCategory(catStat)
+
+  if (part === undefined || hasDuplicate(part)) {
+    return
+  }
+
+  const nodes = addPermissions({ part })
   return nodes
 }
 
@@ -32,16 +43,25 @@ const isDuplicate = function(char, index, chars) {
 }
 
 const getCategory = function({ category, tokens }) {
-  return { category, tokens: tokens[category] }
+  return { category, part: tokens[category] }
 }
 
-const addPermissions = function({ category, tokens }) {
-  return tokens
-    .split('')
-    .map(permission => ({ category, permission, add: true }))
+const parseNode = function({ category, part }) {
+  const nodes = addPermissions({ part })
+  const nodesA = nodes.map(node => ({ ...node, category }))
+  return nodesA
+}
+
+const addPermissions = function({ part }) {
+  return part.split('').map(addPermission)
+}
+
+const addPermission = function(permission) {
+  return { permission, add: true }
 }
 
 module.exports = {
   name,
   parse,
+  parseCategory,
 }
