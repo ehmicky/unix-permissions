@@ -14,6 +14,7 @@ const parseCategory = function(perm, category) {
   const { type, nodes: catNodes } = parsePerm({
     perm,
     funcName: 'parseCategory',
+    category,
   })
   const nodes = catNodes.map(catNode => ({ ...catNode, category }))
   const nodesMap = getNodesMap(nodes)
@@ -26,9 +27,9 @@ const isInvalidNode = function(node, nodeKey) {
   return NODES_MAP[nodeKey] === undefined
 }
 
-const parsePerm = function({ perm, funcName }) {
+const parsePerm = function({ perm, funcName, category }) {
   const { type: typeA, nodes } = TYPES.reduce(
-    (memo, type) => parseReduce({ memo, type, perm, funcName }),
+    (memo, type) => parseReduce({ memo, type, perm, funcName, category }),
     {},
   )
 
@@ -37,12 +38,12 @@ const parsePerm = function({ perm, funcName }) {
   return { type: typeA, nodes }
 }
 
-const parseReduce = function({ memo, type, perm, funcName }) {
+const parseReduce = function({ memo, type, perm, funcName, category }) {
   if (memo.nodes !== undefined) {
     return memo
   }
 
-  const nodes = type[funcName](perm)
+  const nodes = type[funcName](perm, category)
   return { type, nodes }
 }
 

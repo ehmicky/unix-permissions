@@ -21,6 +21,15 @@ const parse = function(object) {
   return nodes
 }
 
+const parseCategory = function(permissions, category) {
+  if (!isPlainObject(permissions)) {
+    return
+  }
+
+  const catNodes = getPermissions({ category, permissions })
+  return catNodes
+}
+
 const parsePermissions = function([category, permissions]) {
   const categoryA = SHORT_CATEGORIES[category]
 
@@ -28,11 +37,13 @@ const parsePermissions = function([category, permissions]) {
     return
   }
 
+  return getPermissions({ category, permissions })
+}
+
+const getPermissions = function({ category, permissions }) {
   return Object.entries(permissions)
     .filter(hasDefinedValue)
-    .map(([permission, add]) =>
-      parsePermission({ permission, add, category: categoryA }),
-    )
+    .map(([permission, add]) => parsePermission({ permission, add, category }))
 }
 
 const hasDefinedValue = function([, value]) {
@@ -66,4 +77,5 @@ const validateNode = function(node) {
 module.exports = {
   name,
   parse,
+  parseCategory,
 }
