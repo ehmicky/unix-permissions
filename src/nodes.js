@@ -1,7 +1,16 @@
 'use strict'
 
 const { NODES, CAT_NODES } = require('./constants')
-const { keyBy } = require('./utils')
+
+const getNodesMap = function(nodes) {
+  const pairs = nodes.map(getNodePair)
+  return Object.assign({}, ...pairs)
+}
+
+const getNodePair = function(node) {
+  const nodeKey = getNodeKey(node)
+  return { [nodeKey]: node }
+}
 
 const getNodeKey = function({ category, permission }) {
   if (category === undefined) {
@@ -11,22 +20,8 @@ const getNodeKey = function({ category, permission }) {
   return `${category} ${permission}`
 }
 
-const getNodesMap = function(nodes) {
-  const pairs = nodes.map(getNodePair)
-  return Object.assign({}, ...pairs)
-}
-
-const getNodePair = function(node) {
-  return { [getNodeKey(node)]: node }
-}
-
 const NODES_MAP = getNodesMap(NODES)
-
-const getCatNodesMap = function(nodes) {
-  return keyBy(nodes, 'permission')
-}
-
-const CAT_NODES_MAP = getCatNodesMap(CAT_NODES)
+const CAT_NODES_MAP = getNodesMap(CAT_NODES)
 
 module.exports = {
   getNodeKey,
