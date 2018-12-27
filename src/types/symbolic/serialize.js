@@ -12,7 +12,7 @@ const { joinCategories } = require('./join')
 
 const serialize = function(nodes) {
   // Noop symbolic format.
-  // Empty string is possible as well on intput, but this is clearer in output.
+  // Empty string is possible as well on input, but this is clearer in output.
   if (nodes.length === 0) {
     return DEFAULT_SERIALIZE
   }
