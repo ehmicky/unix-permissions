@@ -5,12 +5,12 @@ const {
   OPERATORS: { NONE },
 } = require('./constants')
 
-const tokenize = function(octal) {
+const tokenize = function({ octal, funcName }) {
   if (typeof octal !== 'string') {
     return {}
   }
 
-  const tokens = OCTAL_REGEXP.exec(octal.trim())
+  const tokens = OCTAL_REGEXP[funcName].exec(octal.trim())
 
   if (tokens === null) {
     return {}
@@ -22,7 +22,10 @@ const tokenize = function(octal) {
   return { operator: operatorA, string }
 }
 
-const OCTAL_REGEXP = /^([=+-]?)\\?0?[oO]?([0-7]{1,4})$/gu
+const OCTAL_REGEXP = {
+  parse: /^([=+-]?)\\?0?[oO]?([0-7]{1,4})$/gu,
+  parseCategory: /^([=+-]?)\\?0?[oO]?([0-7])$/gu,
+}
 
 const addDefaultOperator = function({ operator }) {
   if (operator === NONE) {

@@ -12,7 +12,7 @@ const {
 const name = 'octal'
 
 const parsePerm = function(funcName, octal) {
-  const { operator, string } = tokenize(octal)
+  const { operator, string } = tokenize({ octal, funcName })
 
   if (string === undefined) {
     return
@@ -20,11 +20,6 @@ const parsePerm = function(funcName, octal) {
 
   const integer = octalToDecimal(string)
   const nodes = number[funcName](integer)
-
-  if (nodes === undefined) {
-    return
-  }
-
   const nodesA = parseOperator[operator]({ nodes })
   return nodesA
 }
