@@ -2,7 +2,7 @@
 
 const { exit } = require('process')
 
-const validatePath = require('..')
+const unixPermissions = require('..')
 
 const { defineCli } = require('./top')
 const { parseConfig } = require('./parse')
@@ -11,10 +11,10 @@ const { parseConfig } = require('./parse')
 const runCli = async function() {
   try {
     const yargs = defineCli()
-    const { paths, ...config } = parseConfig({ yargs })
-    const pathsA = await validatePath(paths, config)
+    const { command, args } = parseConfig({ yargs })
+    const output = await unixPermissions[command](...args)
     // eslint-disable-next-line no-console, no-restricted-globals
-    console.log(pathsA.join('\n'))
+    console.log(output)
   } catch (error) {
     runCliHandler(error)
   }

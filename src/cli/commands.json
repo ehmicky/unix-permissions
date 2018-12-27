@@ -1,0 +1,14 @@
+[
+  {
+    "command": "min permission [permissions...]",
+    "describe": "Returns the smallest permissions",
+    "usage": "$0 min PERMISSIONS...\n\nReturns the smallest permissions.",
+    "examples": [["$0 min 744 005", "Returns 0004"]]
+  },
+  {
+    "command": "max permission [permissions...]",
+    "describe": "Returns the highest permissions",
+    "usage": "$0 max PERMISSIONS...\n\nReturns the highest permissions.",
+    "examples": [["$0 max 744 005", "Returns 0745"]]
+  }
+]
