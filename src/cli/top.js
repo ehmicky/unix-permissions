@@ -32,7 +32,7 @@ const addExamples = function(yargsA, examples) {
 }
 
 const addExample = function(yargsA, [example, exampleDescription]) {
-  return yargsA.example(`$0 ${example}`, `Output: ${exampleDescription}`)
+  return yargsA.example(`$0 ${example}`, exampleDescription)
 }
 
 module.exports = {

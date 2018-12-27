@@ -13,11 +13,23 @@ const runCli = async function() {
     const yargs = defineCli()
     const { command, args } = parseConfig({ yargs })
     const output = await unixPermissions[command](...args)
-    // eslint-disable-next-line no-console, no-restricted-globals
-    console.log(output)
+    handleOutput({ output })
   } catch (error) {
     runCliHandler(error)
   }
+}
+
+const handleOutput = function({ output }) {
+  if (output === true) {
+    exit()
+  }
+
+  if (output === false) {
+    exit(1)
+  }
+
+  // eslint-disable-next-line no-console, no-restricted-globals
+  console.log(output)
 }
 
 // If an error is thrown, print error's description, then exit with exit code 1
