@@ -2,7 +2,7 @@
 
 const { exit } = require('process')
 
-const validatePath = require('../convert')
+const validatePath = require('..')
 
 const { defineCli } = require('./top')
 const { parseConfig } = require('./parse')
