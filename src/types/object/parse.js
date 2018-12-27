@@ -37,7 +37,7 @@ const parsePermissions = function([category, permissions]) {
     return
   }
 
-  return getPermissions({ category, permissions })
+  return getPermissions({ category: categoryA, permissions })
 }
 
 const getPermissions = function({ category, permissions }) {

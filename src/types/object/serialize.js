@@ -7,12 +7,17 @@ const { LONG_PERMISSIONS } = require('./constants')
 
 const serialize = function(nodes) {
   const object = groupBy(nodes, 'category')
-  const objectA = mapKeys(object, serializeCategory)
+  const objectA = mapKeys(object, renameCategory)
   const objectB = mapValues(objectA, serializePart)
   return objectB
 }
 
-const serializeCategory = function(value, key) {
+const serializeCategory = function(catNodes, category) {
+  const categoryA = LONG_CATEGORIES[category]
+  return serializePart(catNodes, categoryA)
+}
+
+const renameCategory = function(value, key) {
   return LONG_CATEGORIES[key]
 }
 
@@ -31,4 +36,5 @@ const serializePermission = function({ category, permission, add }) {
 
 module.exports = {
   serialize,
+  serializeCategory,
 }
