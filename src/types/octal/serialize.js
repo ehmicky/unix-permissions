@@ -5,13 +5,14 @@ const number = require('../number')
 const {
   OCTAL_BASE,
   SERIALIZE_LENGTH,
+  CAT_SERIALIZE_LENGTH,
   SERIALIZE_PAD,
   OPERATORS: { MINUS, EQUAL, NONE },
 } = require('./constants')
 
-const serialize = function(nodes) {
+const serializePerm = function({ funcName, padLength }, nodes) {
   const operator = serializeOperator({ nodes })
-  const string = serializeInteger({ operator, nodes })
+  const string = serializeInteger({ operator, nodes, funcName, padLength })
   const octal = `${operator}${string}`
   return octal
 }
@@ -40,12 +41,10 @@ const isRemoved = function({ add }) {
   return !add
 }
 
-const serializeInteger = function({ operator, nodes }) {
+const serializeInteger = function({ operator, nodes, funcName, padLength }) {
   const nodesA = serializeMinus({ operator, nodes })
-  const integer = number.serialize(nodesA)
-  const string = integer
-    .toString(OCTAL_BASE)
-    .padStart(SERIALIZE_LENGTH, SERIALIZE_PAD)
+  const integer = number[funcName](nodesA)
+  const string = integer.toString(OCTAL_BASE).padStart(padLength, SERIALIZE_PAD)
   return string
 }
 
@@ -57,6 +56,16 @@ const serializeMinus = function({ operator, nodes }) {
   return nodes.map(node => ({ ...node, add: true }))
 }
 
+const serialize = serializePerm.bind(null, {
+  funcName: 'serialize',
+  padLength: SERIALIZE_LENGTH,
+})
+const serializeCategory = serializePerm.bind(null, {
+  funcName: 'serializeCategory',
+  padLength: CAT_SERIALIZE_LENGTH,
+})
+
 module.exports = {
   serialize,
+  serializeCategory,
 }
