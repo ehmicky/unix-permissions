@@ -8,7 +8,7 @@ const getConverters = function() {
   return mapValues(TYPES_MAP, getConverter)
 }
 
-const getConverter = function({ name }) {
+const getConverter = function(type, name) {
   return convert.bind(null, name)
 }
 

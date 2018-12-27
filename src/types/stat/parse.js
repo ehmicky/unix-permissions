@@ -4,8 +4,6 @@ const { CATEGORIES } = require('../../constants')
 
 const { tokenize, tokenizeCategory } = require('./tokenize')
 
-const name = 'stat'
-
 const parse = function(stat) {
   const tokens = tokenize(stat)
 
@@ -61,7 +59,6 @@ const addPermission = function(permission) {
 }
 
 module.exports = {
-  name,
   parse,
   parseCategory,
 }

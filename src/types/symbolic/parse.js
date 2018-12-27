@@ -5,8 +5,6 @@ const { CATEGORIES, PERMISSIONS } = require('../../constants')
 const { DEFAULT_OPERATOR, DEFAULT_CATEGORIES } = require('./constants')
 const { tokenize, tokenizeCategory } = require('./tokenize')
 
-const name = 'symbolic'
-
 const parse = function(symbolic) {
   const tokens = tokenize(symbolic)
 
@@ -102,7 +100,6 @@ const splitPermissions = function({ permissions, add, ...node }) {
 }
 
 module.exports = {
-  name,
   parse,
   parseCategory,
 }

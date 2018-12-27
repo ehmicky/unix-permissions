@@ -10,8 +10,6 @@ const {
   CAT_MAX_NUMBER,
 } = require('./constants')
 
-const name = 'number'
-
 const parseNumber = function({ nodesMap, max, values }, number) {
   if (!isValidNumber({ number, max })) {
     return
@@ -52,7 +50,6 @@ const parseCategory = parseNumber.bind(null, {
 })
 
 module.exports = {
-  name,
   parse,
   parseCategory,
 }

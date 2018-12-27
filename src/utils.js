@@ -8,12 +8,6 @@ const omitBy = function(object, condition) {
   return Object.assign({}, ...pairs)
 }
 
-// Similar to lodash _.keyBy()
-const keyBy = function(array, attr) {
-  const pairs = array.map(object => ({ [object[attr]]: object }))
-  return Object.assign({}, ...pairs)
-}
-
 // Like lodash _.mapValues()
 const mapValues = function(object, mapper) {
   const pairs = Object.entries(object).map(([key, value]) => ({
@@ -54,7 +48,6 @@ const groupByReducer = function(key, groups, obj) {
 
 module.exports = {
   omitBy,
-  keyBy,
   mapValues,
   mapKeys,
   isPlainObject,

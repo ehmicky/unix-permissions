@@ -5,8 +5,6 @@ const { SHORT_CATEGORIES, CATEGORY_PERMISSIONS } = require('../../constants')
 
 const { SHORT_PERMISSIONS } = require('./constants')
 
-const name = 'object'
-
 const parse = function(object) {
   if (!isPlainObject(object)) {
     return
@@ -75,7 +73,6 @@ const validateNode = function(node) {
 }
 
 module.exports = {
-  name,
   parse,
   parseCategory,
 }

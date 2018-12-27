@@ -9,8 +9,6 @@ const {
   OPERATORS: { PLUS, MINUS, EQUAL },
 } = require('./constants')
 
-const name = 'octal'
-
 const parsePerm = function(funcName, octal) {
   const { operator, string } = tokenize({ octal, funcName })
 
@@ -67,7 +65,6 @@ const parse = parsePerm.bind(null, 'parse')
 const parseCategory = parsePerm.bind(null, 'parseCategory')
 
 module.exports = {
-  name,
   parse,
   parseCategory,
 }
