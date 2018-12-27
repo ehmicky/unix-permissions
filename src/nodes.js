@@ -24,8 +24,8 @@ const NODES_MAP = getNodesMap(NODES)
 const CAT_NODES_MAP = getNodesMap(CAT_NODES)
 
 module.exports = {
-  getNodeKey,
   getNodesMap,
+  getNodeKey,
   NODES_MAP,
   CAT_NODES_MAP,
 }

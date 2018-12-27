@@ -22,11 +22,6 @@ const parseCategory = function(perm, category) {
   return { type, nodesMap: nodesMapA }
 }
 
-// Exclude special flags not valid for current category
-const isInvalidNode = function(node, nodeKey) {
-  return NODES_MAP[nodeKey] === undefined
-}
-
 const parsePerm = function({ perm, funcName, category }) {
   const { type: typeA, nodes } = TYPES.reduce(
     (memo, type) => parseReduce({ memo, type, perm, funcName, category }),
@@ -54,6 +49,11 @@ const validateNodes = function({ nodes, perm }) {
 
   const permA = isPlainObject(perm) ? JSON.stringify(perm) : perm
   throw new Error(`Permissions syntax is invalid: ${permA}`)
+}
+
+// Exclude special flags not valid for current category
+const isInvalidNode = function(node, nodeKey) {
+  return NODES_MAP[nodeKey] === undefined
 }
 
 module.exports = {
