@@ -2,6 +2,7 @@
 
 const { mapValues } = require('../utils')
 
+// Similar to invert() except keep omitted permissions as is.
 // We do not export not() because:
 //  - on types that do not support `add:false` like `stat` or `number`, it
 //    would always result in 0, which is confusing.
