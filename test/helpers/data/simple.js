@@ -1,6 +1,6 @@
 'use strict'
 
-const FLIP_DATA = [
+const SIMPLE_DATA = [
   // Each permission
   'o+x',
   'o+w',
@@ -37,5 +37,5 @@ const FLIP_DATA = [
 ]
 
 module.exports = {
-  FLIP_DATA,
+  SIMPLE_DATA,
 }
