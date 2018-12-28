@@ -11,6 +11,8 @@ const convert = function(typeName, perm) {
   return permA
 }
 
+// Transform a mapping function `(nodes) -> nodes` to a mapping function
+// `(perm) -> perm`
 const unaryMap = function(mapFunc, perm) {
   const { type, nodesMap } = parse(perm)
   const nodesMapA = mapFunc(nodesMap)
@@ -18,6 +20,8 @@ const unaryMap = function(mapFunc, perm) {
   return permA
 }
 
+// Transform a mapping function `(nodesA, nodesB) -> nodesC` to a
+// mapping function `(permA, permB[, ...perms]) -> perm`
 const binaryMap = function(mapFunc, perm, ...perms) {
   const { type, nodesMap } = parse(perm)
   const nodesMapA = perms.reduce(binaryMapReduce.bind(null, mapFunc), nodesMap)
@@ -31,6 +35,7 @@ const binaryMapReduce = function(mapFunc, nodesMap, perm) {
   return nodesMapB
 }
 
+// Same but allows 0 or 1 arguments
 const variableMap = function(mapFunc, perm, ...perms) {
   if (perm === undefined) {
     return
@@ -39,6 +44,8 @@ const variableMap = function(mapFunc, perm, ...perms) {
   return binaryMap(mapFunc, perm, ...perms)
 }
 
+// Transform a test function `(nodesA, nodesB) -> boolean` to a
+// test function `(permA, permB[, ...perms]) -> boolean`
 const binaryTest = function(testFunc, permA, ...perms) {
   const { nodesMap } = parse(permA)
   return perms.every(permB => binaryTestEach(testFunc, nodesMap, permB))
