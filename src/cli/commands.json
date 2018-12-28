@@ -1,5 +1,30 @@
 [
   {
+    "command": "number <permission>",
+    "describe": "Convert permission to a decimal number.",
+    "examples": [["number 422", "Output: 274"]]
+  },
+  {
+    "command": "octal <permission>",
+    "describe": "Convert permission to an octal number.",
+    "examples": [["octal u+r,go+w", "Output: 0422"]]
+  },
+  {
+    "command": "symbolic <permission>",
+    "describe": "Convert permission to a symbolic shape similar to chmod input.",
+    "examples": [["symbolic 422", "Output: u+r,go+w"]]
+  },
+  {
+    "command": "stat <permission>",
+    "describe": "Convert permission to a shape similar to stat output.",
+    "examples": [["stat 422", "Output: r---w--w-"]]
+  },
+  {
+    "command": "object <permission>",
+    "describe": "Convert permission to an object.",
+    "examples": [["object 422", "Output: r---w--w-"]]
+  },
+  {
     "command": "set permission <permissions...>",
     "describe": "Set permissions.",
     "examples": [["set a=w a+r", "Output: a=rw"]]

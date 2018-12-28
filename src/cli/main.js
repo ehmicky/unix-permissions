@@ -12,11 +12,16 @@ const runCli = async function() {
   try {
     const yargs = defineCli()
     const { command, args } = parseConfig({ yargs })
-    const output = await unixPermissions[command](...args)
+    const commandA = getCommand({ command })
+    const output = await commandA(...args)
     handleOutput({ output })
   } catch (error) {
     runCliHandler(error)
   }
+}
+
+const getCommand = function({ command }) {
+  return unixPermissions.convert[command] || unixPermissions[command]
 }
 
 const handleOutput = function({ output }) {
@@ -28,8 +33,10 @@ const handleOutput = function({ output }) {
     exit(1)
   }
 
+  const outputA = typeof output === 'string' ? output : JSON.stringify(output)
+
   // eslint-disable-next-line no-console, no-restricted-globals
-  console.log(output)
+  console.log(outputA)
 }
 
 // If an error is thrown, print error's description, then exit with exit code 1
