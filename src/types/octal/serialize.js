@@ -55,6 +55,7 @@ const serializeMinus = function({ operator, nodes }) {
   return nodes.map(node => ({ ...node, add: true }))
 }
 
+// `serializeCategory()` uses same logic but with other numberical values
 const serialize = serializePerm.bind(null, {
   funcName: 'serialize',
   padLength: SERIALIZE_LENGTH,

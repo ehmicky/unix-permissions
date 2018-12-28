@@ -13,6 +13,7 @@ const serialize = function(nodes) {
   return objectB
 }
 
+// `serializeCategory()` uses same logic except the category-related one.
 const serializeCategory = function(catNodes, category) {
   const categoryA = LONG_CATEGORIES[category]
   return serializePart(catNodes, categoryA)

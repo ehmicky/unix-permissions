@@ -28,6 +28,9 @@ const serialize = function(nodes) {
   return perm
 }
 
+// `serializeCategory()` uses same logic but:
+//   - uses a different default value
+//   - does not iterate over categories nor join or serialize them
 const serializeCategory = function(nodes, category) {
   if (nodes.length === 0) {
     return DEFAULT_CAT_SERIALIZE

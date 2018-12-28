@@ -20,6 +20,7 @@ const sum = function(memo, number) {
   return memo + number
 }
 
+// `serializeCategory()` uses same logic but with other numberical values
 const serialize = serializeNodes.bind(null, VALUES)
 const serializeCategory = serializeNodes.bind(null, CAT_VALUES)
 

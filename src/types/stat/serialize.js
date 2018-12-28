@@ -42,6 +42,7 @@ const serializeNode = function({ node: { permission }, nodeKey, addedNodes }) {
   return NO_PERMISSION
 }
 
+// `serializeCategory()` uses same logic but with other `NODES_MAP`
 const serialize = serializePerm.bind(null, NODES_MAP)
 const serializeCategory = serializePerm.bind(null, CAT_NODES_MAP)
 
