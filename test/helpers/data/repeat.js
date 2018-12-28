@@ -1,15 +1,26 @@
 'use strict'
 
-const { convert } = require('../../../localpack')
+const { convert, select } = require('../../../localpack')
 
-// Add `type` to test data where types come from data
+// Iterate data over any `category`
+const forEachCategory = function(data) {
+  return Object.keys(select).flatMap(category =>
+    addCategory({ data, category }),
+  )
+}
+
+const addCategory = function({ data, category }) {
+  return data.map(datum => ({ ...datum, category }))
+}
+
+// Iterate data over `type`, where `type` comes from data
 const forEachDataType = function(allData) {
   return Object.entries(allData).flatMap(([type, data]) =>
     addType({ data, type }),
   )
 }
 
-// Add `type` to test data where types do not come from data
+// Iterate data over any `type`
 const forEachType = function(data) {
   return Object.entries(convert).flatMap(([type, func]) =>
     addType({ data, type, func }),
@@ -35,6 +46,7 @@ const stringify = function(value) {
 }
 
 module.exports = {
+  forEachCategory,
   forEachDataType,
   forEachType,
 }
