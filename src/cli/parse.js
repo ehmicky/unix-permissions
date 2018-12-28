@@ -8,8 +8,12 @@ const parseConfig = function({ yargs }) {
     permissions = [],
   } = yargs.parse()
 
-  const args = [permission, ...permissions].filter(Boolean).map(String)
+  const args = [permission, ...permissions].filter(isDefined).map(String)
   return { command, args }
+}
+
+const isDefined = function(value) {
+  return value !== undefined
 }
 
 module.exports = {
