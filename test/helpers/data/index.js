@@ -7,4 +7,5 @@ module.exports = {
   ...require('./deselect'),
   ...require('./simple'),
   ...require('./partial'),
+  ...require('./min_max'),
 }
