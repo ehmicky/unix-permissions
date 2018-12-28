@@ -39,10 +39,7 @@ const variableMap = function(mapFunc, perm, ...perms) {
     return
   }
 
-  const { type, nodesMap } = parse(perm)
-  const nodesMapA = perms.reduce(binaryMapReduce.bind(null, mapFunc), nodesMap)
-  const permA = serialize(type, nodesMapA)
-  return permA
+  return binaryMap(mapFunc, perm, ...perms)
 }
 
 const binaryTest = function(testFunc, permA, ...perms) {
