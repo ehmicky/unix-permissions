@@ -5,4 +5,5 @@ module.exports = {
   ...require('./serialize'),
   ...require('./select'),
   ...require('./deselect'),
+  ...require('./flip'),
 }
