@@ -1,6 +1,6 @@
 'use strict'
 
-const { forEachType } = require('./types')
+const { forEachType } = require('./repeat')
 
 const SERIALIZE_DATA = forEachType([
   // Each permission

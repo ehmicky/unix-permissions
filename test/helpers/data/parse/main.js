@@ -1,6 +1,6 @@
 'use strict'
 
-const { forEachDataType } = require('../types')
+const { forEachDataType } = require('../repeat')
 
 const octal = require('./octal')
 const number = require('./number')
