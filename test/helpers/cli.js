@@ -44,7 +44,7 @@ const escapeArg = function(arg) {
 
 const normalizeOutput = function({ output, error }) {
   if (typeof output === 'boolean') {
-    return { output: '', error: output }
+    return { output: '', error: !output }
   }
 
   const outputA = serializeOutput({ output })
