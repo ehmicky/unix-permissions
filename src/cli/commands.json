@@ -5,6 +5,16 @@
     "examples": [["contains 744 005", "Exit code: 1"]]
   },
   {
+    "command": "full <permission>",
+    "describe": "Transform a partial permission into a full one.",
+    "examples": [["full a+rw", "Output: a=rw"]]
+  },
+  {
+    "command": "partial <permission>",
+    "describe": "Transform a full permission into a partial one.",
+    "examples": [["partial a=rw", "Output: a+rw"]]
+  },
+  {
     "command": "invert <permission>",
     "describe": "Invert the permission, except the special flags",
     "examples": [["invert 744", "Output: =0033"]]
