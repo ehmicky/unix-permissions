@@ -1,6 +1,6 @@
 'use strict'
 
-const { NODES_MAP, getNodesMap } = require('../../nodes')
+const { NODES_MAP, CAT_NODES_MAP, getNodesMap } = require('../../nodes')
 const number = require('../number')
 
 const { tokenize } = require('./tokenize')
@@ -10,7 +10,7 @@ const {
 } = require('./constants')
 
 // Parse an `octal` permission to `nodes`
-const parsePerm = function(funcName, octal) {
+const parsePerm = function({ funcName, nodesMap }, octal) {
   const { operator, string } = tokenize({ octal, funcName })
 
   if (string === undefined) {
@@ -21,7 +21,7 @@ const parsePerm = function(funcName, octal) {
   // Re-use `number` parsing logic
   const nodes = number[funcName](integer)
   // Each operator has its own logic
-  const nodesA = parseOperator[operator]({ nodes })
+  const nodesA = parseOperator[operator]({ nodes, nodesMap })
   return nodesA
 }
 
@@ -43,10 +43,10 @@ const invertAdd = function(node) {
 }
 
 // =octal means that some permissions are +, others -
-const parseEqual = function({ nodes }) {
+const parseEqual = function({ nodes, nodesMap: allNodesMap }) {
   const nodesMap = getNodesMap(nodes)
 
-  return Object.entries(NODES_MAP).map(([nodeKey, node]) =>
+  return Object.entries(allNodesMap).map(([nodeKey, node]) =>
     getEqualNode({ node, nodeKey, nodesMap }),
   )
 }
@@ -66,8 +66,11 @@ const parseOperator = {
   [EQUAL]: parseEqual,
 }
 
-const parse = parsePerm.bind(null, 'parse')
-const parseCategory = parsePerm.bind(null, 'parseCategory')
+const parse = parsePerm.bind(null, { funcName: 'parse', nodesMap: NODES_MAP })
+const parseCategory = parsePerm.bind(null, {
+  funcName: 'parseCategory',
+  nodesMap: CAT_NODES_MAP,
+})
 
 module.exports = {
   parse,

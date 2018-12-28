@@ -29,7 +29,7 @@ const OCTAL_REGEXP = {
   // Can be prefixed with a backslash, a leading 0 and/or an `o`
   // Can be prefixed with an operator = - or +, e.g. `=544`
   parse: /^\s*([=+-]?)\\?0?[oO]?([0-7]{1,4})\s*$/u,
-  parseCategory: /^\s*([=+-]?)\\?0?[oO]?([0-7])\s*$/u,
+  parseCategory: /^\s*([=+-]?)\\?0?[oO]?([01]?[0-7])\s*$/u,
 }
 
 // '022' is same as '+022' (to match chmod behavior)
