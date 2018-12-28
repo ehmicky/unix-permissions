@@ -5,6 +5,8 @@ const { getNodesMap, NODES_MAP } = require('./nodes')
 const { isPlainObject, omitBy } = require('./utils')
 
 // Parse permission to a `nodesMap`
+// `nodesMap` uses an intermediary/internal format to facilitate conversions
+// between types.
 // Guesses permission type by trying each `type.parse()` in order, and using
 // the first one that does not return `undefined`
 const parse = function(perm) {
