@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-  ...require('./get'),
+  ...require('./type'),
   ...require('./converters'),
   ...require('./functions'),
   ...require('./select'),

@@ -3,7 +3,7 @@
 const test = require('ava')
 
 const {
-  getType,
+  type,
   convert: { symbolic, number, stat, octal, object },
   normalize,
   full,
@@ -21,7 +21,7 @@ const {
 
 test('Dummy test', t => {
   ;[
-    getType,
+    type,
     symbolic,
     number,
     stat,

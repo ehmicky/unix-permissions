@@ -11,18 +11,23 @@
   },
   {
     "command": "symbolic <permission>",
-    "describe": "Convert permission to a symbolic shape similar to chmod input.",
+    "describe": "Convert permission to a symbolic type similar to chmod input.",
     "examples": [["symbolic 422", "Output: u+r,go+w"]]
   },
   {
     "command": "stat <permission>",
-    "describe": "Convert permission to a shape similar to stat output.",
+    "describe": "Convert permission to a type similar to stat output.",
     "examples": [["stat 422", "Output: r---w--w-"]]
   },
   {
     "command": "object <permission>",
     "describe": "Convert permission to an object.",
     "examples": [["object 422", "Output: r---w--w-"]]
+  },
+  {
+    "command": "type <permission>",
+    "describe": "Get the permission type.",
+    "examples": [["type 422", "Output: octal"]]
   },
   {
     "command": "set permission <permissions...>",
