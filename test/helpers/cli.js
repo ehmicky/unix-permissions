@@ -13,8 +13,10 @@ const testCli = async function({ t, output, error, command, args }) {
 
   const { stdout, stderr, code } = await fireBinary(command, ...args)
 
-  checkNonError({ t, output, error, code, stdout, stderr })
-  checkError({ t, output, error, code, stdout, stderr })
+  const outputA = serializeOutput({ output })
+
+  checkNonError({ t, output: outputA, error, code, stdout, stderr })
+  checkError({ t, output: outputA, error, code, stdout, stderr })
 }
 
 // Ignore argument if it is not parsable by CLI
@@ -38,6 +40,14 @@ const fireBinary = async function(command, ...args) {
 
 const escapeArg = function(arg) {
   return String(arg).replace(/\s/gu, '\\$&')
+}
+
+const serializeOutput = function({ output }) {
+  if (typeof output === 'string') {
+    return output
+  }
+
+  return JSON.stringify(output)
 }
 
 // Assertion checks if the error did not throw
