@@ -2,10 +2,10 @@
 
 const { exit } = require('process')
 
-const unixPermissions = require('..')
-
 const { defineCli } = require('./top')
 const { parseConfig } = require('./parse')
+const { getCommand } = require('./command')
+const { handleOutput } = require('./output')
 
 // Parse CLI arguments then run tasks
 const runCli = async function() {
@@ -18,30 +18,6 @@ const runCli = async function() {
   } catch (error) {
     runCliHandler(error)
   }
-}
-
-const getCommand = function({ command }) {
-  if (!command.includes('.')) {
-    return unixPermissions[command]
-  }
-
-  const [namespace, commandA] = command.split('.')
-  return unixPermissions[namespace][commandA]
-}
-
-const handleOutput = function({ output }) {
-  if (output === true) {
-    exit()
-  }
-
-  if (output === false) {
-    exit(1)
-  }
-
-  const outputA = typeof output === 'string' ? output : JSON.stringify(output)
-
-  // eslint-disable-next-line no-console, no-restricted-globals
-  console.log(outputA)
 }
 
 // If an error is thrown, print error's description, then exit with exit code 1
