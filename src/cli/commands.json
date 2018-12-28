@@ -1,16 +1,26 @@
 [
   {
+    "command": "set permission <permissions...>",
+    "describe": "Set permissions.",
+    "examples": [["set a=w a+r", "Output: a=rw"]]
+  },
+  {
+    "command": "unset permission <permissions...>",
+    "describe": "Unset permissions.",
+    "examples": [["unset a=wr a+r", "Output: a=w"]]
+  },
+  {
+    "command": "contains permission <permissions...>",
+    "describe": "Tests whether permission matches other permissions.",
+    "examples": [["contains 744 005", "Exit code: 1"]]
+  },
+  {
     "command": "normalize <permission>",
     "describe": "Normalize and validate a permission.",
     "examples": [
       ["normalize u+w,o+w", "Output: uo+w"],
       ["normalize z+w", "Exit code: 1"]
     ]
-  },
-  {
-    "command": "contains permission <permissions...>",
-    "describe": "Tests whether permission matches other permissions.",
-    "examples": [["contains 744 005", "Exit code: 1"]]
   },
   {
     "command": "full <permission>",
