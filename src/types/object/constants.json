@@ -7,6 +7,7 @@
     "setgid": "s",
     "sticky": "t"
   },
+  "SPECIAL_PERMISSIONS": { "setuid": "u", "setgid": "g", "sticky": "o" },
   "LONG_PERMISSIONS": {
     "user": { "r": "read", "w": "write", "x": "execute", "s": "setuid" },
     "group": { "r": "read", "w": "write", "x": "execute", "s": "setgid" },

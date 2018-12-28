@@ -4,6 +4,9 @@ const { TYPES } = require('./types')
 const { getNodesMap, NODES_MAP } = require('./nodes')
 const { isPlainObject, omitBy } = require('./utils')
 
+// Parse permission to a `nodesMap`
+// Guesses permission type by trying each `type.parse()` in order, and using
+// the first one that does not return `undefined`
 const parse = function(perm) {
   const { type, nodes } = parsePerm({ perm, funcName: 'parse' })
   const nodesMap = getNodesMap(nodes)
@@ -42,6 +45,7 @@ const parseReduce = function({ memo, type, perm, funcName, category }) {
   return { type, nodes }
 }
 
+// When we tried each type and none matched, we throw an error
 const validateNodes = function({ nodes, perm }) {
   if (nodes !== undefined) {
     return

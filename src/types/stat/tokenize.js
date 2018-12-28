@@ -1,5 +1,6 @@
 'use strict'
 
+// Tokenize a `stat` string using a RegExp
 const tokenize = function(stat) {
   if (typeof stat !== 'string') {
     return
@@ -36,6 +37,14 @@ const tokenizeCategory = function(catStat) {
   return partB
 }
 
+// Matches a `stat` permission, e.g. `---rwx-wx`
+// Allow trailing whitespaces, or whitespaces between group.
+// Each permission can either be `-` `r` `w` or `x`.
+// Special permissions are also allowed `s`, `S`, `t`, `T` but only within
+// the correct category.
+// `X` permission is allowed.
+// File type as a first character is allowed and optional.
+// Each group must have 3 characters, and not have duplicates.
 const STAT_REGEXP = /^\s*[-dlpscbD]?\s*([-rwxXsS]{3})\s*([-rwxXsS]{3})\s*([-rwxXtT]{3})\s*$/u
 const CAT_STAT_REGEXP = /^\s*[-dlpscbD]?\s*([-rwxXsStT]{3})\s*$/u
 
@@ -47,6 +56,11 @@ const removeDashes = function(part) {
 
 const DASH_REGEXP = /-/gu
 
+// Special permissions have an uppercase and lowercase depending on whether
+// `x` exists.
+// `X` permission is a special permission according to chmod behavior.
+// It is the same as `x` except it is a noop if no categories has `x`.
+// At the moment, we do not support this, so it's just an alias for `x`.
 const expandSpecial = function(part) {
   return EXPAND_REGEXPS.reduce(specialReduce, part)
 }

@@ -5,7 +5,6 @@
     "EQUAL": "="
   },
   "DEFAULT_CATEGORIES": "a",
-  "DEFAULT_OPERATOR": "=",
   "DEFAULT_SERIALIZE": "a+",
   "DEFAULT_CAT_SERIALIZE": "+"
 }

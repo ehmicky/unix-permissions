@@ -1,20 +1,21 @@
 'use strict'
 
 const { CATEGORIES, PERMISSIONS } = require('../../constants')
+const { hasDuplicate } = require('../../utils')
 
-const { DEFAULT_OPERATOR, DEFAULT_CATEGORIES } = require('./constants')
+const { DEFAULT_CATEGORIES } = require('./constants')
 const { tokenize, tokenizeCategory } = require('./tokenize')
 
+// Parse `symbolic` permissions to nodes
 const parse = function(symbolic) {
   const tokens = tokenize(symbolic)
 
-  if (tokens === undefined) {
+  if (tokens === undefined || hasDuplicates({ tokens })) {
     return
   }
 
   const nodes = tokens
     .map(addDefaultCategories)
-    .map(addDefaultOperator)
     .map(normalizeX)
     .flatMap(splitCategories)
     .flatMap(splitAll)
@@ -26,30 +27,37 @@ const parse = function(symbolic) {
 const parseCategory = function(part) {
   const node = tokenizeCategory(part)
 
-  if (node === undefined) {
+  if (node === undefined || hasDuplicatePermissions(node)) {
     return
   }
 
-  const nodeA = addDefaultOperator(node)
-  const nodeB = normalizeX(nodeA)
-  const nodes = normalizeOperator(nodeB).flatMap(splitPermissions)
+  const nodeA = normalizeX(node)
+  const nodes = normalizeOperator(nodeA).flatMap(splitPermissions)
   return nodes
 }
 
+// Duplicate permissions within the same part are not allowed as opposed to
+// chmod behavior. Otherwise `stat` permissions with duplicates would be parsed
+// as `symbolic`.
+const hasDuplicates = function({ tokens }) {
+  return tokens.some(hasDuplicatePermissions)
+}
+
+const hasDuplicatePermissions = function({ permissions }) {
+  return hasDuplicate(permissions.split(''))
+}
+
+// `=rw` defaults to `a=rw`
 const addDefaultCategories = function(node) {
-  const categories = ifEmpty(node.categories, DEFAULT_CATEGORIES)
-  return { ...node, categories }
+  if (node.categories !== '') {
+    return node
+  }
+
+  return { ...node, categories: DEFAULT_CATEGORIES }
 }
 
-const addDefaultOperator = function(node) {
-  const operator = ifEmpty(node.operator, DEFAULT_OPERATOR)
-  return { ...node, operator }
-}
-
-const ifEmpty = function(string, defaultValue) {
-  return string === '' ? defaultValue : string
-}
-
+// See `stat` type for an explanation on special permission `X`.
+// It is transformed to `x`.
 const normalizeX = function({ permissions, ...node }) {
   const permissionsA = permissions.replace(X_REGEXP, 'x')
   return { ...node, permissions: permissionsA }
@@ -57,12 +65,15 @@ const normalizeX = function({ permissions, ...node }) {
 
 const X_REGEXP = /X/gu
 
+// Several categories can be grouped, e.g. `gu=x`.
+// Duplicates are allowed.
 const splitCategories = function({ categories, operator, permissions }) {
   return categories
     .split('')
     .map(category => ({ category, operator, permissions }))
 }
 
+// `a` category is the same as `rwx`
 const splitAll = function({ category, operator, permissions }) {
   if (category !== 'a') {
     return { category, operator, permissions }
@@ -75,6 +86,7 @@ const splitAll = function({ category, operator, permissions }) {
   }))
 }
 
+// Transform operator to `node.add`
 const normalizeOperator = function({ operator, permissions, ...node }) {
   if (operator === '+') {
     return [{ ...node, permissions, add: true }]
@@ -84,6 +96,7 @@ const normalizeOperator = function({ operator, permissions, ...node }) {
     return [{ ...node, permissions, add: false }]
   }
 
+  // `=` operator results in a mix of `+` and `-`
   return PERMISSIONS.map(permission => ({
     ...node,
     permissions: permission,
@@ -91,6 +104,7 @@ const normalizeOperator = function({ operator, permissions, ...node }) {
   }))
 }
 
+// Several permissions per part can be used, e.g. `a=rw`
 const splitPermissions = function({ permissions, add, ...node }) {
   if (permissions === '') {
     return []

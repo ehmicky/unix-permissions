@@ -1,5 +1,6 @@
 'use strict'
 
+// Tokenize `symbolic` string using a RegExp
 const tokenize = function(symbolic) {
   if (typeof symbolic !== 'string') {
     return
@@ -16,8 +17,10 @@ const tokenize = function(symbolic) {
   return tokens
 }
 
+// Allow whitespaces around commas
 const COMMA_REGEXP = /\s*,\s*/gu
 
+// Tokenize each `symbolic` comma-separated group
 const tokenizePart = function(part) {
   const parts = PART_REGEXP.exec(part)
 
@@ -44,8 +47,14 @@ const tokenizeCategory = function(part) {
   return { operator, permissions }
 }
 
-const PART_REGEXP = /^\s*([augo]*)\s*([=+-]?)\s*([xwrXst]*)\s*$/u
-const CAT_PART_REGEXP = /^\s*([=+-]?)\s*([xwrXst]*)\s*$/u
+// Symbolic permission comma-separated group, e.g. `a=rw`
+// Allow trailing whitespaces.
+// The category are a string composed of `a`, `u`, `g` or `o`, and defaults
+// to `a`.
+// The operator can be `=`, `+` or `-`, and is required.
+// The permissions are a string composed of `xwrXst`, and defaults to ''.
+const PART_REGEXP = /^\s*([augo]*)\s*([=+-])\s*([xwrXst]*)\s*$/u
+const CAT_PART_REGEXP = /^\s*([=+-])\s*([xwrXst]*)\s*$/u
 
 module.exports = {
   tokenize,

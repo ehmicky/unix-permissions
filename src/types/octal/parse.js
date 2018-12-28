@@ -9,6 +9,7 @@ const {
   OPERATORS: { PLUS, MINUS, EQUAL },
 } = require('./constants')
 
+// Parse an `octal` permission to `nodes`
 const parsePerm = function(funcName, octal) {
   const { operator, string } = tokenize({ octal, funcName })
 
@@ -17,11 +18,14 @@ const parsePerm = function(funcName, octal) {
   }
 
   const integer = octalToDecimal(string)
+  // Re-use `number` parsing logic
   const nodes = number[funcName](integer)
+  // Each operator has its own logic
   const nodesA = parseOperator[operator]({ nodes })
   return nodesA
 }
 
+// From octal string to decimal integer
 const octalToDecimal = function(string) {
   return Number.parseInt(string, OCTAL_BASE)
 }
@@ -38,6 +42,7 @@ const invertAdd = function(node) {
   return { ...node, add: false }
 }
 
+// =octal means that some permissions are +, others -
 const parseEqual = function({ nodes }) {
   const nodesMap = getNodesMap(nodes)
 

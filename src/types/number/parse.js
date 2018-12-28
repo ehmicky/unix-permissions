@@ -10,6 +10,7 @@ const {
   CAT_MAX_NUMBER,
 } = require('./constants')
 
+// Parse a `number` permission to `nodes`
 const parseNumber = function({ nodesMap, max, values }, number) {
   if (!isValidNumber({ number, max })) {
     return
@@ -26,6 +27,7 @@ const isValidNumber = function({ number, max }) {
   return Number.isInteger(number) && number >= MIN_NUMBER && number <= max
 }
 
+// Check permissions bit by bit
 const hasNode = function({ number, nodeKey, values }) {
   const value = values[nodeKey]
   // eslint-disable-next-line no-bitwise

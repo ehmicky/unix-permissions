@@ -9,6 +9,7 @@ const object = require('./object')
 // Order is significant, because each is tried in order
 const TYPES = [number, octal, stat, symbolic, object]
 
+// Object keys are significant
 const TYPES_MAP = { number, octal, stat, symbolic, object }
 
 module.exports = {

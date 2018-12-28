@@ -1,16 +1,13 @@
 'use strict'
 
-const assert = require('assert')
-
 const { parse } = require('./parse')
 const { serialize } = require('./serialize')
 const { TYPES_MAP } = require('./types')
 
+// Convert permission to another type
 const convert = function(typeName, perm) {
-  const type = TYPES_MAP[typeName]
-  assert(type !== undefined, `Invalid type: ${typeName}`)
   const { nodesMap } = parse(perm)
-  const permA = serialize(type, nodesMap)
+  const permA = serialize(TYPES_MAP[typeName], nodesMap)
   return permA
 }
 

@@ -46,10 +46,20 @@ const groupByReducer = function(key, groups, obj) {
   return { ...groups, [groupName]: newGroup }
 }
 
+// Check if an array has duplicate elements
+const hasDuplicate = function(array) {
+  return array.some(isDuplicate)
+}
+
+const isDuplicate = function(elem, index, elems) {
+  return elems.slice(index + 1).some(elemB => elem === elemB)
+}
+
 module.exports = {
   omitBy,
   mapValues,
   mapKeys,
   isPlainObject,
   groupBy,
+  hasDuplicate,
 }
