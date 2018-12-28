@@ -14,11 +14,7 @@ const parse = function(object) {
 
   const nodes = Object.entries(object).flatMap(parsePermissions)
 
-  if (!validateNodes({ nodes })) {
-    return
-  }
-
-  return nodes
+  return validateNodes({ nodes })
 }
 
 // Parse each `object` category's object into nodes
@@ -39,9 +35,11 @@ const parseCategory = function(permissions, category) {
     return
   }
 
-  return Object.entries(permissions)
+  const nodes = Object.entries(permissions)
     .filter(hasDefinedValue)
     .map(([permission, add]) => parsePermission({ permission, add, category }))
+
+  return validateNodes({ nodes })
 }
 
 // `undefined` values e.g. `{ user: { read: undefined } }` result is no nodes.
@@ -77,11 +75,15 @@ const isInvalidSpecial = function({ permission, category }) {
 }
 
 const validateNodes = function({ nodes }) {
-  return nodes.every(validateNode)
+  if (nodes.some(isInvalidNode)) {
+    return
+  }
+
+  return nodes
 }
 
-const validateNode = function(node) {
-  return node !== undefined
+const isInvalidNode = function(node) {
+  return node === undefined
 }
 
 module.exports = {
