@@ -31,7 +31,7 @@ module.exports = [
   { user: { write: true } },
   { user: { read: true } },
 
-  // Object extremes
+  // Extremes
   {
     user: { read: true, write: true, execute: true, setuid: true },
     group: { read: true, write: true, execute: true, setgid: true },
