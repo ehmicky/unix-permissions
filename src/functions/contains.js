@@ -4,6 +4,10 @@ const { binaryTest } = require('../helpers')
 
 const { fullMap } = require('./full')
 
+// Test whether all permissions in `nodesMapB` are included in `nodesMapA`
+// Missing permissions in `nodesMapB` are not checked.
+// `+` permissions in `nodesMapB` must be `+` in `nodesMapA`
+// `-` permissions in `nodesMapB` must be either `-` or missing in `nodesMapA`
 const containsTest = function(nodesMapA, nodesMapB) {
   // The first argument is set to its full shape.
   // The reason is:
