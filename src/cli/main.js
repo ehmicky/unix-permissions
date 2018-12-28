@@ -21,7 +21,12 @@ const runCli = async function() {
 }
 
 const getCommand = function({ command }) {
-  return unixPermissions.convert[command] || unixPermissions[command]
+  if (!command.includes('.')) {
+    return unixPermissions[command]
+  }
+
+  const [namespace, commandA] = command.split('.')
+  return unixPermissions[namespace][commandA]
 }
 
 const handleOutput = function({ output }) {

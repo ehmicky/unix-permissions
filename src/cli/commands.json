@@ -1,26 +1,26 @@
 [
   {
-    "command": "number <permission>",
+    "command": "convert.number <permission>",
     "describe": "Convert permission to a decimal number.",
     "examples": [["number 422", "Output: 274"]]
   },
   {
-    "command": "octal <permission>",
+    "command": "convert.octal <permission>",
     "describe": "Convert permission to an octal number.",
     "examples": [["octal u+r,go+w", "Output: 0422"]]
   },
   {
-    "command": "symbolic <permission>",
+    "command": "convert.symbolic <permission>",
     "describe": "Convert permission to a symbolic type similar to chmod input.",
     "examples": [["symbolic 422", "Output: u+r,go+w"]]
   },
   {
-    "command": "stat <permission>",
+    "command": "convert.stat <permission>",
     "describe": "Convert permission to a type similar to stat output.",
     "examples": [["stat 422", "Output: r---w--w-"]]
   },
   {
-    "command": "object <permission>",
+    "command": "convert.object <permission>",
     "describe": "Convert permission to an object.",
     "examples": [["object 422", "Output: r---w--w-"]]
   },
@@ -81,5 +81,35 @@
     "command": "max permission [permissions...]",
     "describe": "Returns the highest permissions",
     "examples": [["max 744 005", "Output: 0745"]]
+  },
+  {
+    "command": "select.user <permission>",
+    "describe": "Returns the permission's user class",
+    "examples": [["select.user u=w,g=x,o=r", "Output: =w"]]
+  },
+  {
+    "command": "select.group <permission>",
+    "describe": "Returns the permission's group class",
+    "examples": [["select.user u=w,g=x,o=r", "Output: =x"]]
+  },
+  {
+    "command": "select.others <permission>",
+    "describe": "Returns the permission's others class",
+    "examples": [["select.user u=w,g=x,o=r", "Output: =r"]]
+  },
+  {
+    "command": "deselect.user <permission>",
+    "describe": "Get a permission with only a user class",
+    "examples": [["deselect.user =w", "Output: u=w"]]
+  },
+  {
+    "command": "deselect.group <permission>",
+    "describe": "Get a permission with only a group class",
+    "examples": [["deselect.group =x", "Output: g=x"]]
+  },
+  {
+    "command": "deselect.others <permission>",
+    "describe": "Get a permission with only a others class",
+    "examples": [["deselect.others =r", "Output: o=r"]]
   }
 ]
