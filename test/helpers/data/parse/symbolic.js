@@ -1,6 +1,6 @@
 'use strict'
 
-const symbolic = [
+module.exports = [
   // Invalid
   '',
   '   ',
@@ -67,7 +67,3 @@ const symbolic = [
   'o=x,o+x',
   'a+x,o-x',
 ]
-
-module.exports = {
-  symbolic,
-}

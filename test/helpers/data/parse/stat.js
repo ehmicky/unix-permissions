@@ -1,6 +1,6 @@
 'use strict'
 
-const stat = [
+module.exports = [
   // Invalid
   'rwwrwxrwx',
   'd--------j',
@@ -61,7 +61,3 @@ const stat = [
   // Changing order
   'drxwrwxrwx',
 ]
-
-module.exports = {
-  stat,
-}

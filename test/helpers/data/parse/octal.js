@@ -1,6 +1,6 @@
 'use strict'
 
-const octal = [
+module.exports = [
   // Invalid
   'NaN',
   '0.5',
@@ -43,7 +43,3 @@ const octal = [
   '\\111',
   '\\0111',
 ]
-
-module.exports = {
-  octal,
-}

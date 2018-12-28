@@ -1,6 +1,6 @@
 'use strict'
 
-const object = [
+module.exports = [
   // Invalid
   undefined,
   null,
@@ -50,7 +50,3 @@ const object = [
   { group: { setgid: true } },
   { user: { setuid: true } },
 ]
-
-module.exports = {
-  object,
-}

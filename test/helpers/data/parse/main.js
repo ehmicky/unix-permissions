@@ -2,11 +2,11 @@
 
 const { addDataTypes } = require('../types')
 
-const { number } = require('./number')
-const { octal } = require('./octal')
-const { stat } = require('./stat')
-const { symbolic } = require('./symbolic')
-const { object } = require('./object')
+const octal = require('./octal')
+const number = require('./number')
+const stat = require('./stat')
+const symbolic = require('./symbolic')
+const object = require('./object')
 
 const PARSE_DATA = addDataTypes({ number, octal, stat, symbolic, object })
 

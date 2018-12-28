@@ -1,7 +1,7 @@
 'use strict'
 
 /* eslint-disable no-magic-numbers */
-const number = [
+module.exports = [
   // Invalid
   NaN,
   Infinity,
@@ -38,7 +38,3 @@ const number = [
   65535,
 ]
 /* eslint-enable no-magic-numbers */
-
-module.exports = {
-  number,
-}
