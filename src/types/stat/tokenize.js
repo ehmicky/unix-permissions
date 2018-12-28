@@ -74,6 +74,7 @@ const EXPAND_REGEXPS = [
   [/T/gu, 't'],
 ]
 
+// Inverse of `expandSpecial()`
 const contractSpecial = function(part) {
   return CONTRACT_REGEXPS.reduce(specialReduce, part)
 }

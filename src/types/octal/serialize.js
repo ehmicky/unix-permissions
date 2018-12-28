@@ -10,6 +10,7 @@ const {
   OPERATORS: { MINUS, EQUAL, NONE },
 } = require('./constants')
 
+// Serialize from `nodes` to a `octal` permission
 const serializePerm = function({ funcName, padLength }, nodes) {
   const operator = serializeOperator({ nodes })
   const string = serializeInteger({ operator, nodes, funcName, padLength })
@@ -17,6 +18,8 @@ const serializePerm = function({ funcName, padLength }, nodes) {
   return octal
 }
 
+// `octal` can be prefixed with `-` or `=`.
+// `+` is the default operator, i.e. is never serialized.
 const serializeOperator = function({ nodes }) {
   // Including empty array
   if (!nodes.some(isRemoved)) {
@@ -34,13 +37,16 @@ const isRemoved = function({ add }) {
   return !add
 }
 
+// Re-use `number` serialization logic, then stringify to an octal number
 const serializeInteger = function({ operator, nodes, funcName, padLength }) {
   const nodesA = serializeMinus({ operator, nodes })
   const integer = number[funcName](nodesA)
+  // Always serialize to 4 characters (with leading 0s)
   const string = integer.toString(OCTAL_BASE).padStart(padLength, SERIALIZE_PAD)
   return string
 }
 
+// When using `-octal`, we need the inverse number
 const serializeMinus = function({ operator, nodes }) {
   if (operator !== MINUS) {
     return nodes

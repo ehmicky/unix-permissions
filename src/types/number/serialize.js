@@ -4,6 +4,7 @@ const { getNodeKey } = require('../../nodes')
 
 const { VALUES, CAT_VALUES } = require('./constants')
 
+// Serialize from `nodes` to a `number` permission
 const serializeNodes = function(values, nodes) {
   return nodes
     .filter(hasAdd)
