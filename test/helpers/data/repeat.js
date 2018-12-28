@@ -22,18 +22,11 @@ const forEachDataType = function(allData) {
 
 // Iterate data over any `type`
 const forEachType = function(data) {
-  return Object.entries(convert).flatMap(([type, func]) =>
-    addType({ data, type, func }),
-  )
+  return Object.keys(convert).flatMap(type => addType({ data, type }))
 }
 
-const addType = function({ data, type, func }) {
-  return data.map(args => ({
-    type,
-    args: [args],
-    func,
-    title: stringify(args),
-  }))
+const addType = function({ data, type }) {
+  return data.map(args => ({ type, args: [args], title: stringify(args) }))
 }
 
 // Stringify test titles, ensuring their uniqueness

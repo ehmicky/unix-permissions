@@ -1,10 +1,16 @@
 'use strict'
 
+const unixPermissions = require('../../localpack')
+// eslint-disable-next-line import/no-internal-modules
+const { getCommand } = require('../../src/cli/command')
+
 const { testCli } = require('./cli')
 
 // Snapshot a command's output, then test it has the same behavior when fired
 // from CLI.
-const testCommand = async function({ t, func, command, args }) {
+const testCommand = async function({ t, command, args }) {
+  const func = getCommand({ unixPermissions, command })
+
   const { output, error } = fireCommand({ func, args })
 
   t.snapshot({ output, error })

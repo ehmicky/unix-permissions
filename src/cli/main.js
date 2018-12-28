@@ -2,6 +2,8 @@
 
 const { exit } = require('process')
 
+const unixPermissions = require('..')
+
 const { defineCli } = require('./top')
 const { parseConfig } = require('./parse')
 const { getCommand } = require('./command')
@@ -12,7 +14,7 @@ const runCli = async function() {
   try {
     const yargs = defineCli()
     const { command, args } = parseConfig({ yargs })
-    const commandA = getCommand({ command })
+    const commandA = getCommand({ unixPermissions, command })
     const output = await commandA(...args)
     handleOutput({ output })
   } catch (error) {
