@@ -5,6 +5,16 @@
     "examples": [["contains 744 005", "Exit code: 1"]]
   },
   {
+    "command": "invert <permission>",
+    "describe": "Invert the permission, except the special flags",
+    "examples": [["invert 744", "Output: =0033"]]
+  },
+  {
+    "command": "flip <permission>",
+    "describe": "Invert the permission, including the special flags",
+    "examples": [["flip 744", "Output: =7033"]]
+  },
+  {
     "command": "min permission [permissions...]",
     "describe": "Returns the smallest permissions",
     "examples": [["min 744 005", "Output: 0004"]]
