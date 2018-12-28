@@ -6,4 +6,5 @@ module.exports = {
   ...require('./select'),
   ...require('./deselect'),
   ...require('./simple'),
+  ...require('./partial'),
 }
