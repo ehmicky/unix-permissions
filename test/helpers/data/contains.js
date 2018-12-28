@@ -1,20 +1,9 @@
 'use strict'
 
+const { BASE_SET_DATA } = require('./set_unset')
+
 const CONTAINS_DATA = [
-  // Contains `+`
-  ['o+x', 'o+x'],
-  ['o+', 'o+x'],
-  ['o-x', 'o+x'],
-
-  // Contains `-`
-  ['o+x', 'o-x'],
-  ['o+', 'o-x'],
-  ['o-x', 'o-x'],
-
-  // Contains with missing permission
-  ['o+x', 'o+'],
-  ['o+', 'o+'],
-  ['o-x', 'o+'],
+  ...BASE_SET_DATA,
 
   // Equal operator
   ['o=x', 'o=x'],

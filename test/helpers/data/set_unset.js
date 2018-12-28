@@ -1,6 +1,6 @@
 'use strict'
 
-const SET_UNSET_DATA = [
+const BASE_SET_DATA = [
   // Sets `+`
   ['o+x', 'o+x'],
   ['o+', 'o+x'],
@@ -15,6 +15,10 @@ const SET_UNSET_DATA = [
   ['o+x', 'o+'],
   ['o+', 'o+'],
   ['o-x', 'o+'],
+]
+
+const SET_UNSET_DATA = [
+  ...BASE_SET_DATA,
 
   // Equal operator
   ['o+', 'o=x'],
@@ -41,5 +45,6 @@ const SET_UNSET_DATA = [
 ]
 
 module.exports = {
+  BASE_SET_DATA,
   SET_UNSET_DATA,
 }
