@@ -6,7 +6,16 @@ const addDataTypes = function(data) {
 }
 
 const addDataType = function([type, data]) {
-  return data.map(args => ({ type, args: [args] }))
+  return data.map(args => ({ type, args: [args], title: stringify(args) }))
+}
+
+// Stringify test titles, ensuring their uniqueness
+const stringify = function(value) {
+  if (typeof value !== 'object') {
+    return String(value)
+  }
+
+  return JSON.stringify(value)
 }
 
 module.exports = {
