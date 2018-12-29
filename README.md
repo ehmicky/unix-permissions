@@ -132,7 +132,7 @@ unixPermissions.convert.symbolic('xwr --- ---') // 'u+rwx'
 
 Permission type used by [`chmod`](https://linux.die.net/man/1/chmod). String
 such as `gu+rx`. Starts with the user class (`a` for all, `u` for user, `g` for
-group, `o` for others) then the operator (`+`, `-` or `=`) and ending with the
+group, `o` for others) then the operator (`+`, `-` or `=`) and ends with the
 permissions characters.
 
 While `+` leaves the omitted permissions as is, `=` unsets them. For example
@@ -159,13 +159,12 @@ unixPermissions.convert.stat('o+') // '---------'
 # object
 
 Permission type as an object such as `{ user: { read: true, write: false } }`.
-Can easily be manipulated in JavaScript.
 
 The first-level key is either `user`, `group` or `others`. The second-level key
 is either `read`, `write`, `execute`, `setuid`, `setgid` or `sticky` (the last
 three are the special permissions).
 
-The values can either `true`, `false` or `undefined`. `undefined` leaves
+The values can be `true`, `false` or `undefined`. `undefined` leaves
 permissions as is while `false` unsets them.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
@@ -194,7 +193,7 @@ unixPermissions.convert.stat({
 
 ## `convert.object(permission)`
 
-Returns `permission` converted to another [`type`](#type).
+Returns `permission` converted to another [`type`](#types).
 
 Note that [`symbolic`](#symbolic) and [`object`](#object) distinguish between
 leaving permissions as is (omitting them or using `undefined`) and unsetting
@@ -215,7 +214,7 @@ unixPermissions.convert.octal('o=x') // '=0001'
 
 ## `type(permission)`
 
-Returns the `permission`'s [`type`](#type) or `'invalid'`.
+Returns the `permission`'s [`type`](#types) or `'invalid'`.
 
 <!-- eslint-disable line-comment-position, no-inline-comments, no-magic-numbers -->
 
