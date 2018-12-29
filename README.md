@@ -6,28 +6,28 @@ can take several [shapes](#types). With
 look like either [`ug+rw`](#symbolic) or [`660`](#octal), while with
 [`stat`](https://linux.die.net/man/2/stat) and
 [`ls`](https://linux.die.net/man/1/ls) they look like [`drw-rw----`](#stat).
-This library [converts](#convert-octal-permission) Unix permissions between
+This library [converts](#convertoctalpermission) Unix permissions between
 these [shapes](#types).
 
 This library also allows you to perform operations on Unix permissions
 including:
 
-- [validating](#normalize-permission) syntax.
-- [normalizing](#normalize-permission). For example `u+rw,u-r` can be shortened
+- [validating](#normalizepermission) syntax.
+- [normalizing](#normalizepermission). For example `u+rw,u-r` can be shortened
   to `u+w`.
-- [testing](#contains-permission-permissions), e.g. "Is this executable by any
+- [testing](#containspermissionpermissions), e.g. "Is this executable by any
   users?"
-- [setting](#set-permission-permissions) and
-  [unsetting](#unset-permission-permissions). Using bitwise operations can be
+- [setting](#setpermissionpermissions) and
+  [unsetting](#unsetpermissionpermissions). Using bitwise operations can be
   tedious and error-prone.
-- [inverting](#flip-permission). For example a
+- [inverting](#flippermission). For example a
   [`umask`](https://linux.die.net/man/2/umask) of `117` means new files will be
   created with `661` permissions.
-- checking the [minimal](#min-permission-permissions) or
-  [maximal](#max-permission-permissions) permissions among a list of them.
+- checking the [minimal](#minpermissionpermissions) or
+  [maximal](#maxpermissionpermissions) permissions among a list of them.
   This can be useful to aggregate all the permissions of several files,
   e.g. during a directory recursion.
-- manipulate only a [specific user class](#select-user-permission-userclass)
+- manipulate only a [specific user class](#selectuserpermissionuserclass)
   inside a permission. This can be useful if you're only interested about the
   part of the permission related to the current user/process for example.
 
@@ -68,7 +68,7 @@ error occured, e.g. if the permission syntax is invalid.
 # Types
 
 You can use any of the following permission types as input. You can also
-[`convert()`](#convert-octal-permission) between them.
+[`convert()`](#convertoctalpermission) between them.
 
 ## octal
 
@@ -245,7 +245,7 @@ unixPermissions.normalize({ user: { read: undefined, write: true } })
 ## `full(permission)`
 
 Converts all the omitted permissions to negative permissions. See
-[convert()](#convert-octal-permission) for more explanation.
+[convert()](#convertoctalpermission) for more explanation.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
@@ -256,7 +256,7 @@ unixPermissions.full(unixPermissions.convert.symbolic('001')) // 'ug=,o=x'
 
 ## `partial(permission)`
 
-Inverse of [`full()`](#full-permission). Remove all the negative permissions.
+Inverse of [`full()`](#fullpermission). Remove all the negative permissions.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
@@ -271,7 +271,7 @@ Returns `true` or `false` depending on whether `permissions` are contained
 within `permission`. On the CLI use exit code `0` or `1` instead.
 
 `permission` is first internally converted using
-[`full(permission)`](#full-permission).
+[`full(permission)`](#fullpermission).
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
@@ -363,7 +363,7 @@ unixPermissions.min('404', '440', '402') // '0400'
 
 ## `max(permissions...)`
 
-Inverse of [`min()`](#min-permissions).
+Inverse of [`min()`](#minpermissions).
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
@@ -397,9 +397,9 @@ unixPermissions.select.others('rw-rw-r--') // 'r--'
 
 ## `deselect.others(permission)`
 
-Inverse of [`select.user()`](#select-user-permission),
-[`select.group()`](#select-group-permission) and
-[`select.others()`](#select-others-permission).
+Inverse of [`select.user()`](#selectuserpermission),
+[`select.group()`](#selectgrouppermission) and
+[`select.others()`](#selectotherspermission).
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
