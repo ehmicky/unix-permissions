@@ -260,6 +260,7 @@ Converts all the omitted permissions to negative permissions. See
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
+unixPermissions.full('a+x') // 'a=x'
 unixPermissions.convert.symbolic('001') // 'o+x'
 unixPermissions.full(unixPermissions.convert.symbolic('001')) // 'ug=,o=x'
 ```
