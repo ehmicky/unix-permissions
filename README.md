@@ -26,7 +26,7 @@ It also allows you to perform operations on them including:
   [maximal](#maxpermissions) permissions among a list of them.
   This can be useful to aggregate all the permissions of several files,
   e.g. during a directory recursion.
-- manipulate only a [specific user class](#selectuserpermission)
+- manipulating only a [specific user class](#selectuserpermission)
   inside a permission. This can be useful if you're only interested about the
   part of the permission related to the current user/process for example.
 
@@ -271,6 +271,8 @@ Inverse of [`full()`](#fullpermission). Remove all the negative permissions.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
+unixPermissions.partial('o=x') // 'o+x'
+unixPermissions.partial('o+x,o-r') // 'o+x'
 unixPermissions.invert('660') // '=0117'
 unixPermissions.partial(unixPermissions.invert('660')) // '0117'
 ```
