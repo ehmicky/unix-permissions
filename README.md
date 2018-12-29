@@ -200,8 +200,8 @@ leaving permissions as is (omitting them or using `undefined`) and unsetting
 them (using `-` or `false`). [`number`](#number) and [`stat`](#stat) do not
 make this distinction. If you convert between them, you might lose this
 information as we assume `-` and `0` in [`number`](#number) and [`stat`](#stat)
-mean "leave permissions as is". However you can use [`full()`](#full) and
-[`partial()`](#partial) to overcome this issue.
+mean "leave permissions as is". However you can use [`full()`](#fullpermission)
+and [`partial()`](#partialpermission) to overcome this issue.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
