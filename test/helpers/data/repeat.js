@@ -13,14 +13,14 @@ const addCategory = function({ data, category }) {
   return data.map(datum => ({ ...datum, category }))
 }
 
-// Iterate data over `type`, where `type` comes from data
+// Iterate different data over each `type`
 const forEachDataType = function(allData) {
   return Object.entries(allData).flatMap(([type, data]) =>
     addType({ data, type }),
   )
 }
 
-// Iterate data over any `type`
+// Iterate same data over each `type`
 const forEachType = function(data) {
   return Object.keys(convert).flatMap(type => addType({ data, type }))
 }
