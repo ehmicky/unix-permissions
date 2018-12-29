@@ -280,8 +280,8 @@ unixPermissions.partial(unixPermissions.invert('660')) // '0117'
 
 ## `contains(permission, permissions...)`
 
-Returns `true` or `false` depending on whether `permissions` are contained
-within `permission`. On the CLI use exit code `0` or `1` instead.
+Returns `true` or `false` depending on whether `permission` includes
+`permissions`. On the CLI the exit code `0` or `1` is used instead.
 
 `permission` is first internally converted using
 [`full(permission)`](#fullpermission).
@@ -303,7 +303,7 @@ unixPermissions.contains('o+x,o-w', 'o+x', 'o-w') // `true`
 
 Returns the result of setting `permissions` on `permission`.
 
-This is useful to avoid bitwise operations.
+This is useful to avoid error-prone bitwise operations.
 
 This can also be used to remove special permissions using
 `set(permission, 'a-st')` since some functions like
@@ -316,6 +316,7 @@ unixPermissions.set('---------', 'a+x') // '--x--x--x'
 unixPermissions.set('---------', 'a+x', 'a+r') // 'r-xr-xr-x'
 unixPermissions.set('--x--x--x', 'o-x') // '--x--x---'
 unixPermissions.set('a+x', 'a+r') // 'a+rx'
+unixPermissions.set('4660', 'a-st') // '=0660'
 ```
 
 ## `unset(permission, permissions...)`
