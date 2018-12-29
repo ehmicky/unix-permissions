@@ -16,10 +16,10 @@ const pWriteFile = promisify(writeFile)
 
 const unit = async function() {
   if (!isCi) {
-    return gulpExeca('ava')
+    return gulpExeca('ava test/deselect.js')
   }
 
-  await gulpExeca('nyc ava')
+  await gulpExeca('nyc ava test/deselect.js')
 
   // TODO: remove and link the two `gulpExeca` with &&
   await tempFix()
