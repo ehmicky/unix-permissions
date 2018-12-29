@@ -27,7 +27,7 @@ including:
   [maximal](#maxpermissions) permissions among a list of them.
   This can be useful to aggregate all the permissions of several files,
   e.g. during a directory recursion.
-- manipulate only a [specific user class](#selectuserpermissionuserclass)
+- manipulate only a [specific user class](#selectuserpermission)
   inside a permission. This can be useful if you're only interested about the
   part of the permission related to the current user/process for example.
 
