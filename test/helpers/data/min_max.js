@@ -25,6 +25,10 @@ const MIN_MAX_DATA = [
   // Several values
   ['o-x', 'o+', 'o+x'],
   ['o+x', 'o+', 'o-x'],
+
+  // Fewer values
+  ['o+x'],
+  [],
 ]
 
 module.exports = {
