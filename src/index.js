@@ -4,8 +4,5 @@
 require('./node_compat')
 
 module.exports = {
-  ...require('./type'),
-  ...require('./converters'),
-  ...require('./functions'),
-  ...require('./select'),
+  ...require('./main'),
 }
