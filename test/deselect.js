@@ -1,11 +1,10 @@
 'use strict'
 
-const test = require('ava')
+const { DESELECT_DATA, performTests } = require('./helpers')
 
-const { DESELECT_DATA, testCommand } = require('./helpers')
-
-DESELECT_DATA.forEach(({ category, type, args, title }) =>
-  // eslint-disable-next-line max-nested-callbacks
-  test(`[${type}] should deselect.${category} ${title}`, t =>
-    testCommand({ t, command: `deselect.${category}`, args })),
-)
+performTests({
+  data: DESELECT_DATA,
+  title: ({ category, type, title }) =>
+    `[${type}] should deselect.${category} ${title}`,
+  command: ({ category }) => `deselect.${category}`,
+})

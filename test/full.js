@@ -1,11 +1,9 @@
 'use strict'
 
-const test = require('ava')
+const { SIMPLE_DATA, performTests } = require('./helpers')
 
-const { SIMPLE_DATA, testCommand } = require('./helpers')
-
-SIMPLE_DATA.forEach(arg =>
-  // eslint-disable-next-line max-nested-callbacks
-  test(`should return full ${arg}`, t =>
-    testCommand({ t, command: 'full', args: [arg] })),
-)
+performTests({
+  data: SIMPLE_DATA,
+  title: args => `should return full ${args}`,
+  command: 'full',
+})

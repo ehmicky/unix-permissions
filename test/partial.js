@@ -1,11 +1,9 @@
 'use strict'
 
-const test = require('ava')
+const { PARTIAL_DATA, performTests } = require('./helpers')
 
-const { PARTIAL_DATA, testCommand } = require('./helpers')
-
-PARTIAL_DATA.forEach(arg =>
-  // eslint-disable-next-line max-nested-callbacks
-  test(`should return partial ${arg}`, t =>
-    testCommand({ t, command: 'partial', args: [arg] })),
-)
+performTests({
+  data: PARTIAL_DATA,
+  title: args => `should return partial ${args}`,
+  command: 'partial',
+})

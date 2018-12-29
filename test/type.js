@@ -1,11 +1,9 @@
 'use strict'
 
-const test = require('ava')
+const { PARSE_DATA, performTests } = require('./helpers')
 
-const { PARSE_DATA, testCommand } = require('./helpers')
-
-PARSE_DATA.forEach(({ type, args, title }) =>
-  // eslint-disable-next-line max-nested-callbacks
-  test(`[${type}] should find type of ${title}`, t =>
-    testCommand({ t, command: 'type', args })),
-)
+performTests({
+  data: PARSE_DATA,
+  title: ({ type, title }) => `[${type}] should find type of ${title}`,
+  command: 'type',
+})

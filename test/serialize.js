@@ -1,11 +1,9 @@
 'use strict'
 
-const test = require('ava')
+const { SERIALIZE_DATA, performTests } = require('./helpers')
 
-const { SERIALIZE_DATA, testCommand } = require('./helpers')
-
-SERIALIZE_DATA.forEach(({ type, args, title }) => {
-  // eslint-disable-next-line max-nested-callbacks
-  test(`[${type}] should serialize ${title}`, t =>
-    testCommand({ t, command: `convert.${type}`, args }))
+performTests({
+  data: SERIALIZE_DATA,
+  title: ({ type, title }) => `[${type}] should serialize ${title}`,
+  command: ({ type }) => `convert.${type}`,
 })
