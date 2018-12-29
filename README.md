@@ -23,8 +23,8 @@ including:
 - [inverting](#flippermission). For example a
   [`umask`](https://linux.die.net/man/2/umask) of `117` means new files will be
   created with `661` permissions.
-- checking the [minimal](#minpermission-permissions) or
-  [maximal](#maxpermission-permissions) permissions among a list of them.
+- checking the [minimal](#minpermissions) or
+  [maximal](#maxpermissions) permissions among a list of them.
   This can be useful to aggregate all the permissions of several files,
   e.g. during a directory recursion.
 - manipulate only a [specific user class](#selectuserpermissionuserclass)
