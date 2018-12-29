@@ -7,10 +7,9 @@ look like either [`ug+rw`](#symbolic) or [`660`](#octal), while with
 [`stat`](https://linux.die.net/man/2/stat) and
 [`ls`](https://linux.die.net/man/1/ls) they look like [`drw-rw----`](#stat).
 This library [converts](#convertoctalpermission) Unix permissions between
-these [shapes](#types).
+these different [shapes](#types).
 
-This library also allows you to perform operations on Unix permissions
-including:
+It also allows you to perform operations on them including:
 
 - [validating](#normalizepermission) syntax.
 - [normalizing](#normalizepermission). For example `u+rw,u-r` can be shortened
@@ -32,7 +31,7 @@ including:
   part of the permission related to the current user/process for example.
 
 Note that permissions are manipulated as strings, not as file paths.
-Which means you must use other utilities (such as
+This means you must use other utilities (such as
 [`chmod`](https://linux.die.net/man/1/chmod) or
 [`stat`](https://linux.die.net/man/2/stat)) to get and set file permissions
 using those strings.
@@ -62,8 +61,8 @@ $ unix-permissions convert.stat 660
 rw-rw----
 ```
 
-The same methods as in JavaScript are available. Exit code will be 1 if an
-error occured, e.g. if the permission syntax is invalid.
+The same methods as in JavaScript are available. Exit code will be `1` if an
+error occurred, e.g. if the permission syntax is invalid.
 
 # Types
 
@@ -72,10 +71,15 @@ You can use any of the following permission types as input. You can also
 
 ## octal
 
-Permission type used by [`chmod`](https://linux.die.net/man/1/chmod). Octal
-string where each digit represents a user class, in order: `user`, `group`,
-`others`. The first digit represents special permissions. The other octal
-digits represent `read`, `write` and `execute`.
+Permission type used by [`chmod`](https://linux.die.net/man/1/chmod).
+
+Octal string where each digit represents a user class: `user`, `group` and
+`others`. Each digit's is a [bitfield](https://en.wikipedia.org/wiki/Bit_field)
+representing `read`, `write` and `execute`. Special permissions
+([`setuid`](https://en.wikipedia.org/wiki/Setuid),
+[`setgid`](https://en.wikipedia.org/wiki/Setuid) and
+[`sticky`](https://en.wikipedia.org/wiki/Sticky_bit)) can optionally be
+specified by prepending another digit.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
@@ -94,6 +98,7 @@ unixPermissions.convert.symbolic('=720') // 'u=rwx,g=w,o='
 
 Permission type used by Node.js
 [`fs.chmod()`](https://nodejs.org/api/fs.html#fs_fs_chmod_path_mode_callback).
+
 It is the same as `octal` but as a decimal number.
 
 <!-- eslint-disable line-comment-position, no-inline-comments, no-magic-numbers -->
@@ -109,11 +114,14 @@ unixPermissions.convert.stat(512) // '--------T'
 # stat
 
 Permission type used by [`stat`](https://linux.die.net/man/2/stat) and
-[`ls`](https://linux.die.net/man/1/ls). It is a string where each character
-represents either the permission (`r`, `w`, `x`) or no permission (`-`).
-The special permission are indicated with `S`, `s`, `T` and `t` where
-lowercase implies `x` is also present. Optionally a first character can be
-specified to indicate the file type (e.g. `d` for directories).
+[`ls`](https://linux.die.net/man/1/ls).
+
+It is a string where each character represents either the permission (`r`, `w`,
+`x`) or no permission (`-`). The special permission are indicated with `S`,
+`s`, `T` and `t` where lowercase implies `x` is also present.
+
+Optionally a first character can be specified to indicate the file type (e.g.
+`d` for directories).
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
@@ -130,10 +138,12 @@ unixPermissions.convert.symbolic('xwr --- ---') // 'u+rwx'
 
 # symbolic
 
-Permission type used by [`chmod`](https://linux.die.net/man/1/chmod). String
-such as `gu+rx`. Starts with the user class (`a` for all, `u` for user, `g` for
-group, `o` for others) then the operator (`+`, `-` or `=`) and ends with the
-permissions characters.
+Permission type used by [`chmod`](https://linux.die.net/man/1/chmod) as a
+string like `gu+rx`.
+
+Starts with the user class (`a` for all, `u` for user, `g` for group, `o` for
+others) then the operator (`+`, `-` or `=`) and ends with the permissions
+characters.
 
 While `+` leaves the omitted permissions as is, `=` unsets them. For example
 `o=x` is the same as combining `o+x` and `o-rwt`.
@@ -160,9 +170,9 @@ unixPermissions.convert.stat('o+') // '---------'
 
 Permission type as an object such as `{ user: { read: true, write: false } }`.
 
-The first-level key is either `user`, `group` or `others`. The second-level key
-is either `read`, `write`, `execute`, `setuid`, `setgid` or `sticky` (the last
-three are the special permissions).
+The first-level key is `user`, `group` or `others`. The second-level key is
+`read`, `write`, `execute`, `setuid`, `setgid` or `sticky` (the last three are
+the special permissions).
 
 The values can be `true`, `false` or `undefined`. `undefined` leaves
 permissions as is while `false` unsets them.
