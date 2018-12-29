@@ -217,7 +217,7 @@ unixPermissions.convert.octal('o=x') // '=0001'
 
 Returns the `permission`'s [`type`](#type) or `'invalid'`.
 
-<!-- eslint-disable line-comment-position, no-inline-comments -->
+<!-- eslint-disable line-comment-position, no-inline-comments, no-magic-numbers -->
 
 ```js
 unixPermissions.type('1') // 'octal'
