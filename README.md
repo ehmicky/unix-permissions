@@ -15,16 +15,16 @@ including:
 - [validating](#normalizepermission) syntax.
 - [normalizing](#normalizepermission). For example `u+rw,u-r` can be shortened
   to `u+w`.
-- [testing](#containspermissionpermissions), e.g. "Is this executable by any
+- [testing](#containspermission-permissions), e.g. "Is this executable by any
   users?"
-- [setting](#setpermissionpermissions) and
-  [unsetting](#unsetpermissionpermissions). Using bitwise operations can be
+- [setting](#setpermission-permissions) and
+  [unsetting](#unsetpermission-permissions). Using bitwise operations can be
   tedious and error-prone.
 - [inverting](#flippermission). For example a
   [`umask`](https://linux.die.net/man/2/umask) of `117` means new files will be
   created with `661` permissions.
-- checking the [minimal](#minpermissionpermissions) or
-  [maximal](#maxpermissionpermissions) permissions among a list of them.
+- checking the [minimal](#minpermission-permissions) or
+  [maximal](#maxpermission-permissions) permissions among a list of them.
   This can be useful to aggregate all the permissions of several files,
   e.g. during a directory recursion.
 - manipulate only a [specific user class](#selectuserpermissionuserclass)
@@ -240,6 +240,7 @@ unixPermissions.normalize('g+x,o+x') // 'go+x'
 unixPermissions.normalize('d--- --- ---') // '---------'
 unixPermissions.normalize({ user: { read: undefined, write: true } })
 // { user: { write: true } }
+unixPermissions.normalize('z+x') // Throws an exception
 ```
 
 ## `full(permission)`
