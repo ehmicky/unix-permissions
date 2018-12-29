@@ -10,11 +10,7 @@ const moizeFuncs = function(value) {
     return moize(value)
   }
 
-  if (typeof value === 'object' && value !== null) {
-    return mapValues(value, moizeFuncs)
-  }
-
-  return value
+  return mapValues(value, moizeFuncs)
 }
 
 module.exports = {
