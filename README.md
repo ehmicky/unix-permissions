@@ -380,7 +380,7 @@ unixPermissions.max('404', '440', '402') // '0446'
 Returns the part within `permission` specific to `user`, `group` or `others`.
 
 The return value cannot be used as argument with any other methods of this
-library except `deselect()`
+library except `deselect()`.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
@@ -412,7 +412,7 @@ unixPermissions.deselect.others('r--') // '------r--'
 
 # Examples
 
-## Using with Node.js
+## Using with Node.js core methods
 
 This library can be used to specify file permissions using other [types](#types)
 than numbers with Node.js.
