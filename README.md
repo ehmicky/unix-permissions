@@ -361,12 +361,12 @@ unixPermissions.flip('rws-ws-w-') // '---r--r-t'
 
 ## `min(permissions...)`
 
-Retrieve the minimal permissions among all argument.
+Retrieve the lowest permissions among all argument.
 
-This does not return the smallest argument. Instead it returns a combination
-of the minimal bits of all arguments.
+This does not return the lowest argument. Instead it returns a combination
+of the lowest bits of all arguments.
 
-This can be useful if you are looking for the minimal permission of a several
+This can be useful if you are looking for the lowest permission of a several
 files, e.g. during a directory recursion.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
