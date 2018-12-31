@@ -20,6 +20,8 @@ const CONTAINS_DATA = [
 
   // Combining
   ['o+x,o-r', 'o+x,o-r'],
+  ['o+x,o-r', 'o+x'],
+  ['o+x,o-r', 'o-r'],
   ['o+x', 'o+x,o-r'],
   ['o-r', 'o+x,o-r'],
 

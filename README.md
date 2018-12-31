@@ -289,10 +289,9 @@ Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
 ```js
 unixPermissions.contains('--------x', 'o+x') // `true`
 unixPermissions.contains('--------x', 'o-x') // `false`
-unixPermissions.contains('--------x', 'o-w') // `true`
+unixPermissions.contains('--------x', 'o-w') // `false`
 unixPermissions.contains('o+x', 'o+x') // `true`
 unixPermissions.contains('o+x', 'o+x,o+x') // `true`
-unixPermissions.contains('o+x', 'o-w') // `true`
 unixPermissions.contains('o+x', 'o=w') // `false`
 unixPermissions.contains('o+x,o-w', 'o+x,o-w') // `true`
 unixPermissions.contains('o+x,o-w', 'o-w') // `true`
@@ -311,7 +310,6 @@ unixPermissions.equal('--------x', 'o-x') // `false`
 unixPermissions.equal('--------x', 'o-w') // `false`
 unixPermissions.equal('o+x', 'o+x') // `true`
 unixPermissions.equal('o+x', 'o+x,o+x') // `true`
-unixPermissions.equal('o+x', 'o-w') // `false`
 unixPermissions.equal('o+x', 'o=w') // `false`
 unixPermissions.equal('o+x,o-w', 'o+x,o-w') // `true`
 unixPermissions.equal('o+x,o-w', 'o-w') // `false`
