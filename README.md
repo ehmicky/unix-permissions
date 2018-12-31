@@ -304,6 +304,8 @@ Tests whether `permission` equals exactly `permissions`.
 
 Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
 
+<!-- eslint-disable line-comment-position, no-inline-comments -->
+
 ```js
 unixPermissions.equal('--------x', 'o+x') // `true`
 unixPermissions.equal('--------x', 'o-x') // `false`
