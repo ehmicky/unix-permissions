@@ -280,11 +280,9 @@ unixPermissions.partial(unixPermissions.invert('660')) // '0117'
 
 ## `contains(permission, permissions...)`
 
-Returns `true` or `false` depending on whether `permission` includes
-`permissions`. On the CLI the exit code `0` or `1` is used instead.
+Tests whether `permission` includes `permissions`.
 
-`permission` is first internally converted using
-[`full(permission)`](#fullpermission).
+Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
@@ -293,10 +291,31 @@ unixPermissions.contains('--------x', 'o+x') // `true`
 unixPermissions.contains('--------x', 'o-x') // `false`
 unixPermissions.contains('--------x', 'o-w') // `true`
 unixPermissions.contains('o+x', 'o+x') // `true`
+unixPermissions.contains('o+x', 'o+x,o+x') // `true`
 unixPermissions.contains('o+x', 'o-w') // `true`
 unixPermissions.contains('o+x', 'o=w') // `false`
+unixPermissions.contains('o+x,o-w', 'o+x,o-w') // `true`
 unixPermissions.contains('o+x,o-w', 'o-w') // `true`
 unixPermissions.contains('o+x,o-w', 'o+x', 'o-w') // `true`
+```
+
+## `equal(permission, permissions...)`
+
+Tests whether `permission` equals exactly `permissions`.
+
+Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
+
+```js
+unixPermissions.equal('--------x', 'o+x') // `true`
+unixPermissions.equal('--------x', 'o-x') // `false`
+unixPermissions.equal('--------x', 'o-w') // `false`
+unixPermissions.equal('o+x', 'o+x') // `true`
+unixPermissions.equal('o+x', 'o+x,o+x') // `true`
+unixPermissions.equal('o+x', 'o-w') // `false`
+unixPermissions.equal('o+x', 'o=w') // `false`
+unixPermissions.equal('o+x,o-w', 'o+x,o-w') // `true`
+unixPermissions.equal('o+x,o-w', 'o-w') // `false`
+unixPermissions.equal('o+x,o-w', 'o+x', 'o-w') // `false`
 ```
 
 ## `set(permission, permissions...)`

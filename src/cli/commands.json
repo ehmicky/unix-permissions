@@ -46,8 +46,13 @@
   },
   {
     "command": "contains <permission> <permissions...>",
-    "describe": "Tests whether `permission` includes `permissions` using the exit code `0` or `1`.",
+    "describe": "Tests whether `permission` includes `permissions`. Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.",
     "examples": [["contains 744 005", "Exit code: 1"]]
+  },
+  {
+    "command": "equal <permission> <permissions...>",
+    "describe": "Tests whether `permission` equals exactly `permissions`. Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`",
+    "examples": [["equal o+xr o+r,o+x", "Exit code: 0"]]
   },
   {
     "command": "normalize <permission>",

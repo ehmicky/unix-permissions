@@ -9,5 +9,6 @@ module.exports = {
   ...require('./partial'),
   ...require('./min_max'),
   ...require('./contains'),
+  ...require('./equal'),
   ...require('./set_unset'),
 }

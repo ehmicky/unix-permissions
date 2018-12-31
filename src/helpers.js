@@ -48,7 +48,10 @@ const variableMap = function(mapFunc, perm, ...perms) {
 // test function `(permA, permB[, ...perms]) -> boolean`
 const binaryTest = function(testFunc, permA, ...perms) {
   const { nodesMap } = parse(permA)
-  return perms.every(permB => binaryTestEach(testFunc, nodesMap, permB))
+  return (
+    perms.length !== 0 &&
+    perms.every(permB => binaryTestEach(testFunc, nodesMap, permB))
+  )
 }
 
 const binaryTestEach = function(testFunc, nodesMap, perm) {
