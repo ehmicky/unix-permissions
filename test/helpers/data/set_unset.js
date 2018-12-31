@@ -1,6 +1,10 @@
 'use strict'
 
 const BASE_SET_DATA = [
+  // Invalid
+  ['o+x'],
+  [],
+
   // Sets `+`
   ['o+x', 'o+x'],
   ['o+', 'o+x'],
