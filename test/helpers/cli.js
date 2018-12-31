@@ -1,7 +1,5 @@
 'use strict'
 
-const { platform } = require('process')
-
 const execa = require('execa')
 const isCi = require('is-ci')
 
@@ -11,8 +9,7 @@ const BINARY_PATH = `${__dirname}/../../localpack/bin/unix_permissions.js`
 // exception throwing
 const testCli = async function({ t, output, error, command, args }) {
   // We only run this in CI because it's slow.
-  // Windows somehow freezes in CI.
-  if (!isCi || platform === 'win32' || !args.some(isValidCliArgument)) {
+  if (!isCi || !args.some(isValidCliArgument)) {
     return
   }
 
@@ -31,20 +28,15 @@ const isValidCliArgument = function(arg) {
 
 // Fire CLI command
 const fireBinary = async function(command, ...args) {
-  const argsA = args.map(escapeArg).join(' ')
-
-  const { stdout, stderr, code } = await execa.shell(
-    `${BINARY_PATH} ${command} ${argsA}`,
+  const { stdout, stderr, code } = await execa(
+    BINARY_PATH,
+    [command, ...args],
     { reject: false },
   )
 
   const stdoutA = stdout.trim()
   const stderrA = stderr.trim()
   return { stdout: stdoutA, stderr: stderrA, code }
-}
-
-const escapeArg = function(arg) {
-  return String(arg).replace(/\s/gu, '\\$&')
 }
 
 const normalizeOutput = function({ output, error }) {
