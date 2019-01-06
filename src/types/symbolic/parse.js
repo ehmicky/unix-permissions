@@ -4,7 +4,7 @@ const { CATEGORIES, PERMISSIONS } = require('../../constants')
 const { hasDuplicate } = require('../../utils')
 
 const { DEFAULT_CATEGORIES } = require('./constants')
-const { tokenize, tokenizeCategory } = require('./tokenize')
+const { tokenize } = require('./tokenize')
 
 // Parse `symbolic` permissions to nodes
 const parse = function(symbolic) {
@@ -19,20 +19,6 @@ const parse = function(symbolic) {
     .map(normalizeX)
     .flatMap(splitCategories)
     .flatMap(splitAll)
-    .flatMap(normalizeOperator)
-    .flatMap(splitPermissions)
-  return nodes
-}
-
-const parseCategory = function(part) {
-  const tokens = tokenizeCategory(part)
-
-  if (tokens === undefined || hasDuplicates({ tokens })) {
-    return
-  }
-
-  const nodes = tokens
-    .map(normalizeX)
     .flatMap(normalizeOperator)
     .flatMap(splitPermissions)
   return nodes
@@ -117,5 +103,4 @@ const splitPermissions = function({ permissions, add, ...node }) {
 
 module.exports = {
   parse,
-  parseCategory,
 }

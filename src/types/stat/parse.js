@@ -1,9 +1,9 @@
 'use strict'
 
-const { NODES, CAT_NODES } = require('../../constants')
+const { NODES } = require('../../constants')
 const { hasDuplicate } = require('../../utils')
 
-const { tokenize, tokenizeCategory } = require('./tokenize')
+const { tokenize } = require('./tokenize')
 
 // Parse a `stat` permission to `nodes`
 const parse = function(stat) {
@@ -14,16 +14,6 @@ const parse = function(stat) {
   }
 
   return NODES.map(node => parseNode({ node, tokens }))
-}
-
-const parseCategory = function(catStat) {
-  const part = tokenizeCategory(catStat)
-
-  if (part === undefined || hasDuplicateChars(part)) {
-    return
-  }
-
-  return CAT_NODES.map(node => parsePart({ node, part }))
 }
 
 // We do not allow duplicates within a category as it indicates typos
@@ -48,5 +38,4 @@ const parsePart = function({ node, node: { permission }, part }) {
 
 module.exports = {
   parse,
-  parseCategory,
 }

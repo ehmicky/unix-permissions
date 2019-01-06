@@ -14,7 +14,5 @@
     "o t": 512
   },
   "MIN_NUMBER": 0,
-  "MAX_NUMBER": 65535,
-  "CAT_VALUES": { "r": 4, "w": 2, "x": 1, "s": 8, "t": 8 },
-  "CAT_MAX_NUMBER": 15
+  "MAX_NUMBER": 65535
 }

@@ -20,23 +20,6 @@ const tokenize = function(stat) {
   return { u, g, o }
 }
 
-const tokenizeCategory = function(catStat) {
-  if (typeof catStat !== 'string') {
-    return
-  }
-
-  const tokens = CAT_STAT_REGEXP.exec(catStat)
-
-  if (tokens === null) {
-    return
-  }
-
-  const [, part] = tokens
-  const partA = removeDashes(part)
-  const partB = expandSpecial(partA)
-  return partB
-}
-
 // Matches a `stat` permission, e.g. `---rwx-wx`
 // Allow trailing whitespaces, or whitespaces between group.
 // Each permission can either be `-` `r` `w` or `x`.
@@ -46,7 +29,6 @@ const tokenizeCategory = function(catStat) {
 // File type as a first character is allowed and optional.
 // Each group must have 3 characters, and not have duplicates.
 const STAT_REGEXP = /^\s*[-dlpscbD]?\s*([-rwxXsS]{3})\s*([-rwxXsS]{3})\s*([-rwxXtT]{3})\s*$/u
-const CAT_STAT_REGEXP = /^\s*[-dlpscbD]?\s*([-rwxXsStT]{3})\s*$/u
 
 // We cannot know if `-` means `add: false` (must unset bits) or
 // `add: undefined` (leave bits as is), so we assume the later.
@@ -92,6 +74,5 @@ const specialReduce = function(part, [regexp, chars]) {
 
 module.exports = {
   tokenize,
-  tokenizeCategory,
   contractSpecial,
 }

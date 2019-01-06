@@ -6,7 +6,6 @@ const {
   OPERATORS,
   OPERATORS: { EQUAL },
   DEFAULT_SERIALIZE,
-  DEFAULT_CAT_SERIALIZE,
 } = require('./constants')
 const { joinCategories } = require('./join')
 
@@ -26,20 +25,6 @@ const serialize = function(nodes) {
     .map(stringifyPart)
     .join(',')
   return perm
-}
-
-// `serializeCategory()` uses same logic but:
-//   - uses a different default value
-//   - does not iterate over categories nor join or serialize them
-const serializeCategory = function(nodes, category) {
-  if (nodes.length === 0) {
-    return DEFAULT_CAT_SERIALIZE
-  }
-
-  const catPerm = serializePart({ category, nodes })
-    .map(stringifyCatPart)
-    .join(',')
-  return catPerm
 }
 
 // Iterate over each group of nodes by category
@@ -109,11 +94,6 @@ const stringifyPart = function({ category, operator, permissions }) {
   return `${category}${operator}${permissions}`
 }
 
-const stringifyCatPart = function({ operator, permissions }) {
-  return `${operator}${permissions}`
-}
-
 module.exports = {
   serialize,
-  serializeCategory,
 }

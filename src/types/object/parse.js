@@ -45,10 +45,6 @@ const parsePermissions = function([category, permissions]) {
     return
   }
 
-  return parseCategory(permissions, categoryA)
-}
-
-const parseCategory = function(permissions, category) {
   // Non-plain objects probably indicate a non-intentional error
   if (!isPlainObject(permissions)) {
     return
@@ -56,7 +52,9 @@ const parseCategory = function(permissions, category) {
 
   const nodes = Object.entries(permissions)
     .filter(hasDefinedValue)
-    .map(([permission, add]) => parsePermission({ permission, add, category }))
+    .map(([permission, add]) =>
+      parsePermission({ permission, add, category: categoryA }),
+    )
 
   return validateNodes({ nodes })
 }
@@ -107,5 +105,4 @@ const isInvalidNode = function(node) {
 
 module.exports = {
   parse,
-  parseCategory,
 }

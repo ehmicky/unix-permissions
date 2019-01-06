@@ -13,13 +13,6 @@
     { "category": "o", "permission": "x" },
     { "category": "o", "permission": "t" }
   ],
-  "CAT_NODES": [
-    { "permission": "r" },
-    { "permission": "w" },
-    { "permission": "x" },
-    { "permission": "s" },
-    { "permission": "t" }
-  ],
   "ORDER": [
     "u r",
     "u w",

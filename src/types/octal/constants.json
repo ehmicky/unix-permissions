@@ -2,7 +2,6 @@
   "OPERATORS": { "PLUS": "+", "MINUS": "-", "EQUAL": "=", "NONE": "" },
   "DEFAULT_OPERATOR": "=",
   "SERIALIZE_LENGTH": 4,
-  "CAT_SERIALIZE_LENGTH": 1,
   "SERIALIZE_PAD": "0",
   "OCTAL_BASE": 8
 }
