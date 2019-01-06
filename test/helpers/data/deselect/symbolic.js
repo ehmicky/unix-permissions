@@ -15,6 +15,7 @@ module.exports = [
   '+r',
 
   // Extremes
+  '-',
   '+',
   '=',
   '=rwx',
@@ -26,6 +27,7 @@ module.exports = [
   '+x,-r',
 
   // Operators
+  '-x',
   '=x',
 
   // Special permissions

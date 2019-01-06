@@ -27,6 +27,14 @@ module.exports = [
   'a=',
   'a=rwx',
 
+  // No category
+  '+',
+  '-',
+  '=',
+  '+x',
+  '-x',
+  '=x',
+
   // Combining
   'a=rw',
 
