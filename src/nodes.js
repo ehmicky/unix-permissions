@@ -13,8 +13,6 @@ const getNodePair = function(node) {
   return { [nodeKey]: node }
 }
 
-// The map key does not include `category` when the `nodes` are `catNodes`
-// (i.e. category-less nodes)
 const getNodeKey = function({ category, permission }) {
   return `${category} ${permission}`
 }
