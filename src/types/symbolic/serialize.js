@@ -36,8 +36,9 @@ const serializeCategory = function(nodes, category) {
     return DEFAULT_CAT_SERIALIZE
   }
 
-  const [{ operator, permissions }] = serializePart({ category, nodes })
-  const catPerm = `${operator}${permissions}`
+  const catPerm = serializePart({ category, nodes })
+    .map(stringifyCatPart)
+    .join(',')
   return catPerm
 }
 
@@ -106,6 +107,10 @@ const seralizeAddPart = function({ category, nodes, add }) {
 
 const stringifyPart = function({ category, operator, permissions }) {
   return `${category}${operator}${permissions}`
+}
+
+const stringifyCatPart = function({ operator, permissions }) {
+  return `${operator}${permissions}`
 }
 
 module.exports = {

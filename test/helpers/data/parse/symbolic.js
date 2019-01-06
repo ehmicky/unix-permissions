@@ -66,4 +66,8 @@ module.exports = [
   'o=x,o-x',
   'o=x,o+x',
   'a+x,o-x',
+
+  // Combining different categories and permissions
+  'o+x,g-x',
+  'o+x,o-r',
 ]
