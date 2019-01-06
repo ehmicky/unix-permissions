@@ -7,12 +7,12 @@
   {
     "command": "convert.octal <permission>",
     "describe": "Returns permission converted to an octal number.",
-    "examples": [["convert.octal u+r,go+w", "Output: 0422"]]
+    "examples": [["convert.octal u+r,go+w", "Output: +0422"]]
   },
   {
     "command": "convert.symbolic <permission>",
     "describe": "Returns permission converted to a symbolic type similar to chmod input.",
-    "examples": [["convert.symbolic 422", "Output: u+r,go+w"]]
+    "examples": [["convert.symbolic 422", "Output: u=r,go=w"]]
   },
   {
     "command": "convert.stat <permission>",
@@ -25,7 +25,7 @@
     "examples": [
       [
         "convert.object 422",
-        "Output: {\"user\":{\"read\":true},\"group\":{\"write\":true},\"others\":{\"write\":true}}"
+        "Output: {\"user\":{\"read\":true,\"write\":false,\"execute\":false,\"setuid\":false},\"group\":{\"read\":false,\"write\":true,\"execute\":false,\"setgid\":false},\"others\":{\"read\":false,\"write\":true,\"execute\":false,\"sticky\":false}}"
       ]
     ]
   },

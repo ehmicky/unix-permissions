@@ -126,14 +126,14 @@ Optionally a first character can be specified to indicate the file type (e.g.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-convert.symbolic('--------x') // 'o+x'
-convert.symbolic('--x--x--x') // 'a+x'
-convert.symbolic('--------T') // 'o+t'
-convert.symbolic('--------t') // 'o+xt'
-convert.symbolic('d--------x') // 'o+x'
-convert.symbolic('--x --x --x') // 'a+x'
-convert.symbolic('rwx --- ---') // 'u+rwx'
-convert.symbolic('xwr --- ---') // 'u+rwx'
+convert.octal('--------x') // '0001'
+convert.octal('--x--x--x') // '0111'
+convert.octal('--------T') // '1000'
+convert.octal('--------t') // '1001'
+convert.octal('d--------x') // '0001'
+convert.octal('--x --x --x') // '0111'
+convert.octal('rwx --- ---') // '0700'
+convert.octal('xwr --- ---') // '0700'
 ```
 
 # symbolic
@@ -155,15 +155,15 @@ User classes can be concatenated like `go+x`.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-convert.stat('o+wx') // '-------wx'
-convert.stat('o=wx') // '-------wx'
-convert.stat('o-wx') // '---------'
-convert.stat('go+x') // '-----x--x'
-convert.stat('g+x,o+x') // '-----x--x'
-convert.stat('a+x') // '--x--x--x'
-convert.stat('+x') // '--x--x--x'
-convert.stat('a+s') // '--S--S---'
-convert.stat('o+') // '---------'
+convert.octal('o+wx') // '+0003'
+convert.octal('o=wx') // '0003'
+convert.octal('o-wx') // '-0003'
+convert.octal('go+x') // '+0011'
+convert.octal('g+x,o+x') // '+0011'
+convert.octal('a+x') // '+0111'
+convert.octal('+x') // '+0111'
+convert.octal('a+s') // '+6000'
+convert.octal('o+') // '+0000'
 ```
 
 # object
@@ -180,15 +180,15 @@ permissions as is while `false` unsets them.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-convert.stat({ others: { execute: true } }) // '--------x'
-convert.stat({ others: { execute: false } }) // '---------'
-convert.stat({ others: { execute: undefined } }) // '---------'
-convert.stat({}) // '---------'
-convert.stat({
+convert.symbolic({ others: { read: true, execute: true } }) // 'o+rx'
+convert.symbolic({ others: { read: true, execute: false } }) // 'o+r,o-x'
+convert.symbolic({ others: { read: true, execute: undefined } }) // 'o+r'
+convert.symbolic({}) // 'a+'
+convert.symbolic({
   user: { setuid: true },
   group: { setgid: true },
   others: { sticky: true },
-}) // '--S--S--T'
+}) // 'ug+s,o+t'
 ```
 
 # Methods
@@ -264,7 +264,7 @@ positive('o+x,o-rw') // 'o+x'
 positive('o=x') // 'o+x'
 positive('660') // '+0660'
 invert('660') // '0117'
-invert(positive('660')) // '-0117'
+invert(positive('660')) // '-0660'
 ```
 
 ## `contain(permission, permissions...)`
@@ -276,9 +276,10 @@ Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-contain('--------x', 'o+x') // `true`
-contain('--------x', 'o-x') // `false`
-contain('--------x', 'o-w') // `false`
+contain('--x--x--x', 'a=x') // `true`
+contain('--x--x--x', 'a+x') // `true`
+contain('--x--x--x', 'a-x') // `false`
+contain('--x--x--x', 'a-w') // `true`
 contain('o+x', 'o+x') // `true`
 contain('o+x', 'o+x,o+x') // `true`
 contain('o+x', 'o=w') // `false`
@@ -296,9 +297,10 @@ Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-equal('--------x', 'o+x') // `true`
-equal('--------x', 'o-x') // `false`
-equal('--------x', 'o-w') // `false`
+equal('--x--x--x', 'a=x') // `true`
+equal('--x--x--x', 'a+x') // `false`
+equal('--x--x--x', 'a-x') // `false`
+equal('--x--x--x', 'a-w') // `false`
 equal('o+x', 'o+x') // `true`
 equal('o+x', 'o+x,o+x') // `true`
 equal('o+x', 'o=w') // `false`
@@ -324,7 +326,7 @@ set('---------', 'a+x') // '--x--x--x'
 set('---------', 'a+x', 'a+r') // 'r-xr-xr-x'
 set('--x--x--x', 'o-x') // '--x--x---'
 set('a+x', 'a+r') // 'a+rx'
-set('4660', 'a-st') // '=0660'
+set('4660', 'a-st') // '0660'
 ```
 
 ## `not(permission)`
