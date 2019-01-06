@@ -2,8 +2,10 @@
 
 const { argv } = require('process')
 
+const { escapeArgs } = require('./escape')
+
 const parseConfig = function({ yargs }) {
-  const args = getArgs()
+  const args = escapeArgs(argv.slice(2))
 
   const {
     // eslint-disable-next-line id-length
@@ -13,32 +15,11 @@ const parseConfig = function({ yargs }) {
   } = yargs.parse(args)
 
   // Retrieve all positional arguments, including none
-  // We do not allow:
-  //  - `number` permissions because they cannot be distinguished from `octal`
-  //    permissions, which are more likely. I.e. we stringify those since yargs
-  //    parse numbers automatically.
-  //  - `object` permissions because they are not CLI-friendly
+  // We do not allow `number` permissions because they are hard to distinguish
+  // from `octal` permissions, which are more likely.
   const argsA = [permission, ...permissions].filter(isDefined).map(parseArg)
 
   return { command, args: argsA }
-}
-
-const getArgs = function() {
-  return argv.slice(2).map(getArg)
-}
-
-const getArg = function(arg) {
-  const argA = fixPrefix({ arg })
-  return argA
-}
-
-// `yargs` strips the `+` otherwise
-const fixPrefix = function({ arg }) {
-  if (!arg.startsWith('+') && !arg.startsWith('0')) {
-    return arg
-  }
-
-  return ` ${arg}`
 }
 
 const isDefined = function(value) {

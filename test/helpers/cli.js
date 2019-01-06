@@ -9,52 +9,62 @@ const BINARY_PATH = `${__dirname}/../../localpack/bin/unix_permissions.js`
 // exception throwing
 const testCli = async function({ t, output, error, command, args }) {
   // We only run this in CI because it's slow.
-  if (!isCi || !args.some(isValidCliArgument)) {
+  if (!isCi || args.some(isInvalidCliArg)) {
     return
   }
 
-  const { stdout, stderr, code } = await fireBinary(command, ...args)
-
   const { output: outputA, error: errorA } = normalizeOutput({ output, error })
+
+  const { stdout, stderr, code } = await fireBinary({ command, args })
+
+  if (hasArgLengthError({ stderr })) {
+    return
+  }
 
   checkNonError({ t, output: outputA, error: errorA, code, stdout, stderr })
   checkError({ t, output: outputA, error: errorA, code, stdout, stderr })
 }
 
-// Ignore argument if it is not parsable by CLI
-const isValidCliArgument = function(arg) {
-  return typeof arg === 'string' && arg.trim() !== ''
+// CLI interprets all numbers as `octal` not `number`
+const isInvalidCliArg = function(arg) {
+  return typeof arg === 'number'
 }
 
-// Fire CLI command
-const fireBinary = async function(command, ...args) {
-  const { stdout, stderr, code } = await execa(
-    BINARY_PATH,
-    [command, ...args],
-    { reject: false },
-  )
-
-  const stdoutA = stdout.trim()
-  const stderrA = stderr.trim()
-  return { stdout: stdoutA, stderr: stderrA, code }
-}
-
+// Normalize programmatic output to make it comparable to CLI output
 const normalizeOutput = function({ output, error }) {
   if (typeof output === 'boolean') {
     return { output: '', error: !output }
   }
 
-  const outputA = serializeOutput({ output })
-  return { output: outputA, error }
-}
-
-const serializeOutput = function({ output }) {
-  if (typeof output === 'string') {
-    return output
+  if (typeof output !== 'string') {
+    return { output: JSON.stringify(output), error }
   }
 
-  return JSON.stringify(output)
+  return { output, error }
 }
+
+// Fire CLI command
+const fireBinary = function({ command, args }) {
+  const argsA = args.map(stringifyCliArg)
+  return execa(BINARY_PATH, [command, ...argsA], { reject: false })
+}
+
+// Stringify CLI arguments so they can be passed to `childProcess.spawn()`
+const stringifyCliArg = function(arg) {
+  if (arg && arg.constructor === Object) {
+    return JSON.stringify(arg)
+  }
+
+  return arg
+}
+
+// CLI is stricter than programmatic usage for arguments length
+// validation. I.e. error message might differ there
+const hasArgLengthError = function({ stderr }) {
+  return stderr.includes(ARGS_LENGTH_ERROR)
+}
+
+const ARGS_LENGTH_ERROR = 'Not enough non-option arguments'
 
 // Assertion checks if the error did not throw
 const checkNonError = function({ t, output, error, code, stdout, stderr }) {
@@ -62,9 +72,9 @@ const checkNonError = function({ t, output, error, code, stdout, stderr }) {
     return
   }
 
-  t.is(code, 0)
-  t.is(stdout, output)
   t.is(stderr, '')
+  t.is(stdout, output)
+  t.is(code, 0)
 }
 
 // Assertion checks if the error threw
@@ -73,22 +83,19 @@ const checkError = function({ t, output, error, code, stdout, stderr }) {
     return
   }
 
-  t.is(code, 1)
   t.is(stdout, '')
-  // CLI is stricter than programmatic usage for arguments length validation.
-  // I.e. error message might differ there
-  t.true(
-    fixWhitespaces(stderr) === fixWhitespaces(output) ||
-      stderr.includes(CLI_ARGS_ERROR),
-  )
+  t.is(fixOutput(stderr), fixOutput(output))
+  t.is(code, 1)
 }
 
-// CLI sometimes appends a whitespace to argument to fix issues with `yargs`
-const fixWhitespaces = function(string) {
-  return string.replace('invalid:  ', 'invalid: ')
+// CLI sometimes appends things like whitespaces or `0`, so we can't compare
+// the `permission` string and need to remove it for comparison.
+const fixOutput = function(string) {
+  return string.trim().replace(INVALID_PERM_REGEXP, INVALID_PERM)
 }
 
-const CLI_ARGS_ERROR = 'Not enough non-option arguments'
+const INVALID_PERM = 'Permissions syntax is invalid:'
+const INVALID_PERM_REGEXP = new RegExp(`${INVALID_PERM}.*`, 'u')
 
 module.exports = {
   testCli,
