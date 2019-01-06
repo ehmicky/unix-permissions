@@ -11,6 +11,12 @@ module.exports = [
   { user: [] },
   { users: new Map() },
   { user: { readd: true } },
+  { user: { setuid: true } },
+  { user: { setgid: true } },
+  { user: { sticky: true } },
+  { special: { read: true } },
+  { special: { write: true } },
+  { special: { execute: true } },
   { others: { read: null } },
   { others: { read: {} } },
 
@@ -27,6 +33,7 @@ module.exports = [
 
   // Extremes
   {
+    special: { setuid: true, setgid: true, sticky: true },
     user: { read: true, write: true, execute: true },
     group: { read: true, write: true, execute: true },
     others: { read: true, write: true, execute: true },
@@ -41,9 +48,13 @@ module.exports = [
   { others: { read: undefined } },
 
   // Special permissions
+  { special: { sticky: true } },
+  { special: { setgid: true } },
+  { special: { setuid: true } },
 
   // `all` category
   { all: { read: true } },
   { all: { read: true }, user: { read: false } },
   { user: { read: false }, all: { read: true } },
+  { all: { read: true }, special: { setuid: true } },
 ]
