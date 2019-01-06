@@ -59,7 +59,7 @@ process.umask(convert.number(invert('a-x')))
 
 // Allow your library's users to use any Unix permission type as input
 myLibrary.method({ mode: 'a-wx' })
-myLibrary.method({ mode: 444 })
+myLibrary.method({ mode: '444' })
 ```
 
 # Examples (CLI)
@@ -145,6 +145,9 @@ It is the same as `octal` except:
 
 - as a decimal number.
 - no operator can be used.
+- it can be used as input in [JavaScript](#usage-javascript) but not on the
+  [command line](#usage-cli), where all numbers should be in [`octal`](#octal)
+  form instead.
 
 <!-- eslint-disable line-comment-position, no-inline-comments, no-magic-numbers -->
 
@@ -235,6 +238,11 @@ convert.symbolic({
   group: { setgid: true },
   others: { sticky: true },
 }) // 'ug+s,o+t'
+```
+
+```bash
+$ convert.symbolic '{ "all": { "read": true } }'
+a+r
 ```
 
 # Methods
