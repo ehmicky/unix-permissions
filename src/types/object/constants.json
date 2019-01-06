@@ -13,6 +13,5 @@
     "group": { "r": "read", "w": "write", "x": "execute", "s": "setgid" },
     "others": { "r": "read", "w": "write", "x": "execute", "t": "sticky" }
   },
-  "ALL_PERMISSIONS": ["read", "write", "execute"],
   "ALL_CATEGORY": "all"
 }
