@@ -6,23 +6,15 @@ can take several [shapes](#types). With
 look like either [`ug+rw`](#symbolic) or [`660`](#octal), while with
 [`stat`](https://linux.die.net/man/2/stat) and
 [`ls`](https://linux.die.net/man/1/ls) they look like [`drw-rw----`](#stat).
-This library [converts](#convertoctalpermission) Unix permissions between
-these different [shapes](#types).
-
-With Node.js this enables using any of those [shapes](#types) when
-[specifying permissions with core methods](https://github.com/ehmicky/unix-permissions#using-with-nodejs-core-methods)
-like
-[`fs.stat()`](https://nodejs.org/api/fs.html#fs_fs_stat_path_options_callback),
-[`fs.chmod()`](https://nodejs.org/api/fs.html#fs_fs_chmod_path_mode_callback),
-[`fs.writeFile()`](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback)
-or
-[`process.umask()`](https://nodejs.org/api/process.html#process_process_umask_mask).
-
-This also works on the command line.
+This library enables using any of those [shapes](#types) (instead of being
+limited to a single one) with any [Node.js](#examples-javascript) or
+[CLI command](#examples-cli).
 
 This library also allows you to perform operations on Unix permissions
 including:
 
+- [converting](#convertoctalpermission) Unix permissions between different
+  [types](#types).
 - [validating](#normalizepermission) syntax.
 - [normalizing](#normalizepermission). For example `u+r,u+w` can be shortened
   to `u+rw`.
@@ -42,11 +34,38 @@ including:
   inside a permission. This can be useful if you're only interested about the
   part of the permission related to the current user/process for example.
 
-Note that permissions are manipulated as strings, not as file paths.
-This means you must use other utilities (such as
+Permissions are manipulated as strings, not as file paths. This means you must
+use other utilities (such as
 [`chmod`](https://linux.die.net/man/1/chmod) or
 [`stat`](https://linux.die.net/man/2/stat)) to get and set file permissions
 using those strings.
+
+# Examples (JavaScript)
+
+<!-- eslint-disable handle-callback-err, node/prefer-global/process -->
+
+```js
+// Retrieve a file's permission as an object instead of a number
+fs.stat('/etc/passwd', (error, stat) => convert.object(stat.mode))
+
+// Set a file's permission using `symbolic` notation instead of a number
+fs.chmod('/etc/passwd', convert.number('a=r'))
+
+// Set a file's permission using `symbolic` notation instead of a number
+fs.writeFile('/my/file', content, { mode: convert.number('a=r') })
+
+// Disallow executing new files using `umask`
+process.umask(convert.number(invert('a-x')))
+```
+
+# Examples (CLI)
+
+```bash
+$ stat -c "%a" /etc/passwd
+644
+$ unix-permissions convert.symbolic "$(stat -c "%a" /etc/passwd)"
+u=rw,go=r
+```
 
 # Installation
 
@@ -452,35 +471,4 @@ deselect.user('+wr') // 'u+rw'
 deselect.group('2') // '0020'
 deselect.others({ read: true }) // { others: { read: true } }
 deselect.others('r--') // '------r--'
-```
-
-# Examples
-
-## Using with Node.js core methods
-
-This library can be used to specify file permissions using any [types](#types)
-with Node.js.
-
-<!-- eslint-disable handle-callback-err -->
-
-```js
-// Retrieve a file's permission as an `object` instead of a number
-fs.stat('/etc/passwd', (error, stat) => convert.object(stat.mode))
-```
-
-```js
-// Set a file's permission using `symbolic` notation instead of a number
-fs.chmod('/etc/passwd', convert.number('a=r'))
-```
-
-```js
-// Set a file's permission using `symbolic` notation instead of a number
-fs.writeFile('/my/file', content, { mode: convert.number('a=r') })
-```
-
-<!-- eslint-disable node/prefer-global/process -->
-
-```js
-// Disallow executing new files using `umask`
-process.umask(convert.number(invert('a-x')))
 ```
