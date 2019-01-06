@@ -7,7 +7,16 @@ look like either [`ug+rw`](#symbolic) or [`660`](#octal), while with
 [`stat`](https://linux.die.net/man/2/stat) and
 [`ls`](https://linux.die.net/man/1/ls) they look like [`drw-rw----`](#stat).
 This library [converts](#convertoctalpermission) Unix permissions between
-these different [shapes](#types).
+these different [shapes](#types). This allows you to
+[specify permissions with
+Node.js core methods](https://github.com/ehmicky/unix-permissions#using-with-nodejs-core-methods)
+(like
+[`fs.stat()`](https://nodejs.org/api/fs.html#fs_fs_stat_path_options_callback),
+[`fs.chmod()`](https://nodejs.org/api/fs.html#fs_fs_chmod_path_mode_callback),
+[`fs.writeFile()`](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback)
+or
+[`process.umask()`](https://nodejs.org/api/process.html#process_process_umask_mask))
+using any of those [shapes](#types) instead of numbers.
 
 It also allows you to perform operations on them including:
 
