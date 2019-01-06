@@ -11,5 +11,4 @@ module.exports = moizeFuncs({
   ...require('./type'),
   ...require('./converters'),
   ...require('./functions'),
-  ...require('./select'),
 })

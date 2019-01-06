@@ -1,17 +1,6 @@
 'use strict'
 
-const { convert, select } = require('../../../localpack')
-
-// Iterate data over any `category`
-const forEachCategory = function(data) {
-  return Object.keys(select).flatMap(category =>
-    addCategory({ data, category }),
-  )
-}
-
-const addCategory = function({ data, category }) {
-  return data.map(datum => ({ ...datum, category }))
-}
+const { convert } = require('../../../localpack')
 
 // Iterate different data over each `type`
 const forEachDataType = function(allData) {
@@ -48,7 +37,6 @@ const stringify = function(value) {
 }
 
 module.exports = {
-  forEachCategory,
   forEachDataType,
   forEachType,
 }

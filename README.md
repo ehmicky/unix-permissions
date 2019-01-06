@@ -30,9 +30,6 @@ including:
   [maximal](#maxpermissions) permissions among a list of them.
   This can be useful to aggregate all the permissions of several files,
   e.g. during a directory recursion.
-- manipulating only a [specific user class](#selectuserpermission)
-  inside a permission. This can be useful if you're only interested about the
-  part of the permission related to the current user/process for example.
 
 Permissions are manipulated as strings, not as file paths. This means you must
 use other utilities (such as
@@ -448,43 +445,4 @@ Inverse of [`min()`](#minpermissions).
 
 ```js
 max('404', '440', '402') // '0446'
-```
-
-## `select.user(permission)`
-
-## `select.group(permission)`
-
-## `select.others(permission)`
-
-Returns the part within `permission` specific to `user`, `group` or `others`.
-
-The return value cannot be used as argument with any other methods of this
-library except `deselect()`.
-
-<!-- eslint-disable line-comment-position, no-inline-comments -->
-
-```js
-select.user('u+wr,g+x') // '+rw'
-select.group('421') // '2'
-select.others({ others: { read: true } }) // { read: true }
-select.others('rw-rw-r--') // 'r--'
-```
-
-## `deselect.user(permission)`
-
-## `deselect.group(permission)`
-
-## `deselect.others(permission)`
-
-Inverse of [`select.user()`](#selectuserpermission),
-[`select.group()`](#selectgrouppermission) and
-[`select.others()`](#selectotherspermission).
-
-<!-- eslint-disable line-comment-position, no-inline-comments -->
-
-```js
-deselect.user('+wr') // 'u+rw'
-deselect.group('2') // '0020'
-deselect.others({ read: true }) // { others: { read: true } }
-deselect.others('r--') // '------r--'
 ```

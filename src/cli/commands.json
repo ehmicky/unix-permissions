@@ -81,35 +81,5 @@
     "command": "max <permission> [permissions...]",
     "describe": "Retrieve the highest permissions among all arguments. This does not return the highest argument. Instead it returns a combination of the highest bits of all arguments.",
     "examples": [["max 744 005", "Output: 0745"]]
-  },
-  {
-    "command": "select.user <permission>",
-    "describe": "Returns the part within permission specific to user",
-    "examples": [["select.user u=w,g=x,o=r", "Output: =w"]]
-  },
-  {
-    "command": "select.group <permission>",
-    "describe": "Returns the part within permission specific to group",
-    "examples": [["select.group u=w,g=x,o=r", "Output: =x"]]
-  },
-  {
-    "command": "select.others <permission>",
-    "describe": "Returns the part within permission specific to others",
-    "examples": [["select.others u=w,g=x,o=r", "Output: =r"]]
-  },
-  {
-    "command": "deselect.user <permission>",
-    "describe": "Inverse of select.user",
-    "examples": [["deselect.user =w", "Output: u=w"]]
-  },
-  {
-    "command": "deselect.group <permission>",
-    "describe": "Inverse of select.group",
-    "examples": [["deselect.group =x", "Output: g=x"]]
-  },
-  {
-    "command": "deselect.others <permission>",
-    "describe": "Inverse of select.others",
-    "examples": [["deselect.others =r", "Output: o=r"]]
   }
 ]
