@@ -211,7 +211,7 @@ them (using `-` or `false`). [`number`](#number) and [`stat`](#stat) do not
 make this distinction. If you convert between them, you might lose this
 information as we assume `-` and `0` in [`number`](#number) and [`stat`](#stat)
 mean "leave permissions as is". However you can use [`full()`](#fullpermission)
-and [`partial()`](#partialpermission) to overcome this issue.
+and [`positive()`](#positivepermission) to overcome this issue.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
@@ -265,17 +265,17 @@ unixPermissions.convert.symbolic('001') // 'o+x'
 unixPermissions.full(unixPermissions.convert.symbolic('001')) // 'ug=,o=x'
 ```
 
-## `partial(permission)`
+## `positive(permission)`
 
-Inverse of [`full()`](#fullpermission). Remove all the negative permissions.
+Inverse of [`full()`](#fullpermission). Only keep the positive permissions.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.partial('o=x') // 'o+x'
-unixPermissions.partial('o+x,o-r') // 'o+x'
+unixPermissions.positive('o=x') // 'o+x'
+unixPermissions.positive('o+x,o-r') // 'o+x'
 unixPermissions.invert('660') // '=0117'
-unixPermissions.partial(unixPermissions.invert('660')) // '0117'
+unixPermissions.positive(unixPermissions.invert('660')) // '0117'
 ```
 
 ## `contain(permission, permissions...)`
