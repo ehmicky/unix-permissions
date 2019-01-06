@@ -28,13 +28,13 @@ const getArgs = function() {
 }
 
 const getArg = function(arg) {
-  const argA = fixPlus({ arg })
+  const argA = fixPrefix({ arg })
   return argA
 }
 
 // `yargs` strips the `+` otherwise
-const fixPlus = function({ arg }) {
-  if (!arg.startsWith('+')) {
+const fixPrefix = function({ arg }) {
+  if (!arg.startsWith('+') && !arg.startsWith('0')) {
     return arg
   }
 
@@ -52,7 +52,7 @@ const parseArg = function(value) {
     return object
   }
 
-  return String(value)
+  return value
 }
 
 // Allow `object` as input
