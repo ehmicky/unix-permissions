@@ -1,5 +1,6 @@
 'use strict'
 
+const { EMPTY_NODES_MAP, getNodesMap } = require('../../nodes')
 const number = require('../number')
 
 const { tokenize } = require('./tokenize')
@@ -9,7 +10,7 @@ const {
 } = require('./constants')
 
 // Parse an `octal` permission to `nodes`
-const parsePerm = function(funcName, octal) {
+const parsePerm = function(funcName, octal, category) {
   const { operator, string } = tokenize({ octal, funcName })
 
   if (string === undefined) {
@@ -20,7 +21,7 @@ const parsePerm = function(funcName, octal) {
   // Re-use `number` parsing logic
   const nodes = number[funcName](integer)
   // Each operator has its own logic
-  const nodesA = parseOperator[operator]({ nodes })
+  const nodesA = parseOperator[funcName][operator]({ nodes, category })
   return nodesA
 }
 
@@ -50,10 +51,27 @@ const parseEqual = function({ nodes }) {
   return nodes
 }
 
+// With `parseCategory` we need to fill all possible nodes, otherwise
+// `deselect()` might serialize to operator `+` or `-`
+const parseCategoryEqual = function({ nodes, category }) {
+  const nodesA = nodes.map(node => ({ ...node, category }))
+  const nodesMap = getNodesMap(nodesA)
+  const nodesMapA = { ...EMPTY_NODES_MAP, ...nodesMap }
+  const nodesB = Object.values(nodesMapA)
+  return nodesB
+}
+
 const parseOperator = {
-  [PLUS]: parsePlus,
-  [MINUS]: parseMinus,
-  [EQUAL]: parseEqual,
+  parse: {
+    [PLUS]: parsePlus,
+    [MINUS]: parseMinus,
+    [EQUAL]: parseEqual,
+  },
+  parseCategory: {
+    [PLUS]: parsePlus,
+    [MINUS]: parseMinus,
+    [EQUAL]: parseCategoryEqual,
+  },
 }
 
 const parse = parsePerm.bind(null, 'parse')
