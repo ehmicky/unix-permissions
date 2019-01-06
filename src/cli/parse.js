@@ -18,7 +18,7 @@ const parseConfig = function({ yargs }) {
   //    permissions, which are more likely. I.e. we stringify those since yargs
   //    parse numbers automatically.
   //  - `object` permissions because they are not CLI-friendly
-  const argsA = [permission, ...permissions].filter(isDefined).map(String)
+  const argsA = [permission, ...permissions].filter(isDefined).map(parseArg)
 
   return { command, args: argsA }
 }
@@ -43,6 +43,27 @@ const fixPlus = function({ arg }) {
 
 const isDefined = function(value) {
   return value !== undefined
+}
+
+const parseArg = function(value) {
+  const object = parseObject(value)
+
+  if (object !== undefined) {
+    return object
+  }
+
+  return String(value)
+}
+
+// Allow `object` as input
+const parseObject = function(value) {
+  if (typeof value !== 'string' || !value.startsWith('{')) {
+    return
+  }
+
+  try {
+    return JSON.parse(value)
+  } catch {}
 }
 
 module.exports = {
