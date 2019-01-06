@@ -20,18 +20,21 @@ performTests({
 
 PARSE_DATA.forEach(({ type, args: [arg], title }) => {
   // eslint-disable-next-line max-nested-callbacks
-  test(`[${type}] should have idempotent 'select' and 'deselect' with ${title}`, t => {
-    const argA = normalizeArg({ t, arg })
+  Object.keys(select).forEach(category => {
+    // eslint-disable-next-line max-nested-callbacks
+    test(`[${type}] should have idempotent 'select.${category}' and 'deselect.${category}' with ${title}`, t => {
+      const argA = normalizeArg({ t, arg })
 
-    if (argA === undefined) {
-      return
-    }
+      if (argA === undefined) {
+        return
+      }
 
-    const argB = select.user(argA)
-    const argC = deselect.user(argB)
-    const argD = select.user(argC)
-    t.deepEqual(argB, argD)
-    const argE = deselect.user(argD)
-    t.deepEqual(argC, argE)
+      const argB = select[category](argA)
+      const argC = deselect[category](argB)
+      const argD = select[category](argC)
+      t.deepEqual(argB, argD)
+      const argE = deselect[category](argD)
+      t.deepEqual(argC, argE)
+    })
   })
 })
