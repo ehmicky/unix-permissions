@@ -17,9 +17,9 @@ It also allows you to perform operations on them including:
 - [testing](#containpermission-permissions), e.g. "Is this executable by any
   users?"
 - [setting](#setpermission-permissions) and
-  [unsetting](#unsetpermission-permissions). Using bitwise operations can be
+  [unsetting](#notpermission-permissions). Using bitwise operations can be
   tedious and error-prone.
-- [inverting](#notpermission). For example a
+- [inverting](#invertpermission). For example a
   [`umask`](https://linux.die.net/man/2/umask) of `117` means new files will be
   created with `661` permissions.
 - checking the [minimal](#minpermissions) or
@@ -338,28 +338,12 @@ unixPermissions.set('a+x', 'a+r') // 'a+rx'
 unixPermissions.set('4660', 'a-st') // '=0660'
 ```
 
-## `unset(permission, permissions...)`
-
-Returns the result of unsetting `permissions` on `permission`.
-
-<!-- eslint-disable line-comment-position, no-inline-comments -->
-
-```js
-unixPermissions.unset('rwxrwxrwx', 'a+x') // 'rw-rw-rw-'
-unixPermissions.unset('rwxrwxrwx', 'a+x', 'a+r') // '-w--w--w-'
-unixPermissions.unset('---------', 'a-x') // '--x--x--x'
-unixPermissions.unset('a+xr', 'a+r') // 'a+x,a-r'
-```
-
 ## `not(permission)`
 
-Inverts `permission`.
+Inverts `permission` including special permissions.
 
-For example a [`umask`](https://linux.die.net/man/2/umask) of `117` means new
-files will be created with `661` permissions.
-
-Special permissions are only inverted to a positive value when `permission`
-explicitly negates them.
+This can be used in combination with `set()` to unset `permissions` instead of
+setting them.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
@@ -367,10 +351,32 @@ explicitly negates them.
 unixPermissions.not('u+xs') // 'u-xs'
 unixPermissions.not('u-xs') // 'u+xs'
 unixPermissions.not('u=x') // 'u=rws'
-unixPermissions.not('a=x') // 'a=rw'
-unixPermissions.not('rws-ws-w-') // '---r--r-x'
-unixPermissions.not('0660') // '0117'
-unixPermissions.not('1660') // '0117'
+unixPermissions.not('a=x') // 'ug=rws,o=rwt'
+unixPermissions.not('rws-ws-w-') // '---r--r-t'
+unixPermissions.not('0660') // '7117'
+unixPermissions.not('1660') // '6117'
+unixPermissions.set('rwxrwxrwx', unixPermissions.not('a+x')) // 'rw-rw-rw-'
+unixPermissions.set('---------', unixPermissions.not('a-x')) // '--x--x--x'
+unixPermissions.set('a+xr', unixPermissions.not('a+r')) // 'a+x,a-r'
+```
+
+## `invert(permission)`
+
+Inverts `permission` and removes special permissions.
+
+For example a [`umask`](https://linux.die.net/man/2/umask) of `117` means new
+files will be created with `661` permissions.
+
+<!-- eslint-disable line-comment-position, no-inline-comments -->
+
+```js
+unixPermissions.invert('u+xs') // 'u-x'
+unixPermissions.invert('u-xs') // 'u+x'
+unixPermissions.invert('u=x') // 'u+rw,u-x'
+unixPermissions.invert('a=x') // 'a+rw,a-x'
+unixPermissions.invert('rws-ws-w-') // '---r--r-x'
+unixPermissions.invert('0660') // '0117'
+unixPermissions.invert('1660') // '0117'
 ```
 
 ## `min(permissions...)`

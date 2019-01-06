@@ -7,6 +7,7 @@ const { contain } = require('./contain')
 const { equal } = require('./equal')
 const { set } = require('./set')
 const { not } = require('./not')
+const { invert } = require('./invert')
 const { min, max } = require('./min_max')
 
 module.exports = {
@@ -17,6 +18,7 @@ module.exports = {
   equal,
   set,
   not,
+  invert,
   min,
   max,
 }
