@@ -14,7 +14,7 @@ It also allows you to perform operations on them including:
 - [validating](#normalizepermission) syntax.
 - [normalizing](#normalizepermission). For example `u+rw,u-r` can be shortened
   to `u+w`.
-- [testing](#containspermission-permissions), e.g. "Is this executable by any
+- [testing](#containpermission-permissions), e.g. "Is this executable by any
   users?"
 - [setting](#setpermission-permissions) and
   [unsetting](#unsetpermission-permissions). Using bitwise operations can be
@@ -278,7 +278,7 @@ unixPermissions.invert('660') // '=0117'
 unixPermissions.partial(unixPermissions.invert('660')) // '0117'
 ```
 
-## `contains(permission, permissions...)`
+## `contain(permission, permissions...)`
 
 Tests whether `permission` includes `permissions`.
 
@@ -287,15 +287,15 @@ Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.contains('--------x', 'o+x') // `true`
-unixPermissions.contains('--------x', 'o-x') // `false`
-unixPermissions.contains('--------x', 'o-w') // `false`
-unixPermissions.contains('o+x', 'o+x') // `true`
-unixPermissions.contains('o+x', 'o+x,o+x') // `true`
-unixPermissions.contains('o+x', 'o=w') // `false`
-unixPermissions.contains('o+x,o-w', 'o+x,o-w') // `true`
-unixPermissions.contains('o+x,o-w', 'o-w') // `true`
-unixPermissions.contains('o+x,o-w', 'o+x', 'o-w') // `true`
+unixPermissions.contain('--------x', 'o+x') // `true`
+unixPermissions.contain('--------x', 'o-x') // `false`
+unixPermissions.contain('--------x', 'o-w') // `false`
+unixPermissions.contain('o+x', 'o+x') // `true`
+unixPermissions.contain('o+x', 'o+x,o+x') // `true`
+unixPermissions.contain('o+x', 'o=w') // `false`
+unixPermissions.contain('o+x,o-w', 'o+x,o-w') // `true`
+unixPermissions.contain('o+x,o-w', 'o-w') // `true`
+unixPermissions.contain('o+x,o-w', 'o+x', 'o-w') // `true`
 ```
 
 ## `equal(permission, permissions...)`
