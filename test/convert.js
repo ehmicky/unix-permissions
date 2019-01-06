@@ -1,30 +1,19 @@
 'use strict'
 
-const test = require('ava')
-
 const { convert } = require('../localpack')
 
-const { CONVERT_DATA, normalizeArg } = require('./helpers')
+const { CONVERT_DATA, performChecks } = require('./helpers')
 
-CONVERT_DATA.forEach(({ type, typeA, args: [arg], title }) => {
-  // eslint-disable-next-line max-nested-callbacks
-  test(`[${type}] should have idempotent 'convert.${typeA}' with ${title}`, t => {
-    const argA = normalizeArg({ t, arg })
+const check = function({ t, arg, type, typeA }) {
+  if (isLossy(type, typeA)) {
+    t.true(true)
+    return
+  }
 
-    if (argA === undefined) {
-      return
-    }
-
-    if (isLossy(type, typeA)) {
-      t.true(true)
-      return
-    }
-
-    const argB = convert[typeA](argA)
-    const argC = convert[type](argB)
-    t.deepEqual(argA, argC)
-  })
-})
+  const argA = convert[typeA](arg)
+  const argB = convert[type](argA)
+  t.deepEqual(arg, argB)
+}
 
 // Conversion between some types loses information
 const isLossy = function(type, typeA) {
@@ -43,3 +32,9 @@ const LOSSY_CONVERSIONS = [
   ['octal', 'number'],
   ['octal', 'stat'],
 ]
+
+performChecks({
+  name: "should have idempotent 'convert'",
+  data: CONVERT_DATA,
+  check,
+})

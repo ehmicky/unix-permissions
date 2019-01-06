@@ -1,14 +1,12 @@
 'use strict'
 
-const test = require('ava')
-
 const { contain } = require('../localpack')
 
 const {
   PARSE_DATA,
   CONTAIN_DATA,
   performTests,
-  normalizeArg,
+  performChecks,
 } = require('./helpers')
 
 performTests({
@@ -18,15 +16,8 @@ performTests({
   data: CONTAIN_DATA,
 })
 
-PARSE_DATA.forEach(({ type, args: [arg], title }) => {
-  // eslint-disable-next-line max-nested-callbacks
-  test(`[${type}] should 'contain' itself with ${title}`, t => {
-    const argA = normalizeArg({ t, arg })
-
-    if (argA === undefined) {
-      return
-    }
-
-    t.true(contain(argA, argA))
-  })
+performChecks({
+  name: "should 'contain' itself",
+  data: PARSE_DATA,
+  check: ({ t, arg }) => t.true(contain(arg, arg)),
 })
