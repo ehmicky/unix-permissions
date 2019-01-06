@@ -117,8 +117,11 @@ representing `read`, `write` and `execute`. Special permissions
 [`sticky`](https://en.wikipedia.org/wiki/Sticky_bit)) can optionally be
 specified by prepending another digit.
 
-An operator can be prepended: `=` (unset omitted permissions, the default),
-`+` (leave omitted permissions as is) or `-` (unset specified permissions).
+An operator can be prepended:
+
+- `=` (default): unset omitted permissions
+- `+`: leave omitted permissions as is
+- `-`: unset specified permissions)
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
