@@ -7,27 +7,30 @@ look like either [`ug+rw`](#symbolic) or [`660`](#octal), while with
 [`stat`](https://linux.die.net/man/2/stat) and
 [`ls`](https://linux.die.net/man/1/ls) they look like [`drw-rw----`](#stat).
 This library [converts](#convertoctalpermission) Unix permissions between
-these different [shapes](#types). This allows you to
-[specify permissions with
-Node.js core methods](https://github.com/ehmicky/unix-permissions#using-with-nodejs-core-methods)
-(like
+these different [shapes](#types).
+
+With Node.js this enables using any of those [shapes](#types) when
+[specifying permissions with core methods](https://github.com/ehmicky/unix-permissions#using-with-nodejs-core-methods)
+like
 [`fs.stat()`](https://nodejs.org/api/fs.html#fs_fs_stat_path_options_callback),
 [`fs.chmod()`](https://nodejs.org/api/fs.html#fs_fs_chmod_path_mode_callback),
 [`fs.writeFile()`](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback)
 or
-[`process.umask()`](https://nodejs.org/api/process.html#process_process_umask_mask))
-using any of those [shapes](#types) instead of numbers.
+[`process.umask()`](https://nodejs.org/api/process.html#process_process_umask_mask).
 
-It also allows you to perform operations on them including:
+This also works on the command line.
+
+This library also allows you to perform operations on Unix permissions
+including:
 
 - [validating](#normalizepermission) syntax.
-- [normalizing](#normalizepermission). For example `u+rw,u-r` can be shortened
-  to `u+w`.
+- [normalizing](#normalizepermission). For example `u+r,u+w` can be shortened
+  to `u+rw`.
 - [testing](#containpermission-permissions), e.g. "Is this executable by any
   users?"
 - [setting](#setpermission-permissions) and
   [unsetting](#notpermission-permissions). Using bitwise operations can be
-  tedious and error-prone.
+  tedious and error-prone otherwise.
 - [inverting](#invertpermission). For example a
   [`umask`](https://linux.die.net/man/2/umask) of `117` means new files will be
   created with `661` permissions.
@@ -60,7 +63,8 @@ const { convert } = require('unix-permissions')
 const permission = convert.stat('660')
 ```
 
-Several methods are available but they mostly follow the same pattern.
+Several methods other than `convert` are available but they mostly follow the
+same pattern.
 Permission strings are passed as input and returned as output.
 
 # Usage (CLI)
@@ -90,6 +94,9 @@ representing `read`, `write` and `execute`. Special permissions
 [`sticky`](https://en.wikipedia.org/wiki/Sticky_bit)) can optionally be
 specified by prepending another digit.
 
+An operator can be prepended: `=` (unset omitted permissions, the default),
+`+` (leave omitted permissions as is) or `-` (unset specified permissions).
+
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
@@ -108,7 +115,10 @@ convert.symbolic('=720') // 'u=rwx,g=w,o='
 Permission type used by Node.js
 [`fs.chmod()`](https://nodejs.org/api/fs.html#fs_fs_chmod_path_mode_callback).
 
-It is the same as `octal` but as a decimal number.
+It is the same as `octal` except:
+
+- as a decimal number.
+- no operator can be used.
 
 <!-- eslint-disable line-comment-position, no-inline-comments, no-magic-numbers -->
 
@@ -448,8 +458,8 @@ deselect.others('r--') // '------r--'
 
 ## Using with Node.js core methods
 
-This library can be used to specify file permissions using other [types](#types)
-than numbers with Node.js.
+This library can be used to specify file permissions using any [types](#types)
+with Node.js.
 
 <!-- eslint-disable handle-callback-err -->
 
@@ -460,12 +470,12 @@ fs.stat('/etc/passwd', (error, stat) => convert.object(stat.mode))
 
 ```js
 // Set a file's permission using `symbolic` notation instead of a number
-fs.chmod('/etc/passwd', convert.number('a-r'))
+fs.chmod('/etc/passwd', convert.number('a=r'))
 ```
 
 ```js
 // Set a file's permission using `symbolic` notation instead of a number
-fs.writeFile('/my/file', content, { mode: convert.number('a-r') })
+fs.writeFile('/my/file', content, { mode: convert.number('a=r') })
 ```
 
 <!-- eslint-disable node/prefer-global/process -->
