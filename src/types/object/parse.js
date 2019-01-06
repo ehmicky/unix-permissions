@@ -45,11 +45,28 @@ const parsePermissions = function([category, permissions]) {
     return
   }
 
+  const categoryA = getCategory({ category })
+
+  // Invalid category name
+  if (categoryA === undefined) {
+    return
+  }
+
   const nodes = Object.entries(permissions)
     .filter(hasDefinedValue)
-    .map(([permission, add]) => parsePermission({ category, permission, add }))
+    .map(([permission, add]) =>
+      parsePermission({ category: categoryA, permission, add }),
+    )
 
   return validateNodes({ nodes })
+}
+
+const getCategory = function({ category }) {
+  if (category === SPECIAL_CATEGORY) {
+    return category
+  }
+
+  return SHORT_CATEGORIES[category]
 }
 
 // `undefined` values e.g. `{ user: { read: undefined } }` result is no nodes.
@@ -81,13 +98,6 @@ const parseSpecialPerm = function({ permission, add }) {
 }
 
 const parseNormalPerm = function({ category, permission, add }) {
-  const categoryA = SHORT_CATEGORIES[category]
-
-  // Invalid category name
-  if (categoryA === undefined) {
-    return
-  }
-
   const permissionA = SHORT_PERMISSIONS[permission]
 
   // Invalid permission name
@@ -95,7 +105,7 @@ const parseNormalPerm = function({ category, permission, add }) {
     return
   }
 
-  return { category: categoryA, permission: permissionA, add }
+  return { category, permission: permissionA, add }
 }
 
 const validateNodes = function({ nodes }) {
