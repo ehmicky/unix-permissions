@@ -29,9 +29,11 @@ const parseAll = function({ [ALL_CATEGORY]: all, ...object }) {
     return object
   }
 
-  const allA = mapValues(SHORT_CATEGORIES, () => all)
   // `all` has lower priority
-  return { ...allA, ...object }
+  return mapValues(SHORT_CATEGORIES, (value, category) => ({
+    ...all,
+    ...object[category],
+  }))
 }
 
 // Parse each `object` category's object into nodes
