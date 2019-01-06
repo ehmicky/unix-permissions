@@ -6,9 +6,7 @@ const { positive } = require('./positive')
 const { contain } = require('./contain')
 const { equal } = require('./equal')
 const { set } = require('./set')
-const { unset } = require('./unset')
-const { flip } = require('./flip')
-const { invert } = require('./invert')
+const { not } = require('./not')
 const { min, max } = require('./min_max')
 
 module.exports = {
@@ -18,9 +16,7 @@ module.exports = {
   contain,
   equal,
   set,
-  unset,
-  flip,
-  invert,
+  not,
   min,
   max,
 }

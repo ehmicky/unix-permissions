@@ -40,11 +40,6 @@
     "examples": [["set a=w a+r", "Output: a=rw"]]
   },
   {
-    "command": "unset <permission> [permissions...]",
-    "describe": "Returns the result of unsetting `permissions` on `permission`.",
-    "examples": [["unset a=wr a+r", "Output: a=w"]]
-  },
-  {
     "command": "contain <permission> <permissions...>",
     "describe": "Tests whether `permission` includes `permissions`. Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.",
     "examples": [["contain 744 005", "Exit code: 1"]]
@@ -73,14 +68,9 @@
     "examples": [["positive a=rw", "Output: a+rw"]]
   },
   {
-    "command": "invert <permission>",
-    "describe": "Inverts permission and unsets the special permissions",
-    "examples": [["invert 744", "Output: =0033"]]
-  },
-  {
-    "command": "flip <permission>",
-    "describe": "Inverts permission including the special permissions",
-    "examples": [["flip 744", "Output: =7033"]]
+    "command": "not <permission>",
+    "describe": "Inverts permission",
+    "examples": [["not 744", "Output: =0033"]]
   },
   {
     "command": "min <permission> [permissions...]",

@@ -21,7 +21,7 @@ const BASE_SET_DATA = [
   ['o-x', 'o+'],
 ]
 
-const SET_UNSET_DATA = [
+const SET_DATA = [
   ...BASE_SET_DATA,
 
   // Equal operator
@@ -50,5 +50,5 @@ const SET_UNSET_DATA = [
 
 module.exports = {
   BASE_SET_DATA,
-  SET_UNSET_DATA,
+  SET_DATA,
 }

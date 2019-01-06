@@ -4,6 +4,6 @@ const { SIMPLE_DATA, performTests } = require('./helpers')
 
 performTests({
   title: args => `should invert ${args}`,
-  command: 'invert',
+  command: 'not',
   data: SIMPLE_DATA,
 })

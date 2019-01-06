@@ -19,7 +19,7 @@ It also allows you to perform operations on them including:
 - [setting](#setpermission-permissions) and
   [unsetting](#unsetpermission-permissions). Using bitwise operations can be
   tedious and error-prone.
-- [inverting](#flippermission). For example a
+- [inverting](#notpermission). For example a
   [`umask`](https://linux.die.net/man/2/umask) of `117` means new files will be
   created with `661` permissions.
 - checking the [minimal](#minpermissions) or
@@ -351,31 +351,26 @@ unixPermissions.unset('---------', 'a-x') // '--x--x--x'
 unixPermissions.unset('a+xr', 'a+r') // 'a+x,a-r'
 ```
 
-## `invert(permission)`
+## `not(permission)`
 
-Inverts `permission` and unsets the special permissions.
+Inverts `permission`.
 
 For example a [`umask`](https://linux.die.net/man/2/umask) of `117` means new
 files will be created with `661` permissions.
 
-<!-- eslint-disable line-comment-position, no-inline-comments -->
-
-```js
-unixPermissions.invert('660') // '=0117'
-unixPermissions.invert('7660') // '=0117'
-unixPermissions.invert('rws-ws-w-') // '---r--r-x'
-```
-
-## `flip(permission)`
-
-Inverts `permission` including the special permissions.
+Special permissions are only inverted to a positive value when `permission`
+explicitly negates them.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-unixPermissions.flip('660') // '=7117'
-unixPermissions.flip('7660') // '=0117'
-unixPermissions.flip('rws-ws-w-') // '---r--r-t'
+unixPermissions.not('u+xs') // 'u-xs'
+unixPermissions.not('u-xs') // 'u+xs'
+unixPermissions.not('u=x') // 'u=rws'
+unixPermissions.not('a=x') // 'a=rw'
+unixPermissions.not('rws-ws-w-') // '---r--r-x'
+unixPermissions.not('0660') // '0117'
+unixPermissions.not('1660') // '0117'
 ```
 
 ## `min(permissions...)`
