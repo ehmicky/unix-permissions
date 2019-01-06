@@ -40,6 +40,7 @@ module.exports = [
 
   // Combining
   { user: { read: true, write: true } },
+  { user: { read: true, write: false } },
 
   // Operators
   { others: { read: false } },
