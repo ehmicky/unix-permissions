@@ -282,7 +282,7 @@ unixPermissions.contain('--------x', 'o-w') // `false`
 unixPermissions.contain('o+x', 'o+x') // `true`
 unixPermissions.contain('o+x', 'o+x,o+x') // `true`
 unixPermissions.contain('o+x', 'o=w') // `false`
-unixPermissions.contain('o+x,o-w', 'o+x,o-w') // `true`
+unixPermissions.contain('o+x,o-w', 'o-w,o+x') // `true`
 unixPermissions.contain('o+x,o-w', 'o-w') // `true`
 unixPermissions.contain('o+x,o-w', 'o+x', 'o-w') // `true`
 ```
@@ -302,7 +302,7 @@ unixPermissions.equal('--------x', 'o-w') // `false`
 unixPermissions.equal('o+x', 'o+x') // `true`
 unixPermissions.equal('o+x', 'o+x,o+x') // `true`
 unixPermissions.equal('o+x', 'o=w') // `false`
-unixPermissions.equal('o+x,o-w', 'o+x,o-w') // `true`
+unixPermissions.equal('o+x,o-w', 'o-w,o+x') // `true`
 unixPermissions.equal('o+x,o-w', 'o-w') // `false`
 unixPermissions.equal('o+x,o-w', 'o+x', 'o-w') // `false`
 ```
