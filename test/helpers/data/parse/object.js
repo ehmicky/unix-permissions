@@ -9,7 +9,6 @@ module.exports = [
   new Map(),
   { user: null },
   { user: [] },
-  { user: new Map() },
   { users: {} },
   { user: { readd: true } },
   { user: { setuid: true } },
