@@ -1,9 +1,13 @@
 'use strict'
 
-const { isPlainObject } = require('../../utils')
+const { isPlainObject, mapValues } = require('../../utils')
 const { SHORT_CATEGORIES } = require('../../constants')
 
-const { SHORT_PERMISSIONS, SPECIAL_PERMISSIONS } = require('./constants')
+const {
+  SHORT_PERMISSIONS,
+  SPECIAL_PERMISSIONS,
+  ALL_CATEGORY,
+} = require('./constants')
 
 // Parse an `object` permission into nodes
 const parse = function(object) {
@@ -12,9 +16,22 @@ const parse = function(object) {
     return
   }
 
-  const nodes = Object.entries(object).flatMap(parsePermissions)
+  const objectA = parseAll(object)
+
+  const nodes = Object.entries(objectA).flatMap(parsePermissions)
 
   return validateNodes({ nodes })
+}
+
+// `all` is a shortcut for all categories
+const parseAll = function({ [ALL_CATEGORY]: all, ...object }) {
+  if (all === undefined) {
+    return object
+  }
+
+  const allA = mapValues(SHORT_CATEGORIES, () => all)
+  // `all` has lower priority
+  return { ...allA, ...object }
 }
 
 // Parse each `object` category's object into nodes

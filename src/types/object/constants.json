@@ -12,5 +12,6 @@
     "user": { "r": "read", "w": "write", "x": "execute", "s": "setuid" },
     "group": { "r": "read", "w": "write", "x": "execute", "s": "setgid" },
     "others": { "r": "read", "w": "write", "x": "execute", "t": "sticky" }
-  }
+  },
+  "ALL_CATEGORY": "all"
 }
