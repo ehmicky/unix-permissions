@@ -15,7 +15,7 @@ const defineCli = function() {
   return yargsC
 }
 
-const COMMON_USAGE = `Unix permissions can take several shapes:
+const COMMON_USAGE = `Unix permissions can take several types:
   - octal, e.g. "755"
   - same as stat output, e.g. "drwx-wx---"
   - symbolic, i.e. same as chmod input, e.g. "a=rw"`
