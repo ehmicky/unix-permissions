@@ -5,7 +5,7 @@ const test = require('ava')
 const { select, deselect } = require('../localpack')
 
 const {
-  PARSE_DATA,
+  SELECT_DATA,
   DESELECT_DATA,
   performTests,
   normalizeArg,
@@ -18,23 +18,20 @@ performTests({
   data: DESELECT_DATA,
 })
 
-PARSE_DATA.forEach(({ type, args: [arg], title }) => {
+SELECT_DATA.forEach(({ type, args: [arg], title, category }) => {
   // eslint-disable-next-line max-nested-callbacks
-  Object.keys(select).forEach(category => {
-    // eslint-disable-next-line max-nested-callbacks
-    test(`[${type}] should have idempotent 'select.${category}' and 'deselect.${category}' with ${title}`, t => {
-      const argA = normalizeArg({ t, arg })
+  test(`[${type}] should have idempotent 'select.${category}' and 'deselect.${category}' with ${title}`, t => {
+    const argA = normalizeArg({ t, arg })
 
-      if (argA === undefined) {
-        return
-      }
+    if (argA === undefined) {
+      return
+    }
 
-      const argB = select[category](argA)
-      const argC = deselect[category](argB)
-      const argD = select[category](argC)
-      t.deepEqual(argB, argD)
-      const argE = deselect[category](argD)
-      t.deepEqual(argC, argE)
-    })
+    const argB = select[category](argA)
+    const argC = deselect[category](argB)
+    const argD = select[category](argC)
+    t.deepEqual(argB, argD)
+    const argE = deselect[category](argD)
+    t.deepEqual(argC, argE)
   })
 })
