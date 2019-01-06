@@ -34,7 +34,7 @@ const serializeOperator = function({ nodes }) {
 }
 
 const isRemoved = function({ add }) {
-  return !add
+  return add !== true
 }
 
 // Re-use `number` serialization logic, then stringify to an octal number

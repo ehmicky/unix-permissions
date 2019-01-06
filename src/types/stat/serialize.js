@@ -25,7 +25,7 @@ const getAddedNodes = function({ nodes }) {
 }
 
 const hasAdd = function({ add }) {
-  return add
+  return add === true
 }
 
 // Returns either `-` or the permission character
