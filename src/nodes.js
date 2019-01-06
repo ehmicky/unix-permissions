@@ -16,10 +16,6 @@ const getNodePair = function(node) {
 // The map key does not include `category` when the `nodes` are `catNodes`
 // (i.e. category-less nodes)
 const getNodeKey = function({ category, permission }) {
-  if (category === undefined) {
-    return permission
-  }
-
   return `${category} ${permission}`
 }
 
