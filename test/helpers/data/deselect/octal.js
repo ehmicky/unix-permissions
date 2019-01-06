@@ -23,7 +23,7 @@ module.exports = [
 
   // Operators
   '=11',
-  ' +11',
+  '+11',
   '-11',
 
   // Whitespace
