@@ -215,9 +215,9 @@ convert.octal('o+') // '+0000'
 
 Permission type as an object such as `{ user: { read: true, write: false } }`.
 
-The first-level key is `user`, `group` or `others`. The second-level key is
-`read`, `write`, `execute`, `setuid`, `setgid` or `sticky` (the last three are
-the special permissions).
+The first-level key is `user`, `group`, `others` or `all`. The second-level key
+is `read`, `write`, `execute`, `setuid`, `setgid` or `sticky` (the last three
+are the special permissions).
 
 The values can be `true`, `false` or `undefined`. `undefined` leaves
 permissions as is while `false` unsets them.
@@ -228,6 +228,7 @@ permissions as is while `false` unsets them.
 convert.symbolic({ others: { read: true, execute: true } }) // 'o+rx'
 convert.symbolic({ others: { read: true, execute: false } }) // 'o+r,o-x'
 convert.symbolic({ others: { read: true, execute: undefined } }) // 'o+r'
+convert.symbolic({ all: { read: true } }) // 'a+r'
 convert.symbolic({}) // 'a+'
 convert.symbolic({
   user: { setuid: true },
