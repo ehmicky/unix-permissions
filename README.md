@@ -217,12 +217,12 @@ Permission type as an object such as `{ user: { read: true, write: false } }`.
 
 The full syntax is:
 
-```json
+```js
 {
-  "user": { "read": value, "write": value, "execute": value },
-  "group": { "read": value, "write": value, "execute": value },
-  "others": { "read": value, "write": value, "execute": value },
-  "special": { "setuid": value, "setgid": value, "sticky": value }
+  "user": { "read": "true", "write": "true", "execute": "true" },
+  "group": { "read": "true", "write": "true", "execute": "true" },
+  "others": { "read": "true", "write": "true", "execute": "true" },
+  "special": { "setuid": "true", "setgid": "true", "sticky": "true" }
 }
 ```
 
