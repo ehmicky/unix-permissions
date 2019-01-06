@@ -1,12 +1,12 @@
 [![downloads](https://img.shields.io/npm/dt/unix-permissions.svg?logo=npm)](https://www.npmjs.com/package/unix-permissions) [![last commit](https://img.shields.io/github/last-commit/ehmicky/unix-permissions.svg?logo=github&logoColor=white)](https://github.com/ehmicky/unix-permissions/graphs/contributors) [![license](https://img.shields.io/badge/license-Apache%202.0-4cc61e.svg?logo=github&logoColor=white)](https://www.apache.org/licenses/LICENSE-2.0) [![Coverage Status](https://img.shields.io/codecov/c/github/ehmicky/unix-permissions.svg?label=test%20coverage&logo=codecov)](https://codecov.io/gh/ehmicky/unix-permissions) [![travis](https://img.shields.io/travis/ehmicky/unix-permissions/master.svg?logo=travis)](https://travis-ci.org/ehmicky/unix-permissions/builds) [![npm](https://img.shields.io/npm/v/unix-permissions.svg?logo=npm)](https://www.npmjs.com/package/unix-permissions) [![node](https://img.shields.io/node/v/unix-permissions.svg?logo=node.js)](#) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?logo=javascript)](https://standardjs.com) [![eslint-config-standard-prettier-fp](https://img.shields.io/badge/eslint-config--standard--prettier--fp-4cc61e.svg?logo=eslint&logoColor=white)](https://github.com/ehmicky/eslint-config-standard-prettier-fp) [![Gitter](https://img.shields.io/gitter/room/ehmicky-code/unix-permissions.svg?logo=gitter)](https://gitter.im/ehmicky-code/unix-permissions)
 
 [Unix file permissions](https://en.wikipedia.org/wiki/File_system_permissions)
-can take several [shapes](#types). With
+can take several [types](#types). With
 [`chmod`](https://linux.die.net/man/1/chmod) they
 look like either [`ug+rw`](#symbolic) or [`660`](#octal), while with
 [`stat`](https://linux.die.net/man/2/stat) and
 [`ls`](https://linux.die.net/man/1/ls) they look like [`drw-rw----`](#stat).
-This library enables using any of those [shapes](#types) (instead of being
+This library enables using any of those [types](#types) (instead of being
 limited to a single one) with any [Node.js](#examples-javascript) or
 [CLI command](#examples-cli).
 
@@ -56,6 +56,10 @@ fs.writeFile('/my/file', content, { mode: convert.number('a=r') })
 
 // Disallow executing new files using `umask`
 process.umask(convert.number(invert('a-x')))
+
+// Allow your library's users to use any Unix permission type as input
+myLibrary.method({ mode: 'a-wx' })
+myLibrary.method({ mode: 444 })
 ```
 
 # Examples (CLI)
