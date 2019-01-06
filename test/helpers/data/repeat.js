@@ -26,7 +26,16 @@ const forEachType = function(data) {
 }
 
 const addType = function({ data, type }) {
-  return data.map(args => ({ type, args: [args], title: stringify(args) }))
+  return data.map(args => addEachType({ type, args }))
+}
+
+const addEachType = function({ type, args }) {
+  // When using `forEachType()` several times
+  if (args && args.type !== undefined) {
+    return { ...args, typeA: type }
+  }
+
+  return { type, args: [args], title: stringify(args) }
 }
 
 // Stringify test titles, ensuring their uniqueness
