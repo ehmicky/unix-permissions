@@ -16,9 +16,9 @@ const parseNumber = function({ nodesMap, max, values }, number) {
     return
   }
 
-  return Object.entries(nodesMap)
-    .filter(([nodeKey]) => hasNode({ number, nodeKey, values }))
-    .map(addAdd)
+  return Object.entries(nodesMap).map(([nodeKey, node]) =>
+    getNode({ number, nodeKey, node, values }),
+  )
 }
 
 // We allow `stat` bitfields as input but ignore the bits related to file
@@ -28,16 +28,15 @@ const isValidNumber = function({ number, max }) {
 }
 
 // Check permissions bit by bit
-const hasNode = function({ number, nodeKey, values }) {
+const getNode = function({ number, nodeKey, node, values }) {
+  const add = getAdd({ number, nodeKey, values })
+  return { ...node, add }
+}
+
+const getAdd = function({ number, nodeKey, values }) {
   const value = values[nodeKey]
   // eslint-disable-next-line no-bitwise
   return (number & value) !== 0
-}
-
-// We cannot know if unset bits mean `add: false` (must unset bits) or
-// `add: undefined` (leave bits as is), so we assume the later.
-const addAdd = function([, node]) {
-  return { ...node, add: true }
 }
 
 const parse = parseNumber.bind(null, {
