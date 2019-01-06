@@ -5,7 +5,8 @@ const { SHORT_CATEGORIES } = require('../../constants')
 
 const {
   SHORT_PERMISSIONS,
-  SPECIAL_PERMISSIONS,
+  SPECIAL_CATEGORY,
+  PARSE_SPECIAL,
   ALL_CATEGORY,
 } = require('./constants')
 
@@ -38,13 +39,6 @@ const parseAll = function({ [ALL_CATEGORY]: all, ...object }) {
 
 // Parse each `object` category's object into nodes
 const parsePermissions = function([category, permissions]) {
-  const categoryA = SHORT_CATEGORIES[category]
-
-  // Invalid category name
-  if (categoryA === undefined) {
-    return
-  }
-
   // Non-plain objects probably indicate a non-intentional error
   if (!isPlainObject(permissions)) {
     return
@@ -52,9 +46,7 @@ const parsePermissions = function([category, permissions]) {
 
   const nodes = Object.entries(permissions)
     .filter(hasDefinedValue)
-    .map(([permission, add]) =>
-      parsePermission({ permission, add, category: categoryA }),
-    )
+    .map(([permission, add]) => parsePermission({ category, permission, add }))
 
   return validateNodes({ nodes })
 }
@@ -64,8 +56,34 @@ const hasDefinedValue = function([, value]) {
   return value !== undefined
 }
 
-const parsePermission = function({ permission, add, category }) {
-  if (isInvalidSpecial({ permission, category })) {
+const parsePermission = function({ category, permission, add }) {
+  // Permission values must be `undefined`, `true` or `false`
+  if (typeof add !== 'boolean') {
+    return
+  }
+
+  if (category === SPECIAL_CATEGORY) {
+    return parseSpecialPerm({ permission, add })
+  }
+
+  return parseNormalPerm({ category, permission, add })
+}
+
+const parseSpecialPerm = function({ permission, add }) {
+  const specialNode = PARSE_SPECIAL[permission]
+
+  if (specialNode === undefined) {
+    return
+  }
+
+  return { ...specialNode, add }
+}
+
+const parseNormalPerm = function({ category, permission, add }) {
+  const categoryA = SHORT_CATEGORIES[category]
+
+  // Invalid category name
+  if (categoryA === undefined) {
     return
   }
 
@@ -76,19 +94,7 @@ const parsePermission = function({ permission, add, category }) {
     return
   }
 
-  // Permissin values must be `undefined`, `true` or `false`
-  if (typeof add !== 'boolean') {
-    return
-  }
-
-  return { category, permission: permissionA, add }
-}
-
-// Make sure special permissions are assigned to a category that supports them
-const isInvalidSpecial = function({ permission, category }) {
-  const specialCategory = SPECIAL_PERMISSIONS[permission]
-
-  return specialCategory !== undefined && specialCategory !== category
+  return { category: categoryA, permission: permissionA, add }
 }
 
 const validateNodes = function({ nodes }) {

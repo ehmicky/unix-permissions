@@ -1,17 +1,14 @@
 {
-  "SHORT_PERMISSIONS": {
-    "read": "r",
-    "write": "w",
-    "execute": "x",
-    "setuid": "s",
-    "setgid": "s",
-    "sticky": "t"
+  "SHORT_PERMISSIONS": { "read": "r", "write": "w", "execute": "x" },
+  "LONG_PERMISSIONS": { "r": "read", "w": "write", "x": "execute" },
+  "SPECIAL_CATEGORY": "special",
+  "PARSE_SPECIAL": {
+    "setuid": { "category": "u", "permission": "s" },
+    "setgid": { "category": "g", "permission": "s" },
+    "sticky": { "category": "o", "permission": "t" }
   },
-  "SPECIAL_PERMISSIONS": { "setuid": "u", "setgid": "g", "sticky": "o" },
-  "LONG_PERMISSIONS": {
-    "user": { "r": "read", "w": "write", "x": "execute", "s": "setuid" },
-    "group": { "r": "read", "w": "write", "x": "execute", "s": "setgid" },
-    "others": { "r": "read", "w": "write", "x": "execute", "t": "sticky" }
-  },
+  "SERIALIZE_SPECIAL": { "u s": "setuid", "g s": "setgid", "o t": "sticky" },
+  "CATEGORY_ORDER": ["user", "group", "others", "special"],
+  "PERM_ORDER": ["read", "write", "execute", "setuid", "setgid", "sticky"],
   "ALL_CATEGORY": "all"
 }

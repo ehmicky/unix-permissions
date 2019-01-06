@@ -16,15 +16,6 @@ const mapValues = function(object, mapper) {
   return Object.assign({}, ...pairs)
 }
 
-// Like lodash _.mapKeys()
-const mapKeys = function(object, mapper) {
-  const pairs = Object.entries(object).map(([key, value]) => {
-    const keyA = mapper(value, key, object)
-    return { [keyA]: value }
-  })
-  return Object.assign({}, ...pairs)
-}
-
 // Is a plain object, including `Object.create(null)`
 const isPlainObject = function(val) {
   return (
@@ -58,7 +49,6 @@ const isDuplicate = function(elem, index, elems) {
 module.exports = {
   omitBy,
   mapValues,
-  mapKeys,
   isPlainObject,
   groupBy,
   hasDuplicate,
