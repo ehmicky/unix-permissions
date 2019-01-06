@@ -77,7 +77,15 @@ const checkError = function({ t, output, error, code, stdout, stderr }) {
   t.is(stdout, '')
   // CLI is stricter than programmatic usage for arguments length validation.
   // I.e. error message might differ there
-  t.true(stderr === output || stderr.includes(CLI_ARGS_ERROR))
+  t.true(
+    fixWhitespaces(stderr) === fixWhitespaces(output) ||
+      stderr.includes(CLI_ARGS_ERROR),
+  )
+}
+
+// CLI sometimes appends a whitespace to argument to fix issues with `yargs`
+const fixWhitespaces = function(string) {
+  return string.replace('invalid:  ', 'invalid: ')
 }
 
 const CLI_ARGS_ERROR = 'Not enough non-option arguments'

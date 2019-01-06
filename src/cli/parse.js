@@ -1,12 +1,16 @@
 'use strict'
 
+const { argv } = require('process')
+
 const parseConfig = function({ yargs }) {
+  const args = getArgs()
+
   const {
     // eslint-disable-next-line id-length
     _: [command],
     permission,
     permissions = [],
-  } = yargs.parse()
+  } = yargs.parse(args)
 
   // Retrieve all positional arguments, including none
   // We do not allow:
@@ -14,9 +18,27 @@ const parseConfig = function({ yargs }) {
   //    permissions, which are more likely. I.e. we stringify those since yargs
   //    parse numbers automatically.
   //  - `object` permissions because they are not CLI-friendly
-  const args = [permission, ...permissions].filter(isDefined).map(String)
+  const argsA = [permission, ...permissions].filter(isDefined).map(String)
 
-  return { command, args }
+  return { command, args: argsA }
+}
+
+const getArgs = function() {
+  return argv.slice(2).map(getArg)
+}
+
+const getArg = function(arg) {
+  const argA = fixPlus({ arg })
+  return argA
+}
+
+// `yargs` strips the `+` otherwise
+const fixPlus = function({ arg }) {
+  if (!arg.startsWith('+')) {
+    return arg
+  }
+
+  return ` ${arg}`
 }
 
 const isDefined = function(value) {
