@@ -121,7 +121,7 @@ An operator can be prepended:
 
 - `=` (default): unset omitted permissions
 - `+`: leave omitted permissions as is
-- `-`: unset specified permissions)
+- `-`: unset specified permissions
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
