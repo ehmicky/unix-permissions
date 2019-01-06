@@ -3,33 +3,33 @@
 module.exports = [
   // Invalid
   'rww',
-  'd--j',
-  'd--+',
+  '--j',
+  '--+',
   'Br--',
-  'd--',
-  'd-----',
+  '--',
+  '-----',
 
   // Each permission
-  'd--x',
-  'd-w-',
-  'dr--',
+  '--x',
+  '-w-',
+  'r--',
 
   // Extremes
-  'd---',
-  'drwx',
+  '---',
+  'rwx',
 
   // Combining
-  'd-wx',
+  '-wx',
 
   // Special permissions
-  'd--X',
-  'd--T',
-  'd--t',
-  'd--s',
-  'd--S',
+  '--X',
+  '--T',
+  '--t',
+  '--s',
+  '--S',
 
   // Whitespace
-  'd --x ',
+  ' --x ',
 
   // File types
   'drw-',
@@ -41,5 +41,5 @@ module.exports = [
   'Dr--',
 
   // Changing order
-  'drxw',
+  'rxw',
 ]
