@@ -1,6 +1,6 @@
 'use strict'
 
-const { NODES } = require('../../constants')
+const { NODES, CAT_NODES } = require('../../constants')
 const { hasDuplicate } = require('../../utils')
 
 const { tokenize, tokenizeCategory } = require('./tokenize')
@@ -23,7 +23,7 @@ const parseCategory = function(catStat) {
     return
   }
 
-  return NODES.map(node => parsePart({ node, part }))
+  return CAT_NODES.map(node => parsePart({ node, part }))
 }
 
 // We do not allow duplicates within a category as it indicates typos
