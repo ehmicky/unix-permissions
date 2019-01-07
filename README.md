@@ -242,7 +242,7 @@ convert.symbolic({ special: { setuid: true, setgid: true, sticky: true } })
 ```
 
 ```bash
-$ convert.symbolic '{ "all": { "read": true } }'
+$ unix-permissions convert.symbolic '{ "all": { "read": true } }'
 a+r
 ```
 
