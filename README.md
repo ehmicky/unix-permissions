@@ -39,11 +39,11 @@ using those strings.
 
 # Examples (JavaScript)
 
-<!-- eslint-disable handle-callback-err, node/prefer-global/process -->
+<!-- eslint-disable handle-callback-err, node/prefer-global/process, no-sync -->
 
 ```js
 // Retrieve a file's permission as an object instead of a number
-fs.stat('/etc/passwd', (error, stat) => convert.object(stat.mode))
+convert.object(fs.statSync('/etc/passwd').mode)
 
 // Set a file's permission using `symbolic` notation instead of a number
 fs.chmod('/etc/passwd', convert.number('a=r'))
