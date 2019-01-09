@@ -46,10 +46,10 @@ using those strings.
 convert.object(fs.statSync('/etc/passwd').mode)
 
 // Set a file's permission using `symbolic` notation instead of a number
-fs.chmod('/etc/passwd', convert.number('a=r'))
+fs.writeFile('/my/file', content, { mode: convert.number('a=r') })
 
 // Set a file's permission using `symbolic` notation instead of a number
-fs.writeFile('/my/file', content, { mode: convert.number('a=r') })
+fs.chmod('/etc/passwd', convert.number('a=r'))
 
 // Disallow executing new files using `umask`
 process.umask(convert.number(invert('a-x')))
