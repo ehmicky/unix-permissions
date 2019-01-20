@@ -95,7 +95,7 @@
     "pkg-dir": "^3.0.0",
     "plugin-error": "^1.0.1",
     "prettier": "^1.15.3",
-    "release-it": "^10.0.0",
+    "release-it": "^10.0.1",
     "tar": "^4.4.8",
     "util.promisify": "^1.0.0"
   },
