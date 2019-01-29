@@ -29,14 +29,14 @@ const performCheckTest = function({ args: [arg], check, ...datum }, t) {
 }
 
 // Retrieve a different test name for each iteration
-const getTestName = function({ type, typeA, category, name, title }) {
-  const prefix = getPrefix({ type, typeA, category })
+const getTestName = function({ type, otherType, category, name, title }) {
+  const prefix = getPrefix({ type, otherType, category })
 
   return `${prefix} ${name} with ${title}`
 }
 
-const getPrefix = function({ type, typeA, category }) {
-  return [type, typeA, category]
+const getPrefix = function({ type, otherType, category }) {
+  return [type, otherType, category]
     .filter(Boolean)
     .map(addBracket)
     .join(' ')

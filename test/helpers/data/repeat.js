@@ -21,7 +21,7 @@ const addType = function({ data, type }) {
 const addEachType = function({ type, args }) {
   // When using `forEachType()` several times
   if (args && args.type !== undefined) {
-    return { ...args, typeA: type }
+    return { ...args, otherType: type }
   }
 
   return { type, args: [args], title: stringify(args) }

@@ -4,21 +4,21 @@ const { convert } = require('../localpack')
 
 const { CONVERT_DATA, performChecks } = require('./helpers')
 
-const check = function({ t, arg, type, typeA }) {
-  if (isLossy(type, typeA)) {
+const check = function({ t, arg, type, otherType }) {
+  if (isLossy({ type, otherType })) {
     t.true(true)
     return
   }
 
-  const argA = convert[typeA](arg)
+  const argA = convert[otherType](arg)
   const argB = convert[type](argA)
   t.deepEqual(arg, argB)
 }
 
 // Conversion between some types loses information
-const isLossy = function(type, typeA) {
+const isLossy = function({ type, otherType }) {
   return LOSSY_CONVERSIONS.some(
-    types => types[0] === type && types[1] === typeA,
+    types => types[0] === type && types[1] === otherType,
   )
 }
 
