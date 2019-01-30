@@ -3,26 +3,21 @@
 [![downloads](https://img.shields.io/npm/dt/unix-permissions.svg?logo=npm)](https://www.npmjs.com/package/unix-permissions) [![last commit](https://img.shields.io/github/last-commit/ehmicky/unix-permissions.svg?logo=github&logoColor=white)](https://github.com/ehmicky/unix-permissions/graphs/contributors) [![license](https://img.shields.io/badge/license-Apache%202.0-4cc61e.svg?logo=github&logoColor=white)](https://www.apache.org/licenses/LICENSE-2.0) [![Coverage Status](https://img.shields.io/codecov/c/github/ehmicky/unix-permissions.svg?label=test%20coverage&logo=codecov)](https://codecov.io/gh/ehmicky/unix-permissions) [![travis](https://img.shields.io/travis/ehmicky/unix-permissions/master.svg?logo=travis)](https://travis-ci.org/ehmicky/unix-permissions/builds) [![npm](https://img.shields.io/npm/v/unix-permissions.svg?logo=npm)](https://www.npmjs.com/package/unix-permissions) [![node](https://img.shields.io/node/v/unix-permissions.svg?logo=node.js)](#) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?logo=javascript)](https://standardjs.com) [![eslint-config-standard-prettier-fp](https://img.shields.io/badge/eslint-config--standard--prettier--fp-4cc61e.svg?logo=eslint&logoColor=white)](https://github.com/ehmicky/eslint-config-standard-prettier-fp) [![Gitter](https://img.shields.io/gitter/room/ehmicky-code/unix-permissions.svg?logo=gitter)](https://gitter.im/ehmicky-code/unix-permissions)
 
 [Unix file permissions](https://en.wikipedia.org/wiki/File_system_permissions)
-can take several [types](#types). With
-[`chmod`](https://linux.die.net/man/1/chmod) they
-look like either [`ug+rw`](#symbolic) or [`660`](#octal), while with
-[`stat`](https://linux.die.net/man/2/stat) and
-[`ls`](https://linux.die.net/man/1/ls) they look like [`drw-rw----`](#stat).
-This library enables using any of those [types](#types) (instead of being
+can take many [shapes](#types):
+[symbolic](#symbolic) (`ug+rw`), [octal](#octal) (`660`) or a [list of characters](#stat) (`drw-rw----`).
+This library enables using any of [these](#types) (instead of being
 limited to a single one) with any [Node.js](#examples-javascript) or
 [CLI command](#examples-cli).
 
-This library also allows you to perform operations on Unix permissions
-including:
+This library can also perform operations on Unix permissions such as:
 
+- [testing](#containpermission-permissions),
+  [setting](#setpermission-permissions) and
+  [unsetting](#notpermission-permissions). Using bitwise operations (`|`,
+  `&`, `^`, `~`) can be tedious and error-prone otherwise.
 - [validating](#normalizepermission) syntax.
 - [normalizing](#normalizepermission). For example `u+r,u+w` can be shortened
   to `u+rw`.
-- [testing](#containpermission-permissions), e.g. "Is this executable by any
-  users?"
-- [setting](#setpermission-permissions) and
-  [unsetting](#notpermission-permissions). Using bitwise operations (`|`,
-  `&`, `^`, `~`) can be tedious and error-prone otherwise.
 - [inverting](#invertpermission). For example a
   [`umask`](https://linux.die.net/man/2/umask) of `117` means new files will be
   created with `661` permissions.
@@ -42,7 +37,8 @@ using those strings.
 <!-- eslint-disable handle-callback-err, node/prefer-global/process, no-sync -->
 
 ```js
-// Retrieve a file's permission as an object instead of a number
+// Retrieve a file's permission as an object like
+// `{ user: { write: false, read: true, ... }, ... }` instead of a number
 convert.object(fs.statSync('/etc/passwd').mode)
 
 // Set a file's permission using `symbolic` notation instead of a number
@@ -54,7 +50,9 @@ fs.writeFile('/my/file', content, { mode: convert.number('a=r') })
 // Disallow executing new files using `umask`
 process.umask(convert.number(invert('a-x')))
 
-// Allow your library's users to use any Unix permission type as input
+// If your library takes Unix permissions as input, using
+// `unix-permissions` under the hood lets your users choose their
+// favorite Unix permissions type.
 myLibrary.method({ mode: 'a-wx' })
 myLibrary.method({ mode: '444' })
 ```
@@ -260,12 +258,15 @@ a+r
 
 Returns `permission` converted to another [`type`](#types).
 
-Note that [`symbolic`](#symbolic) and [`object`](#object) distinguish between
-leaving permissions as is (omitting them or using `undefined`) and unsetting
-them (using `-` or `false`). [`number`](#number) and [`stat`](#stat) do not
+Note that [`symbolic`](#symbolic) and [`object`](#object) distinguish between:
+
+- leaving permissions as is (omitting them or using `undefined`)
+- unsetting them (using `-` or `false`).
+
+[`number`](#number) and [`stat`](#stat) do not
 make this distinction. If you convert between them, you might lose this
-information as we assume `-` and `0` in [`number`](#number) and [`stat`](#stat)
-mean "unset permissions". However you can use
+information as we assume `0` in [`number`](#number) and `-` in
+[`stat`](#stat) mean "unset permissions". However you can use
 [`positive()`](#positivepermission) to overcome this issue.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
@@ -368,7 +369,7 @@ equal('o+x,o-w', 'o+x', 'o-w') // `false`
 
 Returns the result of setting `permissions` on `permission`.
 
-This is useful to avoid error-prone bitwise operations.
+This is useful to avoid error-prone bitwise operations (`|`, `&`, `^`, `~`).
 
 This can also be used to remove special permissions using
 `set(permission, 'a-st')` since some functions like
@@ -427,7 +428,7 @@ invert('1660') // '0117'
 
 ## `min(permissions...)`
 
-Retrieve the lowest permissions among all argument.
+Retrieve the lowest permissions among all arguments.
 
 This does not return the lowest argument. Instead it returns a combination
 of the lowest bits of all arguments.
