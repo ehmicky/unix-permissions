@@ -21,8 +21,8 @@ including:
 - [testing](#containpermission-permissions), e.g. "Is this executable by any
   users?"
 - [setting](#setpermission-permissions) and
-  [unsetting](#notpermission-permissions). Using bitwise operations can be
-  tedious and error-prone otherwise.
+  [unsetting](#notpermission-permissions). Using bitwise operations (`|`,
+  `&`, `^`, `~`) can be tedious and error-prone otherwise.
 - [inverting](#invertpermission). For example a
   [`umask`](https://linux.die.net/man/2/umask) of `117` means new files will be
   created with `661` permissions.
