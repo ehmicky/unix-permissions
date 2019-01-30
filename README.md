@@ -15,8 +15,6 @@ limited to a single one) with any [Node.js](#examples-javascript) or
 This library also allows you to perform operations on Unix permissions
 including:
 
-- [converting](#convertoctalpermission) Unix permissions between different
-  [types](#types).
 - [validating](#normalizepermission) syntax.
 - [normalizing](#normalizepermission). For example `u+r,u+w` can be shortened
   to `u+rw`.
