@@ -21,7 +21,7 @@
       "pre-push": "gulp check"
     }
   },
-  "description": "Convert, test and manipulate Unix permissions",
+  "description": "Swiss Army knife for Unix permissions",
   "keywords": [
     "unix",
     "permissions",
