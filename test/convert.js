@@ -1,6 +1,6 @@
 'use strict'
 
-const { convert } = require('../localpack')
+const { convert } = require('..')
 
 const { CONVERT_DATA, performChecks } = require('./helpers')
 

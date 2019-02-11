@@ -1,6 +1,6 @@
 'use strict'
 
-const { convert } = require('../../../localpack')
+const { convert } = require('../../..')
 
 // Iterate different data over each `type`
 const forEachDataType = function(allData) {

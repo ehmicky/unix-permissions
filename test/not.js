@@ -1,6 +1,6 @@
 'use strict'
 
-const { not } = require('../localpack')
+const { not } = require('..')
 
 const {
   SIMPLE_DATA,

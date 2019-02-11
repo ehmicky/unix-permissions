@@ -1,6 +1,6 @@
 'use strict'
 
-const { positive } = require('../localpack')
+const { positive } = require('..')
 
 const {
   PARSE_DATA,

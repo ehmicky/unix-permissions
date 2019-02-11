@@ -1,6 +1,6 @@
 'use strict'
 
-const { contain } = require('../localpack')
+const { contain } = require('..')
 
 const {
   PARSE_DATA,

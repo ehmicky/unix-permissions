@@ -1,6 +1,6 @@
 'use strict'
 
-const { normalize } = require('../localpack')
+const { normalize } = require('..')
 
 const { PARSE_DATA, performTests, performChecks } = require('./helpers')
 

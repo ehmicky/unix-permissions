@@ -7,7 +7,7 @@
     "gulp/tasks/**/*.js",
     "*.md"
   ],
-  "UNIT": ["localpack"],
+  "UNIT": ["index.js", "src", "gulp", "test"],
   "TEST": ["{index,gulpfile.babel,.babelrc}.js", "src", "gulp", "test", "*.md"],
   "BUILD": ["{index,gulpfile.babel,.babelrc}.js", "src"],
   "BUILD_SRC": ["src"],

@@ -3,7 +3,7 @@
 const execa = require('execa')
 const isCi = require('is-ci')
 
-const BINARY_PATH = `${__dirname}/../../localpack/bin/unix_permissions.js`
+const BINARY_PATH = `${__dirname}/../../bin/unix_permissions.js`
 
 // Test that CLI output and exit code is same as programmatic output and
 // exception throwing
