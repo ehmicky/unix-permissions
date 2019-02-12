@@ -1,15 +1,13 @@
 'use strict'
 
 const execa = require('execa')
-const isCi = require('is-ci')
 
 const BINARY_PATH = `${__dirname}/../../bin/unix_permissions.js`
 
 // Test that CLI output and exit code is same as programmatic output and
 // exception throwing
 const testCli = async function({ t, output, error, command, args }) {
-  // We only run this in CI because it's slow.
-  if (!isCi || args.some(isInvalidCliArg)) {
+  if (args.some(isInvalidCliArg)) {
     return
   }
 
