@@ -10,6 +10,8 @@ const defineCli = function() {
     .strict()
     .demandCommand(1, 1)
     .recommendCommands()
+    // Permissions cannot be input as numbers, only as octals
+    .parserConfiguration({ 'parse-numbers': false })
   const yargsB = COMMANDS.reduce(addCommand, yargsA)
   const yargsC = yargsB.completion()
   return yargsC
