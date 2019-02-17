@@ -1,0 +1,6 @@
+OPERATORS:
+  'true': +
+  'false': '-'
+  EQUAL: =
+DEFAULT_CATEGORIES: a
+DEFAULT_SERIALIZE: a+

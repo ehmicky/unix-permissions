@@ -1,0 +1,42 @@
+NODES:
+  - { category: u, permission: r }
+  - { category: u, permission: w }
+  - { category: u, permission: x }
+  - { category: u, permission: s }
+  - { category: g, permission: r }
+  - { category: g, permission: w }
+  - { category: g, permission: x }
+  - { category: g, permission: s }
+  - { category: o, permission: r }
+  - { category: o, permission: w }
+  - { category: o, permission: x }
+  - { category: o, permission: t }
+ORDER:
+  - u r
+  - u w
+  - u x
+  - u s
+  - g r
+  - g w
+  - g x
+  - g s
+  - o r
+  - o w
+  - o x
+  - o t
+CATEGORIES: [u, g, o]
+SHORT_CATEGORIES:
+  user: u
+  group: g
+  others: o
+LONG_CATEGORIES:
+  u: user
+  g: group
+  o: others
+PERMISSIONS: [r, w, x, t, s]
+SPECIAL_PERMISSIONS: [t, s]
+CATEGORY_PERMISSIONS:
+  a: [x, w, r, t, s]
+  u: [x, w, r, s]
+  g: [x, w, r, s]
+  o: [x, w, r, t]
