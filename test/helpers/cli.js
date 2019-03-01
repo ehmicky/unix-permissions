@@ -2,7 +2,7 @@
 
 const execa = require('execa')
 
-const BINARY_PATH = `${__dirname}/../../bin/unix_permissions.js`
+const BINARY_PATH = `${__dirname}/../../dist/bin/index.js`
 
 // Test that CLI output and exit code is same as programmatic output and
 // exception throwing

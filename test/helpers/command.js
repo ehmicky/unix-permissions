@@ -5,7 +5,7 @@ const test = require('ava')
 
 const unixPermissions = require('../..')
 // eslint-disable-next-line import/no-internal-modules
-const { getCommand } = require('../../dist/cli/command')
+const { getCommand } = require('../../dist/bin/command')
 
 const { testCli } = require('./cli')
 
