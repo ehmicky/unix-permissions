@@ -1,12 +1,12 @@
 {
   "name": "unix-permissions",
   "version": "1.1.5",
-  "main": "dist/src/index.js",
+  "main": "build/src/index.js",
   "files": [
-    "dist/src"
+    "build/src"
   ],
   "bin": {
-    "unix-permissions": "dist/src/bin/index.js"
+    "unix-permissions": "build/src/bin/index.js"
   },
   "scripts": {
     "test": "gulp test"
