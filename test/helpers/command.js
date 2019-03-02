@@ -3,7 +3,7 @@
 
 const test = require('ava')
 
-const unixPermissions = require('../..')
+const unixPermissions = require('../../src')
 // eslint-disable-next-line import/no-internal-modules
 const { getCommand } = require('../../build/src/bin/command')
 

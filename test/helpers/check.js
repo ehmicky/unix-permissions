@@ -3,7 +3,7 @@
 
 const test = require('ava')
 
-const { normalize } = require('../..')
+const { normalize } = require('../../src')
 
 // Performs a `check` test function iteratively over each `data`
 const performChecks = function({ name, data, check }) {

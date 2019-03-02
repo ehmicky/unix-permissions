@@ -1,6 +1,6 @@
 'use strict'
 
-const { convert } = require('../../..')
+const { convert } = require('../../../src')
 
 // Iterate different data over each `type`
 const forEachDataType = function(allData) {
