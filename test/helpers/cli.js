@@ -2,7 +2,7 @@
 
 const execa = require('execa')
 
-const BINARY_PATH = `${__dirname}/../../dist/src/bin/index.js`
+const BINARY_PATH = `${__dirname}/../../build/src/bin/index.js`
 
 // Test that CLI output and exit code is same as programmatic output and
 // exception throwing
