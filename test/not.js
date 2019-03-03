@@ -1,6 +1,6 @@
 'use strict'
 
-const { not } = require('..')
+const { not } = require('../src')
 
 const {
   SIMPLE_DATA,

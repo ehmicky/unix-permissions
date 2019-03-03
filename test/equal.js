@@ -1,6 +1,6 @@
 'use strict'
 
-const { equal } = require('..')
+const { equal } = require('../src')
 
 const {
   PARSE_DATA,
