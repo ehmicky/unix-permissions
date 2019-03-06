@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/ehmicky/design/master/unix-permissions/unix-permissions.png?sanitize=true" width="550"/>
 
-[![downloads](https://img.shields.io/npm/dt/unix-permissions.svg?logo=npm)](https://www.npmjs.com/package/unix-permissions) [![last commit](https://img.shields.io/github/last-commit/ehmicky/unix-permissions.svg?logo=github&logoColor=white)](https://github.com/ehmicky/unix-permissions/graphs/contributors) [![Coverage Status](https://img.shields.io/codecov/c/github/ehmicky/unix-permissions.svg?label=test%20coverage&logo=codecov)](https://codecov.io/gh/ehmicky/unix-permissions) [![travis](https://img.shields.io/travis/ehmicky/unix-permissions/master.svg?logo=travis)](https://travis-ci.org/ehmicky/unix-permissions/builds) [![node](https://img.shields.io/node/v/unix-permissions.svg?logo=node.js)](#) [![Gitter](https://img.shields.io/gitter/room/ehmicky/unix-permissions.svg?logo=gitter)](https://gitter.im/ehmicky/unix-permissions)
+[![Codecov](https://img.shields.io/codecov/c/github/ehmicky/unix-permissions.svg?label=tested&logo=codecov)](https://codecov.io/gh/ehmicky/unix-permissions) [![Travis](https://img.shields.io/badge/cross-platform-4cc61e.svg?logo=travis)](https://travis-ci.org/ehmicky/unix-permissions) [![Node](https://img.shields.io/node/v/unix-permissions.svg?logo=node.js)](#) [![Gitter](https://img.shields.io/gitter/room/ehmicky/unix-permissions.svg?logo=gitter)](https://gitter.im/ehmicky/unix-permissions)
 
 Swiss Army knife for Unix permissions.
 
