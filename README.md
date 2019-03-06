@@ -248,15 +248,7 @@ a+r
 
 # Methods
 
-## `convert.octal(permission)`
-
-## `convert.number(permission)`
-
-## `convert.stat(permission)`
-
-## `convert.symbolic(permission)`
-
-## `convert.object(permission)`
+## convert.octal|number|stat|symbolic|object(permission)
 
 Returns `permission` converted to another [`type`](#types).
 
@@ -280,7 +272,7 @@ convert.octal('o+x') // '+0001'
 convert.octal('o=x') // '0001'
 ```
 
-## `type(permission)`
+## type(permission)
 
 Returns the `permission`'s [`type`](#types) or `'invalid'`.
 
@@ -293,7 +285,7 @@ type(0.5) // 'invalid'
 type('a+x') // 'symbolic'
 ```
 
-## `normalize(permission)`
+## normalize(permission)
 
 Normalize a `permission` to its canonical shape.
 
@@ -310,7 +302,7 @@ normalize({ user: { read: undefined, write: true } })
 normalize('z+x') // Throws an exception
 ```
 
-## `positive(permission)`
+## positive(permission)
 
 Remove all negative permissions. See
 [convert()](#convertoctalpermission) for more explanation.
@@ -325,7 +317,7 @@ invert('660') // '0117'
 invert(positive('660')) // '-0660'
 ```
 
-## `contain(permission, permissions...)`
+## contain(permission, permissions...)
 
 Tests whether `permission` includes `permissions`.
 
@@ -346,7 +338,7 @@ contain('o+x,o-w', 'o-w') // `true`
 contain('o+x,o-w', 'o+x', 'o-w') // `true`
 ```
 
-## `equal(permission, permissions...)`
+## equal(permission, permissions...)
 
 Tests whether `permission` equals exactly `permissions`.
 
@@ -367,7 +359,7 @@ equal('o+x,o-w', 'o-w') // `false`
 equal('o+x,o-w', 'o+x', 'o-w') // `false`
 ```
 
-## `set(permission, permissions...)`
+## set(permission, permissions...)
 
 Returns the result of setting `permissions` on `permission`.
 
@@ -387,7 +379,7 @@ set('a+x', 'a+r') // 'a+rx'
 set('4660', 'a-st') // '0660'
 ```
 
-## `not(permission)`
+## not(permission)
 
 Inverts `permission` including special permissions.
 
@@ -409,7 +401,7 @@ set('---------', not('a-x')) // '--x--x--x'
 set('a+xr', not('a+r')) // 'a+x,a-r'
 ```
 
-## `invert(permission)`
+## invert(permission)
 
 Inverts `permission` and removes special permissions.
 
@@ -428,7 +420,7 @@ invert('0660') // '0117'
 invert('1660') // '0117'
 ```
 
-## `min(permissions...)`
+## min(permissions...)
 
 Retrieve the lowest permissions among all arguments.
 
@@ -444,7 +436,7 @@ files, e.g. during a directory recursion.
 min('404', '440', '402') // '0400'
 ```
 
-## `max(permissions...)`
+## max(permissions...)
 
 Inverse of [`min()`](#minpermissions).
 
