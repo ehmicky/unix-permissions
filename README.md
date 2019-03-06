@@ -100,7 +100,7 @@ error occurred, e.g. if the permission syntax is invalid.
 # Types
 
 You can use any of the following permission types as input. You can also
-[`convert()`](#convertoctalpermission) between them.
+[`convert()`](#convertoctalnumberstatsymbolicobjectpermission) between them.
 
 ## octal
 
@@ -305,7 +305,8 @@ normalize('z+x') // Throws an exception
 ## positive(permission)
 
 Remove all negative permissions. See
-[convert()](#convertoctalpermission) for more explanation.
+[convert()](#convertoctalnumberstatsymbolicobjectpermission) for more
+explanation.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
