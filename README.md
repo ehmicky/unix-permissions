@@ -122,49 +122,49 @@ Please see the [types full documentation](docs/types.md).
 Please see the [methods full documentation](docs/API.md) for more information
 and examples.
 
-## [convert.octal|number|stat|symbolic|object(permission)](API.md#convertoctalnumberstatsymbolicobjectpermission)
+## [convert.octal|number|stat|symbolic|object(permission)](docs/API.md#convertoctalnumberstatsymbolicobjectpermission)
 
 Convert `permission` to another type.
 
-## [type(permission)](API.md#typepermission)
+## [type(permission)](docs/API.md#typepermission)
 
 Returns the `permission`'s type or `invalid`.
 
-## [normalize(permission)](API.md#normalizepermission)
+## [normalize(permission)](docs/API.md#normalizepermission)
 
 Normalize a `permission` to its canonical shape. Throw if `permission` is
 invalid.
 
-## [positive(permission)](API.md#positivepermission)
+## [positive(permission)](docs/API.md#positivepermission)
 
 Remove all negative permissions.
 
-## [contain(permission, permissions...)](API.md#containpermission-permissions)
+## [contain(permission, permissions...)](docs/API.md#containpermission-permissions)
 
 Tests whether `permission` includes `permissions`.
 
-## [equal(permission, permissions...)](API.md#equalpermission-permissions)
+## [equal(permission, permissions...)](docs/API.md#equalpermission-permissions)
 
 Tests whether `permission` equals exactly `permissions`.
 
-## [set(permission, permissions...)](API.md#setpermission-permissions)
+## [set(permission, permissions...)](docs/API.md#setpermission-permissions)
 
 Set `permissions` on `permission`. This is useful to avoid error-prone bitwise
 operations (`|`, `&`, `^`, `~`).
 
-## [not(permission)](API.md#notpermission)
+## [not(permission)](docs/API.md#notpermission)
 
 Inverts `permission` including special permissions. This can be used in
 combination with `set()` to unset `permissions` instead of setting them.
 
-## [invert(permission)](API.md#invertpermission)
+## [invert(permission)](docs/API.md#invertpermission)
 
 Inverts `permission` and removes special permissions.
 
-## [min(permissions...)](API.md#minpermissions)
+## [min(permissions...)](docs/API.md#minpermissions)
 
 Retrieve the lowest permissions among all arguments.
 
-## [max(permissions...)](API.md#maxpermissions)
+## [max(permissions...)](docs/API.md#maxpermissions)
 
 Retrieve the highest permissions among all arguments.
