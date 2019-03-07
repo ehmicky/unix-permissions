@@ -6,17 +6,18 @@ All the following methods are available both in
 
 ## convert.octal|number|stat|symbolic|object(permission)
 
-Returns `permission` converted to another [`type`](#types).
+Returns `permission` converted to another [`type`](types.md).
 
-Note that [`symbolic`](#symbolic) and [`object`](#object) distinguish between:
+Note that [`symbolic`](types.md#symbolic) and [`object`](types.md#object)
+distinguish between:
 
 - leaving permissions as is (omitting them or using `undefined`)
 - unsetting them (using `-` or `false`).
 
-[`number`](#number) and [`stat`](#stat) do not
-make this distinction. If you convert between them, you might lose this
-information as we assume `0` in [`number`](#number) and `-` in
-[`stat`](#stat) mean "unset permissions". However you can use
+[`number`](types.md#number) and [`stat`](types.md#stat) do not make this
+distinction. If you convert between them, you might lose this information as we
+assume `0` in [`number`](types.md#number) and `-` in [`stat`](types.md#stat)
+mean "unset permissions". However you can use
 [`positive()`](#positivepermission) to overcome this issue.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
@@ -30,7 +31,7 @@ convert.octal('o=x') // '0001'
 
 ## type(permission)
 
-Returns the `permission`'s [`type`](#types) or `'invalid'`.
+Returns the `permission`'s [`type`](types.md) or `'invalid'`.
 
 <!-- eslint-disable line-comment-position, no-inline-comments, no-magic-numbers -->
 

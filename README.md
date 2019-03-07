@@ -5,26 +5,27 @@
 Swiss Army knife for Unix permissions.
 
 [Unix file permissions](https://en.wikipedia.org/wiki/File_system_permissions)
-can take many [shapes](#types):
-[symbolic](#symbolic) (`ug+rw`), [octal](#octal) (`660`) or a [list of characters](#stat) (`drw-rw----`).
+can take many [shapes](#types): [symbolic](docs/types.md#symbolic) (`ug+rw`),
+[octal](docs/types.md#octal) (`660`) or a
+[list of characters](docs/types.md#stat) (`drw-rw----`).
 This library enables using any of [these](#types) (instead of being
 limited to a single one) with any [Node.js](#examples-javascript) or
 [CLI command](#examples-cli).
 
 This library can also perform operations on Unix permissions such as:
 
-- [testing](#containpermission-permissions),
-  [setting](#setpermission-permissions) and
-  [unsetting](#notpermission-permissions). Using bitwise operations (`|`,
-  `&`, `^`, `~`) can be tedious and error-prone otherwise.
-- [validating](#normalizepermission) syntax.
-- [normalizing](#normalizepermission). For example `u+r,u+w` can be shortened
-  to `u+rw`.
-- [inverting](#invertpermission). For example a
+- [testing](docs/API.md#containpermission-permissions),
+  [setting](docs/API.md#setpermission-permissions) and
+  [unsetting](docs/API.md#notpermission-permissions). Using bitwise operations
+  (`|`, `&`, `^`, `~`) can be tedious and error-prone otherwise.
+- [validating](docs/API.md#normalizepermission) syntax.
+- [normalizing](docs/API.md#normalizepermission). For example `u+r,u+w` can be
+  shortened to `u+rw`.
+- [inverting](docs/API.md#invertpermission). For example a
   [`umask`](https://linux.die.net/man/2/umask) of `117` means new files will be
   created with `661` permissions.
-- checking the [minimal](#minpermissions) or
-  [maximal](#maxpermissions) permissions among a list of them.
+- checking the [minimal](docs/API.md#minpermissions) or
+  [maximal](docs/API.md#maxpermissions) permissions among a list of them.
   This can be useful to aggregate all the permissions of several files,
   e.g. during a directory recursion.
 
@@ -101,7 +102,8 @@ error occurred, e.g. if the permission syntax is invalid.
 # Types
 
 You can use any of the following permission types as input. You can also
-[`convert()`](#convertoctalnumberstatsymbolicobjectpermission) between them:
+[`convert()`](docs/API.md#convertoctalnumberstatsymbolicobjectpermission)
+between them:
 
 - [`octal`](docs/types.md#octal) strings like `"422"`
 - decimal [`number`](docs/types.md#number) like `274`
