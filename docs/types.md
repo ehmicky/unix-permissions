@@ -34,7 +34,7 @@ convert.symbolic('-720') // 'u-rwx,g-w'
 convert.symbolic('=720') // 'u=rwx,g=w,o='
 ```
 
-# number
+## number
 
 Permission type used by Node.js
 [`fs.chmod()`](https://nodejs.org/api/fs.html#fs_fs_chmod_path_mode_callback).
@@ -57,7 +57,7 @@ convert.stat(8) // '-----x---'
 convert.stat(512) // '--------T'
 ```
 
-# stat
+## stat
 
 Permission type used by [`stat`](https://linux.die.net/man/2/stat) and
 [`ls`](https://linux.die.net/man/1/ls).
@@ -82,7 +82,7 @@ convert.octal('rwx --- ---') // '0700'
 convert.octal('xwr --- ---') // '0700'
 ```
 
-# symbolic
+## symbolic
 
 Permission type used by [`chmod`](https://linux.die.net/man/1/chmod) as a
 string like `gu+rx`.
@@ -112,7 +112,7 @@ convert.octal('a+s') // '+6000'
 convert.octal('o+') // '+0000'
 ```
 
-# object
+## object
 
 Permission type as an object such as `{ user: { read: true, write: false } }`.
 
