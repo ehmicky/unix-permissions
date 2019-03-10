@@ -168,3 +168,11 @@ Retrieve the lowest permissions among all arguments.
 ## [max(permissions...)](docs/API.md#maxpermissions)
 
 Retrieve the highest permissions among all arguments.
+
+# Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="https://twitter.com/ehmicky"><img src="https://avatars2.githubusercontent.com/u/8136211?v=4" width="100px;" alt="ehmicky"/><br /><sub><b>ehmicky</b></sub></a><br /><a href="https://github.com/ehmicky/unix-permissions/commits?author=ehmicky" title="Code">💻</a> <a href="#design-ehmicky" title="Design">🎨</a> <a href="#ideas-ehmicky" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/ehmicky/unix-permissions/commits?author=ehmicky" title="Documentation">📖</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
