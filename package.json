@@ -13,7 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "gulp check"
+      "pre-push": "gulp check --full"
     }
   },
   "description": "Swiss Army knife for Unix permissions",
