@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 'use strict'
 
-/* eslint-disable no-inline-comments, line-comment-position, no-console, no-restricted-globals */
 const { convert, positive } = require('../build/src')
 
 const resultA = convert.symbolic('111') // 'a=x'
@@ -16,5 +15,3 @@ console.log(resultA)
 console.log(resultB)
 console.log(resultC)
 console.log(resultD)
-// eslint-disable-next-line max-len
-/* eslint-enable no-inline-comments, line-comment-position, no-console, no-restricted-globals */
