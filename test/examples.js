@@ -17,7 +17,7 @@ const findUp = require('find-up')
 // `package.json` `name` field
 // TODO: add linting exceptions for `console.log()` inside `examples/**`
 // (`gulp check`)
-// TODO: recursive search on `example` directory
+// TODO: recursive search on `example` directory.
 // TODO: use `package.json` `directories.examples` folder first if defined.
 // TODO: handle when file is not meant to be executed (no permission,
 // or no shabang)

@@ -60,8 +60,7 @@ myLibrary.method({ mode: 'a-wx' })
 myLibrary.method({ mode: '444' })
 ```
 
-Examples for each JavaScript command are available inside the
-[`examples` directory](examples).
+Please see the [`examples` directory](examples) for more JavaScript examples.
 
 # Examples (CLI)
 
@@ -73,8 +72,7 @@ $ unix-permissions convert.symbolic "$(stat -c "%a" /etc/passwd)"
 u=rw,go=r
 ```
 
-Examples for each CLI command are available inside the
-[`examples` directory](examples).
+Please see the [`examples` directory](examples) for more CLI examples.
 
 # Playground
 

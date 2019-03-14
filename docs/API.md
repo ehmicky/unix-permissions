@@ -4,8 +4,7 @@ All the following methods are available both in
 [JavaScript](../README.md#usage-javascript) and on the
 [command line](../README.md#usage-cli).
 
-Examples for each command are available inside the
-[`examples` directory](examples).
+Please see the [`examples` directory](examples) for executable examples.
 
 ## convert.octal|number|stat|symbolic|object(permission)
 
