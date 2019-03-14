@@ -24,6 +24,7 @@ const findUp = require('find-up')
 // TODO: add other commands
 // TODO: abstract into own package `test-examples`.
 // Potential catchphrase `example-driven testing`
+// TODO: should work in browsers for test runners that do.
 const testExamples = function(addTest, { dir = getDefaultDir() } = {}) {
   // This must be synchronous because most test runners do not allow adding new
   // tests asynchronously.
@@ -48,14 +49,21 @@ const getDefaultDir = function() {
 const DEFAULT_DIRS = ['examples', 'example']
 
 const getTestData = function({ filename, dir }) {
+  const name = getTestName({ filename })
+
   const path = normalize(`${dir}/${filename}`)
   const run = runCommand.bind(null, { path })
-  return { filename, path, run }
+  return { name, run }
+}
+
+const getTestName = function({ filename }) {
+  return `Example file '${filename}' output should be correct`
 }
 
 const runCommand = async function({ path }) {
   // We require example files to be directly executable, i.e. using a shabang
   // instead of speciying the interpreter on the command line.
+  // Also we do not allow passing arguments.
   // This is because:
   //  - examples should be simple to run without prior knowledge
   //  - it allows supporting any programming language
@@ -63,14 +71,11 @@ const runCommand = async function({ path }) {
   return { code, stdout, stderr }
 }
 
-const addAvaTest = function({ filename, run }) {
-  test(`Example file '${filename}' output should be correct`, t =>
-    runAvaTest({ t, run }))
-}
-
-const runAvaTest = async function({ t, run }) {
-  const { code, stdout, stderr } = await run()
-  t.snapshot({ code, stdout, stderr })
+const addAvaTest = function({ name, run }) {
+  test(name, async t => {
+    const result = await run()
+    t.snapshot(result)
+  })
 }
 
 const avaTestExamples = testExamples.bind(null, addAvaTest)
