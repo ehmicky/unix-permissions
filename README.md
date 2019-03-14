@@ -70,6 +70,11 @@ $ unix-permissions convert.symbolic "$(stat -c "%a" /etc/passwd)"
 u=rw,go=r
 ```
 
+# Playground
+
+You can try this library directly from your browser
+[here](https://repl.it/@ehmicky/unix-permissions).
+
 # Install
 
 ```bash
