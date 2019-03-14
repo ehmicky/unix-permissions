@@ -7,6 +7,12 @@ const execa = require('execa')
 const test = require('ava')
 const findUp = require('find-up')
 
+// TODO: handle when file is not meant to be executed (no permission,
+// or no shabang)
+// TODO: handle when interpreter command is missing
+// TODO: add convert.cmd
+// TODO: recursive search on `example` directory.
+// TODO: use `package.json` `directories.examples` folder first if defined.
 // TODO: think of a better way for main require():
 //   - `require('unix-permissions') in JavaScript
 //   - `unix-permissions` in CLI
@@ -15,14 +21,6 @@ const findUp = require('find-up')
 // `bin` field
 // TODO: replace `unix-permissions` in JavaScript (`gulp build`) using
 // `package.json` `name` field
-// TODO: add linting exceptions for `console.log()` inside `examples/**`
-// (`gulp check`)
-// TODO: recursive search on `example` directory.
-// TODO: use `package.json` `directories.examples` folder first if defined.
-// TODO: handle when file is not meant to be executed (no permission,
-// or no shabang)
-// TODO: handle when interpreter command is missing
-// TODO: add convert.cmd
 // TODO: add other commands
 // TODO: abstract into own package `test-examples`.
 // Potential catchphrase `example-driven testing`
