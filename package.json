@@ -49,7 +49,8 @@
   "directories": {
     "doc": "docs",
     "lib": "src",
-    "test": "test"
+    "test": "test",
+    "example": "examples"
   },
   "dependencies": {
     "@babel/runtime": "^7.3.4",
@@ -60,6 +61,7 @@
   "devDependencies": {
     "ava": "^1.3.1",
     "execa": "^1.0.0",
+    "find-up": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-shared-tasks": "^0.19.5",
     "husky": "^1.3.1"
