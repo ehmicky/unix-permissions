@@ -3,7 +3,8 @@
   "version": "1.1.5",
   "main": "build/src/index.js",
   "files": [
-    "build/src"
+    "build/src",
+    "examples"
   ],
   "bin": {
     "unix-permissions": "build/src/bin/index.js"
