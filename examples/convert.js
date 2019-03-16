@@ -6,7 +6,11 @@
 
 'use strict'
 
-const { convert, positive } = require('../build/src')
+// The following line is only needed for this example.
+// You should use `require('unix-permissions')` instead.
+const unixPermissions = require('..')
+
+const { convert, positive } = unixPermissions
 
 const resultA = convert.symbolic('111') // 'a=x'
 
