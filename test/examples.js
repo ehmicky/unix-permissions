@@ -52,7 +52,7 @@ const DEFAULT_DIRS = ['examples', 'example']
 
 const shouldTest = function(filename) {
   const extension = extname(filename)
-  return TEST_EXTENSIONS.includes(extension)
+  return TEST_EXTENSIONS.includes(extension) && !filename.startsWith('utils')
 }
 
 const TEST_EXTENSIONS = ['.js', '.sh']
