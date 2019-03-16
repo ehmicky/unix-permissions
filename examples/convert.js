@@ -1,4 +1,9 @@
 #!/usr/bin/env node
+// This example demonstrates the `convert()` command in JavaScript.
+// This file can be directly run:
+//   - first install `unix-permissions`
+//   - then `node node_modules/unix-permissions/examples/convert.js`
+
 'use strict'
 
 const { convert, positive } = require('../build/src')
