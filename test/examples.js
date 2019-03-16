@@ -1,7 +1,7 @@
 'use strict'
 
 const { readdirSync } = require('fs')
-const { normalize } = require('path')
+const { extname, normalize } = require('path')
 
 const execa = require('execa')
 const test = require('ava')
@@ -31,7 +31,9 @@ const testExamples = function(addTest, { dir = getDefaultDir() } = {}) {
   // This will throw if the directory does not exist
   const filenames = readdirSync(dir)
 
-  const testData = filenames.map(filename => getTestData({ filename, dir }))
+  const testData = filenames
+    .filter(shouldTest)
+    .map(filename => getTestData({ filename, dir }))
   testData.forEach(addTest)
 }
 
@@ -47,6 +49,13 @@ const getDefaultDir = function() {
 }
 
 const DEFAULT_DIRS = ['examples', 'example']
+
+const shouldTest = function(filename) {
+  const extension = extname(filename)
+  return TEST_EXTENSIONS.includes(extension)
+}
+
+const TEST_EXTENSIONS = ['.js', '.sh']
 
 const getTestData = function({ filename, dir }) {
   const name = getTestName({ filename })
