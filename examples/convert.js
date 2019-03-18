@@ -8,7 +8,7 @@
 
 // The following line is only needed for this example.
 // You should use `require('unix-permissions')` instead.
-const unixPermissions = require('..')
+const unixPermissions = require('../build/src')
 
 const { convert, positive } = unixPermissions
 
