@@ -35,7 +35,9 @@ use other utilities (such as
 [`stat`](https://linux.die.net/man/2/stat)) to get and set file permissions
 using those strings.
 
-# Examples (JavaScript)
+# Examples
+
+In JavaScript:
 
 <!-- eslint-disable handle-callback-err, node/prefer-global/process, no-sync -->
 
@@ -60,9 +62,7 @@ myLibrary.method({ mode: 'a-wx' })
 myLibrary.method({ mode: '444' })
 ```
 
-Please see the [`examples` directory](examples) for more JavaScript examples.
-
-# Examples (CLI)
+On the command line:
 
 ```bash
 $ stat -c "%a" /etc/passwd
@@ -72,9 +72,9 @@ $ unix-permissions convert.symbolic "$(stat -c "%a" /etc/passwd)"
 u=rw,go=r
 ```
 
-Please see the [`examples` directory](examples) for more CLI examples.
+Please see the [`examples` directory](examples) for more examples.
 
-# Playground
+# Demo
 
 You can try this library directly from your browser
 [here](https://repl.it/@ehmicky/unix-permissions).
