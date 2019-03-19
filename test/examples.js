@@ -2,6 +2,7 @@
 
 const { readdirSync } = require('fs')
 const { extname, normalize } = require('path')
+const { platform } = require('process')
 
 const execa = require('execa')
 const test = require('ava')
@@ -52,10 +53,15 @@ const DEFAULT_DIRS = ['examples', 'example']
 
 const shouldTest = function(filename) {
   const extension = extname(filename)
-  return TEST_EXTENSIONS.includes(extension) && !filename.startsWith('utils')
+  return (
+    TEST_EXTENSIONS.includes(extension) &&
+    !filename.startsWith('utils') &&
+    !(UNIX_EXTENSIONS.includes(extension) && platform === 'win32')
+  )
 }
 
 const TEST_EXTENSIONS = ['.js', '.sh']
+const UNIX_EXTENSIONS = ['.sh']
 
 const getTestData = function({ filename, dir }) {
   const name = getTestName({ filename })
