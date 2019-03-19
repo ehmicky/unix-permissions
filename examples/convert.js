@@ -3,6 +3,8 @@
 // This file can be directly run:
 //   - first install `unix-permissions`
 //   - then `node node_modules/unix-permissions/examples/convert.js`
+// An online demo is also available at:
+//   https://repl.it/@ehmicky/unix-permissions
 
 'use strict'
 

@@ -72,12 +72,13 @@ $ unix-permissions convert.symbolic "$(stat -c "%a" /etc/passwd)"
 u=rw,go=r
 ```
 
-Please see the [`examples` directory](examples) for more examples.
-
 # Demo
 
-You can try this library directly from your browser
-[here](https://repl.it/@ehmicky/unix-permissions).
+You can [try this library](https://repl.it/@ehmicky/unix-permissions) directly
+from your browser.
+
+Also, examples from the [`examples` directory](examples) can be directly
+executed.
 
 # Install
 
