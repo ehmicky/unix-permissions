@@ -74,11 +74,10 @@ u=rw,go=r
 
 # Demo
 
-You can [try this library](https://repl.it/@ehmicky/unix-permissions) directly
-from your browser.
+You can try this library either:
 
-Also, examples from the [`examples` directory](examples) can be directly
-executed.
+- directly [in your browser](https://repl.it/@ehmicky/unix-permissions).
+- or by executing the [`examples` directory's files](examples) in a terminal.
 
 # Install
 
