@@ -4,10 +4,10 @@ All the following methods are available both in
 [JavaScript](../README.md#usage-javascript) and on the
 [command line](../README.md#usage-cli).
 
-You can try each example either:
+You can try each example:
 
-- directly [in your browser](https://repl.it/@ehmicky/unix-permissions).
-- or by executing the [`examples` directory's files](examples) in a terminal.
+- either directly [in your browser](https://repl.it/@ehmicky/unix-permissions).
+- or by executing the [`examples` files](../examples/README.md) in a terminal.
 
 ## convert.octal|number|stat|symbolic|object(permission)
 

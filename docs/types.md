@@ -3,10 +3,10 @@
 You can use any of the following permission types as input. You can also
 [`convert()`](API.md#convertoctalnumberstatsymbolicobjectpermission) between them.
 
-You can try each example either:
+You can try each example:
 
-- directly [in your browser](https://repl.it/@ehmicky/unix-permissions).
-- or by executing the [`examples` directory's files](examples) in a terminal.
+- either directly [in your browser](https://repl.it/@ehmicky/unix-permissions).
+- or by executing the [`examples` files](../examples/README.md) in a terminal.
 
 ## octal
 
