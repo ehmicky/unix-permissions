@@ -8,6 +8,7 @@
 const { name } = require('../package')
 
 const mockedRequire = function(moduleName, ...args) {
+  // istanbul ignore next
   const moduleNameA = moduleName === name ? `${__dirname}/..` : moduleName
   // eslint-disable-next-line import/no-dynamic-require
   return require(moduleNameA, ...args)
