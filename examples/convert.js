@@ -14,14 +14,10 @@ const unixPermissions = require('../build/src')
 
 const { convert, positive } = unixPermissions
 
-const resultA = convert.symbolic('111') // 'a=x'
-console.log(resultA)
+console.log(convert.symbolic('111')) // 'a=x'
 
-const resultB = positive(convert.symbolic('111')) // 'a+x'
-console.log(resultB)
+console.log(positive(convert.symbolic('111'))) // 'a+x'
 
-const resultC = convert.octal('o+x') // '+0001'
-console.log(resultC)
+console.log(convert.octal('o+x')) // '+0001'
 
-const resultD = convert.octal('o=x') // '0001'
-console.log(resultD)
+console.log(convert.octal('o=x')) // '0001'
