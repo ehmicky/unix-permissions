@@ -3,7 +3,7 @@
 # We create an alias so that examples look the same as if the library was
 # directly installed.
 
-projectRoot="$(readlink -f "$(dirname "$BASH_SOURCE")/..")"
+projectRoot="$(realpath "$(dirname "$BASH_SOURCE")/..")"
 binaryName="$(basename "$projectRoot")"
 pathToBinary="build/src/bin/index.js"
 
