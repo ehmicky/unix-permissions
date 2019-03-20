@@ -6,8 +6,6 @@ To execute them, first [install](../README.md#install) `unix-permissions`. Then:
   `node node_modules/unix-permissions/examples/FILE.js`.
 - for command line files (Bash), run
   `bash node_modules/unix-permissions/examples/FILE.sh`.
-- for Windows terminal files (`cmd.exe`), run
-  `node_modules\unix-permissions\examples\FILE.cmd`.
 
 You can edit the examples.
 
@@ -17,4 +15,4 @@ They can also be run directly
 ## Methods
 
 - [`convert()`](../docs/API.md#convertoctalnumberstatsymbolicobjectpermission):
-  [JavaScript](convert.js), [command line](convert.sh), [`cmd.exe`](convert.cmd).
+  [JavaScript](convert.js), [command line](convert.sh).
