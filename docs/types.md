@@ -29,14 +29,21 @@ An operator can be prepended:
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-convert.stat('720') // 'rwx-w----'
-convert.stat('7000') // '--S--S--T'
-convert.stat('\\720') // 'rwx-w----'
-convert.stat('0720') // 'rwx-w----'
-convert.stat('0o720') // 'rwx-w----'
-convert.symbolic('+720') // 'u+rwx,g+w'
-convert.symbolic('-720') // 'u-rwx,g-w'
-convert.symbolic('=720') // 'u=rwx,g=w,o='
+console.log(convert.stat('720')) // 'rwx-w----'
+
+console.log(convert.stat('7000')) // '--S--S--T'
+
+console.log(convert.stat('\\720')) // 'rwx-w----'
+
+console.log(convert.stat('0720')) // 'rwx-w----'
+
+console.log(convert.stat('0o720')) // 'rwx-w----'
+
+console.log(convert.symbolic('+720')) // 'u+rwx,g+w'
+
+console.log(convert.symbolic('-720')) // 'u-rwx,g-w'
+
+console.log(convert.symbolic('=720')) // 'u=rwx,g=w,o='
 ```
 
 ## number
@@ -55,11 +62,15 @@ It is the same as `octal` except:
 <!-- eslint-disable line-comment-position, no-inline-comments, no-magic-numbers -->
 
 ```js
-convert.stat(0) // '---------'
-convert.stat(1) // '--------x'
-convert.stat(3) // '-------wx'
-convert.stat(8) // '-----x---'
-convert.stat(512) // '--------T'
+console.log(convert.stat(0)) // '---------'
+
+console.log(convert.stat(1)) // '--------x'
+
+console.log(convert.stat(3)) // '-------wx'
+
+console.log(convert.stat(8)) // '-----x---'
+
+console.log(convert.stat(512)) // '--------T'
 ```
 
 ## stat
@@ -77,14 +88,21 @@ Optionally a first character can be specified to indicate the file type (e.g.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-convert.octal('--------x') // '0001'
-convert.octal('--x--x--x') // '0111'
-convert.octal('--------T') // '1000'
-convert.octal('--------t') // '1001'
-convert.octal('d--------x') // '0001'
-convert.octal('--x --x --x') // '0111'
-convert.octal('rwx --- ---') // '0700'
-convert.octal('xwr --- ---') // '0700'
+console.log(convert.octal('--------x')) // '0001'
+
+console.log(convert.octal('--x--x--x')) // '0111'
+
+console.log(convert.octal('--------T')) // '1000'
+
+console.log(convert.octal('--------t')) // '1001'
+
+console.log(convert.octal('d--------x')) // '0001'
+
+console.log(convert.octal('--x --x --x')) // '0111'
+
+console.log(convert.octal('rwx --- ---')) // '0700'
+
+console.log(convert.octal('xwr --- ---')) // '0700'
 ```
 
 ## symbolic
@@ -106,15 +124,23 @@ User classes can be concatenated like `go+x`.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-convert.octal('o+wx') // '+0003'
-convert.octal('o=wx') // '0003'
-convert.octal('o-wx') // '-0003'
-convert.octal('go+x') // '+0011'
-convert.octal('g+x,o+x') // '+0011'
-convert.octal('a+x') // '+0111'
-convert.octal('+x') // '+0111'
-convert.octal('a+s') // '+6000'
-convert.octal('o+') // '+0000'
+console.log(convert.octal('o+wx')) // '+0003'
+
+console.log(convert.octal('o=wx')) // '0003'
+
+console.log(convert.octal('o-wx')) // '-0003'
+
+console.log(convert.octal('go+x')) // '+0011'
+
+console.log(convert.octal('g+x,o+x')) // '+0011'
+
+console.log(convert.octal('a+x')) // '+0111'
+
+console.log(convert.octal('+x')) // '+0111'
+
+console.log(convert.octal('a+s')) // '+6000'
+
+console.log(convert.octal('o+')) // '+0000'
 ```
 
 ## object
@@ -138,16 +164,29 @@ permissions as is while `false` unsets them.
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
-convert.symbolic({ others: { read: true, execute: true } }) // 'o+rx'
-convert.symbolic({ others: { read: true, execute: false } }) // 'o+r,o-x'
-convert.symbolic({ others: { read: true, execute: undefined } }) // 'o+r'
-convert.symbolic({ all: { read: true } }) // 'a+r'
-convert.symbolic({}) // 'a+'
-convert.symbolic({ special: { setuid: true, setgid: true, sticky: true } })
+console.log(convert.symbolic({ others: { read: true, execute: true } }))
+// 'o+rx'
+
+console.log(convert.symbolic({ others: { read: true, execute: false } }))
+// 'o+r,o-x'
+
+console.log(convert.symbolic({ others: { read: true, execute: undefined } }))
+// 'o+r'
+
+console.log(convert.symbolic({ all: { read: true } }))
+// 'a+r'
+
+console.log(convert.symbolic({}))
+// 'a+'
+
+console.log(
+  convert.symbolic({ special: { setuid: true, setgid: true, sticky: true } }),
+)
 // 'ug+s,o+t'
 ```
 
+On the command line:
+
 ```bash
-$ unix-permissions convert.symbolic '{ "all": { "read": true } }'
-a+r
+unix-permissions convert.symbolic '{ "all": { "read": true } }' # a+r
 ```
