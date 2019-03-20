@@ -8,11 +8,11 @@
 
 'use strict'
 
-// The following line is only needed for this example.
-// You should use `require('unix-permissions')` instead.
-const unixPermissions = require('../build/src')
+// Ignore the following line: this is only needed for internal purposes.
+// eslint-disable-next-line no-global-assign, fp/no-mutation
+require = require('./utils')
 
-const { convert, positive } = unixPermissions
+const { convert, positive } = require('unix-permissions')
 
 console.log(convert.symbolic('111')) // 'a=x'
 
