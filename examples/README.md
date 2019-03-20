@@ -12,4 +12,4 @@ They can also be run directly
 
 ## Methods
 
-- [`convert()`](docs/API.md#convertoctalnumberstatsymbolicobjectpermission): [JavaScript](convert.js), [command line](convert.sh).
+- [`convert()`](../docs/API.md#convertoctalnumberstatsymbolicobjectpermission): [JavaScript](convert.js), [command line](convert.sh).
