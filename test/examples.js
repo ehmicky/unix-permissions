@@ -13,7 +13,7 @@ const findUp = require('find-up')
 // TODO: handle when interpreter command is missing
 // TODO: add convert.cmd
 // TODO: recursive search on `example` directory.
-// TODO: use `package.json` `directories.examples` folder first if defined.
+// TODO: use `package.json` `directories.examples` directory first if defined.
 // TODO: think of a better way for main require():
 //   - `require('unix-permissions') in JavaScript
 //   - `unix-permissions` in CLI
