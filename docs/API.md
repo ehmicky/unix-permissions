@@ -1,6 +1,6 @@
 # API
 
-All the following methods are available both in
+The following methods are available both in
 [JavaScript](../README.md#usage-javascript) and on the
 [command line](../README.md#usage-cli).
 
