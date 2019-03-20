@@ -1,4 +1,4 @@
-This directory contains examples using this library.
+This directory contains examples of this library.
 
 To execute them, first [install](../README.md#install) `unix-permissions`. Then:
 
@@ -12,4 +12,4 @@ They can also be run directly
 
 ## Methods
 
-- `convert()`: [JavaScript](convert.js), [command line](convert.sh).
+- [`convert()`](docs/API.md#convertoctalnumberstatsymbolicobjectpermission): [JavaScript](convert.js), [command line](convert.sh).
