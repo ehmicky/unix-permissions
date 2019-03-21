@@ -55,9 +55,9 @@ console.log(type('a+x')) // 'symbolic'
 
 ## normalize(permission)
 
-Normalize a `permission` to its canonical shape.
+Normalizes a `permission` to its canonical shape.
 
-Throw an exception if `permission` is invalid.
+Throws an exception if `permission` is invalid.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
@@ -76,7 +76,7 @@ console.log(normalize('z+x')) // Throws an exception
 
 ## positive(permission)
 
-Remove all negative permissions. See
+Removes all negative permissions. See
 [convert()](#convertoctalnumberstatsymbolicobjectpermission) for more
 explanation.
 
@@ -236,7 +236,7 @@ console.log(invert('1660')) // '0117'
 
 ## min(permissions...)
 
-Retrieve the lowest permissions among all arguments.
+Retrieves the lowest permissions among all arguments.
 
 This does not return the lowest argument. Instead it returns a combination
 of the lowest bits of all arguments.

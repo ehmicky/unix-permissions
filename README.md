@@ -130,7 +130,7 @@ Please see the [types full documentation](docs/types.md).
 
 ## convert.octal|number|stat|symbolic|object(permission)
 
-Convert `permission` to another type.<br>
+Converts `permission` to another type.<br>
 [Full documentation](docs/API.md#convertoctalnumberstatsymbolicobjectpermission).
 
 ## type(permission)
@@ -140,13 +140,13 @@ Returns the `permission`'s type or `invalid`.<br>
 
 ## normalize(permission)
 
-Normalize a `permission` to its canonical shape. Throw if `permission` is
+Normalizes a `permission` to its canonical shape. Throw if `permission` is
 invalid.<br>
 [Full documentation](docs/API.md#normalizepermission).
 
 ## positive(permission)
 
-Remove all negative permissions.<br>
+Removes all negative permissions.<br>
 [Full documentation](docs/API.md#positivepermission).
 
 ## contain(permission, permissions...)
@@ -161,7 +161,7 @@ Tests whether `permission` equals exactly `permissions`.<br>
 
 ## set(permission, permissions...)
 
-Set `permissions` on `permission`. This is useful to avoid error-prone bitwise
+Sets `permissions` on `permission`. This is useful to avoid error-prone bitwise
 operations (`|`, `&`, `^`, `~`).<br>
 [Full documentation](docs/API.md#setpermission-permissions).
 
@@ -178,12 +178,12 @@ Inverts `permission` and removes special permissions.<br>
 
 ## min(permissions...)
 
-Retrieve the lowest permissions among all arguments.<br>
+Retrieves the lowest permissions among all arguments.<br>
 [Full documentation](docs/API.md#minpermissions).
 
 ## max(permissions...)
 
-Retrieve the highest permissions among all arguments.<br>
+Retrieves the highest permissions among all arguments.<br>
 [Full documentation](docs/API.md#maxpermissions).
 
 # Contributors
