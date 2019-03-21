@@ -1,6 +1,6 @@
 // Ignore this file, this is only needed for internal purposes.
-// We mock `require()` that examples look the same as if the library was
-// directly installed.
+// We mock `require()` so that examples look the same as if the library
+// was directly installed.
 
 // eslint-disable-next-line filenames/match-exported
 'use strict'
