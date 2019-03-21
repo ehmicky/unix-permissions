@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// This example demonstrates the `convert()` command in JavaScript.
+// Demo of the `convert()` command in JavaScript.
 // This file can be directly run:
 //   - first install `unix-permissions`
 //   - then `node node_modules/unix-permissions/examples/convert.js`

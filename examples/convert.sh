@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This example demonstrates the `convert` command in the terminal (Bash).
+# Demo of the `convert` command in the terminal (Bash).
 # This file can be directly run:
 #   - first install `unix-permissions`
 #   - then `bash node_modules/unix-permissions/examples/convert.sh`
