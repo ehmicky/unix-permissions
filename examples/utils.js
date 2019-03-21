@@ -1,17 +1,26 @@
 // Ignore this file, this is only needed for internal purposes.
-// We mock `require()` so that examples look the same as if the library
-// was directly installed.
+// We mock `require()` so that examples look the same as if the library was
+// directly installed.
 
-// eslint-disable-next-line filenames/match-exported
 'use strict'
+
+const Module = require('module')
 
 const { name } = require('../package')
 
-const mockedRequire = function(moduleName, ...args) {
-  // istanbul ignore next
-  const moduleNameA = moduleName === name ? `${__dirname}/..` : moduleName
-  // eslint-disable-next-line import/no-dynamic-require
-  return require(moduleNameA, ...args)
+const originalRequire = Module.prototype.require
+
+// eslint-disable-next-line fp/no-mutation, func-names
+Module.prototype.require = function(moduleName, ...args) {
+  const moduleNameA = getMockedName(moduleName)
+  // eslint-disable-next-line fp/no-this
+  return originalRequire.call(this, moduleNameA, ...args)
 }
 
-module.exports = mockedRequire
+const getMockedName = function(moduleName) {
+  if (moduleName !== name && !moduleName.startsWith(`${name}/`)) {
+    return moduleName
+  }
+
+  return moduleName.replace(name, `${__dirname}/..`)
+}

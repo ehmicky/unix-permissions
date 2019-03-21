@@ -9,8 +9,8 @@
 'use strict'
 
 // Ignore the following line: this is only needed for internal purposes.
-// eslint-disable-next-line no-global-assign, fp/no-mutation
-require = require('./utils')
+// eslint-disable-next-line import/no-unassigned-import
+require('./utils')
 
 const { convert, positive } = require('unix-permissions')
 
