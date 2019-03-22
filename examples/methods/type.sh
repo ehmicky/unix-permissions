@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Demo of the `type` command in the terminal (Bash).
+# Demo of the `type` method in the terminal (Bash).
 # This file can be directly run:
 #   - first install `unix-permissions`
 #   - then `bash node_modules/unix-permissions/examples/methods/type.sh`

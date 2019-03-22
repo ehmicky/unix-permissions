@@ -1,4 +1,4 @@
-// Demo of the `convert()` command in JavaScript.
+// Demo of the `convert()` method in JavaScript.
 // This file can be directly run:
 //   - first install `unix-permissions`
 //   - then `node node_modules/unix-permissions/examples/methods/convert.js`

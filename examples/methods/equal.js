@@ -1,4 +1,4 @@
-// Demo of the `equal()` command in JavaScript.
+// Demo of the `equal()` method in JavaScript.
 // This file can be directly run:
 //   - first install `unix-permissions`
 //   - then `node node_modules/unix-permissions/examples/methods/equal.js`

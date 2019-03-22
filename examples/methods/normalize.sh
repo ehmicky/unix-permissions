@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Demo of the `normalize` command in the terminal (Bash).
+# Demo of the `normalize` method in the terminal (Bash).
 # This file can be directly run:
 #   - first install `unix-permissions`
 #   - then `bash node_modules/unix-permissions/examples/methods/normalize.sh`

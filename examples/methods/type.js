@@ -1,4 +1,4 @@
-// Demo of the `type()` command in JavaScript.
+// Demo of the `type()` method in JavaScript.
 // This file can be directly run:
 //   - first install `unix-permissions`
 //   - then `node node_modules/unix-permissions/examples/methods/type.js`

@@ -1,4 +1,4 @@
-// Demo of the `invert()` command in JavaScript.
+// Demo of the `invert()` method in JavaScript.
 // This file can be directly run:
 //   - first install `unix-permissions`
 //   - then `node node_modules/unix-permissions/examples/methods/invert.js`

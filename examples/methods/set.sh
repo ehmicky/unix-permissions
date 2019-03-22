@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Demo of the `set` command in the terminal (Bash).
+# Demo of the `set` method in the terminal (Bash).
 # This file can be directly run:
 #   - first install `unix-permissions`
 #   - then `bash node_modules/unix-permissions/examples/methods/set.sh`
