@@ -1,7 +1,7 @@
 // Demo of the `symbolic` permission type in JavaScript.
 // This file can be directly run:
 //   - first install `unix-permissions`
-//   - then `node node_modules/unix-permissions/examples/symbolic.js`
+//   - then `node node_modules/unix-permissions/examples/types/symbolic.js`
 // An online demo is also available at:
 //   https://repl.it/@ehmicky/unix-permissions
 

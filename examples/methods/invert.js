@@ -1,7 +1,7 @@
 // Demo of the `invert()` command in JavaScript.
 // This file can be directly run:
 //   - first install `unix-permissions`
-//   - then `node node_modules/unix-permissions/examples/invert.js`
+//   - then `node node_modules/unix-permissions/examples/methods/invert.js`
 // An online demo is also available at:
 //   https://repl.it/@ehmicky/unix-permissions
 

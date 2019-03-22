@@ -3,9 +3,9 @@ This directory contains examples of this library.
 To execute them, first [install](../README.md#install) `unix-permissions`. Then:
 
 - for JavaScript files, run
-  `node node_modules/unix-permissions/examples/FILE.js`.
+  `node node_modules/unix-permissions/examples/PATH/TO/FILE.js`.
 - for command line files (Bash), run
-  `bash node_modules/unix-permissions/examples/FILE.sh`.
+  `bash node_modules/unix-permissions/examples/PATH/TO/FILE.sh`.
 
 You can edit the examples.
 
@@ -17,7 +17,7 @@ They can also be run directly
 - [octal](../docs/types.md#octal):
   [JavaScript](types/octal.js), [command line](types/octal.sh).
 - [number](../docs/types.md#number):
-  [JavaScript](types/number.js), [command line](types/number.sh).
+  [JavaScript](types/number.js)
 - [stat](../docs/types.md#stat):
   [JavaScript](types/stat.js), [command line](types/stat.sh).
 - [symbolic](../docs/types.md#symbolic):

@@ -2,7 +2,7 @@
 # Demo of the `convert` command in the terminal (Bash).
 # This file can be directly run:
 #   - first install `unix-permissions`
-#   - then `bash node_modules/unix-permissions/examples/convert.sh`
+#   - then `bash node_modules/unix-permissions/examples/methods/convert.sh`
 # An online demo is also available at:
 #   https://repl.it/@ehmicky/unix-permissions
 

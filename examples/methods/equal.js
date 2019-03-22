@@ -1,7 +1,7 @@
 // Demo of the `equal()` command in JavaScript.
 // This file can be directly run:
 //   - first install `unix-permissions`
-//   - then `node node_modules/unix-permissions/examples/equal.js`
+//   - then `node node_modules/unix-permissions/examples/methods/equal.js`
 // An online demo is also available at:
 //   https://repl.it/@ehmicky/unix-permissions
 
