@@ -61,8 +61,8 @@ const EXTENSIONS = {
   '.sh': { command: 'bash', unixOnly: true },
 }
 
-const getTestName = function({ filename }) {
-  return `Example file '${filename}' output should be correct`
+const getTestName = function({ command, path }) {
+  return `'${command} ${path}' output should be correct`
 }
 
 const runCommand = async function({ command, path }) {
