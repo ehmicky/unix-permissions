@@ -48,9 +48,9 @@ console.log(type('1')) // 'octal'
 
 console.log(type(1)) // 'number'
 
-console.log(type(0.5)) // 'invalid'
-
 console.log(type('a+x')) // 'symbolic'
+
+console.log(type('a+i')) // 'invalid'
 ```
 
 ## normalize(permission)

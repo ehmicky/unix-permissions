@@ -1,4 +1,4 @@
-# Types
+# Permission types
 
 You can use any of the following permission types as input. You can also
 [`convert()`](API.md#convertoctalnumberstatsymbolicobjectpermission) between them.

@@ -5,10 +5,10 @@
 Swiss Army knife for Unix permissions.
 
 [Unix file permissions](https://en.wikipedia.org/wiki/File_system_permissions)
-can take many [shapes](#types): [symbolic](docs/types.md#symbolic) (`ug+rw`),
-[octal](docs/types.md#octal) (`660`) or a
+can take many [shapes](#permission-types): [symbolic](docs/types.md#symbolic)
+(`ug+rw`), [octal](docs/types.md#octal) (`660`) or a
 [list of characters](docs/types.md#stat) (`drw-rw----`).
-This library enables using any of [these](#types) (instead of being
+This library enables using any of [these](#permission-types) (instead of being
 limited to a single one) with any [Node.js](#examples-javascript) or
 [CLI command](#examples-cli).
 
@@ -108,7 +108,7 @@ rw-rw----
 The same methods as in JavaScript are available. Exit code will be `1` if an
 error occurred, e.g. if the permission syntax is invalid.
 
-# Types
+# Permission types
 
 You can use any of the following permission types as input. You can also
 [`convert()`](docs/API.md#convertoctalnumberstatsymbolicobjectpermission)

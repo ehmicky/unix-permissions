@@ -7,7 +7,7 @@
 #   https://repl.it/@ehmicky/unix-permissions
 
 # Ignore the following line: this is only needed for internal purposes.
-. "$(dirname "$BASH_SOURCE")/utils.sh"
+. "$(dirname "$BASH_SOURCE")/../utils.sh"
 
 unix-permissions convert.symbolic 111 # a=x
 
