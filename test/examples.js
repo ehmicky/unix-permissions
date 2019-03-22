@@ -49,9 +49,9 @@ const getTestData = function({ filename, dir }) {
     return
   }
 
-  const name = getTestName({ filename })
-
   const path = normalize(`${dir}/${filename}`)
+
+  const name = getTestName({ command, path })
   const run = runCommand.bind(null, { command, path })
   return { name, run }
 }

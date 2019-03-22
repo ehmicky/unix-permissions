@@ -71,7 +71,11 @@ console.log(normalize('d--- --- ---')) // '---------'
 console.log(normalize({ user: { read: undefined, write: true } }))
 // { user: { write: true } }
 
-console.log(normalize('z+x')) // Throws an exception
+try {
+  console.log(normalize('z+x')) // Throws an exception
+} catch (error) {
+  console.log(error.message)
+}
 ```
 
 ## positive(permission)
