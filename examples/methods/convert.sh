@@ -16,3 +16,6 @@ unix-permissions positive $(unix-permissions convert.symbolic 111) # a+x
 unix-permissions convert.octal o+x # +0001
 
 unix-permissions convert.octal o=x # 0001
+
+unix-permissions convert.octal z+x # Permissions syntax is invalid: z+x
+echo $? # 1 (status code)

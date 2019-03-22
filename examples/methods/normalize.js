@@ -23,7 +23,7 @@ console.log(normalize({ user: { read: undefined, write: true } }))
 // { user: { write: true } }
 
 try {
-  normalize('z+x') // Throws an exception
+  normalize('z+x') // Throws an exception (permission syntax is invalid)
 } catch (error) {
   console.log(error.message)
 }

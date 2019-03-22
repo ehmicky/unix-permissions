@@ -20,3 +20,9 @@ console.log(positive(convert.symbolic('111'))) // 'a+x'
 console.log(convert.octal('o+x')) // '+0001'
 
 console.log(convert.octal('o=x')) // '0001'
+
+try {
+  convert.octal('z+x') // Throws an exception (permission syntax is invalid)
+} catch (error) {
+  console.log(error.message)
+}

@@ -9,6 +9,10 @@ You can try all the examples below:
 - either directly [in your browser](https://repl.it/@ehmicky/unix-permissions).
 - or by executing the [`examples` files](../examples/README.md) in a terminal.
 
+All methods (except [`type`](#typepermission)) will throw an exception if the
+`permission` argument is invalid. Please see the
+[permission types documentation](types.md).
+
 ## convert.octal|number|stat|symbolic|object(permission)
 
 Returns `permission` converted to another [`type`](types.md).
@@ -35,6 +39,12 @@ console.log(positive(convert.symbolic('111'))) // 'a+x'
 console.log(convert.octal('o+x')) // '+0001'
 
 console.log(convert.octal('o=x')) // '0001'
+
+try {
+  convert.octal('z+x') // Throws an exception (permission syntax is invalid)
+} catch (error) {
+  console.log(error.message)
+}
 ```
 
 ## type(permission)
@@ -72,7 +82,7 @@ console.log(normalize({ user: { read: undefined, write: true } }))
 // { user: { write: true } }
 
 try {
-  normalize('z+x') // Throws an exception
+  normalize('z+x') // Throws an exception (permission syntax is invalid)
 } catch (error) {
   console.log(error.message)
 }
