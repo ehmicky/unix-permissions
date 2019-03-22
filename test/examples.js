@@ -36,29 +36,40 @@ const testExamplesDir = function(addTest, dir) {
   const filenames = readdirSync(dir)
 
   const testData = filenames
-    .map(filename => getTestData({ filename, dir }))
+    .map(parseExtension)
     .filter(Boolean)
+    .map(({ filename, command }) => getTestData({ filename, command, dir }))
   testData.forEach(addTest)
 }
 
-const getTestData = function({ filename, dir }) {
+// Each file extension is executed differently
+const parseExtension = function(filename) {
   const extension = extname(filename)
   const { command, unixOnly } = EXTENSIONS[extension] || {}
 
-  if (command === undefined || (unixOnly && platform === 'win32')) {
+  if (!shouldTest({ command, unixOnly })) {
     return
   }
 
-  const path = normalize(`${dir}/${filename}`)
-
-  const name = getTestName({ command, path })
-  const run = runCommand.bind(null, { command, path })
-  return { name, run }
+  return { filename, command }
 }
 
 const EXTENSIONS = {
   '.js': { command: 'node' },
   '.sh': { command: 'bash', unixOnly: true },
+}
+
+// Skip files with wrong file extensions, or not supported by current OS
+const shouldTest = function({ command, unixOnly }) {
+  return command !== undefined && (!unixOnly || platform !== 'win32')
+}
+
+const getTestData = function({ filename, command, dir }) {
+  const path = normalize(`${dir}/${filename}`)
+
+  const name = getTestName({ command, path })
+  const run = runCommand.bind(null, { command, path })
+  return { name, run }
 }
 
 const getTestName = function({ command, path }) {
