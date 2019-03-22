@@ -9,7 +9,7 @@ You can try all the examples below:
 - either directly [in your browser](https://repl.it/@ehmicky/unix-permissions).
 - or by executing the [`examples` files](../examples/README.md) in a terminal.
 
-All methods (except [`type`](#typepermission)) will throw an exception if the
+All methods (except [`type()`](#typepermission)) will throw an exception if the
 `permission` argument is invalid. Please see the
 [permission types documentation](types.md).
 
