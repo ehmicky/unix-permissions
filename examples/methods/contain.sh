@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # Demo of the `contain` method in the terminal (Bash).
-# This file can be directly run:
-#   - first install `unix-permissions`
-#   - then `bash node_modules/unix-permissions/examples/methods/contain.sh`
+# This file can be run in a terminal with the following commands:
+#
+#   npm install unix-permissions
+#   bash node_modules/unix-permissions/examples/methods/contain.sh
+#
 # An online demo is also available at:
 #   https://repl.it/@ehmicky/unix-permissions
 

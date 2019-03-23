@@ -4,15 +4,11 @@ This directory contains examples of this library. They can be run and edited:
 - or in a terminal with the following commands:
 
 ```bash
-# Make a copy of this repository
-git clone https://github.com/ehmicky/unix-permissions
-cd unix-permissions
-npm install
-
+npm install unix-permissions
 # To run JavaScript examples
-node examples/PATH/TO/FILE.js
+node node_modules/unix-permissions/examples/PATH/TO/FILE.js
 # To run command line examples
-bash examples/PATH/TO/FILE.sh
+bash node_modules/unix-permissions/examples/PATH/TO/FILE.sh
 ```
 
 # Examples
