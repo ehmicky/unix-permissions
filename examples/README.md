@@ -19,15 +19,15 @@ bash examples/PATH/TO/FILE.sh
 
 ## Permission types
 
-- [octal](../docs/types.md#octal):
+- [`octal`](../docs/types.md#octal):
   [JavaScript](types/octal.js), [command line](types/octal.sh).
-- [number](../docs/types.md#number):
+- [`number`](../docs/types.md#number):
   [JavaScript](types/number.js)
-- [stat](../docs/types.md#stat):
+- [`stat`](../docs/types.md#stat):
   [JavaScript](types/stat.js), [command line](types/stat.sh).
-- [symbolic](../docs/types.md#symbolic):
+- [`symbolic`](../docs/types.md#symbolic):
   [JavaScript](types/symbolic.js), [command line](types/symbolic.sh).
-- [object](../docs/types.md#object):
+- [`object`](../docs/types.md#object):
   [JavaScript](types/object.js), [command line](types/object.sh).
 
 ## Methods
