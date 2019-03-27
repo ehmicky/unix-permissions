@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "core-js": "^3.0.0",
-    "moize": "^5.4.2",
+    "moize": "^5.4.3",
     "yargs": "^13.2.2"
   },
   "devDependencies": {
