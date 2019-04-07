@@ -55,7 +55,7 @@
     "example": "examples"
   },
   "dependencies": {
-    "core-js": "^3.0.0",
+    "core-js": "^3.0.1",
     "moize": "^5.4.3",
     "yargs": "^13.2.2"
   },
