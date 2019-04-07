@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/ehmicky/design/master/unix-permissions/unix-permissions.png" width="550"/>
+<img src="https://raw.githubusercontent.com/ehmicky/design/master/unix-permissions/unix-permissions.png" width="500"/>
 
 [![Codecov](https://img.shields.io/codecov/c/github/ehmicky/unix-permissions.svg?label=tested&logo=codecov)](https://codecov.io/gh/ehmicky/unix-permissions)
 [![Travis](https://img.shields.io/badge/cross-platform-4cc61e.svg?logo=travis)](https://travis-ci.org/ehmicky/unix-permissions)
