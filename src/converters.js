@@ -1,4 +1,4 @@
-import { TYPES_MAP } from './types.js'
+import { TYPES_MAP } from './types/main.js'
 import { mapValues } from './utils.js'
 import { convert as convertValue } from './helpers.js'
 

@@ -1,4 +1,5 @@
-import { MIN_MAX_DATA, performTests } from './helpers.js'
+import { performTests } from './helpers/command.js'
+import { MIN_MAX_DATA } from './helpers/data/min_max.js'
 
 performTests({
   title: args => `should return maximum ${args}`,

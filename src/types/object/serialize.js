@@ -1,4 +1,4 @@
-import { LONG_CATEGORIES } from '../../constants.js'
+import { LONG_CATEGORIES } from '../../constants'
 import { groupBy, mapValues } from '../../utils.js'
 import { getNodeKey } from '../../nodes.js'
 
@@ -6,7 +6,7 @@ import {
   LONG_PERMISSIONS,
   SPECIAL_CATEGORY,
   SERIALIZE_SPECIAL,
-} from './constants.js'
+} from './constants'
 import { compareNodes } from './sort.js'
 
 // Serialize from `nodes` to a `object` permission.

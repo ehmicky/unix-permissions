@@ -1,11 +1,9 @@
-import { not } from '../src.js'
+import { not } from '../src/main.js'
 
-import {
-  SIMPLE_DATA,
-  PARSE_DATA,
-  performTests,
-  performChecks,
-} from './helpers.js'
+import { performTests } from './helpers/command.js'
+import { performChecks } from './helpers/check.js'
+import { PARSE_DATA } from './helpers/data/parse/main.js'
+import { SIMPLE_DATA } from './helpers/data/simple.js'
 
 performTests({
   title: args => `should negate ${args}`,

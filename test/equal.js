@@ -1,11 +1,9 @@
-import { equal } from '../src.js'
+import { equal } from '../src/main.js'
 
-import {
-  PARSE_DATA,
-  EQUAL_DATA,
-  performTests,
-  performChecks,
-} from './helpers.js'
+import { performTests } from './helpers/command.js'
+import { performChecks } from './helpers/check.js'
+import { PARSE_DATA } from './helpers/data/parse/main.js'
+import { EQUAL_DATA } from './helpers/data/equal.js'
 
 performTests({
   title: ([arg, ...args]) =>

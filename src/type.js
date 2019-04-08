@@ -1,4 +1,4 @@
-import { TYPES_MAP } from './types.js'
+import { TYPES_MAP } from './types/main.js'
 
 // Retrieve the type of a permission, or returns `invalid`
 export const type = function(perm) {

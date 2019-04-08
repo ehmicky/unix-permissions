@@ -1,7 +1,7 @@
-import { SPECIAL_PERMISSIONS } from '../../constants.js'
+import { SPECIAL_PERMISSIONS } from '../../constants'
 import { NODES_MAP, getNodesMap } from '../../nodes.js'
 
-import { NO_PERMISSION } from './constants.js'
+import { NO_PERMISSION } from './constants'
 import { contractSpecial } from './tokenize.js'
 
 // Serialize from `nodes` to a `stat` permission

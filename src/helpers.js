@@ -1,6 +1,6 @@
 import { parse } from './parse.js'
 import { serialize } from './serialize.js'
-import { TYPES_MAP } from './types.js'
+import { TYPES_MAP } from './types/main.js'
 
 // Convert permission to another type
 export const convert = function(typeName, perm) {

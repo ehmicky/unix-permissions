@@ -1,6 +1,6 @@
 import { getNodeKey } from '../../nodes.js'
 
-import { VALUES } from './constants.js'
+import { VALUES } from './constants'
 
 // Serialize from `nodes` to a `number` permission
 export const serialize = function(nodes) {

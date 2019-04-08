@@ -1,4 +1,4 @@
-import { TYPES } from './types.js'
+import { TYPES } from './types/main.js'
 import { getNodesMap, NODES_MAP } from './nodes.js'
 import { isPlainObject, omitBy } from './utils.js'
 

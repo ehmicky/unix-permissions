@@ -1,4 +1,5 @@
-import { PARSE_DATA, performTests } from './helpers.js'
+import { performTests } from './helpers/command.js'
+import { PARSE_DATA } from './helpers/data/parse/main.js'
 
 performTests({
   title: ({ type, title }) => `[${type}] should parse ${title}`,

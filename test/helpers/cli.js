@@ -1,6 +1,6 @@
 import execa from 'execa'
 
-const BINARY_PATH = `${__dirname}/../../src/bin/index.js`
+const BINARY_PATH = `${__dirname}/../../src/bin/main.js`
 
 // Test that CLI output and exit code is same as programmatic output and
 // exception throwing

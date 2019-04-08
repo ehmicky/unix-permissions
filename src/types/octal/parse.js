@@ -1,10 +1,9 @@
-import number from '../number.js'
+import { parse as parseNumber } from '../number/parse.js'
 
 import { tokenize } from './tokenize.js'
-import {
-  OCTAL_BASE,
-  OPERATORS: { PLUS, MINUS, EQUAL },
-} from './constants.js'
+import { OCTAL_BASE, OPERATORS, } from './constants'
+
+const { PLUS, MINUS, EQUAL } = OPERATORS
 
 // Parse an `octal` permission to `nodes`
 export const parse = function(octal, category) {
@@ -16,7 +15,7 @@ export const parse = function(octal, category) {
 
   const integer = octalToDecimal({ string })
   // Re-use `number` parsing logic
-  const nodes = number.parse(integer)
+  const nodes = parseNumber(integer)
   // Each operator has its own logic
   const nodesA = parseOperator[operator]({ nodes, category })
   return nodesA

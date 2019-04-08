@@ -1,7 +1,7 @@
-import { CATEGORIES, PERMISSIONS } from '../../constants.js'
+import { CATEGORIES, PERMISSIONS } from '../../constants'
 import { hasDuplicate } from '../../utils.js'
 
-import { DEFAULT_CATEGORIES } from './constants.js'
+import { DEFAULT_CATEGORIES } from './constants'
 import { tokenize } from './tokenize.js'
 
 // Parse `symbolic` permissions to nodes

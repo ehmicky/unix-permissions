@@ -1,6 +1,6 @@
 import { NODES_MAP } from '../../nodes.js'
 
-import { VALUES, MIN_NUMBER, MAX_NUMBER } from './constants.js'
+import { VALUES, MIN_NUMBER, MAX_NUMBER } from './constants'
 
 // Parse a `number` permission to `nodes`
 export const parse = function(number) {

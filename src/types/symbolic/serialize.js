@@ -1,11 +1,9 @@
-import { CATEGORIES, CATEGORY_PERMISSIONS } from '../../constants.js'
+import { CATEGORIES, CATEGORY_PERMISSIONS } from '../../constants'
 
-import {
-  OPERATORS,
-  OPERATORS: { EQUAL },
-  DEFAULT_SERIALIZE,
-} from './constants.js'
+import { OPERATORS, DEFAULT_SERIALIZE } from './constants'
 import { joinCategories } from './join.js'
+
+const { EQUAL } = OPERATORS
 
 // Serialize from `nodes` to a `symbolic` permission
 export const serialize = function(nodes) {

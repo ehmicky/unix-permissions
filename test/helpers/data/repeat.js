@@ -1,4 +1,4 @@
-import { convert } from '../../../src.js'
+import { convert } from '../../../src/main.js'
 
 // Iterate different data over each `type`
 export const forEachDataType = function(allData) {

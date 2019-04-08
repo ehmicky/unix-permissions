@@ -1,4 +1,5 @@
-import { SET_DATA, performTests } from './helpers.js'
+import { performTests } from './helpers/command.js'
+import { SET_DATA } from './helpers/data/set.js'
 
 performTests({
   title: ([arg, ...args]) => `should set ${arg} with ${args.join(' ')}`,

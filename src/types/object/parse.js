@@ -1,12 +1,12 @@
 import { isPlainObject, mapValues } from '../../utils.js'
-import { SHORT_CATEGORIES } from '../../constants.js'
+import { SHORT_CATEGORIES } from '../../constants'
 
 import {
   SHORT_PERMISSIONS,
   SPECIAL_CATEGORY,
   PARSE_SPECIAL,
   ALL_CATEGORY,
-} from './constants.js'
+} from './constants'
 
 // Parse an `object` permission into nodes
 export const parse = function(object) {

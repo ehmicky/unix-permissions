@@ -1,4 +1,4 @@
-import { CATEGORY_ORDER, PERM_ORDER } from './constants.js'
+import { CATEGORY_ORDER, PERM_ORDER } from './constants'
 
 // Ensure object keys order
 export const compareNodes = function(nodeA, nodeB) {

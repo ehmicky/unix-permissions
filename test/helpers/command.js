@@ -1,7 +1,7 @@
 // eslint-disable-next-line ava/no-ignored-test-files
 import test from 'ava'
 
-import unixPermissions from '../../src.js'
+import unixPermissions from '../../src/main.js'
 import { getCommand } from '../../src/bin/command.js'
 
 import { testCli } from './cli.js'

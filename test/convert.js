@@ -1,6 +1,7 @@
-import { convert } from '../src.js'
+import { convert } from '../src/main.js'
 
-import { CONVERT_DATA, performChecks } from './helpers.js'
+import { performChecks } from './helpers/check.js'
+import { CONVERT_DATA } from './helpers/data/convert.js'
 
 const check = function({ t, arg, type, otherType }) {
   if (isLossy({ type, otherType })) {

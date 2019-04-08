@@ -1,7 +1,6 @@
-import {
-  DEFAULT_OPERATOR,
-  OPERATORS: { NONE },
-} from './constants.js'
+import { DEFAULT_OPERATOR, OPERATORS } from './constants'
+
+const { NONE } = OPERATORS
 
 // Tokenize an `octal` string using a regExp
 export const tokenize = function(octal) {

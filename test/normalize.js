@@ -1,6 +1,8 @@
-import { normalize } from '../src.js'
+import { normalize } from '../src/main.js'
 
-import { PARSE_DATA, performTests, performChecks } from './helpers.js'
+import { performTests } from './helpers/command.js'
+import { performChecks } from './helpers/check.js'
+import { PARSE_DATA } from './helpers/data/parse/main.js'
 
 performTests({
   title: ({ type, title }) => `[${type}] should normalize ${title}`,

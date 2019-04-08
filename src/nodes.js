@@ -1,4 +1,4 @@
-import { NODES } from './constants.js'
+import { NODES } from './constants'
 
 // Transform an array of `nodes` to a map of `nodes`
 export const getNodesMap = function(nodes) {

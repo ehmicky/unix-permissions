@@ -1,12 +1,14 @@
 import { NODES_MAP } from '../../nodes.js'
-import number from '../number.js'
+import { serialize as serializeNumber } from '../number/serialize.js'
 
 import {
   OCTAL_BASE,
   SERIALIZE_LENGTH,
   SERIALIZE_PAD,
-  OPERATORS: { PLUS, MINUS, NONE },
-} from './constants.js'
+  OPERATORS,
+} from './constants'
+
+const { PLUS, MINUS, NONE } = OPERATORS
 
 // Serialize from `nodes` to a `octal` permission
 export const serialize = function(nodes) {
@@ -49,7 +51,7 @@ const isRemoved = function({ add }) {
 // Re-use `number` serialization logic, then stringify to an octal number
 const serializeInteger = function({ operator, nodes }) {
   const nodesA = serializeMinus({ operator, nodes })
-  const integer = number.serialize(nodesA)
+  const integer = serializeNumber(nodesA)
   // Always serialize to 4 characters (with leading 0s)
   const string = integer
     .toString(OCTAL_BASE)

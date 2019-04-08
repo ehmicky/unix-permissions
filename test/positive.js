@@ -1,11 +1,9 @@
-import { positive } from '../src.js'
+import { positive } from '../src/main.js'
 
-import {
-  PARSE_DATA,
-  POSITIVE_DATA,
-  performTests,
-  performChecks,
-} from './helpers.js'
+import { performTests } from './helpers/command.js'
+import { performChecks } from './helpers/check.js'
+import { PARSE_DATA } from './helpers/data/parse/main.js'
+import { POSITIVE_DATA } from './helpers/data/positive.js'
 
 performTests({
   title: args => `should return positive ${args}`,
