@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { exit } from 'process'
 
-import unixPermissions from '..'
+import unixPermissions from '../main.js'
 
 import { defineCli } from './top.js'
 import { parseConfig } from './parse.js'

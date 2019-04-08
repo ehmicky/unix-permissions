@@ -1,6 +1,6 @@
 import yargs from 'yargs'
 
-import COMMANDS from './commands.js'
+import COMMANDS from './commands'
 
 export const defineCli = function() {
   const yargsA = yargs

@@ -1,7 +1,7 @@
 import { parse as parseNumber } from '../number/parse.js'
 
 import { tokenize } from './tokenize.js'
-import { OCTAL_BASE, OPERATORS, } from './constants'
+import { OCTAL_BASE, OPERATORS } from './constants'
 
 const { PLUS, MINUS, EQUAL } = OPERATORS
 
