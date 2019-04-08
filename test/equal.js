@@ -1,11 +1,11 @@
-const { equal } = require('../src')
+import { equal } from '../src.js'
 
-const {
+import {
   PARSE_DATA,
   EQUAL_DATA,
   performTests,
   performChecks,
-} = require('./helpers')
+} from './helpers.js'
 
 performTests({
   title: ([arg, ...args]) =>

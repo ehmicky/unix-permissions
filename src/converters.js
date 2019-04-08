@@ -1,6 +1,6 @@
-const { TYPES_MAP } = require('./types')
-const { mapValues } = require('./utils')
-const { convert } = require('./helpers')
+import { TYPES_MAP } from './types.js'
+import { mapValues } from './utils.js'
+import { convert } from './helpers.js'
 
 // Retrieve a map of all types' convertion functions
 const getConverters = function() {

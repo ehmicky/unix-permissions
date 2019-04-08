@@ -1,12 +1,12 @@
-const { NODES_MAP } = require('../../nodes')
-const number = require('../number')
+import { NODES_MAP } from '../../nodes.js'
+import number from '../number.js'
 
-const {
+import {
   OCTAL_BASE,
   SERIALIZE_LENGTH,
   SERIALIZE_PAD,
   OPERATORS: { PLUS, MINUS, NONE },
-} = require('./constants')
+} from './constants.js'
 
 // Serialize from `nodes` to a `octal` permission
 const serialize = function(nodes) {

@@ -1,8 +1,8 @@
-const number = require('./number')
-const octal = require('./octal')
-const stat = require('./stat')
-const symbolic = require('./symbolic')
-const object = require('./object')
+import number from './number.js'
+import octal from './octal.js'
+import stat from './stat.js'
+import symbolic from './symbolic.js'
+import object from './object.js'
 
 // Order is significant, because each is tried in order
 const TYPES = [number, octal, stat, symbolic, object]

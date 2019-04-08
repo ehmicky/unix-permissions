@@ -1,11 +1,11 @@
-const { normalize } = require('./normalize')
-const { positive } = require('./positive')
-const { contain } = require('./contain')
-const { equal } = require('./equal')
-const { set } = require('./set')
-const { not } = require('./not')
-const { invert } = require('./invert')
-const { min, max } = require('./min_max')
+import { normalize } from './normalize.js'
+import { positive } from './positive.js'
+import { contain } from './contain.js'
+import { equal } from './equal.js'
+import { set } from './set.js'
+import { not } from './not.js'
+import { invert } from './invert.js'
+import { min, max } from './min_max.js'
 
 module.exports = {
   normalize,

@@ -1,6 +1,6 @@
-const { NODES_MAP } = require('../../nodes')
+import { NODES_MAP } from '../../nodes.js'
 
-const { VALUES, MIN_NUMBER, MAX_NUMBER } = require('./constants')
+import { VALUES, MIN_NUMBER, MAX_NUMBER } from './constants.js'
 
 // Parse a `number` permission to `nodes`
 const parse = function(number) {

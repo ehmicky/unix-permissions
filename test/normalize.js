@@ -1,6 +1,6 @@
-const { normalize } = require('../src')
+import { normalize } from '../src.js'
 
-const { PARSE_DATA, performTests, performChecks } = require('./helpers')
+import { PARSE_DATA, performTests, performChecks } from './helpers.js'
 
 performTests({
   title: ({ type, title }) => `[${type}] should normalize ${title}`,

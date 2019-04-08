@@ -1,12 +1,12 @@
-const { isPlainObject, mapValues } = require('../../utils')
-const { SHORT_CATEGORIES } = require('../../constants')
+import { isPlainObject, mapValues } from '../../utils.js'
+import { SHORT_CATEGORIES } from '../../constants.js'
 
-const {
+import {
   SHORT_PERMISSIONS,
   SPECIAL_CATEGORY,
   PARSE_SPECIAL,
   ALL_CATEGORY,
-} = require('./constants')
+} from './constants.js'
 
 // Parse an `object` permission into nodes
 const parse = function(object) {

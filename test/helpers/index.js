@@ -1,5 +1,5 @@
 module.exports = {
-  ...require('./data'),
-  ...require('./command'),
-  ...require('./check'),
+  ...require('./data.js'),
+  ...require('./command.js'),
+  ...require('./check.js'),
 }

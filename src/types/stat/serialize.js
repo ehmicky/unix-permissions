@@ -1,8 +1,8 @@
-const { SPECIAL_PERMISSIONS } = require('../../constants')
-const { NODES_MAP, getNodesMap } = require('../../nodes')
+import { SPECIAL_PERMISSIONS } from '../../constants.js'
+import { NODES_MAP, getNodesMap } from '../../nodes.js'
 
-const { NO_PERMISSION } = require('./constants')
-const { contractSpecial } = require('./tokenize')
+import { NO_PERMISSION } from './constants.js'
+import { contractSpecial } from './tokenize.js'
 
 // Serialize from `nodes` to a `stat` permission
 const serialize = function(nodes) {

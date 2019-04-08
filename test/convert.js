@@ -1,6 +1,6 @@
-const { convert } = require('../src')
+import { convert } from '../src.js'
 
-const { CONVERT_DATA, performChecks } = require('./helpers')
+import { CONVERT_DATA, performChecks } from './helpers.js'
 
 const check = function({ t, arg, type, otherType }) {
   if (isLossy({ type, otherType })) {

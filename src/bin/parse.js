@@ -1,6 +1,6 @@
-const { argv } = require('process')
+import { argv } from 'process'
 
-const { escapeArgs } = require('./escape')
+import { escapeArgs } from './escape.js'
 
 const parseConfig = function({ yargs }) {
   const args = escapeArgs(argv.slice(2))

@@ -1,4 +1,4 @@
-const { TYPES_MAP } = require('./types')
+import { TYPES_MAP } from './types.js'
 
 // Retrieve the type of a permission, or returns `invalid`
 const type = function(perm) {

@@ -1,4 +1,4 @@
-const { NODES } = require('./constants')
+import { NODES } from './constants.js'
 
 // Transform an array of `nodes` to a map of `nodes`
 const getNodesMap = function(nodes) {

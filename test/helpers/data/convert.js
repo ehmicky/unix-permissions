@@ -1,5 +1,5 @@
-const { forEachType } = require('./repeat')
-const { PARSE_DATA } = require('./parse')
+import { forEachType } from './repeat.js'
+import { PARSE_DATA } from './parse.js'
 
 const CONVERT_DATA = forEachType(PARSE_DATA)
 

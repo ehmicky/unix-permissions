@@ -1,6 +1,6 @@
-const { binaryTest } = require('../helpers')
+import { binaryTest } from '../helpers.js'
 
-const { containTest } = require('./contain')
+import { containTest } from './contain.js'
 
 // Test whether two permissions are exactly the same, including omitted nodes.
 // As opposed to using `===`, this works across permissions. It also works

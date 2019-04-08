@@ -1,4 +1,4 @@
-const { BASE_SET_DATA } = require('./set')
+import { BASE_SET_DATA } from './set.js'
 
 const CONTAIN_DATA = [
   ...BASE_SET_DATA,

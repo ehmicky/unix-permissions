@@ -1,8 +1,8 @@
-const { CATEGORIES, PERMISSIONS } = require('../../constants')
-const { hasDuplicate } = require('../../utils')
+import { CATEGORIES, PERMISSIONS } from '../../constants.js'
+import { hasDuplicate } from '../../utils.js'
 
-const { DEFAULT_CATEGORIES } = require('./constants')
-const { tokenize } = require('./tokenize')
+import { DEFAULT_CATEGORIES } from './constants.js'
+import { tokenize } from './tokenize.js'
 
 // Parse `symbolic` permissions to nodes
 const parse = function(symbolic) {

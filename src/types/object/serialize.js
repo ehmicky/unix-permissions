@@ -1,13 +1,13 @@
-const { LONG_CATEGORIES } = require('../../constants')
-const { groupBy, mapValues } = require('../../utils')
-const { getNodeKey } = require('../../nodes')
+import { LONG_CATEGORIES } from '../../constants.js'
+import { groupBy, mapValues } from '../../utils.js'
+import { getNodeKey } from '../../nodes.js'
 
-const {
+import {
   LONG_PERMISSIONS,
   SPECIAL_CATEGORY,
   SERIALIZE_SPECIAL,
-} = require('./constants')
-const { compareNodes } = require('./sort')
+} from './constants.js'
+import { compareNodes } from './sort.js'
 
 // Serialize from `nodes` to a `object` permission.
 // Never serialize to `all` category so make output more predictable.

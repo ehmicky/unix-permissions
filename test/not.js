@@ -1,11 +1,11 @@
-const { not } = require('../src')
+import { not } from '../src.js'
 
-const {
+import {
   SIMPLE_DATA,
   PARSE_DATA,
   performTests,
   performChecks,
-} = require('./helpers')
+} from './helpers.js'
 
 performTests({
   title: args => `should negate ${args}`,

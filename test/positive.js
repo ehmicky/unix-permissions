@@ -1,11 +1,11 @@
-const { positive } = require('../src')
+import { positive } from '../src.js'
 
-const {
+import {
   PARSE_DATA,
   POSITIVE_DATA,
   performTests,
   performChecks,
-} = require('./helpers')
+} from './helpers.js'
 
 performTests({
   title: args => `should return positive ${args}`,

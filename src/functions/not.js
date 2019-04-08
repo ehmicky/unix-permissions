@@ -1,5 +1,5 @@
-const { unaryMap } = require('../helpers')
-const { mapValues } = require('../utils')
+import { unaryMap } from '../helpers.js'
+import { mapValues } from '../utils.js'
 
 // Invert a permission's `+` and `-`.
 // Missing permissions are not inverted.

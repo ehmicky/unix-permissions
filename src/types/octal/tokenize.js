@@ -1,7 +1,7 @@
-const {
+import {
   DEFAULT_OPERATOR,
   OPERATORS: { NONE },
-} = require('./constants')
+} from './constants.js'
 
 // Tokenize an `octal` string using a regExp
 const tokenize = function(octal) {

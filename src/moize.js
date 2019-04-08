@@ -1,6 +1,6 @@
-const moize = require('moize').default
+import moize from 'moize'
 
-const { mapValues } = require('./utils')
+import { mapValues } from './utils.js'
 
 // Moize a function, or an object containing functions
 const moizeFuncs = function(value) {

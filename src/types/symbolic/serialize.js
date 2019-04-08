@@ -1,11 +1,11 @@
-const { CATEGORIES, CATEGORY_PERMISSIONS } = require('../../constants')
+import { CATEGORIES, CATEGORY_PERMISSIONS } from '../../constants.js'
 
-const {
+import {
   OPERATORS,
   OPERATORS: { EQUAL },
   DEFAULT_SERIALIZE,
-} = require('./constants')
-const { joinCategories } = require('./join')
+} from './constants.js'
+import { joinCategories } from './join.js'
 
 // Serialize from `nodes` to a `symbolic` permission
 const serialize = function(nodes) {

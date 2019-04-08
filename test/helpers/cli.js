@@ -1,4 +1,4 @@
-const execa = require('execa')
+import execa from 'execa'
 
 const BINARY_PATH = `${__dirname}/../../src/bin/index.js`
 

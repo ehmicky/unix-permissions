@@ -1,4 +1,4 @@
-const { convert } = require('../../../src')
+import { convert } from '../../../src.js'
 
 // Iterate different data over each `type`
 const forEachDataType = function(allData) {

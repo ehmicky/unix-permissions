@@ -1,4 +1,4 @@
-const { unaryMap } = require('../helpers')
+import { unaryMap } from '../helpers.js'
 
 // Normalize a permission without modifying its semantics
 const normalizeMap = function(nodesMap) {

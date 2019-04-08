@@ -1,7 +1,7 @@
-const { NODES } = require('../../constants')
-const { hasDuplicate } = require('../../utils')
+import { NODES } from '../../constants.js'
+import { hasDuplicate } from '../../utils.js'
 
-const { tokenize } = require('./tokenize')
+import { tokenize } from './tokenize.js'
 
 // Parse a `stat` permission to `nodes`
 const parse = function(stat) {

@@ -3,10 +3,10 @@
 //  - can be a little CPU-intensive
 //  - should not be run with too many different inputs, i.e. memoization should
 //    not consume too much memory
-const { moizeFuncs } = require('./moize')
+import { moizeFuncs } from './moize.js'
 
 module.exports = moizeFuncs({
-  ...require('./type'),
-  ...require('./converters'),
-  ...require('./functions'),
+  ...require('./type.js'),
+  ...require('./converters.js'),
+  ...require('./functions.js'),
 })

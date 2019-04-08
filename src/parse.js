@@ -1,6 +1,6 @@
-const { TYPES } = require('./types')
-const { getNodesMap, NODES_MAP } = require('./nodes')
-const { isPlainObject, omitBy } = require('./utils')
+import { TYPES } from './types.js'
+import { getNodesMap, NODES_MAP } from './nodes.js'
+import { isPlainObject, omitBy } from './utils.js'
 
 // Parse permission to a `nodesMap`
 // `nodesMap` uses an intermediary/internal format to facilitate conversions

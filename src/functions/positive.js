@@ -1,5 +1,5 @@
-const { unaryMap } = require('../helpers')
-const { omitBy } = require('../utils')
+import { unaryMap } from '../helpers.js'
+import { omitBy } from '../utils.js'
 
 // Omit all `-` permssions
 // E.g. `a=x` -> `a+x,a-rwst` -> `a+x`

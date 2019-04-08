@@ -1,4 +1,4 @@
-const { exit } = require('process')
+import { exit } from 'process'
 
 // Print stringified output.
 // For test functions like `contain()`, we use exit code 0|1 instead.

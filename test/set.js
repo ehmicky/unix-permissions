@@ -1,4 +1,4 @@
-const { SET_DATA, performTests } = require('./helpers')
+import { SET_DATA, performTests } from './helpers.js'
 
 performTests({
   title: ([arg, ...args]) => `should set ${arg} with ${args.join(' ')}`,

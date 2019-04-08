@@ -1,7 +1,7 @@
 // eslint-disable-next-line ava/no-ignored-test-files
-const test = require('ava')
+import test from 'ava'
 
-const { normalize } = require('../../src')
+import { normalize } from '../../src.js'
 
 // Performs a `check` test function iteratively over each `data`
 const performChecks = function({ name, data, check }) {

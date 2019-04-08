@@ -1,10 +1,10 @@
 // eslint-disable-next-line ava/no-ignored-test-files
-const test = require('ava')
+import test from 'ava'
 
-const unixPermissions = require('../../src')
-const { getCommand } = require('../../src/bin/command')
+import unixPermissions from '../../src.js'
+import { getCommand } from '../../src/bin/command.js'
 
-const { testCli } = require('./cli')
+import { testCli } from './cli.js'
 
 const performTests = function({ data, title, command }) {
   data.forEach(datum => performTest({ datum, title, command }))

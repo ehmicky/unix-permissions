@@ -1,5 +1,5 @@
-const { forEachType } = require('./repeat')
-const { SIMPLE_DATA } = require('./simple')
+import { forEachType } from './repeat.js'
+import { SIMPLE_DATA } from './simple.js'
 
 const SERIALIZE_DATA = forEachType(SIMPLE_DATA)
 

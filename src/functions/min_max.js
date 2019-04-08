@@ -1,5 +1,5 @@
-const { variableMap } = require('../helpers')
-const { mapValues, omitBy } = require('../utils')
+import { variableMap } from '../helpers.js'
+import { mapValues, omitBy } from '../utils.js'
 
 // Returns the minimum|maximum permissions among two permissions.
 // This is done permission bit by permission bit.

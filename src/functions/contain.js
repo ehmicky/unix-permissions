@@ -1,4 +1,4 @@
-const { binaryTest } = require('../helpers')
+import { binaryTest } from '../helpers.js'
 
 // Test whether all permissions in `nodesMapB` are included in `nodesMapA`
 // Missing permissions in `nodesMapB` are not checked.

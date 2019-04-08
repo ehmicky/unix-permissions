@@ -1,4 +1,4 @@
-const { SERIALIZE_DATA, performTests } = require('./helpers')
+import { SERIALIZE_DATA, performTests } from './helpers.js'
 
 performTests({
   title: ({ type, title }) => `[${type}] should serialize ${title}`,

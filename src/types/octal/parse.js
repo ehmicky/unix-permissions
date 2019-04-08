@@ -1,10 +1,10 @@
-const number = require('../number')
+import number from '../number.js'
 
-const { tokenize } = require('./tokenize')
-const {
+import { tokenize } from './tokenize.js'
+import {
   OCTAL_BASE,
   OPERATORS: { PLUS, MINUS, EQUAL },
-} = require('./constants')
+} from './constants.js'
 
 // Parse an `octal` permission to `nodes`
 const parse = function(octal, category) {

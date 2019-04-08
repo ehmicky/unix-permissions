@@ -1,10 +1,10 @@
-const { forEachDataType } = require('../repeat')
+import { forEachDataType } from '../repeat.js'
 
-const octal = require('./octal')
-const number = require('./number')
-const stat = require('./stat')
-const symbolic = require('./symbolic')
-const object = require('./object')
+import octal from './octal.js'
+import number from './number.js'
+import stat from './stat.js'
+import symbolic from './symbolic.js'
+import object from './object.js'
 
 const PARSE_DATA = forEachDataType({ number, octal, stat, symbolic, object })
 

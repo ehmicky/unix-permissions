@@ -1,6 +1,6 @@
-const { parse } = require('./parse')
-const { serialize } = require('./serialize')
-const { TYPES_MAP } = require('./types')
+import { parse } from './parse.js'
+import { serialize } from './serialize.js'
+import { TYPES_MAP } from './types.js'
 
 // Convert permission to another type
 const convert = function(typeName, perm) {

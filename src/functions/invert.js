@@ -1,8 +1,8 @@
-const { unaryMap } = require('../helpers')
-const { SPECIAL_PERMISSIONS } = require('../constants')
-const { omitBy } = require('../utils')
+import { unaryMap } from '../helpers.js'
+import { SPECIAL_PERMISSIONS } from '../constants.js'
+import { omitBy } from '../utils.js'
 
-const { notMap } = require('./not')
+import { notMap } from './not.js'
 
 // Invert a permission's `+` and `-`.
 // Missing permissions are not inverted.

@@ -1,4 +1,4 @@
-const { binaryMap } = require('../helpers')
+import { binaryMap } from '../helpers.js'
 
 // Set permissions from `nodesMapA` to `nodesMap`
 // Missing permissions of `nodesMapA` are ignored

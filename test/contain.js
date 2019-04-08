@@ -1,11 +1,11 @@
-const { contain } = require('../src')
+import { contain } from '../src.js'
 
-const {
+import {
   PARSE_DATA,
   CONTAIN_DATA,
   performTests,
   performChecks,
-} = require('./helpers')
+} from './helpers.js'
 
 performTests({
   title: ([arg, ...args]) =>

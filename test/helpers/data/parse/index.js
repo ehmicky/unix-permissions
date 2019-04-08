@@ -1,3 +1,3 @@
 module.exports = {
-  ...require('./main'),
+  ...require('./main.js'),
 }

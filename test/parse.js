@@ -1,4 +1,4 @@
-const { PARSE_DATA, performTests } = require('./helpers')
+import { PARSE_DATA, performTests } from './helpers.js'
 
 performTests({
   title: ({ type, title }) => `[${type}] should parse ${title}`,

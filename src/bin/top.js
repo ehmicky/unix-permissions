@@ -1,6 +1,6 @@
-const yargs = require('yargs')
+import yargs from 'yargs'
 
-const COMMANDS = require('./commands')
+import COMMANDS from './commands.js'
 
 const defineCli = function() {
   const yargsA = yargs

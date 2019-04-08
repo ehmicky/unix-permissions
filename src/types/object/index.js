@@ -1,4 +1,4 @@
 module.exports = {
-  ...require('./parse'),
-  ...require('./serialize'),
+  ...require('./parse.js'),
+  ...require('./serialize.js'),
 }

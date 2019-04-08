@@ -1,9 +1,9 @@
-const { readdirSync } = require('fs')
-const { extname, normalize } = require('path')
-const { platform } = require('process')
+import { readdirSync } from 'fs'
+import { extname, normalize } from 'path'
+import { platform } from 'process'
 
-const execa = require('execa')
-const test = require('ava')
+import execa from 'execa'
+import test from 'ava'
 
 // TODO: handle when file is not meant to be executed (no permission,
 // or no shabang)

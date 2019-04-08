@@ -1,6 +1,6 @@
-const { getNodeKey } = require('../../nodes')
+import { getNodeKey } from '../../nodes.js'
 
-const { VALUES } = require('./constants')
+import { VALUES } from './constants.js'
 
 // Serialize from `nodes` to a `number` permission
 const serialize = function(nodes) {

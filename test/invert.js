@@ -1,4 +1,4 @@
-const { SIMPLE_DATA, performTests } = require('./helpers')
+import { SIMPLE_DATA, performTests } from './helpers.js'
 
 performTests({
   title: args => `should invert ${args}`,
