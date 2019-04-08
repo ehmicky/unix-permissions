@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import { exit } from 'process'
 
-import unixPermissions from '../main.js'
+// eslint-disable-next-line import/no-namespace
+import * as unixPermissions from '../main.js'
 
 import { defineCli } from './top.js'
 import { parseConfig } from './parse.js'
