@@ -1,7 +1,6 @@
 import yargs from 'yargs'
 
-// eslint-disable-next-line import/no-namespace
-import * as COMMANDS from './commands'
+import COMMANDS from './commands'
 
 export const defineCli = function() {
   const yargsA = yargs
