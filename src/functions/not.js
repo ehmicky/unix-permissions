@@ -1,5 +1,3 @@
-'use strict'
-
 const { unaryMap } = require('../helpers')
 const { mapValues } = require('../utils')
 

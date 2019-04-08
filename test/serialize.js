@@ -1,5 +1,3 @@
-'use strict'
-
 const { SERIALIZE_DATA, performTests } = require('./helpers')
 
 performTests({

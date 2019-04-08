@@ -1,5 +1,3 @@
-'use strict'
-
 const { not } = require('../src')
 
 const {

@@ -1,5 +1,3 @@
-'use strict'
-
 const { MIN_MAX_DATA, performTests } = require('./helpers')
 
 performTests({

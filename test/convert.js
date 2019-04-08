@@ -1,5 +1,3 @@
-'use strict'
-
 const { convert } = require('../src')
 
 const { CONVERT_DATA, performChecks } = require('./helpers')

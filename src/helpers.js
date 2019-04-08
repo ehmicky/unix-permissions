@@ -1,5 +1,3 @@
-'use strict'
-
 const { parse } = require('./parse')
 const { serialize } = require('./serialize')
 const { TYPES_MAP } = require('./types')

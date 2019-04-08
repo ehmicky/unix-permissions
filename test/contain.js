@@ -1,5 +1,3 @@
-'use strict'
-
 const { contain } = require('../src')
 
 const {

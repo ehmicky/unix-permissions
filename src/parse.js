@@ -1,5 +1,3 @@
-'use strict'
-
 const { TYPES } = require('./types')
 const { getNodesMap, NODES_MAP } = require('./nodes')
 const { isPlainObject, omitBy } = require('./utils')

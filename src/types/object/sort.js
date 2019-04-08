@@ -1,5 +1,3 @@
-'use strict'
-
 const { CATEGORY_ORDER, PERM_ORDER } = require('./constants')
 
 // Ensure object keys order

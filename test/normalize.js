@@ -1,5 +1,3 @@
-'use strict'
-
 const { normalize } = require('../src')
 
 const { PARSE_DATA, performTests, performChecks } = require('./helpers')

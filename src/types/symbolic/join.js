@@ -1,5 +1,3 @@
-'use strict'
-
 const { CATEGORIES } = require('../../constants')
 
 // Join categories, e.g. `u+x,g+x` -> `ug+x`

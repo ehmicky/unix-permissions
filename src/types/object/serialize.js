@@ -1,5 +1,3 @@
-'use strict'
-
 const { LONG_CATEGORIES } = require('../../constants')
 const { groupBy, mapValues } = require('../../utils')
 const { getNodeKey } = require('../../nodes')

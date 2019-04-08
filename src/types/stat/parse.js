@@ -1,5 +1,3 @@
-'use strict'
-
 const { NODES } = require('../../constants')
 const { hasDuplicate } = require('../../utils')
 

@@ -1,5 +1,3 @@
-'use strict'
-
 const { forEachDataType } = require('../repeat')
 
 const octal = require('./octal')

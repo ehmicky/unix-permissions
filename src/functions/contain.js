@@ -1,5 +1,3 @@
-'use strict'
-
 const { binaryTest } = require('../helpers')
 
 // Test whether all permissions in `nodesMapB` are included in `nodesMapA`

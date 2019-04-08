@@ -1,5 +1,3 @@
-'use strict'
-
 const { PARSE_DATA, performTests } = require('./helpers')
 
 performTests({

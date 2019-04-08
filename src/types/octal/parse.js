@@ -1,5 +1,3 @@
-'use strict'
-
 const number = require('../number')
 
 const { tokenize } = require('./tokenize')

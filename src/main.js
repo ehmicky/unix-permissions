@@ -1,5 +1,3 @@
-'use strict'
-
 // We memoize all exported functions since they:
 //  - are all pure and can be
 //  - can be a little CPU-intensive

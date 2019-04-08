@@ -1,5 +1,3 @@
-'use strict'
-
 // Tokenize a `stat` string using a RegExp
 const tokenize = function(stat) {
   if (typeof stat !== 'string') {

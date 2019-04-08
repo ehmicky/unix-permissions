@@ -1,6 +1,4 @@
 // eslint-disable-next-line ava/no-ignored-test-files
-'use strict'
-
 const test = require('ava')
 
 const { normalize } = require('../../src')

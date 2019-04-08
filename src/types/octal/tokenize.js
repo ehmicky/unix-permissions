@@ -1,5 +1,3 @@
-'use strict'
-
 const {
   DEFAULT_OPERATOR,
   OPERATORS: { NONE },

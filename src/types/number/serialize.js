@@ -1,5 +1,3 @@
-'use strict'
-
 const { getNodeKey } = require('../../nodes')
 
 const { VALUES } = require('./constants')

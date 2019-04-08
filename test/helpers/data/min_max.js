@@ -1,5 +1,3 @@
-'use strict'
-
 const MIN_MAX_DATA = [
   // Each operators combination
   ['o+x', 'o+x'],

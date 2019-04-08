@@ -1,5 +1,3 @@
-'use strict'
-
 const { exit } = require('process')
 
 // Print stringified output.

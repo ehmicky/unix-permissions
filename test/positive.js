@@ -1,5 +1,3 @@
-'use strict'
-
 const { positive } = require('../src')
 
 const {

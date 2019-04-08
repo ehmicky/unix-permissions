@@ -1,5 +1,3 @@
-'use strict'
-
 const { argv } = require('process')
 
 const { escapeArgs } = require('./escape')

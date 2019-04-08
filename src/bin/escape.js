@@ -1,5 +1,3 @@
-'use strict'
-
 // We prepend spaces to arguments starting with `-` in order to escape them.
 // Otherwise `yargs` fails parsing with `stat` and `symbolic` (like `-xr`)
 const escapeArgs = function(args) {

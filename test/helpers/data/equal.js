@@ -1,5 +1,3 @@
-'use strict'
-
 const EQUAL_DATA = [
   // Invalid
   ['o+x'],

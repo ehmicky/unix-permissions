@@ -1,5 +1,3 @@
-'use strict'
-
 const { unaryMap } = require('../helpers')
 
 // Normalize a permission without modifying its semantics

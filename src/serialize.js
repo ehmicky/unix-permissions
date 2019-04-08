@@ -1,5 +1,3 @@
-'use strict'
-
 const { ORDER } = require('./constants')
 
 // Serialize from a `nodesMap` to a specific type.

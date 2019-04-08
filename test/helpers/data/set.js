@@ -1,5 +1,3 @@
-'use strict'
-
 const BASE_SET_DATA = [
   // Invalid
   ['o+x'],

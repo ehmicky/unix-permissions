@@ -1,5 +1,3 @@
-'use strict'
-
 const { isPlainObject, mapValues } = require('../../utils')
 const { SHORT_CATEGORIES } = require('../../constants')
 

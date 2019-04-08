@@ -1,5 +1,3 @@
-'use strict'
-
 const { variableMap } = require('../helpers')
 const { mapValues, omitBy } = require('../utils')
 

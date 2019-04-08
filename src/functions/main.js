@@ -1,5 +1,3 @@
-'use strict'
-
 const { normalize } = require('./normalize')
 const { positive } = require('./positive')
 const { contain } = require('./contain')

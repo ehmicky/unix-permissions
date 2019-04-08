@@ -1,5 +1,3 @@
-'use strict'
-
 const { forEachType } = require('./repeat')
 const { PARSE_DATA } = require('./parse')
 

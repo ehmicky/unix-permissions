@@ -1,5 +1,3 @@
-'use strict'
-
 const { CATEGORIES, PERMISSIONS } = require('../../constants')
 const { hasDuplicate } = require('../../utils')
 

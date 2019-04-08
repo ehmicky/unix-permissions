@@ -1,5 +1,3 @@
-'use strict'
-
 const number = require('./number')
 const octal = require('./octal')
 const stat = require('./stat')

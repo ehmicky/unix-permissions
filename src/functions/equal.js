@@ -1,5 +1,3 @@
-'use strict'
-
 const { binaryTest } = require('../helpers')
 
 const { containTest } = require('./contain')

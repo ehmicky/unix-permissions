@@ -1,5 +1,3 @@
-'use strict'
-
 // Like lodash _.omitBy()
 const omitBy = function(object, condition) {
   const pairs = Object.entries(object)

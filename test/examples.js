@@ -1,5 +1,3 @@
-'use strict'
-
 const { readdirSync } = require('fs')
 const { extname, normalize } = require('path')
 const { platform } = require('process')

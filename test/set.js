@@ -1,5 +1,3 @@
-'use strict'
-
 const { SET_DATA, performTests } = require('./helpers')
 
 performTests({

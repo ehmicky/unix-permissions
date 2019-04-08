@@ -1,5 +1,3 @@
-'use strict'
-
 /* eslint-disable no-magic-numbers */
 module.exports = [
   // Invalid

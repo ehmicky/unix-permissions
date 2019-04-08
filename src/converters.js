@@ -1,5 +1,3 @@
-'use strict'
-
 const { TYPES_MAP } = require('./types')
 const { mapValues } = require('./utils')
 const { convert } = require('./helpers')

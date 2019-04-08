@@ -1,5 +1,3 @@
-'use strict'
-
 const { NODES_MAP } = require('../../nodes')
 const number = require('../number')
 

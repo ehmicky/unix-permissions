@@ -1,5 +1,3 @@
-'use strict'
-
 const { binaryMap } = require('../helpers')
 
 // Set permissions from `nodesMapA` to `nodesMap`

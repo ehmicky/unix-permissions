@@ -1,5 +1,3 @@
-'use strict'
-
 const { BASE_SET_DATA } = require('./set')
 
 const CONTAIN_DATA = [

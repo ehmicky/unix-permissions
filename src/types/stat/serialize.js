@@ -1,5 +1,3 @@
-'use strict'
-
 const { SPECIAL_PERMISSIONS } = require('../../constants')
 const { NODES_MAP, getNodesMap } = require('../../nodes')
 

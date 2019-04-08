@@ -1,5 +1,3 @@
-'use strict'
-
 const { TYPES_MAP } = require('./types')
 
 // Retrieve the type of a permission, or returns `invalid`

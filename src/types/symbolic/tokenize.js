@@ -1,5 +1,3 @@
-'use strict'
-
 // Tokenize `symbolic` string using a RegExp
 const tokenize = function(symbolic) {
   if (typeof symbolic !== 'string') {

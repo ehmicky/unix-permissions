@@ -1,5 +1,3 @@
-'use strict'
-
 const execa = require('execa')
 
 const BINARY_PATH = `${__dirname}/../../src/bin/index.js`

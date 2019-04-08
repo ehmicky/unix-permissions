@@ -1,5 +1,3 @@
-'use strict'
-
 const { equal } = require('../src')
 
 const {

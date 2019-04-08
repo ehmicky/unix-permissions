@@ -1,5 +1,3 @@
-'use strict'
-
 const POSITIVE_DATA = [
   // Each permission
   'o=x',

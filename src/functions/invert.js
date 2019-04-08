@@ -1,5 +1,3 @@
-'use strict'
-
 const { unaryMap } = require('../helpers')
 const { SPECIAL_PERMISSIONS } = require('../constants')
 const { omitBy } = require('../utils')
