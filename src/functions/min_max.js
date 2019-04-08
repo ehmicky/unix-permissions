@@ -32,13 +32,8 @@ const hasValue = function([{ add } = {}, value]) {
 
 const MIN_VALUES = [false, undefined, true]
 const minMap = minMaxMap.bind(null, MIN_VALUES)
-const min = variableMap.bind(null, minMap)
+export const min = variableMap.bind(null, minMap)
 
 const MAX_VALUES = [true, undefined, false]
 const maxMap = minMaxMap.bind(null, MAX_VALUES)
-const max = variableMap.bind(null, maxMap)
-
-module.exports = {
-  min,
-  max,
-}
+export const max = variableMap.bind(null, maxMap)

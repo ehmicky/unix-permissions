@@ -9,7 +9,7 @@ import {
 } from './constants.js'
 
 // Parse an `object` permission into nodes
-const parse = function(object) {
+export const parse = function(object) {
   // Non-plain objects probably indicate a non-intentional error
   if (!isPlainObject(object)) {
     return
@@ -116,8 +116,4 @@ const validateNodes = function({ nodes }) {
 
 const isInvalidNode = function(node) {
   return node === undefined
-}
-
-module.exports = {
-  parse,
 }

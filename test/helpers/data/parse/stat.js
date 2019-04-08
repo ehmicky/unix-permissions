@@ -1,4 +1,4 @@
-module.exports = [
+export const stat = [
   // Invalid
   'rwwrwxrwx',
   '--------j',

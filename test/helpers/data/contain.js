@@ -1,6 +1,6 @@
 import { BASE_SET_DATA } from './set.js'
 
-const CONTAIN_DATA = [
+export const CONTAIN_DATA = [
   ...BASE_SET_DATA,
 
   // Equal operator
@@ -27,7 +27,3 @@ const CONTAIN_DATA = [
   ['o+xr', 'o+x', 'o+r'],
   ['o+x', 'o+x', 'o+r'],
 ]
-
-module.exports = {
-  CONTAIN_DATA,
-}

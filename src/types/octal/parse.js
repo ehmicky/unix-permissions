@@ -7,7 +7,7 @@ import {
 } from './constants.js'
 
 // Parse an `octal` permission to `nodes`
-const parse = function(octal, category) {
+export const parse = function(octal, category) {
   const { operator, string } = tokenize(octal)
 
   if (string === undefined) {
@@ -52,8 +52,4 @@ const parseOperator = {
   [PLUS]: parsePlus,
   [MINUS]: parseMinus,
   [EQUAL]: parseEqual,
-}
-
-module.exports = {
-  parse,
 }

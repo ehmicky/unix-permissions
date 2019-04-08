@@ -2,7 +2,7 @@ import { exit } from 'process'
 
 // Print stringified output.
 // For test functions like `contain()`, we use exit code 0|1 instead.
-const handleOutput = function({ output }) {
+export const handleOutput = function({ output }) {
   if (output === true) {
     exit()
   }
@@ -15,8 +15,4 @@ const handleOutput = function({ output }) {
 
   // eslint-disable-next-line no-console, no-restricted-globals
   console.log(outputA)
-}
-
-module.exports = {
-  handleOutput,
 }

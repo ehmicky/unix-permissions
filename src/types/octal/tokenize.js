@@ -4,7 +4,7 @@ import {
 } from './constants.js'
 
 // Tokenize an `octal` string using a regExp
-const tokenize = function(octal) {
+export const tokenize = function(octal) {
   if (typeof octal !== 'string') {
     return {}
   }
@@ -34,8 +34,4 @@ const addDefaultOperator = function({ operator }) {
   }
 
   return operator
-}
-
-module.exports = {
-  tokenize,
 }

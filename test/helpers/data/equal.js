@@ -1,4 +1,4 @@
-const EQUAL_DATA = [
+export const EQUAL_DATA = [
   // Invalid
   ['o+x'],
   [],
@@ -51,7 +51,3 @@ const EQUAL_DATA = [
   ['o+xr', 'o+x,o+r', 'o+r,o+x'],
   ['o+xr', 'o+x,o+r', 'o+r'],
 ]
-
-module.exports = {
-  EQUAL_DATA,
-}

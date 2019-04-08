@@ -1,4 +1,4 @@
-const BASE_SET_DATA = [
+export const BASE_SET_DATA = [
   // Invalid
   ['o+x'],
   [],
@@ -19,7 +19,7 @@ const BASE_SET_DATA = [
   ['o-x', 'o+'],
 ]
 
-const SET_DATA = [
+export const SET_DATA = [
   ...BASE_SET_DATA,
 
   // Equal operator
@@ -45,8 +45,3 @@ const SET_DATA = [
   ['o+', 'o+x', 'o-r'],
   ['o+', 'o+x', 'o-x'],
 ]
-
-module.exports = {
-  BASE_SET_DATA,
-  SET_DATA,
-}

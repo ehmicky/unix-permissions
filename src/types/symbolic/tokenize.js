@@ -1,5 +1,5 @@
 // Tokenize `symbolic` string using a RegExp
-const tokenize = function(symbolic) {
+export const tokenize = function(symbolic) {
   if (typeof symbolic !== 'string') {
     return
   }
@@ -37,7 +37,3 @@ const tokenizePart = function(part) {
 // The operator can be `=`, `+` or `-`, and is required.
 // The permissions are a string composed of `xwrXst`, and defaults to ''.
 const PART_REGEXP = /^\s*([augo]*)\s*([=+-])\s*([xwrXst]*)\s*$/u
-
-module.exports = {
-  tokenize,
-}

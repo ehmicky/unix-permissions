@@ -7,7 +7,7 @@ import { isPlainObject, omitBy } from './utils.js'
 // between types.
 // Guesses permission type by trying each `type.parse()` in order, and using
 // the first one that does not return `undefined`
-const parse = function(perm) {
+export const parse = function(perm) {
   const { type, nodes } = TYPES.reduce(parseReduce.bind(null, perm), {})
 
   validateNodes({ nodes, perm })
@@ -45,8 +45,4 @@ const normalizeNodes = function({ nodes }) {
 // Exclude special flags not valid for current category
 const isInvalidNode = function(node, nodeKey) {
   return NODES_MAP[nodeKey] === undefined
-}
-
-module.exports = {
-  parse,
 }

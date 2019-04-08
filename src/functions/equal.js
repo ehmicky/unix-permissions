@@ -13,8 +13,4 @@ const sameLength = function(nodesMapA, nodesMapB) {
   return Object.keys(nodesMapA).length === Object.keys(nodesMapB).length
 }
 
-const equal = binaryTest.bind(null, equalTest)
-
-module.exports = {
-  equal,
-}
+export const equal = binaryTest.bind(null, equalTest)

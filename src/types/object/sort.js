@@ -1,7 +1,7 @@
 import { CATEGORY_ORDER, PERM_ORDER } from './constants.js'
 
 // Ensure object keys order
-const compareNodes = function(nodeA, nodeB) {
+export const compareNodes = function(nodeA, nodeB) {
   const result = sortCategory(nodeA, nodeB)
 
   if (result !== 0) {
@@ -29,7 +29,3 @@ const sortPerm = sort.bind(null, {
   attrName: 'permission',
   order: PERM_ORDER,
 })
-
-module.exports = {
-  compareNodes,
-}

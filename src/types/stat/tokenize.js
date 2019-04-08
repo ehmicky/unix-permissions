@@ -1,5 +1,5 @@
 // Tokenize a `stat` string using a RegExp
-const tokenize = function(stat) {
+export const tokenize = function(stat) {
   if (typeof stat !== 'string') {
     return
   }
@@ -55,7 +55,7 @@ const EXPAND_REGEXPS = [
 ]
 
 // Inverse of `expandSpecial()`
-const contractSpecial = function(part) {
+export const contractSpecial = function(part) {
   return CONTRACT_REGEXPS.reduce(specialReduce, part)
 }
 
@@ -68,9 +68,4 @@ const CONTRACT_REGEXPS = [
 
 const specialReduce = function(part, [regexp, chars]) {
   return part.replace(regexp, chars)
-}
-
-module.exports = {
-  tokenize,
-  contractSpecial,
 }

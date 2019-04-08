@@ -1,5 +1,5 @@
 /* eslint-disable no-magic-numbers */
-module.exports = [
+export const number = [
   // Invalid
   NaN,
   Infinity,

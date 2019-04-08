@@ -4,7 +4,7 @@ import { hasDuplicate } from '../../utils.js'
 import { tokenize } from './tokenize.js'
 
 // Parse a `stat` permission to `nodes`
-const parse = function(stat) {
+export const parse = function(stat) {
   const tokens = tokenize(stat)
 
   if (tokens === undefined || hasDuplicates({ tokens })) {
@@ -32,8 +32,4 @@ const parseNode = function({ node, node: { category }, tokens }) {
 const parsePart = function({ node, node: { permission }, part }) {
   const add = part.includes(permission)
   return { ...node, add }
-}
-
-module.exports = {
-  parse,
 }

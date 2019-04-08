@@ -5,7 +5,7 @@ import { NO_PERMISSION } from './constants.js'
 import { contractSpecial } from './tokenize.js'
 
 // Serialize from `nodes` to a `stat` permission
-const serialize = function(nodes) {
+export const serialize = function(nodes) {
   const addedNodes = getAddedNodes({ nodes })
 
   const stat = Object.entries(NODES_MAP)
@@ -38,8 +38,4 @@ const serializeNode = function({ node: { permission }, nodeKey, addedNodes }) {
   }
 
   return NO_PERMISSION
-}
-
-module.exports = {
-  serialize,
 }

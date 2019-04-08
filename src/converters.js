@@ -1,6 +1,6 @@
 import { TYPES_MAP } from './types.js'
 import { mapValues } from './utils.js'
-import { convert } from './helpers.js'
+import { convert as convertValue } from './helpers.js'
 
 // Retrieve a map of all types' convertion functions
 const getConverters = function() {
@@ -8,11 +8,7 @@ const getConverters = function() {
 }
 
 const getConverter = function(type, name) {
-  return convert.bind(null, name)
+  return convertValue.bind(null, name)
 }
 
-const converters = getConverters()
-
-module.exports = {
-  convert: converters,
-}
+export const convert = getConverters()

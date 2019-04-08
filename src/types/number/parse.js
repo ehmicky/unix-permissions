@@ -3,7 +3,7 @@ import { NODES_MAP } from '../../nodes.js'
 import { VALUES, MIN_NUMBER, MAX_NUMBER } from './constants.js'
 
 // Parse a `number` permission to `nodes`
-const parse = function(number) {
+export const parse = function(number) {
   if (!isValidNumber({ number })) {
     return
   }
@@ -31,8 +31,4 @@ const getAdd = function({ number, nodeKey }) {
   const value = VALUES[nodeKey]
   // eslint-disable-next-line no-bitwise
   return (number & value) !== 0
-}
-
-module.exports = {
-  parse,
 }

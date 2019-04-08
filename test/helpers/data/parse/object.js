@@ -1,4 +1,4 @@
-module.exports = [
+export const object = [
   // Invalid
   undefined,
   null,

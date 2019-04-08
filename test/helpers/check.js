@@ -4,7 +4,7 @@ import test from 'ava'
 import { normalize } from '../../src.js'
 
 // Performs a `check` test function iteratively over each `data`
-const performChecks = function({ name, data, check }) {
+export const performChecks = function({ name, data, check }) {
   data.forEach(performCheck.bind(null, { name, check }))
 }
 
@@ -53,8 +53,4 @@ const normalizeArg = function({ t, arg }) {
     // Otherwise `ava` complains to tests were run
     t.true(true)
   }
-}
-
-module.exports = {
-  performChecks,
 }

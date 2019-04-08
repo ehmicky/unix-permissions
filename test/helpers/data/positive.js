@@ -1,4 +1,4 @@
-const POSITIVE_DATA = [
+export const POSITIVE_DATA = [
   // Each permission
   'o=x',
   'o=w',
@@ -33,7 +33,3 @@ const POSITIVE_DATA = [
   'o-x',
   'a+x',
 ]
-
-module.exports = {
-  POSITIVE_DATA,
-}

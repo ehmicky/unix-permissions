@@ -2,7 +2,7 @@ import { argv } from 'process'
 
 import { escapeArgs } from './escape.js'
 
-const parseConfig = function({ yargs }) {
+export const parseConfig = function({ yargs }) {
   const args = escapeArgs(argv.slice(2))
 
   const {
@@ -43,8 +43,4 @@ const parseObject = function(value) {
   try {
     return JSON.parse(value)
   } catch {}
-}
-
-module.exports = {
-  parseConfig,
 }

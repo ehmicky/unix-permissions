@@ -4,7 +4,7 @@ const BINARY_PATH = `${__dirname}/../../src/bin/index.js`
 
 // Test that CLI output and exit code is same as programmatic output and
 // exception throwing
-const testCli = async function({ t, output, error, command, args }) {
+export const testCli = async function({ t, output, error, command, args }) {
   if (args.some(isInvalidCliArg)) {
     return
   }
@@ -92,7 +92,3 @@ const fixOutput = function(string) {
 
 const INVALID_PERM = 'Permissions syntax is invalid:'
 const INVALID_PERM_REGEXP = new RegExp(`${INVALID_PERM}.*`, 'u')
-
-module.exports = {
-  testCli,
-}

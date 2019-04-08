@@ -8,7 +8,7 @@ import {
 import { joinCategories } from './join.js'
 
 // Serialize from `nodes` to a `symbolic` permission
-const serialize = function(nodes) {
+export const serialize = function(nodes) {
   // Noop symbolic format is `a+`
   // `+` is possible as well on input, but `a+` is clearer in output.
   if (nodes.length === 0) {
@@ -90,8 +90,4 @@ const seralizeAddPart = function({ category, nodes, add }) {
 
 const stringifyPart = function({ category, operator, permissions }) {
   return `${category}${operator}${permissions}`
-}
-
-module.exports = {
-  serialize,
 }

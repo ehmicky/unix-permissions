@@ -1,5 +1,5 @@
 // Like lodash _.omitBy()
-const omitBy = function(object, condition) {
+export const omitBy = function(object, condition) {
   const pairs = Object.entries(object)
     .filter(([key, value]) => !condition(value, key))
     .map(([key, value]) => ({ [key]: value }))
@@ -7,7 +7,7 @@ const omitBy = function(object, condition) {
 }
 
 // Like lodash _.mapValues()
-const mapValues = function(object, mapper) {
+export const mapValues = function(object, mapper) {
   const pairs = Object.entries(object).map(([key, value]) => ({
     [key]: mapper(value, key, object),
   }))
@@ -15,7 +15,7 @@ const mapValues = function(object, mapper) {
 }
 
 // Is a plain object, including `Object.create(null)`
-const isPlainObject = function(val) {
+export const isPlainObject = function(val) {
   return (
     typeof val === 'object' &&
     val !== null &&
@@ -24,7 +24,7 @@ const isPlainObject = function(val) {
 }
 
 // Group array of objects together according to a specific key
-const groupBy = function(array, key) {
+export const groupBy = function(array, key) {
   return array.reduce(groupByReducer.bind(null, key), {})
 }
 
@@ -36,18 +36,10 @@ const groupByReducer = function(key, groups, obj) {
 }
 
 // Check if an array has duplicate elements
-const hasDuplicate = function(array) {
+export const hasDuplicate = function(array) {
   return array.some(isDuplicate)
 }
 
 const isDuplicate = function(elem, index, elems) {
   return elems.slice(index + 1).some(elemB => elem === elemB)
-}
-
-module.exports = {
-  omitBy,
-  mapValues,
-  isPlainObject,
-  groupBy,
-  hasDuplicate,
 }

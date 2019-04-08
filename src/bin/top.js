@@ -2,7 +2,7 @@ import yargs from 'yargs'
 
 import COMMANDS from './commands.js'
 
-const defineCli = function() {
+export const defineCli = function() {
   const yargsA = yargs
     .usage(USAGE)
     .strict()
@@ -47,8 +47,4 @@ const addExamples = function(yargsA, examples) {
 
 const addExample = function(yargsA, [example, exampleDescription]) {
   return yargsA.example(`$0 ${example}`, exampleDescription)
-}
-
-module.exports = {
-  defineCli,
 }

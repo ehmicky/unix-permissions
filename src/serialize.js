@@ -5,7 +5,7 @@ import { ORDER } from './constants.js'
 // between types.
 // Whereas parsing is loose, serializing enforce normalized/strict output,
 // and has validated/normalized input (thanks to parsing).
-const serialize = function(type, nodesMap) {
+export const serialize = function(type, nodesMap) {
   const nodes = normalizeNodes({ nodesMap })
   const perm = type.serialize(nodes)
   return perm
@@ -15,8 +15,4 @@ const serialize = function(type, nodesMap) {
 // Many types relies on categories and permissions order.
 const normalizeNodes = function({ nodesMap }) {
   return ORDER.map(nodeKey => nodesMap[nodeKey]).filter(Boolean)
-}
-
-module.exports = {
-  serialize,
 }

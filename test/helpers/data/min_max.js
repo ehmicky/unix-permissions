@@ -1,4 +1,4 @@
-const MIN_MAX_DATA = [
+export const MIN_MAX_DATA = [
   // Each operators combination
   ['o+x', 'o+x'],
   ['o+x', 'o+'],
@@ -28,7 +28,3 @@ const MIN_MAX_DATA = [
   ['o+x'],
   [],
 ]
-
-module.exports = {
-  MIN_MAX_DATA,
-}

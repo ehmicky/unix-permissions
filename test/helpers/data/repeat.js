@@ -1,14 +1,14 @@
 import { convert } from '../../../src.js'
 
 // Iterate different data over each `type`
-const forEachDataType = function(allData) {
+export const forEachDataType = function(allData) {
   return Object.entries(allData).flatMap(([type, data]) =>
     addType({ data, type }),
   )
 }
 
 // Iterate same data over each `type`
-const forEachType = function(data) {
+export const forEachType = function(data) {
   return Object.keys(convert).flatMap(type => addType({ data, type }))
 }
 
@@ -32,9 +32,4 @@ const stringify = function(value) {
   }
 
   return JSON.stringify(value)
-}
-
-module.exports = {
-  forEachDataType,
-  forEachType,
 }

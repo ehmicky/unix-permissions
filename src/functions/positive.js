@@ -11,8 +11,4 @@ const isRemoved = function({ add }) {
   return !add
 }
 
-const positive = unaryMap.bind(null, positiveMap)
-
-module.exports = {
-  positive,
-}
+export const positive = unaryMap.bind(null, positiveMap)

@@ -6,7 +6,7 @@ import { getCommand } from '../../src/bin/command.js'
 
 import { testCli } from './cli.js'
 
-const performTests = function({ data, title, command }) {
+export const performTests = function({ data, title, command }) {
   data.forEach(datum => performTest({ datum, title, command }))
 }
 
@@ -51,8 +51,4 @@ const fireCommand = function({ command, args }) {
     const output = error.message
     return { output, error: true }
   }
-}
-
-module.exports = {
-  performTests,
 }

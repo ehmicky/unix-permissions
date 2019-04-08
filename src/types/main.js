@@ -5,12 +5,7 @@ import symbolic from './symbolic.js'
 import object from './object.js'
 
 // Order is significant, because each is tried in order
-const TYPES = [number, octal, stat, symbolic, object]
+export const TYPES = [number, octal, stat, symbolic, object]
 
 // Object keys are significant
-const TYPES_MAP = { number, octal, stat, symbolic, object }
-
-module.exports = {
-  TYPES,
-  TYPES_MAP,
-}
+export const TYPES_MAP = { number, octal, stat, symbolic, object }

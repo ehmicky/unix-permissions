@@ -9,7 +9,7 @@ import {
 } from './constants.js'
 
 // Serialize from `nodes` to a `octal` permission
-const serialize = function(nodes) {
+export const serialize = function(nodes) {
   const operator = serializeOperator({ nodes })
   const string = serializeInteger({ operator, nodes })
   const octal = `${operator}${string}`
@@ -64,8 +64,4 @@ const serializeMinus = function({ operator, nodes }) {
   }
 
   return nodes.map(node => ({ ...node, add: true }))
-}
-
-module.exports = {
-  serialize,
 }

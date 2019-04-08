@@ -3,7 +3,7 @@ import { getNodeKey } from '../../nodes.js'
 import { VALUES } from './constants.js'
 
 // Serialize from `nodes` to a `number` permission
-const serialize = function(nodes) {
+export const serialize = function(nodes) {
   return nodes
     .filter(hasAdd)
     .map(serializeNode)
@@ -21,8 +21,4 @@ const serializeNode = function(node) {
 
 const sum = function(memo, number) {
   return memo + number
-}
-
-module.exports = {
-  serialize,
 }

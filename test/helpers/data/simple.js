@@ -1,4 +1,4 @@
-const SIMPLE_DATA = [
+export const SIMPLE_DATA = [
   // Each permission
   'o+x',
   'o+w',
@@ -34,7 +34,3 @@ const SIMPLE_DATA = [
   'o-x',
   'a=x',
 ]
-
-module.exports = {
-  SIMPLE_DATA,
-}

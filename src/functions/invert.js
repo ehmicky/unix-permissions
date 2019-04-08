@@ -17,8 +17,4 @@ const isSpecial = function({ permission }) {
   return SPECIAL_PERMISSIONS.includes(permission)
 }
 
-const invert = unaryMap.bind(null, invertMap)
-
-module.exports = {
-  invert,
-}
+export const invert = unaryMap.bind(null, invertMap)

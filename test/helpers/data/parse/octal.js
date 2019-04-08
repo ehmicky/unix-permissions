@@ -1,4 +1,4 @@
-module.exports = [
+export const octal = [
   // Invalid
   'NaN',
   '0.5',

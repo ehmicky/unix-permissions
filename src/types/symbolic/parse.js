@@ -5,7 +5,7 @@ import { DEFAULT_CATEGORIES } from './constants.js'
 import { tokenize } from './tokenize.js'
 
 // Parse `symbolic` permissions to nodes
-const parse = function(symbolic) {
+export const parse = function(symbolic) {
   const tokens = tokenize(symbolic)
 
   if (tokens === undefined || hasDuplicates({ tokens })) {
@@ -97,8 +97,4 @@ const splitPermissions = function({ permissions, add, ...node }) {
   }
 
   return permissions.split('').map(permission => ({ ...node, permission, add }))
-}
-
-module.exports = {
-  parse,
 }
