@@ -1,6 +1,6 @@
 import { NODES_MAP } from '../../nodes.js'
 
-import { VALUES, MIN_NUMBER, MAX_NUMBER } from './constants'
+import { VALUES } from './constants.js'
 
 // Parse a `number` permission to `nodes`
 export const parse = function(number) {
@@ -20,6 +20,9 @@ const isValidNumber = function({ number }) {
     Number.isInteger(number) && number >= MIN_NUMBER && number <= MAX_NUMBER
   )
 }
+
+const MIN_NUMBER = 0
+const MAX_NUMBER = 65535
 
 // Check permissions bit by bit
 const getNode = function({ number, nodeKey, node }) {

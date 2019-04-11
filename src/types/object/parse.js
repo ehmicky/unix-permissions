@@ -1,12 +1,11 @@
 import { isPlainObject, mapValues } from '../../utils.js'
-import { SHORT_CATEGORIES } from '../../constants'
+import { SHORT_CATEGORIES } from '../../constants.js'
 
 import {
   SHORT_PERMISSIONS,
   SPECIAL_CATEGORY,
   PARSE_SPECIAL,
-  ALL_CATEGORY,
-} from './constants'
+} from './constants.js'
 
 // Parse an `object` permission into nodes
 export const parse = function(object) {
@@ -23,7 +22,7 @@ export const parse = function(object) {
 }
 
 // `all` is a shortcut for all categories
-const parseAll = function({ [ALL_CATEGORY]: all, ...object }) {
+const parseAll = function({ all, ...object }) {
   if (all === undefined) {
     return object
   }

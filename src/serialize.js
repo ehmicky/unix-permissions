@@ -1,4 +1,4 @@
-import { ORDER } from './constants'
+import { ORDER } from './constants.js'
 
 // Serialize from a `nodesMap` to a specific type.
 // `nodes` uses an intermediary/internal format to facilitate conversions

@@ -1,7 +1,6 @@
-import { SPECIAL_PERMISSIONS } from '../../constants'
+import { SPECIAL_PERMISSIONS } from '../../constants.js'
 import { NODES_MAP, getNodesMap } from '../../nodes.js'
 
-import { NO_PERMISSION } from './constants'
 import { contractSpecial } from './tokenize.js'
 
 // Serialize from `nodes` to a `stat` permission
@@ -39,3 +38,5 @@ const serializeNode = function({ node: { permission }, nodeKey, addedNodes }) {
 
   return NO_PERMISSION
 }
+
+const NO_PERMISSION = '-'

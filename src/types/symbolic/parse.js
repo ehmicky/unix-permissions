@@ -1,7 +1,6 @@
-import { CATEGORIES, PERMISSIONS } from '../../constants'
+import { CATEGORIES, PERMISSIONS } from '../../constants.js'
 import { hasDuplicate } from '../../utils.js'
 
-import { DEFAULT_CATEGORIES } from './constants'
 import { tokenize } from './tokenize.js'
 
 // Parse `symbolic` permissions to nodes
@@ -41,6 +40,8 @@ const addDefaultCategories = function(node) {
 
   return { ...node, categories: DEFAULT_CATEGORIES }
 }
+
+const DEFAULT_CATEGORIES = 'a'
 
 // See `stat` type for an explanation on special permission `X`.
 // It is transformed to `x`.

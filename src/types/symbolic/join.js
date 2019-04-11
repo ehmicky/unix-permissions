@@ -1,4 +1,4 @@
-import { CATEGORIES } from '../../constants'
+import { CATEGORIES } from '../../constants.js'
 
 // Join categories, e.g. `u+x,g+x` -> `ug+x`
 export const joinCategories = function(node, index, nodes) {

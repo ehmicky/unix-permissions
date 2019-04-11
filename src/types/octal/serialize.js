@@ -1,14 +1,7 @@
 import { NODES_MAP } from '../../nodes.js'
 import { serialize as serializeNumber } from '../number/serialize.js'
 
-import {
-  OCTAL_BASE,
-  SERIALIZE_LENGTH,
-  SERIALIZE_PAD,
-  OPERATORS,
-} from './constants'
-
-const { PLUS, MINUS, NONE } = OPERATORS
+import { OCTAL_BASE, PLUS, MINUS, NONE } from './constants.js'
 
 // Serialize from `nodes` to a `octal` permission
 export const serialize = function(nodes) {
@@ -58,6 +51,9 @@ const serializeInteger = function({ operator, nodes }) {
     .padStart(SERIALIZE_LENGTH, SERIALIZE_PAD)
   return string
 }
+
+const SERIALIZE_LENGTH = 4
+const SERIALIZE_PAD = '0'
 
 // When using `-octal`, we need the inverse number
 const serializeMinus = function({ operator, nodes }) {

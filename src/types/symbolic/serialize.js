@@ -1,9 +1,6 @@
-import { CATEGORIES, CATEGORY_PERMISSIONS } from '../../constants'
+import { CATEGORIES, CATEGORY_PERMISSIONS } from '../../constants.js'
 
-import { OPERATORS, DEFAULT_SERIALIZE } from './constants'
 import { joinCategories } from './join.js'
-
-const { EQUAL } = OPERATORS
 
 // Serialize from `nodes` to a `symbolic` permission
 export const serialize = function(nodes) {
@@ -22,6 +19,8 @@ export const serialize = function(nodes) {
     .join(',')
   return perm
 }
+
+const DEFAULT_SERIALIZE = 'a+'
 
 // Iterate over each group of nodes by category
 const pickCategoryNodes = function({ category, nodes }) {
@@ -57,7 +56,7 @@ const containsPermission = function({ nodes, permission }) {
 // Serialize permissions with `=` operator
 const serializeEqualPart = function({ category, nodes }) {
   const permissions = nodes.map(serializeEqualPerm).join('')
-  return [{ category, operator: EQUAL, permissions }]
+  return [{ category, operator: OPERATORS.EQUAL, permissions }]
 }
 
 const serializeEqualPerm = function({ add, permission }) {
@@ -88,4 +87,10 @@ const seralizeAddPart = function({ category, nodes, add }) {
 
 const stringifyPart = function({ category, operator, permissions }) {
   return `${category}${operator}${permissions}`
+}
+
+const OPERATORS = {
+  true: '+',
+  false: '-',
+  EQUAL: '=',
 }

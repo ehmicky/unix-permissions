@@ -1,5 +1,5 @@
 import { unaryMap } from '../helpers.js'
-import { SPECIAL_PERMISSIONS } from '../constants'
+import { SPECIAL_PERMISSIONS } from '../constants.js'
 import { omitBy } from '../utils.js'
 
 import { notMap } from './not.js'

@@ -1,5 +1,3 @@
-import { CATEGORY_ORDER, PERM_ORDER } from './constants'
-
 // Ensure object keys order
 export const compareNodes = function(nodeA, nodeB) {
   const result = sortCategory(nodeA, nodeB)
@@ -20,6 +18,9 @@ const sort = function({ attrName, order }, nodeA, nodeB) {
     ? 1
     : -1
 }
+
+const CATEGORY_ORDER = ['user', 'group', 'others', 'special']
+const PERM_ORDER = ['read', 'write', 'execute', 'setuid', 'setgid', 'sticky']
 
 const sortCategory = sort.bind(null, {
   attrName: 'category',

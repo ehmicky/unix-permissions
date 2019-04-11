@@ -1,4 +1,4 @@
-import { NODES } from '../../constants'
+import { NODES } from '../../constants.js'
 import { hasDuplicate } from '../../utils.js'
 
 import { tokenize } from './tokenize.js'
