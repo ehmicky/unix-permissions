@@ -12,17 +12,16 @@ Swiss Army knife for Unix permissions.
 [Unix file permissions](https://en.wikipedia.org/wiki/File_system_permissions)
 can take many [shapes](#permission-types): [symbolic](docs/types.md#symbolic)
 (`ug+rw`), [octal](docs/types.md#octal) (`660`) or a
-[list of characters](docs/types.md#stat) (`drw-rw----`).
-This library enables using any of [these](#permission-types) (instead of being
-limited to a single one) with any [Node.js](#examples-javascript) or
-[CLI command](#examples-cli).
+[list of characters](docs/types.md#stat) (`drw-rw----`). This library enables
+using any of [these](#permission-types) (instead of being limited to a single
+one) with any [Node.js](#examples-javascript) or [CLI command](#examples-cli).
 
 This library can also perform operations on Unix permissions such as:
 
 - [testing](docs/API.md#containpermission-permissions),
   [setting](docs/API.md#setpermission-permissions) and
-  [unsetting](docs/API.md#notpermission). Using bitwise operations
-  (`|`, `&`, `^`, `~`) can be tedious and error-prone otherwise.
+  [unsetting](docs/API.md#notpermission). Using bitwise operations (`|`, `&`,
+  `^`, `~`) can be tedious and error-prone otherwise.
 - [validating](docs/API.md#normalizepermission) syntax.
 - [normalizing](docs/API.md#normalizepermission). For example `u+r,u+w` can be
   shortened to `u+rw`.
@@ -30,13 +29,12 @@ This library can also perform operations on Unix permissions such as:
   [`umask`](https://linux.die.net/man/2/umask) of `117` means new files will be
   created with `661` permissions.
 - checking the [minimal](docs/API.md#minpermissions) or
-  [maximal](docs/API.md#maxpermissions) permissions among a list of them.
-  This can be useful to aggregate all the permissions of several files,
-  e.g. during a directory recursion.
+  [maximal](docs/API.md#maxpermissions) permissions among a list of them. This
+  can be useful to aggregate all the permissions of several files, e.g. during a
+  directory recursion.
 
 Permissions are manipulated as strings, not as file paths. This means you must
-use other utilities (such as
-[`chmod`](https://linux.die.net/man/1/chmod) or
+use other utilities (such as [`chmod`](https://linux.die.net/man/1/chmod) or
 [`stat`](https://linux.die.net/man/2/stat)) to get and set file permissions
 using those strings.
 
@@ -100,8 +98,7 @@ const permission = convert.stat('660')
 ```
 
 Several methods other than `convert` are available but they mostly follow the
-same pattern.
-Permission strings are passed as input and returned as output.
+same pattern. Permission strings are passed as input and returned as output.
 
 # Usage (CLI)
 
@@ -123,7 +120,8 @@ between them:
 - decimal [`number`](docs/types.md#number) like `274`
 - [`stat`](docs/types.md#stat) like `rw-rw-r--`
 - [`symbolic`](docs/types.md#symbolic) like `a+rw`
-- [`object`](docs/types.md#object) like `{ user: { read: true, write: false, execute: false }, group: { write: false }, others: { write: false } }`
+- [`object`](docs/types.md#object) like
+  `{ user: { read: true, write: false, execute: false }, group: { write: false }, others: { write: false } }`
 
 Special permissions ([setuid](https://en.wikipedia.org/wiki/Setuid),
 [setgid](https://en.wikipedia.org/wiki/Setuid),
@@ -146,8 +144,7 @@ Returns the `permission`'s type or `invalid`.<br>
 ## normalize(permission)
 
 Normalizes a `permission` to its canonical shape. Throw if `permission` is
-invalid.<br>
-[Full documentation](docs/API.md#normalizepermission).
+invalid.<br> [Full documentation](docs/API.md#normalizepermission).
 
 ## positive(permission)
 

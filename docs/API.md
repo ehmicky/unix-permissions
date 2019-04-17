@@ -252,8 +252,8 @@ console.log(invert('1660')) // '0117'
 
 Retrieves the lowest permissions among all arguments.
 
-This does not return the lowest argument. Instead it returns a combination
-of the lowest bits of all arguments.
+This does not return the lowest argument. Instead it returns a combination of
+the lowest bits of all arguments.
 
 This can be useful if you are looking for the lowest permission of a several
 files, e.g. during a directory recursion.

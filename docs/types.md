@@ -1,7 +1,8 @@
 # Permission types
 
 You can use any of the following permission types as input. You can also
-[`convert()`](API.md#convertoctalnumberstatsymbolicobjectpermission) between them.
+[`convert()`](API.md#convertoctalnumberstatsymbolicobjectpermission) between
+them.
 
 You can try all the examples below:
 
@@ -17,8 +18,8 @@ Octal string where each digit represents a user class: `user`, `group` and
 representing `read`, `write` and `execute`. Special permissions
 ([setuid](https://en.wikipedia.org/wiki/Setuid),
 [setgid](https://en.wikipedia.org/wiki/Setuid),
-[sticky](https://en.wikipedia.org/wiki/Sticky_bit)) can optionally be
-specified by prepending another digit.
+[sticky](https://en.wikipedia.org/wiki/Sticky_bit)) can optionally be specified
+by prepending another digit.
 
 An operator can be prepended:
 
@@ -79,8 +80,8 @@ Permission type used by [`stat`](https://linux.die.net/man/2/stat) and
 [`ls`](https://linux.die.net/man/1/ls).
 
 It is a string where each character represents either the permission (`r`, `w`,
-`x`) or no permission (`-`). The special permission are indicated with `S`,
-`s`, `T` and `t` where lowercase implies `x` is also present.
+`x`) or no permission (`-`). The special permission are indicated with `S`, `s`,
+`T` and `t` where lowercase implies `x` is also present.
 
 Optionally a first character can be specified to indicate the file type (e.g.
 `d` for directories).
@@ -107,8 +108,8 @@ console.log(convert.octal('xwr --- ---')) // '0700'
 
 ## symbolic
 
-Permission type used by [`chmod`](https://linux.die.net/man/1/chmod) as a
-string like `gu+rx`.
+Permission type used by [`chmod`](https://linux.die.net/man/1/chmod) as a string
+like `gu+rx`.
 
 Starts with the user class (`a` for all, `u` for user, `g` for group, `o` for
 others) then the operator (`+`, `-` or `=`) and ends with the permissions
@@ -158,8 +159,8 @@ The full syntax is:
 }
 ```
 
-The values can be `true`, `false` or `undefined`. `undefined` leaves
-permissions as is while `false` unsets them.
+The values can be `true`, `false` or `undefined`. `undefined` leaves permissions
+as is while `false` unsets them.
 
 <!-- eslint-disable line-comment-position, no-inline-comments -->
 
