@@ -75,11 +75,9 @@ export const LONG_CATEGORIES = {
   g: 'group',
   o: 'others',
 }
-/* eslint-enable id-length */
 
 export const PERMISSIONS = ['r', 'w', 'x', 't', 's']
 export const SPECIAL_PERMISSIONS = ['t', 's']
-/* eslint-disable id-length */
 export const CATEGORY_PERMISSIONS = {
   a: ['x', 'w', 'r', 't', 's'],
   u: ['x', 'w', 'r', 's'],
