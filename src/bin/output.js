@@ -13,6 +13,5 @@ export const handleOutput = function({ output }) {
 
   const outputA = typeof output === 'string' ? output : JSON.stringify(output)
 
-  // eslint-disable-next-line no-console, no-restricted-globals
   console.log(outputA)
 }
