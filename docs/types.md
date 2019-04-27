@@ -27,8 +27,6 @@ An operator can be prepended:
 - `+`: leave omitted permissions as is
 - `-`: unset specified permissions
 
-<!-- eslint-disable line-comment-position, no-inline-comments -->
-
 ```js
 console.log(convert.stat('720')) // 'rwx-w----'
 
@@ -60,8 +58,6 @@ It is the same as `octal` except:
   on the [command line](../README.md#usage-cli), where all numbers should be in
   [`octal`](#octal) form instead.
 
-<!-- eslint-disable line-comment-position, no-inline-comments, no-magic-numbers -->
-
 ```js
 console.log(convert.stat(0)) // '---------'
 
@@ -85,8 +81,6 @@ It is a string where each character represents either the permission (`r`, `w`,
 
 Optionally a first character can be specified to indicate the file type (e.g.
 `d` for directories).
-
-<!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
 console.log(convert.octal('--------x')) // '0001'
@@ -121,8 +115,6 @@ While `+` leaves the omitted permissions as is, `=` unsets them. For example
 Several groups can be specified using a comma-separated list like `g+x,o+r`.
 
 User classes can be concatenated like `go+x`.
-
-<!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
 console.log(convert.octal('o+wx')) // '+0003'
@@ -161,8 +153,6 @@ The full syntax is:
 
 The values can be `true`, `false` or `undefined`. `undefined` leaves permissions
 as is while `false` unsets them.
-
-<!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
 console.log(convert.symbolic({ others: { read: true, execute: true } }))

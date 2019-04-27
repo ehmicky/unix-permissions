@@ -29,8 +29,6 @@ assume `0` in [`number`](types.md#number) and `-` in [`stat`](types.md#stat)
 mean "unset permissions". However you can use
 [`positive()`](#positivepermission) to overcome this issue.
 
-<!-- eslint-disable line-comment-position, no-inline-comments -->
-
 ```js
 console.log(convert.symbolic('111')) // 'a=x'
 
@@ -51,8 +49,6 @@ try {
 
 Returns the `permission`'s [`type`](types.md) or `'invalid'`.
 
-<!-- eslint-disable line-comment-position, no-inline-comments, no-magic-numbers -->
-
 ```js
 console.log(type('1')) // 'octal'
 
@@ -68,8 +64,6 @@ console.log(type('a+i')) // 'invalid'
 Normalizes a `permission` to its canonical shape.
 
 Throws an exception if `permission` is invalid.
-
-<!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
 console.log(normalize('1')) // '0001'
@@ -94,8 +88,6 @@ Removes all negative permissions. See
 [convert()](#convertoctalnumberstatsymbolicobjectpermission) for more
 explanation.
 
-<!-- eslint-disable line-comment-position, no-inline-comments -->
-
 ```js
 console.log(positive('o+x,o-rw')) // 'o+x'
 
@@ -113,8 +105,6 @@ console.log(invert(positive('660'))) // '-0660'
 Tests whether `permission` includes `permissions`.
 
 Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
-
-<!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
 console.log(contain('--x--x--x', 'a=x')) // `true`
@@ -143,8 +133,6 @@ console.log(contain('o+x,o-w', 'o+x', 'o-w')) // `true`
 Tests whether `permission` equals exactly `permissions`.
 
 Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
-
-<!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
 console.log(equal('--x--x--x', 'a=x')) // `true`
@@ -178,8 +166,6 @@ This can also be used to remove special permissions using
 `set(permission, 'a-st')` since some functions like
 [`umask`](https://linux.die.net/man/2/umask) do not allow them.
 
-<!-- eslint-disable line-comment-position, no-inline-comments -->
-
 ```js
 console.log(set('---------', 'a+x')) // '--x--x--x'
 
@@ -198,8 +184,6 @@ Inverts `permission` including special permissions.
 
 This can be used in combination with `set()` to unset `permissions` instead of
 setting them.
-
-<!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
 console.log(not('u+xs')) // 'u-xs'
@@ -230,8 +214,6 @@ Inverts `permission` and removes special permissions.
 For example a [`umask`](https://linux.die.net/man/2/umask) of `117` means new
 files will be created with `661` permissions.
 
-<!-- eslint-disable line-comment-position, no-inline-comments -->
-
 ```js
 console.log(invert('u+xs')) // 'u-x'
 
@@ -258,8 +240,6 @@ the lowest bits of all arguments.
 This can be useful if you are looking for the lowest permission of a several
 files, e.g. during a directory recursion.
 
-<!-- eslint-disable line-comment-position, no-inline-comments -->
-
 ```js
 console.log(min('404', '440', '402')) // '0400'
 ```
@@ -267,8 +247,6 @@ console.log(min('404', '440', '402')) // '0400'
 ## max(permissions...)
 
 Inverse of [`min()`](#minpermissions).
-
-<!-- eslint-disable line-comment-position, no-inline-comments -->
 
 ```js
 console.log(max('404', '440', '402')) // '0446'
