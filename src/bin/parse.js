@@ -6,7 +6,6 @@ export const parseConfig = function({ yargs }) {
   const args = escapeArgs(argv.slice(2))
 
   const {
-    // eslint-disable-next-line id-length
     _: [command],
     permission,
     permissions = [],
