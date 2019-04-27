@@ -10,7 +10,6 @@
 'use strict'
 
 // Ignore the following line: this is only needed for internal purposes.
-// eslint-disable-next-line import/no-unassigned-import
 require('../utils')
 
 const { contain } = require('unix-permissions')
