@@ -42,7 +42,7 @@ using those strings.
 
 In JavaScript:
 
-<!-- eslint-disable handle-callback-err, node/prefer-global/process, no-sync -->
+<!-- eslint-disable no-sync -->
 
 ```js
 // Retrieve a file's permission as an object like
