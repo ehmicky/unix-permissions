@@ -8,7 +8,7 @@
 'use strict'
 
 // Ignore the following line: this is only needed for internal purposes.
-require('../utils')
+require('../utils.js')
 
 const { min } = require('unix-permissions')
 
