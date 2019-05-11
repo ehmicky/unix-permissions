@@ -62,7 +62,6 @@
   },
   "devDependencies": {
     "ava": "^1.4.1",
-    "caching-transform": "github:istanbuljs/caching-transform#unbreak-windows",
     "execa": "^1.0.0",
     "gulp": "^4.0.2",
     "gulp-shared-tasks": "^0.27.61",
