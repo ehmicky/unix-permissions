@@ -14,7 +14,7 @@ const getParseData = function() {
 
 const PARSE_DATA_MAP = { number, octal, stat, symbolic, object }
 
-const stringify = function(arg) {
+export const stringify = function(arg) {
   if (typeof arg !== 'object') {
     return String(arg)
   }
