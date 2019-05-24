@@ -6,15 +6,12 @@ import { testCommand } from './helpers/command.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 
 VALID_PARSE_DATA.forEach(datum => {
-  const {
-    type,
-    args: [arg],
-  } = datum
+  const { type, arg } = datum
   test(`normalize() ${JSON.stringify({ type, arg })}`, t =>
     testCommand({ datum, command: 'normalize', t }))
 })
 
-VALID_PARSE_DATA.forEach(({ args: [arg] }) => {
+VALID_PARSE_DATA.forEach(({ arg }) => {
   test(`should have idempotent 'normalize' ${JSON.stringify(arg)}`, t => {
     t.deepEqual(normalize(arg), normalize(normalize(arg)))
   })

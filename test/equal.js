@@ -11,7 +11,7 @@ EQUAL_DATA.forEach(datum => {
     testCommand({ datum, command: 'equal', t }))
 })
 
-VALID_PARSE_DATA.forEach(({ args: [arg] }) => {
+VALID_PARSE_DATA.forEach(({ arg }) => {
   test(`should 'equal' itself ${JSON.stringify(arg)}`, t => {
     t.true(equal(arg, arg))
   })

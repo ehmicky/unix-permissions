@@ -11,7 +11,7 @@ POSITIVE_DATA.forEach(datum => {
     testCommand({ datum, command: 'positive', t }))
 })
 
-VALID_PARSE_DATA.forEach(({ args: [arg] }) => {
+VALID_PARSE_DATA.forEach(({ arg }) => {
   test(`should have idempotent 'positive' ${JSON.stringify(arg)}`, t => {
     t.deepEqual(positive(arg), positive(positive(arg)))
   })

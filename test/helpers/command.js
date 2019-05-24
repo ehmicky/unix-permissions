@@ -23,7 +23,7 @@ const getArgs = function({ datum }) {
   }
 
   if (typeof datum === 'object' && datum !== null) {
-    return datum.args
+    return [datum.arg]
   }
 
   return [datum]

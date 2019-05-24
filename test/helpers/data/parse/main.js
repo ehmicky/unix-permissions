@@ -8,7 +8,7 @@ import { object } from './object.js'
 
 const getParseData = function() {
   return Object.entries(PARSE_DATA_MAP).flatMap(([type, data]) =>
-    data.map(arg => ({ type, args: [arg] })),
+    data.map(arg => ({ type, arg })),
   )
 }
 
@@ -24,7 +24,7 @@ export const stringify = function(arg) {
 
 export const PARSE_DATA = getParseData()
 
-export const isValid = function({ args: [arg] }) {
+export const isValid = function({ arg }) {
   try {
     normalize(arg)
     return true

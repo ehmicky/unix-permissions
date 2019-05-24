@@ -10,7 +10,7 @@ SIMPLE_DATA.forEach(datum => {
   test(`not() ${datum}`, t => testCommand({ datum, command: 'not', t }))
 })
 
-VALID_PARSE_DATA.forEach(({ args: [arg] }) => {
+VALID_PARSE_DATA.forEach(({ arg }) => {
   test(`should have idempotent 'not' ${JSON.stringify(arg)}`, t => {
     t.deepEqual(normalize(arg), not(not(arg)))
   })
