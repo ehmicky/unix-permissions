@@ -65,7 +65,8 @@
     "execa": "^1.0.0",
     "gulp": "^4.0.2",
     "gulp-shared-tasks": "^0.27.80",
-    "husky": "^2.3.0"
+    "husky": "^2.3.0",
+    "pretty-format": "^24.8.0"
   },
   "engines": {
     "node": ">=8.12.0"

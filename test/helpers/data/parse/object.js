@@ -52,7 +52,6 @@ export const object = [
 
   // `all` category
   { all: { read: true } },
-  { all: { read: true }, user: { read: false } },
   { user: { read: false }, all: { read: true } },
   { all: { read: true }, special: { setuid: true } },
 ]
