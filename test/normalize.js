@@ -11,8 +11,8 @@ VALID_PARSE_DATA.forEach(datum => {
     testCommand({ datum, command: 'normalize', t }))
 })
 
-VALID_PARSE_DATA.forEach(({ arg }) => {
-  test(`should have idempotent 'normalize' ${JSON.stringify(arg)}`, t => {
+VALID_PARSE_DATA.forEach(({ type, arg }) => {
+  test(`normalize() idempotence ${JSON.stringify({ type, arg })}`, t => {
     t.deepEqual(normalize(arg), normalize(normalize(arg)))
   })
 })
