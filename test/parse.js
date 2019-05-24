@@ -8,6 +8,6 @@ PARSE_DATA.forEach(datum => {
     type,
     args: [arg],
   } = datum
-  test(`parsing ${type} ${stringify(arg)}`, t =>
+  test(`parse ${type} ${stringify(arg)}`, t =>
     testCommand({ datum, command: 'convert.symbolic', t }))
 })
