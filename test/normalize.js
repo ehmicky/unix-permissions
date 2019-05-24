@@ -11,8 +11,9 @@ performTests({
 })
 
 PARSE_DATA.forEach(datum => {
+  const title = `should have idempotent 'normalize' ${JSON.stringify(datum)}`
   performCheck({
-    name: "should have idempotent 'normalize'",
+    title,
     check: ({ t, arg }) => t.deepEqual(arg, normalize(arg)),
   }, datum)
 })

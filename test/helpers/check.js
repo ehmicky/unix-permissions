@@ -3,11 +3,8 @@ import test from 'ava'
 
 import { normalize } from '../../src/main.js'
 
-import { getTestName } from './name.js'
-
 // Performs a `check` test function
-export const performCheck = function({ name, check }, datum) {
-  const title = getTestName(name, datum)
+export const performCheck = function({ title, check }, datum) {
   test(title, performCheckTest.bind(null, { check, ...datum }))
 }
 

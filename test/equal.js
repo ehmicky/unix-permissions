@@ -13,8 +13,9 @@ performTests({
 })
 
 PARSE_DATA.forEach(datum => {
+  const title = `should 'equal' itself ${JSON.stringify(datum)}`
   performCheck({
-    name: "should 'equal' itself",
+    title,
     check: ({ t, arg }) => t.true(equal(arg, arg)),
   }, datum)
 })

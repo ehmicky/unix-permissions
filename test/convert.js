@@ -33,8 +33,6 @@ const LOSSY_CONVERSIONS = [
 ]
 
 CONVERT_DATA.forEach(datum => {
-  performCheck({
-    name: "should have idempotent 'convert'",
-    check,
-  }, datum)
+  const title = `should have idempotent 'convert' ${JSON.stringify(datum)}`
+  performCheck({ title, check }, datum)
 })
