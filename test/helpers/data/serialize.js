@@ -1,4 +1,11 @@
-import { forEachSType } from './repeat.js'
+import { convert } from '../../../src/main.js'
+
 import { SIMPLE_DATA } from './simple.js'
 
-export const SERIALIZE_DATA = forEachSType(SIMPLE_DATA)
+const getSerializeData = function() {
+  return Object.keys(convert).flatMap(type =>
+    SIMPLE_DATA.map(arg => ({ type, args: [arg], title: arg }))
+  )
+}
+
+export const SERIALIZE_DATA = getSerializeData()
