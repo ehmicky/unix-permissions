@@ -6,9 +6,8 @@ import { testCommand } from './helpers/command.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 
 VALID_PARSE_DATA.forEach(datum => {
-  const title = ({ type, title: titleA }) =>
-    `[${type}] should normalize ${titleA}`
-  test(title(datum), t => testCommand({ datum, command: 'normalize', t }))
+  test(`[${datum.type}] normalize() ${datum.title}`, t =>
+    testCommand({ datum, command: 'normalize', t }))
 })
 
 VALID_PARSE_DATA.forEach(({ args: [arg] }) => {
