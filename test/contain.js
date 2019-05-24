@@ -14,9 +14,8 @@ performTests({
   data: CONTAIN_DATA,
 })
 
-removeInvalid(PARSE_DATA).forEach(datum => {
-  test(`should 'contain' itself ${JSON.stringify(datum)}`, t => {
-    const { args: [arg] } = datum
+removeInvalid(PARSE_DATA).forEach(({ args: [arg] }) => {
+  test(`should 'contain' itself ${JSON.stringify(arg)}`, t => {
     t.true(contain(arg, arg))
   })
 })

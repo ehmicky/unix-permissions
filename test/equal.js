@@ -14,9 +14,8 @@ performTests({
   data: EQUAL_DATA,
 })
 
-removeInvalid(PARSE_DATA).forEach(datum => {
-  test(`should 'equal' itself ${JSON.stringify(datum)}`, t => {
-    const { args: [arg] } = datum
+removeInvalid(PARSE_DATA).forEach(({ args: [arg] }) => {
+  test(`should 'equal' itself ${JSON.stringify(arg)}`, t => {
     t.true(equal(arg, arg))
   })
 })

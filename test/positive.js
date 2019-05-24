@@ -13,9 +13,8 @@ performTests({
   data: POSITIVE_DATA,
 })
 
-removeInvalid(PARSE_DATA).forEach(datum => {
-  test(`should have idempotent 'positive' ${JSON.stringify(datum)}`, t => {
-    const { args: [arg] } = datum
+removeInvalid(PARSE_DATA).forEach(({ args: [arg] }) => {
+  test(`should have idempotent 'positive' ${JSON.stringify(arg)}`, t => {
     t.deepEqual(positive(arg), positive(positive(arg)))
   })
 })
