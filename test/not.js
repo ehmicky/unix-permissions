@@ -2,16 +2,13 @@ import test from 'ava'
 
 import { not, normalize } from '../src/main.js'
 
-import { performTest } from './helpers/command.js'
+import { testCommand } from './helpers/command.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { SIMPLE_DATA } from './helpers/data/simple.js'
 
 SIMPLE_DATA.forEach(datum => {
-  performTest({
-    title: args => `should negate ${args}`,
-    command: 'not',
-    datum,
-  })
+  const title = args => `should negate ${args}`
+  test(title(datum), t => testCommand({ datum, command: 'not', t }))
 })
 
 VALID_PARSE_DATA.forEach(({ args: [arg] }) => {

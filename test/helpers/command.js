@@ -1,20 +1,12 @@
-// eslint-disable-next-line ava/no-ignored-test-files
-import test from 'ava'
-
 // eslint-disable-next-line import/no-namespace
 import * as unixPermissions from '../../src/main.js'
 import { getCommand } from '../../src/bin/command.js'
 
 import { testCli } from './cli.js'
 
-export const performTest = function({ datum, title, command }) {
-  const titleA = title(datum)
-  test(titleA, t => testCommand({ datum, command, t }))
-}
-
 // Snapshot a command's output, then test it has the same behavior when fired
 // from CLI.
-const testCommand = async function({ datum, command, t }) {
+export const testCommand = async function({ datum, command, t }) {
   const commandA = typeof command === 'function' ? command(datum) : command
   const args = getArgs({ datum })
 
