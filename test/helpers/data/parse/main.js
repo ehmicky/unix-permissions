@@ -1,4 +1,4 @@
-import { isValid } from '../../valid.js'
+import { normalize } from '../../../../src/main.js'
 
 import { octal } from './octal.js'
 import { number } from './number.js'
@@ -23,5 +23,14 @@ const stringify = function(arg) {
 }
 
 export const PARSE_DATA = getParseData()
+
+export const isValid = function({ args: [arg] }) {
+  try {
+    normalize(arg)
+    return true
+  } catch {
+    return false
+  }
+}
 
 export const VALID_PARSE_DATA = PARSE_DATA.filter(isValid)

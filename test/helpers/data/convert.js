@@ -1,12 +1,12 @@
 import { convert } from '../../../src/main.js'
-import { isValid } from '../valid.js'
 
-import { PARSE_DATA } from './parse/main.js'
+import { VALID_PARSE_DATA } from './parse/main.js'
 
 const getConvertData = function() {
   return Object.keys(convert)
-    .flatMap(otherType => PARSE_DATA.map(args => ({ ...args, otherType })))
-    .filter(isValid)
+    .flatMap(otherType =>
+      VALID_PARSE_DATA.map(args => ({ ...args, otherType })),
+    )
     .filter(isConvertible)
 }
 
