@@ -6,9 +6,9 @@ import { normalizeData } from './helpers/check.js'
 import { CONVERT_DATA } from './helpers/data/convert.js'
 
 // Conversion between some types loses information
-const isLossy = function({ type, otherType }) {
-  return LOSSY_CONVERSIONS.some(
-    types => types[0] === type && types[1] === otherType,
+const isNotLossy = function({ type, otherType }) {
+  return LOSSY_CONVERSIONS.every(
+    ([typeA, otherTypeA]) => typeA !== type || otherTypeA !== otherType,
   )
 }
 
@@ -23,15 +23,9 @@ const LOSSY_CONVERSIONS = [
   ['octal', 'stat'],
 ]
 
-normalizeData(CONVERT_DATA).forEach(datum => {
+normalizeData(CONVERT_DATA).filter(isNotLossy).forEach(datum => {
   test(`should have idempotent 'convert' ${JSON.stringify(datum)}`, t => {
     const { arg, type, otherType } = datum
-
-    if (isLossy({ type, otherType })) {
-      t.true(true)
-      return
-    }
-
     const argA = convert[otherType](arg)
     const argB = convert[type](argA)
     t.deepEqual(arg, argB)
