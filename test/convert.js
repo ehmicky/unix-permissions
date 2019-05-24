@@ -1,8 +1,8 @@
 import test from 'ava'
 
-import { convert } from '../src/main.js'
+import { convert, normalize } from '../src/main.js'
 
-import { removeInvalid, normalizeArg } from './helpers/check.js'
+import { removeInvalid } from './helpers/check.js'
 import { CONVERT_DATA } from './helpers/data/convert.js'
 
 // Conversion between some types loses information
@@ -24,13 +24,9 @@ const LOSSY_CONVERSIONS = [
 ]
 
 removeInvalid(CONVERT_DATA)
-  .map(normalizeArg)
   .filter(isNotLossy)
-  .forEach(datum => {
-    test(`should have idempotent 'convert' ${JSON.stringify(datum)}`, t => {
-      const { arg, type, otherType } = datum
-      const argA = convert[otherType](arg)
-      const argB = convert[type](argA)
-      t.deepEqual(arg, argB)
+  .forEach(({ args: [arg], type, otherType }) => {
+    test(`should have idempotent 'convert' ${otherType} ${JSON.stringify(arg)}`, t => {
+      t.deepEqual(normalize(arg), convert[type](convert[otherType](arg)))
     })
   })
