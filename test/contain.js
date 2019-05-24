@@ -7,7 +7,7 @@ import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { CONTAIN_DATA } from './helpers/data/contain.js'
 
 CONTAIN_DATA.forEach(datum => {
-  test(`contain() ${datum.map(JSON.stringify).join(' ')}`, t =>
+  test(`contain() ${JSON.stringify(datum)}`, t =>
     testCommand({ datum, command: 'contain', t }))
 })
 
