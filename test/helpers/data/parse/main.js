@@ -14,14 +14,6 @@ const getParseData = function() {
 
 const PARSE_DATA_MAP = { number, octal, stat, symbolic, object }
 
-export const stringify = function(arg) {
-  if (typeof arg !== 'object') {
-    return String(arg)
-  }
-
-  return JSON.stringify(arg)
-}
-
 export const PARSE_DATA = getParseData()
 
 export const isValid = function({ arg }) {
