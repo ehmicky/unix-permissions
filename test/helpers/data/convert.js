@@ -3,11 +3,10 @@ import { convert } from '../../../src/main.js'
 import { VALID_PARSE_DATA } from './parse/main.js'
 
 const getConvertData = function() {
-  return Object.keys(convert)
-    .flatMap(otherType =>
-      VALID_PARSE_DATA.map(args => ({ ...args, otherType })),
-    )
-    .filter(isConvertible)
+  const otherTypes = Object.keys(convert)
+  return VALID_PARSE_DATA.flatMap(datum =>
+    otherTypes.map(otherType => ({ ...datum, otherType })),
+  ).filter(isConvertible)
 }
 
 // Conversion between some types loses information
