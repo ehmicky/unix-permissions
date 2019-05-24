@@ -1,4 +1,4 @@
-export const octal = [
+export const OCTAL = [
   // Invalid
   'NaN',
   '0.5',
@@ -44,4 +44,4 @@ export const octal = [
   '0o111',
   '\\111',
   '\\0111',
-]
+].map(arg => ({ type: 'octal', arg }))

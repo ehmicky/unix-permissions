@@ -1,4 +1,4 @@
-export const symbolic = [
+export const SYMBOLIC = [
   // Invalid
   '',
   '   ',
@@ -76,4 +76,4 @@ export const symbolic = [
   // Combining different categories and permissions
   'o+x,g-x',
   'o+x,o-r',
-]
+].map(arg => ({ type: 'symbolic', arg }))

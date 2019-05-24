@@ -1,4 +1,4 @@
-export const stat = [
+export const STAT = [
   // Invalid
   'rwwrwxrwx',
   '--------j',
@@ -58,4 +58,4 @@ export const stat = [
 
   // Changing order
   'rxwrwxrwx',
-]
+].map(arg => ({ type: 'stat', arg }))

@@ -1,5 +1,5 @@
 /* eslint-disable no-magic-numbers */
-export const number = [
+export const NUMBER = [
   // Invalid
   NaN,
   Infinity,
@@ -34,5 +34,5 @@ export const number = [
   // `stat` bits
   4096,
   65535,
-]
+].map(arg => ({ type: 'number', arg }))
 /* eslint-enable no-magic-numbers */

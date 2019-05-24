@@ -1,4 +1,4 @@
-export const object = [
+export const OBJECT = [
   // Invalid
   undefined,
   null,
@@ -54,4 +54,4 @@ export const object = [
   { all: { read: true } },
   { user: { read: false }, all: { read: true } },
   { all: { read: true }, special: { setuid: true } },
-]
+].map(arg => ({ type: 'object', arg }))
