@@ -14,7 +14,8 @@ performTests({
 })
 
 normalizeData(PARSE_DATA).forEach(datum => {
-  const title = `should have idempotent 'positive' ${JSON.stringify(datum)}`
-  const check = ({ t, arg }) => t.deepEqual(positive(arg), positive(positive(arg)))
-  test(title, t => check({ t, ...datum }))
+  test(`should have idempotent 'positive' ${JSON.stringify(datum)}`, t => {
+    const { arg } = datum
+    t.deepEqual(positive(arg), positive(positive(arg)))
+  })
 })

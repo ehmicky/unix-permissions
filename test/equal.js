@@ -15,7 +15,8 @@ performTests({
 })
 
 normalizeData(PARSE_DATA).forEach(datum => {
-  const title = `should 'equal' itself ${JSON.stringify(datum)}`
-  const check = ({ t, arg }) => t.true(equal(arg, arg))
-  test(title, t => check({ t, ...datum }))
+  test(`should 'equal' itself ${JSON.stringify(datum)}`, t => {
+    const { arg } = datum
+    t.true(equal(arg, arg))
+  })
 })

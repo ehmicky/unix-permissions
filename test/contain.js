@@ -15,7 +15,8 @@ performTests({
 })
 
 normalizeData(PARSE_DATA).forEach(datum => {
-  const title = `should 'contain' itself ${JSON.stringify(datum)}`
-  const check = ({ t, arg }) => t.true(contain(arg, arg))
-  test(title, t => check({ t, ...datum }))
+  test(`should 'contain' itself ${JSON.stringify(datum)}`, t => {
+    const { arg } = datum
+    t.true(contain(arg, arg))
+  })
 })
