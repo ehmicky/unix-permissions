@@ -2,7 +2,7 @@ import test from 'ava'
 
 import { convert } from '../src/main.js'
 
-import { normalizeData } from './helpers/check.js'
+import { removeInvalid, normalizeArg } from './helpers/check.js'
 import { CONVERT_DATA } from './helpers/data/convert.js'
 
 // Conversion between some types loses information
@@ -23,7 +23,8 @@ const LOSSY_CONVERSIONS = [
   ['octal', 'stat'],
 ]
 
-normalizeData(CONVERT_DATA)
+removeInvalid(CONVERT_DATA)
+  .map(normalizeArg)
   .filter(isNotLossy)
   .forEach(datum => {
     test(`should have idempotent 'convert' ${JSON.stringify(datum)}`, t => {
