@@ -8,7 +8,7 @@ import { object } from './object.js'
 
 const getParseData = function() {
   return Object.entries(PARSE_DATA_MAP).flatMap(([type, data]) =>
-    data.map(arg => ({ type, args: [arg], title: stringify(arg) })),
+    data.map(arg => ({ type, args: [arg] })),
   )
 }
 
