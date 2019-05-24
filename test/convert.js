@@ -2,11 +2,11 @@ import test from 'ava'
 
 import { convert, normalize } from '../src/main.js'
 
-import { removeInvalid } from './helpers/check.js'
+import { isValid } from './helpers/valid.js'
 import { CONVERT_DATA } from './helpers/data/convert.js'
 
 // Conversion between some types loses information
-const isNotLossy = function({ type, otherType }) {
+const isConvertible = function({ type, otherType }) {
   return LOSSY_CONVERSIONS.every(
     ([typeA, otherTypeA]) => typeA !== type || otherTypeA !== otherType,
   )
@@ -23,8 +23,9 @@ const LOSSY_CONVERSIONS = [
   ['octal', 'stat'],
 ]
 
-removeInvalid(CONVERT_DATA)
-  .filter(isNotLossy)
+CONVERT_DATA
+  .filter(isValid)
+  .filter(isConvertible)
   .forEach(({ args: [arg], type, otherType }) => {
     test(`should have idempotent 'convert' ${otherType} ${JSON.stringify(
       arg,

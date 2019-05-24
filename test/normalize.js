@@ -3,7 +3,7 @@ import test from 'ava'
 import { normalize } from '../src/main.js'
 
 import { performTests } from './helpers/command.js'
-import { removeInvalid } from './helpers/check.js'
+import { isValid } from './helpers/valid.js'
 import { PARSE_DATA } from './helpers/data/parse/main.js'
 
 performTests({
@@ -12,7 +12,7 @@ performTests({
   data: PARSE_DATA,
 })
 
-removeInvalid(PARSE_DATA).forEach(({ args: [arg] }) => {
+PARSE_DATA.filter(isValid).forEach(({ args: [arg] }) => {
   test(`should have idempotent 'normalize' ${JSON.stringify(arg)}`, t => {
     t.deepEqual(normalize(arg), normalize(normalize(arg)))
   })
