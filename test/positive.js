@@ -7,7 +7,7 @@ import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { POSITIVE_DATA } from './helpers/data/positive.js'
 
 POSITIVE_DATA.forEach(datum => {
-  test(`positive() ${datum}`, t =>
+  test(`positive() ${JSON.stringify(datum)}`, t =>
     testCommand({ datum, command: 'positive', t }))
 })
 
