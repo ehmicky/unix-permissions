@@ -2,14 +2,16 @@ import test from 'ava'
 
 import { positive } from '../src/main.js'
 
-import { performTests } from './helpers/command.js'
+import { performTest } from './helpers/command.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { POSITIVE_DATA } from './helpers/data/positive.js'
 
-performTests({
-  title: args => `should return positive ${args}`,
-  command: 'positive',
-  data: POSITIVE_DATA,
+POSITIVE_DATA.forEach(datum => {
+  performTest({
+    title: args => `should return positive ${args}`,
+    command: 'positive',
+    datum,
+  })
 })
 
 VALID_PARSE_DATA.forEach(({ args: [arg] }) => {

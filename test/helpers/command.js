@@ -7,11 +7,7 @@ import { getCommand } from '../../src/bin/command.js'
 
 import { testCli } from './cli.js'
 
-export const performTests = function({ data, title, command }) {
-  data.forEach(datum => performTest({ datum, title, command }))
-}
-
-const performTest = function({ datum, title, command }) {
+export const performTest = function({ datum, title, command }) {
   const titleA = title(datum)
   test(titleA, t => testCommand({ datum, command, t }))
 }
