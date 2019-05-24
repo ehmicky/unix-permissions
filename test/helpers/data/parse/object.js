@@ -1,4 +1,4 @@
-export const OBJECT = [
+export const INVALID_OBJECT = [
   // Invalid
   undefined,
   null,
@@ -17,7 +17,9 @@ export const OBJECT = [
   { special: { execute: true } },
   { others: { read: null } },
   { others: { read: {} } },
+].map(arg => ({ type: 'object', arg }))
 
+export const OBJECT = [
   // Each permission
   { others: { execute: true } },
   { others: { write: true } },

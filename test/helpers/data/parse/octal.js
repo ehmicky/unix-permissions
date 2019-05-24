@@ -1,11 +1,13 @@
-export const OCTAL = [
+export const INVALID_OCTAL = [
   // Invalid
   'NaN',
   '0.5',
   '10000',
   '8',
   '~1',
+].map(arg => ({ type: 'octal', arg }))
 
+export const OCTAL = [
   // Each permission
   '1',
   '2',

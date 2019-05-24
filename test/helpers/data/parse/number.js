@@ -1,5 +1,5 @@
 /* eslint-disable no-magic-numbers */
-export const NUMBER = [
+export const INVALID_NUMBER = [
   // Invalid
   NaN,
   Infinity,
@@ -9,7 +9,9 @@ export const NUMBER = [
   -1,
   0.5,
   65536,
+].map(arg => ({ type: 'number', arg }))
 
+export const NUMBER = [
   // Each permission
   1,
   2,

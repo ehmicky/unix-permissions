@@ -1,4 +1,4 @@
-export const STAT = [
+export const INVALID_STAT = [
   // Invalid
   'rwwrwxrwx',
   '--------j',
@@ -13,7 +13,9 @@ export const STAT = [
   '--------',
   '-- ---- ---',
   '-----------',
+].map(arg => ({ type: 'stat', arg }))
 
+export const STAT = [
   // Each permission
   '--------x',
   '-------w-',
