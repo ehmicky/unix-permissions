@@ -7,8 +7,8 @@ import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { CONTAIN_DATA } from './helpers/data/contain.js'
 
 CONTAIN_DATA.forEach(datum => {
-  const title = args => `contain() ${args.map(JSON.stringify).join(' ')}`
-  test(title(datum), t => testCommand({ datum, command: 'contain', t }))
+  test(`contain() ${datum.map(JSON.stringify).join(' ')}`, t =>
+    testCommand({ datum, command: 'contain', t }))
 })
 
 VALID_PARSE_DATA.forEach(({ args: [arg] }) => {
