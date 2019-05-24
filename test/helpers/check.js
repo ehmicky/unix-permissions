@@ -3,12 +3,8 @@ import test from 'ava'
 
 import { normalize } from '../../src/main.js'
 
-// Performs a `check` test function iteratively over each `data`
-export const performChecks = function({ name, data, check }) {
-  data.forEach(performCheck.bind(null, { name, check }))
-}
-
-const performCheck = function({ name, check }, datum) {
+// Performs a `check` test function
+export const performCheck = function({ name, check }, datum) {
   test(
     getTestName({ name, ...datum }),
     performCheckTest.bind(null, { check, ...datum }),

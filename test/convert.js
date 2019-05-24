@@ -1,6 +1,6 @@
 import { convert } from '../src/main.js'
 
-import { performChecks } from './helpers/check.js'
+import { performCheck } from './helpers/check.js'
 import { CONVERT_DATA } from './helpers/data/convert.js'
 
 const check = function({ t, arg, type, otherType }) {
@@ -32,8 +32,9 @@ const LOSSY_CONVERSIONS = [
   ['octal', 'stat'],
 ]
 
-performChecks({
-  name: "should have idempotent 'convert'",
-  data: CONVERT_DATA,
-  check,
+CONVERT_DATA.forEach(datum => {
+  performCheck({
+    name: "should have idempotent 'convert'",
+    check,
+  }, datum)
 })
