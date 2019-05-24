@@ -12,7 +12,7 @@ EQUAL_DATA.forEach(datum => {
 })
 
 VALID_PARSE_DATA.forEach(({ arg }) => {
-  test(`should 'equal' itself ${JSON.stringify(arg)}`, t => {
+  test(`equal() self ${JSON.stringify(arg)}`, t => {
     t.true(equal(arg, arg))
   })
 })
