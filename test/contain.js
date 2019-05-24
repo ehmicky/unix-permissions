@@ -12,7 +12,7 @@ CONTAIN_DATA.forEach(datum => {
 })
 
 VALID_PARSE_DATA.forEach(({ arg }) => {
-  test(`should 'contain' itself ${JSON.stringify(arg)}`, t => {
+  test(`contain() self ${JSON.stringify(arg)}`, t => {
     t.true(contain(arg, arg))
   })
 })
