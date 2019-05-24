@@ -8,24 +8,17 @@ export const performCheck = function({ title, check }, datum) {
   test(title, t => performCheckTest({ t, check, ...datum }))
 }
 
-const performCheckTest = function({ t, args: [arg], check, ...datum }) {
-  const argA = normalizeArg({ t, arg })
-
-  // Invalid permission should not run `check()`
-  if (argA === undefined) {
-    return
-  }
-
-  check({ t, arg: argA, ...datum })
+const performCheckTest = function({ t, arg, check, ...datum }) {
+  check({ t, arg, ...datum })
 }
 
-// Normalize permission argument before starting the test, so that differences
-// do not come from normalization.
-const normalizeArg = function({ t, arg }) {
+export const normalizeData = function(data) {
+  return data.map(normalizeArg).filter(value => value !== undefined)
+}
+
+const normalizeArg = function({ args: [arg], ...datum }) {
   try {
-    return normalize(arg)
-  } catch (error) {
-    // Otherwise `ava` complains to tests were run
-    t.true(true)
-  }
+    const argA = normalize(arg)
+    return { ...datum, arg: argA }
+  } catch {}
 }

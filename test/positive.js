@@ -1,7 +1,7 @@
 import { positive } from '../src/main.js'
 
 import { performTests } from './helpers/command.js'
-import { performCheck } from './helpers/check.js'
+import { performCheck, normalizeData } from './helpers/check.js'
 import { PARSE_DATA } from './helpers/data/parse/main.js'
 import { POSITIVE_DATA } from './helpers/data/positive.js'
 
@@ -11,7 +11,7 @@ performTests({
   data: POSITIVE_DATA,
 })
 
-PARSE_DATA.forEach(datum => {
+normalizeData(PARSE_DATA).forEach(datum => {
   const title = `should have idempotent 'positive' ${JSON.stringify(datum)}`
   performCheck(
     {
