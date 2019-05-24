@@ -5,11 +5,7 @@ import { normalize } from '../../src/main.js'
 
 // Performs a `check` test function
 export const performCheck = function({ title, check }, datum) {
-  test(title, t => performCheckTest({ t, check, ...datum }))
-}
-
-const performCheckTest = function({ t, arg, check, ...datum }) {
-  check({ t, arg, ...datum })
+  test(title, t => check({ t, ...datum }))
 }
 
 export const normalizeData = function(data) {
