@@ -1,3 +1,5 @@
+import { isValid } from '../../valid.js'
+
 import { octal } from './octal.js'
 import { number } from './number.js'
 import { stat } from './stat.js'
@@ -21,3 +23,5 @@ const stringify = function(arg) {
 }
 
 export const PARSE_DATA = getParseData()
+
+export const VALID_PARSE_DATA = PARSE_DATA.filter(isValid)
