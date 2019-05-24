@@ -13,8 +13,12 @@ performTests({
 
 PARSE_DATA.forEach(datum => {
   const title = `should have idempotent 'positive' ${JSON.stringify(datum)}`
-  performCheck({
-    title,
-    check: ({ t, arg }) => t.deepEqual(positive(arg), positive(positive(arg))),
-  }, datum)
+  performCheck(
+    {
+      title,
+      check: ({ t, arg }) =>
+        t.deepEqual(positive(arg), positive(positive(arg))),
+    },
+    datum,
+  )
 })
