@@ -7,8 +7,7 @@ import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { POSITIVE_DATA } from './helpers/data/positive.js'
 
 POSITIVE_DATA.forEach(datum => {
-  const title = args => `should return positive ${args}`
-  test(title(datum), t => testCommand({ datum, command: 'positive', t }))
+  test(`positive() ${datum}`, t => testCommand({ datum, command: 'positive', t }))
 })
 
 VALID_PARSE_DATA.forEach(({ args: [arg] }) => {
