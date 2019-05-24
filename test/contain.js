@@ -7,8 +7,7 @@ import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { CONTAIN_DATA } from './helpers/data/contain.js'
 
 CONTAIN_DATA.forEach(datum => {
-  const title = ([arg, ...args]) =>
-    `should test whether ${arg} contains ${args.join(' ')}`
+  const title = args => `contain() ${args.join(' ')}`
   test(title(datum), t => testCommand({ datum, command: 'contain', t }))
 })
 
