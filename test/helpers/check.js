@@ -5,10 +5,10 @@ import { normalize } from '../../src/main.js'
 
 // Performs a `check` test function
 export const performCheck = function({ title, check }, datum) {
-  test(title, performCheckTest.bind(null, { check, ...datum }))
+  test(title, t => performCheckTest({ t, check, ...datum }))
 }
 
-const performCheckTest = function({ args: [arg], check, ...datum }, t) {
+const performCheckTest = function({ t, args: [arg], check, ...datum }) {
   const argA = normalizeArg({ t, arg })
 
   // Invalid permission should not run `check()`
