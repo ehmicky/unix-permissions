@@ -9,6 +9,5 @@ SERIALIZE_DATA.forEach(datum => {
     args: [arg],
   } = datum
   test(`serialize ${JSON.stringify({ type, arg })}`, t =>
-    testCommand({ datum, command: `convert.${type}`, t }),
-  )
+    testCommand({ datum, command: `convert.${type}`, t }))
 })
