@@ -12,7 +12,7 @@ POSITIVE_DATA.forEach(datum => {
 })
 
 VALID_PARSE_DATA.forEach(({ arg }) => {
-  test(`should have idempotent 'positive' ${JSON.stringify(arg)}`, t => {
+  test(`positive() idempotence ${JSON.stringify(arg)}`, t => {
     t.deepEqual(positive(arg), positive(positive(arg)))
   })
 })
