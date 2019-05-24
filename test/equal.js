@@ -3,7 +3,7 @@ import test from 'ava'
 import { equal } from '../src/main.js'
 
 import { performTests } from './helpers/command.js'
-import { normalizeData } from './helpers/check.js'
+import { removeInvalid } from './helpers/check.js'
 import { PARSE_DATA } from './helpers/data/parse/main.js'
 import { EQUAL_DATA } from './helpers/data/equal.js'
 
@@ -14,9 +14,9 @@ performTests({
   data: EQUAL_DATA,
 })
 
-normalizeData(PARSE_DATA).forEach(datum => {
+removeInvalid(PARSE_DATA).forEach(datum => {
   test(`should 'equal' itself ${JSON.stringify(datum)}`, t => {
-    const { arg } = datum
+    const { args: [arg] } = datum
     t.true(equal(arg, arg))
   })
 })

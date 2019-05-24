@@ -10,3 +10,16 @@ const normalizeArg = function({ args: [arg], ...datum }) {
     return { ...datum, arg: argA }
   } catch {}
 }
+
+export const removeInvalid = function(data) {
+  return data.filter(isValid)
+}
+
+const isValid = function({ args: [arg] }) {
+  try {
+    normalize(arg)
+    return true
+  } catch {
+    return false
+  }
+}
