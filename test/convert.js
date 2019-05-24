@@ -26,7 +26,9 @@ const LOSSY_CONVERSIONS = [
 removeInvalid(CONVERT_DATA)
   .filter(isNotLossy)
   .forEach(({ args: [arg], type, otherType }) => {
-    test(`should have idempotent 'convert' ${otherType} ${JSON.stringify(arg)}`, t => {
+    test(`should have idempotent 'convert' ${otherType} ${JSON.stringify(
+      arg,
+    )}`, t => {
       t.deepEqual(normalize(arg), convert[type](convert[otherType](arg)))
     })
   })
