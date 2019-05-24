@@ -7,7 +7,7 @@ import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { SIMPLE_DATA } from './helpers/data/simple.js'
 
 SIMPLE_DATA.forEach(datum => {
-  test(`not() ${datum}`, t => testCommand({ datum, command: 'not', t }))
+  test(`not() ${JSON.stringify(datum)}`, t => testCommand({ datum, command: 'not', t }))
 })
 
 VALID_PARSE_DATA.forEach(({ arg }) => {
