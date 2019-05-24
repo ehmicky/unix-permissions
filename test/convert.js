@@ -23,11 +23,13 @@ const LOSSY_CONVERSIONS = [
   ['octal', 'stat'],
 ]
 
-normalizeData(CONVERT_DATA).filter(isNotLossy).forEach(datum => {
-  test(`should have idempotent 'convert' ${JSON.stringify(datum)}`, t => {
-    const { arg, type, otherType } = datum
-    const argA = convert[otherType](arg)
-    const argB = convert[type](argA)
-    t.deepEqual(arg, argB)
+normalizeData(CONVERT_DATA)
+  .filter(isNotLossy)
+  .forEach(datum => {
+    test(`should have idempotent 'convert' ${JSON.stringify(datum)}`, t => {
+      const { arg, type, otherType } = datum
+      const argA = convert[otherType](arg)
+      const argB = convert[type](argA)
+      t.deepEqual(arg, argB)
+    })
   })
-})
