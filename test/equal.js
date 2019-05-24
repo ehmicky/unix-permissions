@@ -7,7 +7,7 @@ import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { EQUAL_DATA } from './helpers/data/equal.js'
 
 EQUAL_DATA.forEach(datum => {
-  test(`equal() ${datum.map(JSON.stringify).join(' ')}`, t =>
+  test(`equal() ${JSON.stringify(datum)}`, t =>
     testCommand({ datum, command: 'equal', t }))
 })
 
