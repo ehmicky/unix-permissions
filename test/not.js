@@ -1,7 +1,9 @@
+import test from 'ava'
+
 import { not } from '../src/main.js'
 
 import { performTests } from './helpers/command.js'
-import { performCheck, normalizeData } from './helpers/check.js'
+import { normalizeData } from './helpers/check.js'
 import { PARSE_DATA } from './helpers/data/parse/main.js'
 import { SIMPLE_DATA } from './helpers/data/simple.js'
 
@@ -13,11 +15,6 @@ performTests({
 
 normalizeData(PARSE_DATA).forEach(datum => {
   const title = `should have idempotent 'not' ${JSON.stringify(datum)}`
-  performCheck(
-    {
-      title,
-      check: ({ t, arg }) => t.deepEqual(arg, not(not(arg))),
-    },
-    datum,
-  )
+  const check = ({ t, arg }) => t.deepEqual(arg, not(not(arg)))
+  test(title, t => check({ t, ...datum }))
 })

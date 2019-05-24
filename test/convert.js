@@ -1,6 +1,8 @@
+import test from 'ava'
+
 import { convert } from '../src/main.js'
 
-import { performCheck, normalizeData } from './helpers/check.js'
+import { normalizeData } from './helpers/check.js'
 import { CONVERT_DATA } from './helpers/data/convert.js'
 
 const check = function({ t, arg, type, otherType }) {
@@ -34,5 +36,5 @@ const LOSSY_CONVERSIONS = [
 
 normalizeData(CONVERT_DATA).forEach(datum => {
   const title = `should have idempotent 'convert' ${JSON.stringify(datum)}`
-  performCheck({ title, check }, datum)
+  test(title, t => check({ t, ...datum }))
 })
