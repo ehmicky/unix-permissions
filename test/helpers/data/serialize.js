@@ -3,8 +3,8 @@ import { convert } from '../../../src/main.js'
 import { SIMPLE_DATA } from './simple.js'
 
 const getSerializeData = function() {
-  return Object.keys(convert).flatMap(type =>
-    SIMPLE_DATA.map(arg => ({ type, arg })),
+  return SIMPLE_DATA.flatMap(arg =>
+    Object.keys(convert).map(type => ({ type, arg })),
   )
 }
 
