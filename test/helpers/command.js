@@ -8,10 +8,9 @@ import { testCli } from './cli.js'
 // from CLI.
 export const testCommand = async function({ args, command, t }) {
   const { output, error } = fireCommand({ command, args })
-
   t.snapshot({ output, error })
 
-  await testCli({ t, output, error, command, args })
+  await testCli({ t, command, args })
 }
 
 // Fire command programmatically
