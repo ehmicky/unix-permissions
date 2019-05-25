@@ -4,8 +4,8 @@ import { VALID_PARSE_DATA } from './parse/main.js'
 
 const getConvertData = function() {
   const otherTypes = Object.keys(convert)
-  return VALID_PARSE_DATA.flatMap(datum =>
-    otherTypes.map(otherType => ({ ...datum, otherType })),
+  return VALID_PARSE_DATA.flatMap(({ arg, type }) =>
+    otherTypes.map(otherType => ({ arg, type, otherType })),
   ).filter(isConvertible)
 }
 
