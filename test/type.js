@@ -4,7 +4,7 @@ import prettyFormat from 'pretty-format'
 import { testCommand } from './helpers/command.js'
 import { PARSE_DATA } from './helpers/data/parse/main.js'
 
-PARSE_DATA.forEach(datum => {
-  test(`type() ${prettyFormat(datum, { min: true, maxDepth: 3 })}`, t =>
-    testCommand({ datum, command: 'type', t }))
+PARSE_DATA.forEach(({ type, arg }) => {
+  test(`type() ${prettyFormat({ type, arg }, { min: true, maxDepth: 3 })}`, t =>
+    testCommand({ args: [arg], command: 'type', t }))
 })

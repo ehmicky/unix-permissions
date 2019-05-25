@@ -6,13 +6,13 @@ import { testCommand } from './helpers/command.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { SIMPLE_DATA } from './helpers/data/simple.js'
 
-SIMPLE_DATA.forEach(datum => {
-  test(`not() ${JSON.stringify(datum)}`, t =>
-    testCommand({ datum, command: 'not', t }))
+SIMPLE_DATA.forEach(arg => {
+  test(`not() ${JSON.stringify(arg)}`, t =>
+    testCommand({ args: [arg], command: 'not', t }))
 })
 
-VALID_PARSE_DATA.forEach(({ arg }) => {
-  test(`not() idempotence ${JSON.stringify(arg)}`, t => {
+VALID_PARSE_DATA.forEach(({ type, arg }) => {
+  test(`not() idempotence ${JSON.stringify({ type, arg })}`, t => {
     t.deepEqual(normalize(arg), not(not(arg)))
   })
 })

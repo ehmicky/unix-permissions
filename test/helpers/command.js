@@ -6,26 +6,12 @@ import { testCli } from './cli.js'
 
 // Snapshot a command's output, then test it has the same behavior when fired
 // from CLI.
-export const testCommand = async function({ datum, command, t }) {
-  const args = getArgs({ datum })
-
+export const testCommand = async function({ args, command, t }) {
   const { output, error } = fireCommand({ command, args })
 
   t.snapshot({ output, error })
 
   await testCli({ t, output, error, command, args })
-}
-
-const getArgs = function({ datum }) {
-  if (Array.isArray(datum)) {
-    return datum
-  }
-
-  if (typeof datum === 'object' && datum !== null) {
-    return [datum.arg]
-  }
-
-  return [datum]
 }
 
 // Fire command programmatically
