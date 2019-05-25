@@ -7,8 +7,8 @@ import { testCli } from './cli.js'
 // Snapshot a command's output, then test it has the same behavior when fired
 // from CLI.
 export const testCommand = async function({ args, command, t }) {
-  const { output, error } = fireCommand({ command, args })
-  t.snapshot({ output, error })
+  const output = fireCommand({ command, args })
+  t.snapshot(output)
 
   await testCli({ t, command, args })
 }
@@ -18,10 +18,8 @@ const fireCommand = function({ command, args }) {
   const func = getCommand({ unixPermissions, command })
 
   try {
-    const output = func(...args)
-    return { output, error: false }
+    return func(...args)
   } catch (error) {
-    const output = error.message
-    return { output, error: true }
+    return String(error)
   }
 }
