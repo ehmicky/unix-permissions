@@ -2,13 +2,6 @@ import { convert } from '../../../src/main.js'
 
 import { VALID_PARSE_DATA } from './parse/main.js'
 
-const getConvertData = function() {
-  const otherTypes = Object.keys(convert)
-  return VALID_PARSE_DATA.flatMap(({ arg, type }) =>
-    otherTypes.map(otherType => ({ arg, type, otherType })),
-  ).filter(isConvertible)
-}
-
 // Conversion between some types loses information
 const isConvertible = function({ type, otherType }) {
   return LOSSY_CONVERSIONS.every(
@@ -27,4 +20,8 @@ const LOSSY_CONVERSIONS = [
   ['octal', 'stat'],
 ]
 
-export const CONVERT_DATA = getConvertData()
+const otherTypes = Object.keys(convert)
+
+export const CONVERT_DATA = VALID_PARSE_DATA.flatMap(({ arg, type }) =>
+  otherTypes.map(otherType => ({ arg, type, otherType })),
+).filter(isConvertible)
