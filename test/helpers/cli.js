@@ -11,11 +11,10 @@ export const testCli = async function({ t, command, args }) {
 
   const { stdout, stderr, code } = await fireBinary({ command, args })
 
-  if (hasArgLengthError({ stderr })) {
-    return
-  }
+  // Replace `--help` message, as it's likely to change
+  const stderrA = stderr.replace(/^main.js[^]*/u, 'Help message')
 
-  t.snapshot({ code, stdout, stderr })
+  t.snapshot({ code, stdout, stderr: stderrA })
 }
 
 // CLI interprets all numbers as `octal` not `number`
@@ -37,11 +36,3 @@ const stringifyCliArg = function(arg) {
 
   return arg
 }
-
-// CLI is stricter than programmatic usage for arguments length
-// validation. I.e. error message might differ there
-const hasArgLengthError = function({ stderr }) {
-  return stderr.includes(ARGS_LENGTH_ERROR)
-}
-
-const ARGS_LENGTH_ERROR = 'Not enough non-option arguments'
