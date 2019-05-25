@@ -19,6 +19,8 @@ export const testCli = async function({ t, output, error, command, args }) {
 
   checkNonError({ t, output: outputA, error: errorA, code, stdout, stderr })
   checkError({ t, output: outputA, error: errorA, code, stdout, stderr })
+
+  t.snapshot({ code, stdout, stderr })
 }
 
 // CLI interprets all numbers as `octal` not `number`
