@@ -6,6 +6,7 @@ const BINARY_PATH = `${__dirname}/../../src/bin/main.js`
 // exception throwing
 export const testCli = async function({ t, command, args }) {
   if (args.some(isInvalidCliArg)) {
+    t.pass()
     return
   }
 

@@ -1,9 +1,13 @@
 import test from 'ava'
 
 import { testCommand } from './helpers/command.js'
+import { testCli } from './helpers/cli.js'
 import { SIMPLE_DATA } from './helpers/data/simple.js'
 
 SIMPLE_DATA.forEach(arg => {
-  test(`invert() ${JSON.stringify(arg)}`, t =>
+  test(`invert (JavaScript) ${JSON.stringify(arg)}`, t =>
     testCommand({ args: [arg], command: 'invert', t }))
+
+  test(`invert (CLI) ${JSON.stringify(arg)}`, t =>
+    testCli({ args: [arg], command: 'invert', t }))
 })
