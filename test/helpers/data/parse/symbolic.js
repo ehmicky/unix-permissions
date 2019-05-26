@@ -7,7 +7,7 @@ export const INVALID_SYMBOLIC = [
   'a~x',
   'a+j',
   'a+xx',
-].map(arg => ({ type: 'symbolic', arg }))
+]
 
 export const SYMBOLIC = [
   // Each permission
@@ -78,4 +78,4 @@ export const SYMBOLIC = [
   // Combining different categories and permissions
   'o+x,g-x',
   'o+x,o-r',
-].map(arg => ({ type: 'symbolic', arg }))
+]

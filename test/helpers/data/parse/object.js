@@ -17,7 +17,7 @@ export const INVALID_OBJECT = [
   { special: { execute: true } },
   { others: { read: null } },
   { others: { read: {} } },
-].map(arg => ({ type: 'object', arg }))
+]
 
 export const OBJECT = [
   // Each permission
@@ -56,4 +56,4 @@ export const OBJECT = [
   { all: { read: true } },
   { user: { read: false }, all: { read: true } },
   { all: { read: true }, special: { setuid: true } },
-].map(arg => ({ type: 'object', arg }))
+]

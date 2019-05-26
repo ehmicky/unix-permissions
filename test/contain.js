@@ -11,7 +11,7 @@ CONTAIN_DATA.forEach(args => {
     testCommand({ args, command: 'contain', t }))
 })
 
-VALID_PARSE_DATA.forEach(({ arg }) => {
+VALID_PARSE_DATA.forEach(arg => {
   test(`contain() self ${JSON.stringify(arg)}`, t => {
     t.true(contain(arg, arg))
   })

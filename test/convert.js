@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import { convert, normalize } from '../src/main.js'
+import { convert, normalize, type as getType } from '../src/main.js'
 
 import { TYPES } from './helpers/data/types.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
@@ -24,7 +24,9 @@ const LOSSY_CONVERSIONS = [
 ]
 
 TYPES.forEach(otherType => {
-  VALID_PARSE_DATA.forEach(({ arg, type }) => {
+  VALID_PARSE_DATA.forEach(arg => {
+    const type = getType(arg)
+
     if (isLossy(type, otherType)) {
       return
     }

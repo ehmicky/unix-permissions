@@ -5,7 +5,7 @@ export const INVALID_OCTAL = [
   '10000',
   '8',
   '~1',
-].map(arg => ({ type: 'octal', arg }))
+]
 
 export const OCTAL = [
   // Each permission
@@ -46,4 +46,4 @@ export const OCTAL = [
   '0o111',
   '\\111',
   '\\0111',
-].map(arg => ({ type: 'octal', arg }))
+]

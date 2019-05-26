@@ -9,7 +9,7 @@ export const INVALID_NUMBER = [
   -1,
   0.5,
   65536,
-].map(arg => ({ type: 'number', arg }))
+]
 
 export const NUMBER = [
   // Each permission
@@ -36,5 +36,5 @@ export const NUMBER = [
   // `stat` bits
   4096,
   65535,
-].map(arg => ({ type: 'number', arg }))
+]
 /* eslint-enable no-magic-numbers */

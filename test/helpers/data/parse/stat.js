@@ -13,7 +13,7 @@ export const INVALID_STAT = [
   '--------',
   '-- ---- ---',
   '-----------',
-].map(arg => ({ type: 'stat', arg }))
+]
 
 export const STAT = [
   // Each permission
@@ -60,4 +60,4 @@ export const STAT = [
 
   // Changing order
   'rxwrwxrwx',
-].map(arg => ({ type: 'stat', arg }))
+]
