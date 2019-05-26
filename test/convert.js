@@ -2,7 +2,8 @@ import test from 'ava'
 
 import { convert, normalize } from '../src/main.js'
 
-import { CONVERT_DATA } from './helpers/data/convert.js'
+import { TYPES } from './helpers/data/types.js'
+import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 
 // Conversion between some types loses information
 const isLossy = function(type, otherType) {
@@ -22,12 +23,15 @@ const LOSSY_CONVERSIONS = [
   ['octal', 'stat'],
 ]
 
-CONVERT_DATA.forEach(({ arg, type, otherType }) => {
-  if (isLossy(type, otherType)) {
-    return
-  }
+TYPES.forEach(otherType => {
+  VALID_PARSE_DATA.forEach(({ arg, type }) => {
+    if (isLossy(type, otherType)) {
+      return
+    }
 
-  test(`convert() idempotence ${JSON.stringify({ arg, otherType })}`, t => {
-    t.deepEqual(normalize(arg), convert[type](convert[otherType](arg)))
+    // eslint-disable-next-line max-nested-callbacks
+    test(`convert() idempotence ${JSON.stringify(otherType)} ${JSON.stringify(arg)}`, t => {
+      t.deepEqual(normalize(arg), convert[type](convert[otherType](arg)))
+    })
   })
 })
