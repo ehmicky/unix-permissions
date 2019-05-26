@@ -1,3 +1,1 @@
-import { convert } from '../../../src/main.js'
-
-export const TYPES = Object.keys(convert)
+export const TYPES = ['number', 'octal', 'stat', 'symbolic', 'object']
