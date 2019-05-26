@@ -9,7 +9,7 @@ import { CONTAIN_DATA } from './helpers/data/contain.js'
 
 CONTAIN_DATA.forEach(args => {
   test(`contain (JavaScript) ${JSON.stringify(args)}`, t =>
-    testCommand({ args, command: 'contain', t }))
+    testCommand({ args, command: contain, t }))
 
   test(`contain (CLI) ${JSON.stringify(args)}`, t =>
     testCli({ args, command: 'contain', t }))

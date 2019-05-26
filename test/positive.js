@@ -9,7 +9,7 @@ import { POSITIVE_DATA } from './helpers/data/positive.js'
 
 POSITIVE_DATA.forEach(arg => {
   test(`positive (JavaScript) ${JSON.stringify(arg)}`, t =>
-    testCommand({ args: [arg], command: 'positive', t }))
+    testCommand({ args: [arg], command: positive, t }))
 
   test(`positive (CLI) ${JSON.stringify(arg)}`, t =>
     testCli({ args: [arg], command: 'positive', t }))

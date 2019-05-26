@@ -8,7 +8,7 @@ import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 
 VALID_PARSE_DATA.forEach(arg => {
   test(`normalize (JavaScript) ${JSON.stringify(arg)}`, t =>
-    testCommand({ args: [arg], command: 'normalize', t }))
+    testCommand({ args: [arg], command: normalize, t }))
 
   test(`normalize (CLI) ${JSON.stringify(arg)}`, t =>
     testCli({ args: [arg], command: 'normalize', t }))

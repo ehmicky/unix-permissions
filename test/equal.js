@@ -9,7 +9,7 @@ import { EQUAL_DATA } from './helpers/data/equal.js'
 
 EQUAL_DATA.forEach(args => {
   test(`equal (JavaScript) ${JSON.stringify(args)}`, t =>
-    testCommand({ args, command: 'equal', t }))
+    testCommand({ args, command: equal, t }))
 
   test(`equal (CLI) ${JSON.stringify(args)}`, t =>
     testCli({ args, command: 'equal', t }))

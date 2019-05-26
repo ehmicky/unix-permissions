@@ -1,7 +1,3 @@
-// eslint-disable-next-line import/no-namespace
-import * as unixPermissions from '../../src/main.js'
-import { getCommand } from '../../src/bin/command.js'
-
 // Snapshot a command's output, then test it has the same behavior when fired
 // from CLI.
 export const testCommand = function({ args, command, t }) {
@@ -11,10 +7,8 @@ export const testCommand = function({ args, command, t }) {
 
 // Fire command programmatically
 const fireCommand = function({ command, args }) {
-  const func = getCommand({ unixPermissions, command })
-
   try {
-    return func(...args)
+    return command(...args)
   } catch (error) {
     return String(error)
   }

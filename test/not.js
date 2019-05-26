@@ -9,7 +9,7 @@ import { SIMPLE_DATA } from './helpers/data/simple.js'
 
 SIMPLE_DATA.forEach(arg => {
   test(`not (JavaScript) ${JSON.stringify(arg)}`, t =>
-    testCommand({ args: [arg], command: 'not', t }))
+    testCommand({ args: [arg], command: not, t }))
 
   test(`not (CLI) ${JSON.stringify(arg)}`, t =>
     testCli({ args: [arg], command: 'not', t }))
