@@ -16,7 +16,7 @@ SIMPLE_DATA.forEach(arg => {
 })
 
 VALID_PARSE_DATA.forEach(arg => {
-  test(`not() idempotence ${JSON.stringify(arg)}`, t => {
+  test(`not idempotence ${JSON.stringify(arg)}`, t => {
     t.deepEqual(normalize(arg), not(not(arg)))
   })
 })

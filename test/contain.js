@@ -16,7 +16,7 @@ CONTAIN_DATA.forEach(args => {
 })
 
 VALID_PARSE_DATA.forEach(arg => {
-  test(`contain() self ${JSON.stringify(arg)}`, t => {
+  test(`contain self ${JSON.stringify(arg)}`, t => {
     t.true(contain(arg, arg))
   })
 })

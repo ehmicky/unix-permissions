@@ -13,7 +13,7 @@ VALID_PARSE_DATA.forEach(arg => {
   test(`normalize (CLI) ${JSON.stringify(arg)}`, t =>
     testCli({ args: [arg], command: 'normalize', t }))
 
-  test(`normalize() idempotence ${JSON.stringify(arg)}`, t => {
+  test(`normalize idempotence ${JSON.stringify(arg)}`, t => {
     t.deepEqual(normalize(arg), normalize(normalize(arg)))
   })
 })
