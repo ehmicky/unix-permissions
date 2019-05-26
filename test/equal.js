@@ -11,8 +11,8 @@ EQUAL_DATA.forEach(args => {
     testCommand({ args, command: 'equal', t }))
 })
 
-VALID_PARSE_DATA.forEach(({ type, arg }) => {
-  test(`equal() self ${JSON.stringify({ type, arg })}`, t => {
+VALID_PARSE_DATA.forEach(({ arg }) => {
+  test(`equal() self ${JSON.stringify(arg)}`, t => {
     t.true(equal(arg, arg))
   })
 })
