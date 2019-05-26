@@ -9,9 +9,10 @@ import { TYPES } from './helpers/data/types.js'
 
 TYPES.forEach(type => {
   SIMPLE_DATA.forEach(arg => {
-    // eslint-disable-next-line max-nested-callbacks
-    test(`serialize (JavaScript) ${JSON.stringify(type)} ${JSON.stringify(arg)}`, t =>
-      testCommand({ args: [arg], command: convert[type], t }))
+    test(`serialize (JavaScript) ${JSON.stringify(type)} ${JSON.stringify(
+      arg,
+    )}`, // eslint-disable-next-line max-nested-callbacks
+    t => testCommand({ args: [arg], command: convert[type], t }))
 
     // eslint-disable-next-line max-nested-callbacks
     test(`serialize (CLI) ${JSON.stringify(type)} ${JSON.stringify(arg)}`, t =>

@@ -31,8 +31,10 @@ TYPES.forEach(otherType => {
       return
     }
 
-    // eslint-disable-next-line max-nested-callbacks
-    test(`convert idempotence ${JSON.stringify(otherType)} ${JSON.stringify(arg)}`, t => {
+    test(`convert idempotence ${JSON.stringify(otherType)} ${JSON.stringify(
+      arg,
+    )}`, // eslint-disable-next-line max-nested-callbacks
+    t => {
       t.deepEqual(normalize(arg), convert[type](convert[otherType](arg)))
     })
   })
