@@ -2,7 +2,7 @@ import test from 'ava'
 
 import { set } from '../src/main.js'
 
-import { testCli } from './helpers/cli.js'
+import { callCli } from './helpers/cli.js'
 import { SET_DATA } from './helpers/data/set.js'
 import { stringifyErrors } from './helpers/error.js'
 
@@ -14,6 +14,6 @@ SET_DATA.forEach(args => {
   })
 
   test(`set (CLI) ${JSON.stringify(args)}`, async t => {
-    t.snapshot(await testCli('set', ...args))
+    t.snapshot(await callCli('set', ...args))
   })
 })

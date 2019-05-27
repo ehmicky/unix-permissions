@@ -3,7 +3,7 @@ import prettyFormat from 'pretty-format'
 
 import { type } from '../src/main.js'
 
-import { testCli } from './helpers/cli.js'
+import { callCli } from './helpers/cli.js'
 import { PARSE_DATA } from './helpers/data/parse/main.js'
 import { stringifyErrors } from './helpers/error.js'
 
@@ -21,6 +21,6 @@ PARSE_DATA.forEach(arg => {
     min: true,
     maxDepth: 3,
   })}`, async t => {
-    t.snapshot(await testCli('type', arg))
+    t.snapshot(await callCli('type', arg))
   })
 })

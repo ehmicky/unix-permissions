@@ -4,7 +4,7 @@ const BINARY_PATH = `${__dirname}/../../src/bin/main.js`
 
 // Test that CLI output and exit code is same as programmatic output and
 // exception throwing
-export const testCli = async function(command, ...args) {
+export const callCli = async function(command, ...args) {
   const argsA = args.map(stringifyCliArg)
 
   const { stdout, stderr, code } = await execa(

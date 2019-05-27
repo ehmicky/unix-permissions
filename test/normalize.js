@@ -2,7 +2,7 @@ import test from 'ava'
 
 import { normalize } from '../src/main.js'
 
-import { testCli } from './helpers/cli.js'
+import { callCli } from './helpers/cli.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { stringifyErrors } from './helpers/error.js'
 
@@ -14,7 +14,7 @@ VALID_PARSE_DATA.forEach(arg => {
   })
 
   test(`normalize (CLI) ${JSON.stringify(arg)}`, async t => {
-    t.snapshot(await testCli('normalize', arg))
+    t.snapshot(await callCli('normalize', arg))
   })
 
   test(`normalize idempotence ${JSON.stringify(arg)}`, t => {

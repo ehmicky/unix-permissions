@@ -2,7 +2,7 @@ import test from 'ava'
 
 import { min } from '../src/main.js'
 
-import { testCli } from './helpers/cli.js'
+import { callCli } from './helpers/cli.js'
 import { MIN_MAX_DATA } from './helpers/data/min_max.js'
 import { stringifyErrors } from './helpers/error.js'
 
@@ -14,6 +14,6 @@ MIN_MAX_DATA.forEach(args => {
   })
 
   test(`min (CLI) ${JSON.stringify(args)}`, async t => {
-    t.snapshot(await testCli('min', ...args))
+    t.snapshot(await callCli('min', ...args))
   })
 })

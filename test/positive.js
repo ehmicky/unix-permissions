@@ -2,7 +2,7 @@ import test from 'ava'
 
 import { positive } from '../src/main.js'
 
-import { testCli } from './helpers/cli.js'
+import { callCli } from './helpers/cli.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { POSITIVE_DATA } from './helpers/data/positive.js'
 import { stringifyErrors } from './helpers/error.js'
@@ -15,7 +15,7 @@ POSITIVE_DATA.forEach(arg => {
   })
 
   test(`positive (CLI) ${JSON.stringify(arg)}`, async t => {
-    t.snapshot(await testCli('positive', arg))
+    t.snapshot(await callCli('positive', arg))
   })
 })
 

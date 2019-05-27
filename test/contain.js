@@ -2,7 +2,7 @@ import test from 'ava'
 
 import { contain } from '../src/main.js'
 
-import { testCli } from './helpers/cli.js'
+import { callCli } from './helpers/cli.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { CONTAIN_DATA } from './helpers/data/contain.js'
 import { stringifyErrors } from './helpers/error.js'
@@ -15,7 +15,7 @@ CONTAIN_DATA.forEach(args => {
   })
 
   test(`contain (CLI) ${JSON.stringify(args)}`, async t => {
-    t.snapshot(await testCli('contain', ...args))
+    t.snapshot(await callCli('contain', ...args))
   })
 })
 
