@@ -5,14 +5,6 @@ const BINARY_PATH = `${__dirname}/../../src/bin/main.js`
 // Test that CLI output and exit code is same as programmatic output and
 // exception throwing
 export const testCli = async function({ t, command, args }) {
-  args = args.map(arg => {
-    if (typeof arg === 'number') {
-      return arg.toString(8)
-    }
-
-    return arg
-  })
-
   const { stdout, stderr, code } = await fireBinary({ command, args })
 
   // Replace `--help` message, as it's likely to change
@@ -21,19 +13,19 @@ export const testCli = async function({ t, command, args }) {
   t.snapshot({ code, stdout, stderr: stderrA })
 }
 
-// CLI interprets all numbers as `octal` not `number`
-const isInvalidCliArg = function(arg) {
-  return typeof arg === 'number'
-}
-
 // Fire CLI command
 const fireBinary = function({ command, args }) {
   const argsA = args.map(stringifyCliArg)
   return execa(BINARY_PATH, [command, ...argsA], { reject: false })
 }
 
-// Stringify CLI arguments so they can be passed to `childProcess.spawn()`
 const stringifyCliArg = function(arg) {
+  // CLI interprets all numbers as `octal` not `number`
+  if (typeof arg === 'number') {
+    return arg.toString(8)
+  }
+
+  // `object` arguments must be JSON in CLI
   if (arg && arg.constructor === Object) {
     return JSON.stringify(arg)
   }
