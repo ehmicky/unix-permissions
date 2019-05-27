@@ -12,12 +12,12 @@ export const VALID_PARSE_DATA = [
   ...OBJECT,
 ]
 
-const INVALID_PARSE_DATA = [
+export const PARSE_DATA = [
   ...INVALID_OCTAL,
   ...INVALID_NUMBER,
   ...INVALID_STAT,
   ...INVALID_SYMBOLIC,
   ...INVALID_OBJECT,
-]
 
-export const PARSE_DATA = [...INVALID_PARSE_DATA, ...VALID_PARSE_DATA]
+  ...VALID_PARSE_DATA,
+]
