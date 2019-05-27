@@ -22,6 +22,7 @@ const fireBinary = function({ command, args }) {
 const stringifyCliArg = function(arg) {
   // CLI interprets all numbers as `octal` not `number`
   if (typeof arg === 'number') {
+    // eslint-disable-next-line no-magic-numbers
     return arg.toString(8)
   }
 
