@@ -5,12 +5,12 @@ import { contain } from '../src/main.js'
 
 import { callCli } from './helpers/cli.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
-import { CONTAIN_DATA } from './helpers/data/contain.js'
+import { BINARY_DATA } from './helpers/data/binary.js'
 import { stringifyErrors } from './helpers/error.js'
 
 const eContain = stringifyErrors(contain)
 
-testEach(CONTAIN_DATA, ({ title }, args) => {
+testEach(BINARY_DATA, ({ title }, args) => {
   test(`contain (JavaScript) | ${title}`, t => {
     t.snapshot(eContain(...args))
   })
