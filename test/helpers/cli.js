@@ -12,11 +12,13 @@ export const callCli = async function(command, ...args) {
     { reject: false },
   )
 
-  // Replace `--help` message, as it's likely to change
-  const stderrA = stderr.replace(/^main.js[^]*/u, 'Help message')
+  const stderrA = stderr.replace(HELP_MESSAGE_REGEXP, 'Help message')
 
   return { code, stdout, stderr: stderrA }
 }
+
+// `--help` message is likely to change
+const HELP_MESSAGE_REGEXP = /[^]*Examples:[^]*/u
 
 const stringifyCliArg = function(arg) {
   // CLI interprets all numbers as `octal` not `number`
