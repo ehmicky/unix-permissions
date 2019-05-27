@@ -4,7 +4,7 @@ import testEach from 'test-each'
 import { contain } from '../src/main.js'
 
 import { callCli } from './helpers/cli.js'
-import { VALID_PARSE_DATA } from './helpers/data/full/main.js'
+import { VALID_FULL_DATA } from './helpers/data/full/main.js'
 import { BINARY_DATA } from './helpers/data/binary.js'
 import { stringifyErrors } from './helpers/error.js'
 
@@ -20,7 +20,7 @@ testEach(BINARY_DATA, ({ title }, args) => {
   })
 })
 
-testEach(VALID_PARSE_DATA, ({ title }, arg) => {
+testEach(VALID_FULL_DATA, ({ title }, arg) => {
   test(`contain (self) | ${title}`, t => {
     t.true(contain(arg, arg))
   })

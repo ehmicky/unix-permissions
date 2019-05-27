@@ -4,7 +4,7 @@ import { STAT, INVALID_STAT } from './stat.js'
 import { SYMBOLIC, INVALID_SYMBOLIC } from './symbolic.js'
 import { OBJECT, INVALID_OBJECT } from './object.js'
 
-export const VALID_PARSE_DATA = [
+export const VALID_FULL_DATA = [
   ...OCTAL,
   ...NUMBER,
   ...STAT,
@@ -12,12 +12,12 @@ export const VALID_PARSE_DATA = [
   ...OBJECT,
 ]
 
-export const PARSE_DATA = [
+export const FULL_DATA = [
   ...INVALID_OCTAL,
   ...INVALID_NUMBER,
   ...INVALID_STAT,
   ...INVALID_SYMBOLIC,
   ...INVALID_OBJECT,
 
-  ...VALID_PARSE_DATA,
+  ...VALID_FULL_DATA,
 ]

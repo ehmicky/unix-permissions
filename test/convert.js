@@ -4,7 +4,7 @@ import testEach from 'test-each'
 import { convert, normalize, type as getType } from '../src/main.js'
 
 import { TYPES } from './helpers/data/types.js'
-import { VALID_PARSE_DATA } from './helpers/data/full/main.js'
+import { VALID_FULL_DATA } from './helpers/data/full/main.js'
 
 // Conversion between some types loses information
 const isLossy = function(type, otherType) {
@@ -24,7 +24,7 @@ const LOSSY_CONVERSIONS = [
   ['octal', 'stat'],
 ]
 
-testEach(TYPES, VALID_PARSE_DATA, ({ title }, otherType, arg) => {
+testEach(TYPES, VALID_FULL_DATA, ({ title }, otherType, arg) => {
   const type = getType(arg)
 
   if (isLossy(type, otherType)) {
