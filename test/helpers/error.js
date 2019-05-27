@@ -1,3 +1,4 @@
+// Make sure exceptions are snapshot as well
 export const stringifyErrors = function(func) {
   return addErrorHandler(func, stringifyError)
 }

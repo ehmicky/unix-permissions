@@ -33,8 +33,8 @@ TYPES.forEach(otherType => {
 
     test(`convert idempotence ${JSON.stringify(otherType)} ${JSON.stringify(
       arg,
-    )}`, // eslint-disable-next-line max-nested-callbacks
-    t => {
+      // eslint-disable-next-line max-nested-callbacks
+    )}`, t => {
       t.deepEqual(normalize(arg), convert[type](convert[otherType](arg)))
     })
   })

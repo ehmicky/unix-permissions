@@ -2,7 +2,6 @@ import test from 'ava'
 
 import { not, normalize } from '../src/main.js'
 
-import { testCommand } from './helpers/command.js'
 import { testCli } from './helpers/cli.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
 import { SIMPLE_DATA } from './helpers/data/simple.js'
@@ -11,8 +10,9 @@ import { stringifyErrors } from './helpers/error.js'
 const eNot = stringifyErrors(not)
 
 SIMPLE_DATA.forEach(arg => {
-  test(`not (JavaScript) ${JSON.stringify(arg)}`, t =>
-    testCommand({ args: [arg], command: eNot, t }))
+  test(`not (JavaScript) ${JSON.stringify(arg)}`, t => {
+    t.snapshot(eNot(arg))
+  })
 
   test(`not (CLI) ${JSON.stringify(arg)}`, t =>
     testCli({ args: [arg], command: 'not', t }))
