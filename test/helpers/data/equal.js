@@ -1,7 +1,7 @@
 export const EQUAL_DATA = [
   // Invalid
-  ['o+x'],
   [],
+  ['o+x'],
 
   // Normal permissions
   ['o=xr', 'o=xr'],
