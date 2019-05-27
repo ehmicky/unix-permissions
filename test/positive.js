@@ -5,12 +5,12 @@ import { positive } from '../src/main.js'
 
 import { callCli } from './helpers/cli.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
-import { POSITIVE_DATA } from './helpers/data/positive.js'
+import { SIMPLE_DATA } from './helpers/data/simple.js'
 import { stringifyErrors } from './helpers/error.js'
 
 const ePositive = stringifyErrors(positive)
 
-testEach(POSITIVE_DATA, ({ title }, arg) => {
+testEach(SIMPLE_DATA, ({ title }, arg) => {
   test(`positive (JavaScript) | ${title}`, t => {
     t.snapshot(ePositive(arg))
   })

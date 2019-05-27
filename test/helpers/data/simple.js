@@ -1,36 +1,53 @@
 export const SIMPLE_DATA = [
   // Each permission
   'o+x',
+  'o=x',
   'o+w',
+  'o=w',
   'o+r',
+  'o=r',
   'g+x',
+  'g=x',
   'g+w',
+  'g=w',
   'g+r',
+  'g=r',
   'u+x',
+  'u=x',
   'u+w',
+  'u=w',
   'u+r',
+  'u=r',
 
   // Special permission
   'o+t',
+  'o=t',
   'o+tx',
+  'o=tx',
   'g+s',
+  'g=s',
   'g+sx',
+  'g=sx',
   'u+s',
+  'u=s',
   'u+sx',
+  'u=sx',
 
   // Extremes
   '+',
+  '=',
   'a=rwx',
   'a=rwxst',
 
   // Combining
   'o+xw',
+  'o=xw',
   'a+x',
+  'a=x',
+  'o-x',
   'og+x',
+  'og=x',
   'o+x,g+w',
   'o+x,g-w',
-
-  // Operators
-  'o-x',
-  'a=x',
+  'o=x,g=w',
 ]
