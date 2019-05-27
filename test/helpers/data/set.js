@@ -1,7 +1,7 @@
 export const BASE_SET_DATA = [
   // Invalid
-  ['o+x'],
   [],
+  ['o+x'],
 
   // Sets `+`
   ['o+x', 'o+x'],
