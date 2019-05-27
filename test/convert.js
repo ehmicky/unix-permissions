@@ -31,7 +31,7 @@ testEach(TYPES, VALID_PARSE_DATA, ({ title }, otherType, arg) => {
     return
   }
 
-  test(`convert idempotence | ${title}`, t => {
+  test(`convert (idempotence) | ${title}`, t => {
     t.deepEqual(normalize(arg), convert[type](convert[otherType](arg)))
   })
 })

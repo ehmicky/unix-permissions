@@ -18,7 +18,7 @@ testEach(VALID_PARSE_DATA, ({ title }, arg) => {
     t.snapshot(await callCli('normalize', arg))
   })
 
-  test(`normalize idempotence | ${title}`, t => {
+  test(`normalize (idempotence) | ${title}`, t => {
     t.deepEqual(normalize(arg), normalize(normalize(arg)))
   })
 })

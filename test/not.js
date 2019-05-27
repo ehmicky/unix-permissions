@@ -21,7 +21,7 @@ testEach(SIMPLE_DATA, ({ title }, arg) => {
 })
 
 testEach(VALID_PARSE_DATA, ({ title }, arg) => {
-  test(`not idempotence | ${title}`, t => {
+  test(`not (idempotence) | ${title}`, t => {
     t.deepEqual(normalize(arg), not(not(arg)))
   })
 })

@@ -21,7 +21,7 @@ testEach(EQUAL_DATA, ({ title }, args) => {
 })
 
 testEach(VALID_PARSE_DATA, ({ title }, arg) => {
-  test(`equal self | ${title}`, t => {
+  test(`equal (self) | ${title}`, t => {
     t.true(equal(arg, arg))
   })
 })

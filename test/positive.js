@@ -21,7 +21,7 @@ testEach(POSITIVE_DATA, ({ title }, arg) => {
 })
 
 testEach(VALID_PARSE_DATA, ({ title }, arg) => {
-  test(`positive idempotence | ${title}`, t => {
+  test(`positive (idempotence) | ${title}`, t => {
     t.deepEqual(positive(arg), positive(positive(arg)))
   })
 })

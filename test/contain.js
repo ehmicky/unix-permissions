@@ -21,7 +21,7 @@ testEach(CONTAIN_DATA, ({ title }, args) => {
 })
 
 testEach(VALID_PARSE_DATA, ({ title }, arg) => {
-  test(`contain self | ${title}`, t => {
+  test(`contain (self) | ${title}`, t => {
     t.true(contain(arg, arg))
   })
 })
