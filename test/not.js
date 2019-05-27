@@ -4,7 +4,7 @@ import testEach from 'test-each'
 import { not, normalize } from '../src/main.js'
 
 import { callCli } from './helpers/cli.js'
-import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
+import { VALID_PARSE_DATA } from './helpers/data/full/main.js'
 import { UNARY_DATA } from './helpers/data/unary.js'
 import { stringifyErrors } from './helpers/error.js'
 

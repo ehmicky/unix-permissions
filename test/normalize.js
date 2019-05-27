@@ -4,7 +4,7 @@ import testEach from 'test-each'
 import { normalize } from '../src/main.js'
 
 import { callCli } from './helpers/cli.js'
-import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
+import { VALID_PARSE_DATA } from './helpers/data/full/main.js'
 import { stringifyErrors } from './helpers/error.js'
 
 const eNormalize = stringifyErrors(normalize)

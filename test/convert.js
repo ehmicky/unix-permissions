@@ -4,7 +4,7 @@ import testEach from 'test-each'
 import { convert, normalize, type as getType } from '../src/main.js'
 
 import { TYPES } from './helpers/data/types.js'
-import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
+import { VALID_PARSE_DATA } from './helpers/data/full/main.js'
 
 // Conversion between some types loses information
 const isLossy = function(type, otherType) {
