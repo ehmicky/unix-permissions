@@ -5,10 +5,13 @@ const BINARY_PATH = `${__dirname}/../../src/bin/main.js`
 // Test that CLI output and exit code is same as programmatic output and
 // exception throwing
 export const testCli = async function({ t, command, args }) {
-  if (args.some(isInvalidCliArg)) {
-    t.pass()
-    return
-  }
+  args = args.map(arg => {
+    if (typeof arg === 'number') {
+      return arg.toString(8)
+    }
+
+    return arg
+  })
 
   const { stdout, stderr, code } = await fireBinary({ command, args })
 
