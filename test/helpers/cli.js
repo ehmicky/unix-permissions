@@ -2,8 +2,7 @@ import execa from 'execa'
 
 const BINARY_PATH = `${__dirname}/../../src/bin/main.js`
 
-// Test that CLI output and exit code is same as programmatic output and
-// exception throwing
+// Call CLI command `unix-permissions COMMAND ...ARGS` and return output
 export const callCli = async function(command, ...args) {
   const argsA = args.map(stringifyCliArg)
 
