@@ -5,18 +5,18 @@ const BINARY_PATH = `${__dirname}/../../src/bin/main.js`
 // Test that CLI output and exit code is same as programmatic output and
 // exception throwing
 export const testCli = async function(command, ...args) {
-  const { stdout, stderr, code } = await fireBinary({ command, args })
+  const argsA = args.map(stringifyCliArg)
+
+  const { stdout, stderr, code } = await execa(
+    BINARY_PATH,
+    [command, ...argsA],
+    { reject: false },
+  )
 
   // Replace `--help` message, as it's likely to change
   const stderrA = stderr.replace(/^main.js[^]*/u, 'Help message')
 
   return { code, stdout, stderr: stderrA }
-}
-
-// Fire CLI command
-const fireBinary = function({ command, args }) {
-  const argsA = args.map(stringifyCliArg)
-  return execa(BINARY_PATH, [command, ...argsA], { reject: false })
 }
 
 const stringifyCliArg = function(arg) {

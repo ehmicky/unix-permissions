@@ -17,7 +17,10 @@ PARSE_DATA.forEach(arg => {
     t.snapshot(eConvertSymbolic(arg))
   })
 
-  test(`parse (CLI) ${prettyFormat(arg, { min: true, maxDepth: 3 })}`, async t => {
+  test(`parse (CLI) ${prettyFormat(arg, {
+    min: true,
+    maxDepth: 3,
+  })}`, async t => {
     t.snapshot(await testCli('convert.symbolic', arg))
   })
 })

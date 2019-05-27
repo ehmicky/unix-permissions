@@ -19,8 +19,10 @@ TYPES.forEach(type => {
       t.snapshot(eConvert[type](arg))
     })
 
-    // eslint-disable-next-line max-nested-callbacks
-    test(`serialize (CLI) ${JSON.stringify(type)} ${JSON.stringify(arg)}`, async t => {
+    test(`serialize (CLI) ${JSON.stringify(type)} ${JSON.stringify(
+      arg,
+      // eslint-disable-next-line max-nested-callbacks
+    )}`, async t => {
       t.snapshot(await testCli(`convert.${type}`, arg))
     })
   })
