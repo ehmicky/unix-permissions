@@ -5,10 +5,13 @@ import { normalize } from '../src/main.js'
 import { testCommand } from './helpers/command.js'
 import { testCli } from './helpers/cli.js'
 import { VALID_PARSE_DATA } from './helpers/data/parse/main.js'
+import { stringifyErrors } from './helpers/error.js'
+
+const eNormalize = stringifyErrors(normalize)
 
 VALID_PARSE_DATA.forEach(arg => {
   test(`normalize (JavaScript) ${JSON.stringify(arg)}`, t =>
-    testCommand({ args: [arg], command: normalize, t }))
+    testCommand({ args: [arg], command: eNormalize, t }))
 
   test(`normalize (CLI) ${JSON.stringify(arg)}`, t =>
     testCli({ args: [arg], command: 'normalize', t }))
