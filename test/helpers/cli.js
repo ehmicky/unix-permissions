@@ -4,13 +4,13 @@ const BINARY_PATH = `${__dirname}/../../src/bin/main.js`
 
 // Test that CLI output and exit code is same as programmatic output and
 // exception throwing
-export const testCli = async function({ t, command, args }) {
+export const testCli = async function(command, ...args) {
   const { stdout, stderr, code } = await fireBinary({ command, args })
 
   // Replace `--help` message, as it's likely to change
   const stderrA = stderr.replace(/^main.js[^]*/u, 'Help message')
 
-  t.snapshot({ code, stdout, stderr: stderrA })
+  return { code, stdout, stderr: stderrA }
 }
 
 // Fire CLI command

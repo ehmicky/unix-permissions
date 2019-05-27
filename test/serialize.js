@@ -20,7 +20,8 @@ TYPES.forEach(type => {
     })
 
     // eslint-disable-next-line max-nested-callbacks
-    test(`serialize (CLI) ${JSON.stringify(type)} ${JSON.stringify(arg)}`, t =>
-      testCli({ args: [arg], command: `convert.${type}`, t }))
+    test(`serialize (CLI) ${JSON.stringify(type)} ${JSON.stringify(arg)}`, async t => {
+      t.snapshot(await testCli(`convert.${type}`, arg))
+    })
   })
 })

@@ -14,8 +14,9 @@ SIMPLE_DATA.forEach(arg => {
     t.snapshot(eNot(arg))
   })
 
-  test(`not (CLI) ${JSON.stringify(arg)}`, t =>
-    testCli({ args: [arg], command: 'not', t }))
+  test(`not (CLI) ${JSON.stringify(arg)}`, async t => {
+    t.snapshot(await testCli('not', arg))
+  })
 })
 
 VALID_PARSE_DATA.forEach(arg => {

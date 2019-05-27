@@ -14,8 +14,9 @@ CONTAIN_DATA.forEach(args => {
     t.snapshot(eContain(...args))
   })
 
-  test(`contain (CLI) ${JSON.stringify(args)}`, t =>
-    testCli({ args, command: 'contain', t }))
+  test(`contain (CLI) ${JSON.stringify(args)}`, async t => {
+    t.snapshot(await testCli('contain', ...args))
+  })
 })
 
 VALID_PARSE_DATA.forEach(arg => {

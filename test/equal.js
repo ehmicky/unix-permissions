@@ -14,8 +14,9 @@ EQUAL_DATA.forEach(args => {
     t.snapshot(eEqual(...args))
   })
 
-  test(`equal (CLI) ${JSON.stringify(args)}`, t =>
-    testCli({ args, command: 'equal', t }))
+  test(`equal (CLI) ${JSON.stringify(args)}`, async t => {
+    t.snapshot(await testCli('equal', ...args))
+  })
 })
 
 VALID_PARSE_DATA.forEach(arg => {

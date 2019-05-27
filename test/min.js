@@ -13,6 +13,7 @@ MIN_MAX_DATA.forEach(args => {
     t.snapshot(eMin(...args))
   })
 
-  test(`min (CLI) ${JSON.stringify(args)}`, t =>
-    testCli({ args, command: 'min', t }))
+  test(`min (CLI) ${JSON.stringify(args)}`, async t => {
+    t.snapshot(await testCli('min', ...args))
+  })
 })

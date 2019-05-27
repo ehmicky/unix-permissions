@@ -13,6 +13,7 @@ SET_DATA.forEach(args => {
     t.snapshot(eSet(...args))
   })
 
-  test(`set (CLI) ${JSON.stringify(args)}`, t =>
-    testCli({ args, command: 'set', t }))
+  test(`set (CLI) ${JSON.stringify(args)}`, async t => {
+    t.snapshot(await testCli('set', ...args))
+  })
 })

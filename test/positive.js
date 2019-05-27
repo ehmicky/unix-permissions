@@ -14,8 +14,9 @@ POSITIVE_DATA.forEach(arg => {
     t.snapshot(ePositive(arg))
   })
 
-  test(`positive (CLI) ${JSON.stringify(arg)}`, t =>
-    testCli({ args: [arg], command: 'positive', t }))
+  test(`positive (CLI) ${JSON.stringify(arg)}`, async t => {
+    t.snapshot(await testCli('positive', arg))
+  })
 })
 
 VALID_PARSE_DATA.forEach(arg => {

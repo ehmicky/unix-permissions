@@ -13,6 +13,7 @@ SIMPLE_DATA.forEach(arg => {
     t.snapshot(eInvert(arg))
   })
 
-  test(`invert (CLI) ${JSON.stringify(arg)}`, t =>
-    testCli({ args: [arg], command: 'invert', t }))
+  test(`invert (CLI) ${JSON.stringify(arg)}`, async t => {
+    t.snapshot(await testCli('invert', arg))
+  })
 })
