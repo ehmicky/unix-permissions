@@ -17,9 +17,6 @@ export const callCli = async function(command, ...args) {
   return { code, stdout, stderr: stderrA }
 }
 
-// `--help` message is likely to change
-const HELP_MESSAGE_REGEXP = /[^]*Examples:[^]*/u
-
 const stringifyCliArg = function(arg) {
   // CLI interprets all numbers as `octal` not `number`
   if (typeof arg === 'number') {
@@ -34,3 +31,6 @@ const stringifyCliArg = function(arg) {
 
   return arg
 }
+
+// `--help` message is likely to change
+const HELP_MESSAGE_REGEXP = /[^]*Examples:[^]*/u
