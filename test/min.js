@@ -1,4 +1,5 @@
 import test from 'ava'
+import testEach from 'test-each'
 
 import { min } from '../src/main.js'
 
@@ -8,12 +9,12 @@ import { stringifyErrors } from './helpers/error.js'
 
 const eMin = stringifyErrors(min)
 
-MIN_MAX_DATA.forEach(args => {
-  test(`min (JavaScript) ${JSON.stringify(args)}`, t => {
+testEach(MIN_MAX_DATA, ({ title }, args) => {
+  test(`min (JavaScript) | ${title}`, t => {
     t.snapshot(eMin(...args))
   })
 
-  test(`min (CLI) ${JSON.stringify(args)}`, async t => {
+  test(`min (CLI) | ${title}`, async t => {
     t.snapshot(await callCli('min', ...args))
   })
 })

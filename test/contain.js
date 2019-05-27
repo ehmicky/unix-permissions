@@ -1,4 +1,5 @@
 import test from 'ava'
+import testEach from 'test-each'
 
 import { contain } from '../src/main.js'
 
@@ -9,18 +10,18 @@ import { stringifyErrors } from './helpers/error.js'
 
 const eContain = stringifyErrors(contain)
 
-CONTAIN_DATA.forEach(args => {
-  test(`contain (JavaScript) ${JSON.stringify(args)}`, t => {
+testEach(CONTAIN_DATA, ({ title }, args) => {
+  test(`contain (JavaScript) | ${title}`, t => {
     t.snapshot(eContain(...args))
   })
 
-  test(`contain (CLI) ${JSON.stringify(args)}`, async t => {
+  test(`contain (CLI) | ${title}`, async t => {
     t.snapshot(await callCli('contain', ...args))
   })
 })
 
-VALID_PARSE_DATA.forEach(arg => {
-  test(`contain self ${JSON.stringify(arg)}`, t => {
+testEach(VALID_PARSE_DATA, ({ title }, arg) => {
+  test(`contain self | ${title}`, t => {
     t.true(contain(arg, arg))
   })
 })

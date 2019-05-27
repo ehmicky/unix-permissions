@@ -1,4 +1,5 @@
 import test from 'ava'
+import testEach from 'test-each'
 
 import { not, normalize } from '../src/main.js'
 
@@ -9,18 +10,18 @@ import { stringifyErrors } from './helpers/error.js'
 
 const eNot = stringifyErrors(not)
 
-SIMPLE_DATA.forEach(arg => {
-  test(`not (JavaScript) ${JSON.stringify(arg)}`, t => {
+testEach(SIMPLE_DATA, ({ title }, arg) => {
+  test(`not (JavaScript) | ${title}`, t => {
     t.snapshot(eNot(arg))
   })
 
-  test(`not (CLI) ${JSON.stringify(arg)}`, async t => {
+  test(`not (CLI) | ${title}`, async t => {
     t.snapshot(await callCli('not', arg))
   })
 })
 
-VALID_PARSE_DATA.forEach(arg => {
-  test(`not idempotence ${JSON.stringify(arg)}`, t => {
+testEach(VALID_PARSE_DATA, ({ title }, arg) => {
+  test(`not idempotence | ${title}`, t => {
     t.deepEqual(normalize(arg), not(not(arg)))
   })
 })

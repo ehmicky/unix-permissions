@@ -1,4 +1,5 @@
 import test from 'ava'
+import testEach from 'test-each'
 
 import { convert, normalize, type as getType } from '../src/main.js'
 
@@ -23,19 +24,14 @@ const LOSSY_CONVERSIONS = [
   ['octal', 'stat'],
 ]
 
-TYPES.forEach(otherType => {
-  VALID_PARSE_DATA.forEach(arg => {
-    const type = getType(arg)
+testEach(TYPES, VALID_PARSE_DATA, ({ title }, otherType, arg) => {
+  const type = getType(arg)
 
-    if (isLossy(type, otherType)) {
-      return
-    }
+  if (isLossy(type, otherType)) {
+    return
+  }
 
-    test(`convert idempotence ${JSON.stringify(otherType)} ${JSON.stringify(
-      arg,
-      // eslint-disable-next-line max-nested-callbacks
-    )}`, t => {
-      t.deepEqual(normalize(arg), convert[type](convert[otherType](arg)))
-    })
+  test(`convert idempotence | ${title}`, t => {
+    t.deepEqual(normalize(arg), convert[type](convert[otherType](arg)))
   })
 })

@@ -1,4 +1,5 @@
 import test from 'ava'
+import testEach from 'test-each'
 
 import { convert } from '../src/main.js'
 import { mapValues } from '../src/utils.js'
@@ -10,20 +11,12 @@ import { stringifyErrors } from './helpers/error.js'
 
 const eConvert = mapValues(convert, stringifyErrors)
 
-TYPES.forEach(type => {
-  SIMPLE_DATA.forEach(arg => {
-    test(`serialize (JavaScript) ${JSON.stringify(type)} ${JSON.stringify(
-      arg,
-      // eslint-disable-next-line max-nested-callbacks
-    )}`, t => {
-      t.snapshot(eConvert[type](arg))
-    })
+testEach(TYPES, SIMPLE_DATA, ({ title }, type, arg) => {
+  test(`serialize (JavaScript) | ${title}`, t => {
+    t.snapshot(eConvert[type](arg))
+  })
 
-    test(`serialize (CLI) ${JSON.stringify(type)} ${JSON.stringify(
-      arg,
-      // eslint-disable-next-line max-nested-callbacks
-    )}`, async t => {
-      t.snapshot(await callCli(`convert.${type}`, arg))
-    })
+  test(`serialize (CLI) | ${title}`, async t => {
+    t.snapshot(await callCli(`convert.${type}`, arg))
   })
 })

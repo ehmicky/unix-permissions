@@ -1,5 +1,5 @@
 import test from 'ava'
-import prettyFormat from 'pretty-format'
+import testEach from 'test-each'
 
 import { type } from '../src/main.js'
 
@@ -9,18 +9,12 @@ import { stringifyErrors } from './helpers/error.js'
 
 const eType = stringifyErrors(type)
 
-PARSE_DATA.forEach(arg => {
-  test(`type (JavaScript) ${prettyFormat(arg, {
-    min: true,
-    maxDepth: 3,
-  })}`, t => {
+testEach(PARSE_DATA, ({ title }, arg) => {
+  test(`type (JavaScript) | ${title}`, t => {
     t.snapshot(eType(arg))
   })
 
-  test(`type (CLI) ${prettyFormat(arg, {
-    min: true,
-    maxDepth: 3,
-  })}`, async t => {
+  test(`type (CLI) | ${title}`, async t => {
     t.snapshot(await callCli('type', arg))
   })
 })

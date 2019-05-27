@@ -1,4 +1,5 @@
 import test from 'ava'
+import testEach from 'test-each'
 
 import { normalize } from '../src/main.js'
 
@@ -8,16 +9,16 @@ import { stringifyErrors } from './helpers/error.js'
 
 const eNormalize = stringifyErrors(normalize)
 
-VALID_PARSE_DATA.forEach(arg => {
-  test(`normalize (JavaScript) ${JSON.stringify(arg)}`, t => {
+testEach(VALID_PARSE_DATA, ({ title }, arg) => {
+  test(`normalize (JavaScript) | ${title}`, t => {
     t.snapshot(eNormalize(arg))
   })
 
-  test(`normalize (CLI) ${JSON.stringify(arg)}`, async t => {
+  test(`normalize (CLI) | ${title}`, async t => {
     t.snapshot(await callCli('normalize', arg))
   })
 
-  test(`normalize idempotence ${JSON.stringify(arg)}`, t => {
+  test(`normalize idempotence | ${title}`, t => {
     t.deepEqual(normalize(arg), normalize(normalize(arg)))
   })
 })

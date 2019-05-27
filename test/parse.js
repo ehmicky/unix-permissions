@@ -1,5 +1,5 @@
 import test from 'ava'
-import prettyFormat from 'pretty-format'
+import testEach from 'test-each'
 
 import { convert } from '../src/main.js'
 
@@ -9,18 +9,12 @@ import { stringifyErrors } from './helpers/error.js'
 
 const eConvertSymbolic = stringifyErrors(convert.symbolic)
 
-PARSE_DATA.forEach(arg => {
-  test(`parse (JavaScript) ${prettyFormat(arg, {
-    min: true,
-    maxDepth: 3,
-  })}`, t => {
+testEach(PARSE_DATA, ({ title }, arg) => {
+  test(`parse (JavaScript) | ${title}`, t => {
     t.snapshot(eConvertSymbolic(arg))
   })
 
-  test(`parse (CLI) ${prettyFormat(arg, {
-    min: true,
-    maxDepth: 3,
-  })}`, async t => {
+  test(`parse (CLI) | ${title}`, async t => {
     t.snapshot(await callCli('convert.symbolic', arg))
   })
 })

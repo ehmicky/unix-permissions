@@ -1,4 +1,5 @@
 import test from 'ava'
+import testEach from 'test-each'
 
 import { positive } from '../src/main.js'
 
@@ -9,18 +10,18 @@ import { stringifyErrors } from './helpers/error.js'
 
 const ePositive = stringifyErrors(positive)
 
-POSITIVE_DATA.forEach(arg => {
-  test(`positive (JavaScript) ${JSON.stringify(arg)}`, t => {
+testEach(POSITIVE_DATA, ({ title }, arg) => {
+  test(`positive (JavaScript) | ${title}`, t => {
     t.snapshot(ePositive(arg))
   })
 
-  test(`positive (CLI) ${JSON.stringify(arg)}`, async t => {
+  test(`positive (CLI) | ${title}`, async t => {
     t.snapshot(await callCli('positive', arg))
   })
 })
 
-VALID_PARSE_DATA.forEach(arg => {
-  test(`positive idempotence ${JSON.stringify(arg)}`, t => {
+testEach(VALID_PARSE_DATA, ({ title }, arg) => {
+  test(`positive idempotence | ${title}`, t => {
     t.deepEqual(positive(arg), positive(positive(arg)))
   })
 })

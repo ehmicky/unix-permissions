@@ -1,4 +1,5 @@
 import test from 'ava'
+import testEach from 'test-each'
 
 import { equal } from '../src/main.js'
 
@@ -9,18 +10,18 @@ import { stringifyErrors } from './helpers/error.js'
 
 const eEqual = stringifyErrors(equal)
 
-EQUAL_DATA.forEach(args => {
-  test(`equal (JavaScript) ${JSON.stringify(args)}`, t => {
+testEach(EQUAL_DATA, ({ title }, args) => {
+  test(`equal (JavaScript) | ${title}`, t => {
     t.snapshot(eEqual(...args))
   })
 
-  test(`equal (CLI) ${JSON.stringify(args)}`, async t => {
+  test(`equal (CLI) | ${title}`, async t => {
     t.snapshot(await callCli('equal', ...args))
   })
 })
 
-VALID_PARSE_DATA.forEach(arg => {
-  test(`equal self ${JSON.stringify(arg)}`, t => {
+testEach(VALID_PARSE_DATA, ({ title }, arg) => {
+  test(`equal self | ${title}`, t => {
     t.true(equal(arg, arg))
   })
 })
