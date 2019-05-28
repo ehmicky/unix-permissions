@@ -66,7 +66,7 @@
     "gulp": "^4.0.2",
     "gulp-shared-tasks": "^0.28.5",
     "husky": "^2.3.0",
-    "test-each": "^0.3.1"
+    "test-each": "^1.0.0"
   },
   "engines": {
     "node": ">=8.12.0"
