@@ -1,6 +1,6 @@
 // Make sure exceptions are snapshot as well
 export const stringifyErrors = function(func) {
-  return addErrorHandler(func, String)
+  return addErrorHandler(func, error => error)
 }
 
 // Wrap a function with a error handler
