@@ -5,13 +5,10 @@ import { type } from '../src/main.js'
 
 import { callCli } from './helpers/cli.js'
 import { FULL_DATA } from './helpers/data/full/main.js'
-import { stringifyErrors } from './helpers/error.js'
-
-const eType = stringifyErrors(type)
 
 testEach(FULL_DATA, ({ title }, arg) => {
   test(`type (JavaScript) | ${title}`, t => {
-    t.snapshot(eType(arg))
+    t.snapshot(type(arg))
   })
 
   test(`type (CLI) | ${title}`, async t => {

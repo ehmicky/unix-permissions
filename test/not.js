@@ -4,15 +4,12 @@ import testEach from 'test-each'
 import { not, normalize } from '../src/main.js'
 
 import { callCli } from './helpers/cli.js'
-import { VALID_FULL_DATA } from './helpers/data/full/main.js'
 import { UNARY_DATA } from './helpers/data/unary.js'
-import { stringifyErrors } from './helpers/error.js'
-
-const eNot = stringifyErrors(not)
+import { VALID_FULL_DATA } from './helpers/data/full/main.js'
 
 testEach(UNARY_DATA, ({ title }, arg) => {
   test(`not (JavaScript) | ${title}`, t => {
-    t.snapshot(eNot(arg))
+    t.snapshot(not(arg))
   })
 
   test(`not (CLI) | ${title}`, async t => {

@@ -5,13 +5,10 @@ import { normalize } from '../src/main.js'
 
 import { callCli } from './helpers/cli.js'
 import { VALID_FULL_DATA } from './helpers/data/full/main.js'
-import { stringifyErrors } from './helpers/error.js'
-
-const eNormalize = stringifyErrors(normalize)
 
 testEach(VALID_FULL_DATA, ({ title }, arg) => {
   test(`normalize (JavaScript) | ${title}`, t => {
-    t.snapshot(eNormalize(arg))
+    t.snapshot(normalize(arg))
   })
 
   test(`normalize (CLI) | ${title}`, async t => {

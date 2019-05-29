@@ -5,13 +5,10 @@ import { max } from '../src/main.js'
 
 import { callCli } from './helpers/cli.js'
 import { BINARY_DATA } from './helpers/data/binary.js'
-import { stringifyErrors } from './helpers/error.js'
-
-const eMax = stringifyErrors(max)
 
 testEach(BINARY_DATA, ({ title }, args) => {
   test(`max (JavaScript) | ${title}`, t => {
-    t.snapshot(eMax(...args))
+    t.snapshot(max(...args))
   })
 
   test(`max (CLI) | ${title}`, async t => {

@@ -4,15 +4,16 @@ import testEach from 'test-each'
 import { equal } from '../src/main.js'
 
 import { callCli } from './helpers/cli.js'
-import { VALID_FULL_DATA } from './helpers/data/full/main.js'
 import { BINARY_DATA } from './helpers/data/binary.js'
-import { stringifyErrors } from './helpers/error.js'
-
-const eEqual = stringifyErrors(equal)
+import { VALID_FULL_DATA } from './helpers/data/full/main.js'
 
 testEach(BINARY_DATA, ({ title }, args) => {
   test(`equal (JavaScript) | ${title}`, t => {
-    t.snapshot(eEqual(...args))
+    try {
+      t.snapshot(equal(...args))
+    } catch (error) {
+      t.snapshot(error)
+    }
   })
 
   test(`equal (CLI) | ${title}`, async t => {
