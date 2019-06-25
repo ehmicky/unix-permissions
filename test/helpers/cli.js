@@ -6,7 +6,7 @@ const BINARY_PATH = `${__dirname}/../../src/bin/main.js`
 export const callCli = async function(command, ...args) {
   const argsA = args.map(stringifyCliArg)
 
-  const { stdout, stderr, code } = await execa(
+  const { stdout, stderr, exitCode } = await execa(
     BINARY_PATH,
     [command, ...argsA],
     { reject: false },
@@ -14,7 +14,7 @@ export const callCli = async function(command, ...args) {
 
   const stderrA = stderr.replace(HELP_MESSAGE_REGEXP, 'Help message')
 
-  return { code, stdout, stderr: stderrA }
+  return { exitCode, stdout, stderr: stderrA }
 }
 
 const stringifyCliArg = function(arg) {
