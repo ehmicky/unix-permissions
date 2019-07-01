@@ -1,13 +1,14 @@
 import execa from 'execa'
+import { getBinPath } from 'get-bin-path'
 
-const BINARY_PATH = `${__dirname}/../../src/bin/main.js`
+const BINARY_PATH = getBinPath()
 
 // Call CLI command `unix-permissions COMMAND ...ARGS` and return output
 export const callCli = async function(command, ...args) {
   const argsA = args.map(stringifyCliArg)
 
   const { stdout, stderr, exitCode } = await execa(
-    BINARY_PATH,
+    await BINARY_PATH,
     [command, ...argsA],
     { reject: false },
   )
