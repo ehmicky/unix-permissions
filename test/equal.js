@@ -1,5 +1,5 @@
 import test from 'ava'
-import testEach from 'test-each'
+import { each } from 'test-each'
 
 import { equal } from '../src/main.js'
 
@@ -7,7 +7,7 @@ import { callCli } from './helpers/cli.js'
 import { BINARY_DATA } from './helpers/data/binary.js'
 import { VALID_FULL_DATA } from './helpers/data/full/main.js'
 
-testEach(BINARY_DATA, ({ title }, args) => {
+each(BINARY_DATA, ({ title }, args) => {
   test(`equal (JavaScript) | ${title}`, t => {
     try {
       t.snapshot(equal(...args))
@@ -21,7 +21,7 @@ testEach(BINARY_DATA, ({ title }, args) => {
   })
 })
 
-testEach(VALID_FULL_DATA, ({ title }, arg) => {
+each(VALID_FULL_DATA, ({ title }, arg) => {
   test(`equal (self) | ${title}`, t => {
     t.true(equal(arg, arg))
   })

@@ -1,5 +1,5 @@
 import test from 'ava'
-import testEach from 'test-each'
+import { each } from 'test-each'
 
 import { convert, normalize, type as getType } from '../src/main.js'
 
@@ -24,7 +24,7 @@ const LOSSY_CONVERSIONS = [
   ['octal', 'stat'],
 ]
 
-testEach(TYPES, VALID_FULL_DATA, ({ title }, otherType, arg) => {
+each(TYPES, VALID_FULL_DATA, ({ title }, otherType, arg) => {
   const type = getType(arg)
 
   if (isLossy(type, otherType)) {

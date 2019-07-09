@@ -1,5 +1,5 @@
 import test from 'ava'
-import testEach from 'test-each'
+import { each } from 'test-each'
 
 import { positive } from '../src/main.js'
 
@@ -7,7 +7,7 @@ import { callCli } from './helpers/cli.js'
 import { VALID_FULL_DATA } from './helpers/data/full/main.js'
 import { UNARY_DATA } from './helpers/data/unary.js'
 
-testEach(UNARY_DATA, ({ title }, arg) => {
+each(UNARY_DATA, ({ title }, arg) => {
   test(`positive (JavaScript) | ${title}`, t => {
     t.snapshot(positive(arg))
   })
@@ -17,7 +17,7 @@ testEach(UNARY_DATA, ({ title }, arg) => {
   })
 })
 
-testEach(VALID_FULL_DATA, ({ title }, arg) => {
+each(VALID_FULL_DATA, ({ title }, arg) => {
   test(`positive (idempotence) | ${title}`, t => {
     t.deepEqual(positive(arg), positive(positive(arg)))
   })
