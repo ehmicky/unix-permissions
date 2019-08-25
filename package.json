@@ -58,7 +58,7 @@
     "core-js": "^3.2.1",
     "keep-func-props": "^2.0.0",
     "moize": "^5.4.4",
-    "yargs": "^13.3.0"
+    "yargs": "^14.0.0"
   },
   "devDependencies": {
     "ava": "^2.3.0",
