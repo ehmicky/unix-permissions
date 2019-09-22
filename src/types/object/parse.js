@@ -1,4 +1,6 @@
-import { isPlainObject, mapValues } from '../../utils.js'
+import isPlainObj from 'is-plain-obj'
+
+import { mapValues } from '../../utils.js'
 import { SHORT_CATEGORIES } from '../../constants.js'
 
 import {
@@ -10,7 +12,7 @@ import {
 // Parse an `object` permission into nodes
 export const parse = function(object) {
   // Non-plain objects probably indicate a non-intentional error
-  if (!isPlainObject(object)) {
+  if (!isPlainObj(object)) {
     return
   }
 
@@ -38,7 +40,7 @@ const parseAll = function({ all, ...object }) {
 // Parse each `object` category's object into nodes
 const parsePermissions = function([category, permissions]) {
   // Non-plain objects probably indicate a non-intentional error
-  if (!isPlainObject(permissions)) {
+  if (!isPlainObj(permissions)) {
     return
   }
 

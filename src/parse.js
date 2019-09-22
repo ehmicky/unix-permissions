@@ -1,6 +1,8 @@
+import isPlainObj from 'is-plain-obj'
+
 import { TYPES } from './types/main.js'
 import { getNodesMap, NODES_MAP } from './nodes.js'
-import { isPlainObject, omitBy } from './utils.js'
+import { omitBy } from './utils.js'
 
 // Parse permission to a `nodesMap`
 // `nodesMap` uses an intermediary/internal format to facilitate conversions
@@ -32,7 +34,7 @@ const validateNodes = function({ nodes, perm }) {
     return
   }
 
-  const permA = isPlainObject(perm) ? JSON.stringify(perm) : perm
+  const permA = isPlainObj(perm) ? JSON.stringify(perm) : perm
   throw new Error(`Permissions syntax is invalid: ${permA}`)
 }
 
