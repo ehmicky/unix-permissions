@@ -45,6 +45,6 @@ const normalizeNodes = function({ nodes }) {
 }
 
 // Exclude special flags not valid for current category
-const isValidNode = function(nodeKey, node) {
+const isValidNode = function(nodeKey) {
   return NODES_MAP[nodeKey] !== undefined
 }
