@@ -1,5 +1,7 @@
+import filterObj from 'filter-obj'
+
 import { variableMap } from '../helpers.js'
-import { mapValues, omitBy } from '../utils.js'
+import { mapValues } from '../utils.js'
 
 // Returns the minimum|maximum permissions among two permissions.
 // This is done permission bit by permission bit.
@@ -10,7 +12,7 @@ const minMaxMap = function(values, nodesMap, nodesMapA) {
   )
   // `undefined` nodes might be present if they got picked because of being
   // higher|lower than `+` or `-`
-  const nodesMapC = omitBy(nodesMapB, node => node === undefined)
+  const nodesMapC = filterObj(nodesMapB, isDefined)
   return nodesMapC
 }
 
@@ -28,6 +30,10 @@ const findNode = function({ values, nodesMap, nodesMapA, nodeKey }) {
 
 const hasValue = function([{ add } = {}, value]) {
   return add === value
+}
+
+const isDefined = function(key, value) {
+  return value !== undefined
 }
 
 const MIN_VALUES = [false, undefined, true]

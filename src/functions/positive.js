@@ -1,14 +1,15 @@
+import filterObj from 'filter-obj'
+
 import { unaryMap } from '../helpers.js'
-import { omitBy } from '../utils.js'
 
 // Omit all `-` permssions
 // E.g. `a=x` -> `a+x,a-rwst` -> `a+x`
 const positiveMap = function(nodesMap) {
-  return omitBy(nodesMap, isRemoved)
+  return filterObj(nodesMap, hasAdd)
 }
 
-const isRemoved = function({ add }) {
-  return !add
+const hasAdd = function(key, { add }) {
+  return add
 }
 
 export const positive = unaryMap.bind(null, positiveMap)

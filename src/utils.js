@@ -1,11 +1,3 @@
-// Like lodash _.omitBy()
-export const omitBy = function(object, condition) {
-  const pairs = Object.entries(object)
-    .filter(([key, value]) => !condition(value, key))
-    .map(([key, value]) => ({ [key]: value }))
-  return Object.assign({}, ...pairs)
-}
-
 // Like lodash _.mapValues()
 export const mapValues = function(object, mapper) {
   const pairs = Object.entries(object).map(([key, value]) => ({

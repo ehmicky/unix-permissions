@@ -1,8 +1,8 @@
 import isPlainObj from 'is-plain-obj'
+import filterObj from 'filter-obj'
 
 import { TYPES } from './types/main.js'
 import { getNodesMap, NODES_MAP } from './nodes.js'
-import { omitBy } from './utils.js'
 
 // Parse permission to a `nodesMap`
 // `nodesMap` uses an intermediary/internal format to facilitate conversions
@@ -40,11 +40,11 @@ const validateNodes = function({ nodes, perm }) {
 
 const normalizeNodes = function({ nodes }) {
   const nodesMap = getNodesMap(nodes)
-  const nodesMapA = omitBy(nodesMap, isInvalidNode)
+  const nodesMapA = filterObj(nodesMap, isValidNode)
   return nodesMapA
 }
 
 // Exclude special flags not valid for current category
-const isInvalidNode = function(node, nodeKey) {
-  return NODES_MAP[nodeKey] === undefined
+const isValidNode = function(nodeKey, node) {
+  return NODES_MAP[nodeKey] !== undefined
 }
