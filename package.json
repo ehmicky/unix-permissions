@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "core-js": "^3.2.1",
-    "filter-obj": "^2.0.0",
+    "filter-obj": "^2.0.1",
     "is-plain-obj": "^2.0.0",
     "keep-func-props": "^2.0.0",
     "moize": "^5.4.4",
