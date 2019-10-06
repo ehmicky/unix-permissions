@@ -60,7 +60,7 @@
     "is-plain-obj": "^2.0.0",
     "keep-func-props": "^2.0.0",
     "moize": "^5.4.4",
-    "yargs": "^14.0.0"
+    "yargs": "^14.2.0"
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^0.30.46",
