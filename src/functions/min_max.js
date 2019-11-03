@@ -23,7 +23,10 @@ const minMaxMap = function(values, nodesMap, nodesMapA) {
 // until finding the right nore.
 const findNode = function({ values, nodesMap, nodesMapA, nodeKey }) {
   const [nodeB] = values
-    .flatMap(value => [[nodesMap[nodeKey], value], [nodesMapA[nodeKey], value]])
+    .flatMap(value => [
+      [nodesMap[nodeKey], value],
+      [nodesMapA[nodeKey], value],
+    ])
     .find(hasValue)
   return nodeB
 }
