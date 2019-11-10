@@ -133,59 +133,60 @@ Please see the [types full documentation](docs/types.md).
 
 ## convert.octal|number|stat|symbolic|object(permission)
 
-Converts `permission` to another type.<br>
+Converts `permission` to another type.\
 [Full documentation](docs/API.md#convertoctalnumberstatsymbolicobjectpermission).
 
 ## type(permission)
 
-Returns the `permission`'s type or `invalid`.<br>
+Returns the `permission`'s type or `invalid`.\
 [Full documentation](docs/API.md#typepermission).
 
 ## normalize(permission)
 
 Normalizes a `permission` to its canonical shape. Throw if `permission` is
-invalid.<br> [Full documentation](docs/API.md#normalizepermission).
+invalid.\
+[Full documentation](docs/API.md#normalizepermission).
 
 ## positive(permission)
 
-Removes all negative permissions.<br>
+Removes all negative permissions.\
 [Full documentation](docs/API.md#positivepermission).
 
 ## contain(permission, permissions...)
 
-Tests whether `permission` includes `permissions`.<br>
+Tests whether `permission` includes `permissions`.\
 [Full documentation](docs/API.md#containpermission-permissions).
 
 ## equal(permission, permissions...)
 
-Tests whether `permission` equals exactly `permissions`.<br>
+Tests whether `permission` equals exactly `permissions`.\
 [Full documentation](docs/API.md#equalpermission-permissions).
 
 ## set(permission, permissions...)
 
 Sets `permissions` on `permission`. This is useful to avoid error-prone bitwise
-operations (`|`, `&`, `^`, `~`).<br>
+operations (`|`, `&`, `^`, `~`).\
 [Full documentation](docs/API.md#setpermission-permissions).
 
 ## not(permission)
 
 Inverts `permission` including special permissions. This can be used in
-combination with `set()` to unset `permissions` instead of setting them.<br>
+combination with `set()` to unset `permissions` instead of setting them.\
 [Full documentation](docs/API.md#notpermission).
 
 ## invert(permission)
 
-Inverts `permission` and removes special permissions.<br>
+Inverts `permission` and removes special permissions.\
 [Full documentation](docs/API.md#invertpermission).
 
 ## min(permissions...)
 
-Retrieves the lowest permissions among all arguments.<br>
+Retrieves the lowest permissions among all arguments.\
 [Full documentation](docs/API.md#minpermissions).
 
 ## max(permissions...)
 
-Retrieves the highest permissions among all arguments.<br>
+Retrieves the highest permissions among all arguments.\
 [Full documentation](docs/API.md#maxpermissions).
 
 # Support
