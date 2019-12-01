@@ -60,7 +60,7 @@
     "is-plain-obj": "^2.0.0",
     "keep-func-props": "^2.0.1",
     "moize": "^5.4.4",
-    "read-pkg-up": "^7.0.0",
+    "read-pkg-up": "^7.0.1",
     "update-notifier": "^3.0.1",
     "yargs": "^15.0.2"
   },
