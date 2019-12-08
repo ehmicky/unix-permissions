@@ -55,7 +55,7 @@
     "example": "examples"
   },
   "dependencies": {
-    "core-js": "^3.4.7",
+    "core-js": "^3.4.8",
     "filter-obj": "^2.0.1",
     "is-plain-obj": "^2.0.0",
     "keep-func-props": "^2.0.1",
