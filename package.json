@@ -58,7 +58,7 @@
     "core-js": "^3.6.0",
     "filter-obj": "^2.0.1",
     "is-plain-obj": "^2.0.0",
-    "keep-func-props": "^2.0.1",
+    "keep-func-props": "^3.0.0",
     "moize": "^5.4.4",
     "read-pkg-up": "^7.0.1",
     "update-notifier": "^4.0.0",
