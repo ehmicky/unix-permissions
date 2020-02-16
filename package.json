@@ -61,7 +61,7 @@
     "keep-func-props": "^3.0.0",
     "moize": "^5.4.4",
     "read-pkg-up": "^7.0.1",
-    "update-notifier": "^4.0.0",
+    "update-notifier": "^4.1.0",
     "yargs": "^15.1.0"
   },
   "devDependencies": {
