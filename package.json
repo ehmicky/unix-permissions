@@ -70,7 +70,7 @@
     "execa": "^4.0.0",
     "get-bin-path": "^5.0.1",
     "gulp": "^4.0.2",
-    "husky": "^4.2.1",
+    "husky": "^4.2.3",
     "test-each": "^2.0.0"
   },
   "engines": {
