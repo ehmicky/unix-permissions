@@ -10,6 +10,7 @@ export const tokenize = function(stat) {
     return
   }
 
+  // eslint-disable-next-line id-length
   const [u, g, o] = tokens
     .slice(1)
     .map(removeDashes)
