@@ -1,7 +1,7 @@
 /* eslint-disable no-magic-numbers */
 export const INVALID_NUMBER = [
   // Invalid
-  NaN,
+  Number.NaN,
   Infinity,
   Number.EPSILON,
   Number.MAX_SAFE_INTEGER,
