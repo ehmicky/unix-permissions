@@ -1,7 +1,7 @@
 <img src="https://raw.githubusercontent.com/ehmicky/design/master/unix-permissions/unix-permissions.png" width="500"/>
 
 [![Codecov](https://img.shields.io/codecov/c/github/ehmicky/unix-permissions.svg?label=tested&logo=codecov)](https://codecov.io/gh/ehmicky/unix-permissions)
-[![Travis](https://img.shields.io/badge/cross-platform-4cc61e.svg?logo=travis)](https://travis-ci.org/ehmicky/unix-permissions)
+[![Build](https://github.com/ehmicky/unix-permissions/workflows/Build/badge.svg)](https://github.com/ehmicky/unix-permissions/actions)
 [![Node](https://img.shields.io/node/v/unix-permissions.svg?logo=node.js)](https://www.npmjs.com/package/unix-permissions)
 [![Gitter](https://img.shields.io/gitter/room/ehmicky/unix-permissions.svg?logo=gitter)](https://gitter.im/ehmicky/unix-permissions)
 [![Twitter](https://img.shields.io/badge/%E2%80%8B-twitter-4cc61e.svg?logo=twitter)](https://twitter.com/intent/follow?screen_name=ehmicky)
