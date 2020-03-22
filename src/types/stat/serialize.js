@@ -32,7 +32,7 @@ const serializeNode = function ({ node: { permission }, nodeKey, addedNodes }) {
   }
 
   // Special permissions are contracted into `x`
-  if (SPECIAL_PERMISSIONS.includes(permission)) {
+  if (SPECIAL_PERMISSIONS.has(permission)) {
     return ''
   }
 

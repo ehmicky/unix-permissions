@@ -13,8 +13,8 @@ const escapeArg = function (arg) {
 }
 
 const shouldEscapeMinus = function (arg) {
-  return arg.startsWith('-') && !OPTIONS.includes(arg)
+  return arg.startsWith('-') && !OPTIONS.has(arg)
 }
 
 // Any valid CLI flag must be present there
-const OPTIONS = ['--help', '--version']
+const OPTIONS = new Set(['--help', '--version'])

@@ -77,7 +77,7 @@ export const LONG_CATEGORIES = {
 }
 
 export const PERMISSIONS = ['r', 'w', 'x', 't', 's']
-export const SPECIAL_PERMISSIONS = ['t', 's']
+export const SPECIAL_PERMISSIONS = new Set(['t', 's'])
 export const CATEGORY_PERMISSIONS = {
   a: ['x', 'w', 'r', 't', 's'],
   u: ['x', 'w', 'r', 's'],
