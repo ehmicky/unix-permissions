@@ -1,5 +1,5 @@
 // Tokenize a `stat` string using a RegExp
-export const tokenize = function(stat) {
+export const tokenize = function (stat) {
   if (typeof stat !== 'string') {
     return
   }
@@ -11,10 +11,7 @@ export const tokenize = function(stat) {
   }
 
   // eslint-disable-next-line id-length
-  const [u, g, o] = tokens
-    .slice(1)
-    .map(removeDashes)
-    .map(expandSpecial)
+  const [u, g, o] = tokens.slice(1).map(removeDashes).map(expandSpecial)
   // eslint-disable-next-line id-length
   return { u, g, o }
 }
@@ -31,7 +28,7 @@ const STAT_REGEXP = /^\s*[-dlpscbD]?\s*([-rwxXsS]{3})\s*([-rwxXsS]{3})\s*([-rwxX
 
 // We cannot know if `-` means `add: false` (must unset bits) or
 // `add: undefined` (leave bits as is), so we assume the later.
-const removeDashes = function(part) {
+const removeDashes = function (part) {
   return part.replace(DASH_REGEXP, '')
 }
 
@@ -42,7 +39,7 @@ const DASH_REGEXP = /-/gu
 // `X` permission is a special permission according to chmod behavior.
 // It is the same as `x` except it is a noop if no categories has `x`.
 // At the moment, we do not support this, so it's just an alias for `x`.
-const expandSpecial = function(part) {
+const expandSpecial = function (part) {
   return EXPAND_REGEXPS.reduce(specialReduce, part)
 }
 
@@ -56,7 +53,7 @@ const EXPAND_REGEXPS = [
 ]
 
 // Inverse of `expandSpecial()`
-export const contractSpecial = function(part) {
+export const contractSpecial = function (part) {
   return CONTRACT_REGEXPS.reduce(specialReduce, part)
 }
 
@@ -67,6 +64,6 @@ const CONTRACT_REGEXPS = [
   [/xs/gu, 's'],
 ]
 
-const specialReduce = function(part, [regexp, chars]) {
+const specialReduce = function (part, [regexp, chars]) {
   return part.replace(regexp, chars)
 }

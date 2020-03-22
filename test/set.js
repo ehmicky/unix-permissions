@@ -7,7 +7,7 @@ import { callCli } from './helpers/cli.js'
 import { BINARY_DATA } from './helpers/data/binary.js'
 
 each(BINARY_DATA, ({ title }, args) => {
-  test(`set (JavaScript) | ${title}`, t => {
+  test(`set (JavaScript) | ${title}`, (t) => {
     try {
       t.snapshot(set(...args))
     } catch (error) {
@@ -15,7 +15,7 @@ each(BINARY_DATA, ({ title }, args) => {
     }
   })
 
-  test(`set (CLI) | ${title}`, async t => {
+  test(`set (CLI) | ${title}`, async (t) => {
     t.snapshot(await callCli('set', ...args))
   })
 })

@@ -1,5 +1,5 @@
 // Like lodash _.mapValues()
-export const mapValues = function(object, mapper) {
+export const mapValues = function (object, mapper) {
   const pairs = Object.entries(object).map(([key, value]) => ({
     [key]: mapper(value, key, object),
   }))
@@ -7,11 +7,11 @@ export const mapValues = function(object, mapper) {
 }
 
 // Group array of objects together according to a specific key
-export const groupBy = function(array, key) {
+export const groupBy = function (array, key) {
   return array.reduce(groupByReducer.bind(null, key), {})
 }
 
-const groupByReducer = function(key, groups, obj) {
+const groupByReducer = function (key, groups, obj) {
   const groupName = obj[key]
   const { [groupName]: currentGroup = [] } = groups
   const newGroup = [...currentGroup, obj]
@@ -19,10 +19,10 @@ const groupByReducer = function(key, groups, obj) {
 }
 
 // Check if an array has duplicate elements
-export const hasDuplicate = function(array) {
+export const hasDuplicate = function (array) {
   return array.some(isDuplicate)
 }
 
-const isDuplicate = function(elem, index, elems) {
-  return elems.slice(index + 1).some(elemB => elem === elemB)
+const isDuplicate = function (elem, index, elems) {
+  return elems.slice(index + 1).some((elemB) => elem === elemB)
 }

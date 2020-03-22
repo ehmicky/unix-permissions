@@ -1,7 +1,7 @@
 import { NONE } from './constants.js'
 
 // Tokenize an `octal` string using a regExp
-export const tokenize = function(octal) {
+export const tokenize = function (octal) {
   if (typeof octal !== 'string') {
     return {}
   }
@@ -25,7 +25,7 @@ export const tokenize = function(octal) {
 const OCTAL_REGEXP = /^\s*([=+-]?)\\?0?[oO]?([0-7]{1,4})\s*$/u
 
 // '022' is same as '+022' (to match chmod behavior)
-const addDefaultOperator = function({ operator }) {
+const addDefaultOperator = function ({ operator }) {
   if (operator === NONE) {
     return DEFAULT_OPERATOR
   }

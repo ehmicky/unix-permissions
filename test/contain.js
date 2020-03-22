@@ -8,7 +8,7 @@ import { VALID_FULL_DATA } from './helpers/data/full/main.js'
 import { BINARY_DATA } from './helpers/data/binary.js'
 
 each(BINARY_DATA, ({ title }, args) => {
-  test(`contain (JavaScript) | ${title}`, t => {
+  test(`contain (JavaScript) | ${title}`, (t) => {
     try {
       t.snapshot(contain(...args))
     } catch (error) {
@@ -16,13 +16,13 @@ each(BINARY_DATA, ({ title }, args) => {
     }
   })
 
-  test(`contain (CLI) | ${title}`, async t => {
+  test(`contain (CLI) | ${title}`, async (t) => {
     t.snapshot(await callCli('contain', ...args))
   })
 })
 
 each(VALID_FULL_DATA, ({ title }, arg) => {
-  test(`contain (self) | ${title}`, t => {
+  test(`contain (self) | ${title}`, (t) => {
     t.true(contain(arg, arg))
   })
 })

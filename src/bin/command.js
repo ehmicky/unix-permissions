@@ -1,5 +1,5 @@
 // Retrieve main command, including dot notation like `convert.symbolic`
-export const getCommand = function({ unixPermissions, command }) {
+export const getCommand = function ({ unixPermissions, command }) {
   if (!command.includes('.')) {
     return unixPermissions[command]
   }

@@ -1,7 +1,7 @@
 import { unaryMap } from '../helpers.js'
 
 // Normalize a permission without modifying its semantics
-const normalizeMap = function(nodesMap) {
+const normalizeMap = function (nodesMap) {
   return nodesMap
 }
 

@@ -7,7 +7,7 @@ import { TYPES } from './helpers/data/types.js'
 import { VALID_FULL_DATA } from './helpers/data/full/main.js'
 
 // Conversion between some types loses information
-const isLossy = function(type, otherType) {
+const isLossy = function (type, otherType) {
   return LOSSY_CONVERSIONS.some(
     ([typeA, otherTypeA]) => typeA === type && otherTypeA === otherType,
   )
@@ -31,7 +31,7 @@ each(TYPES, VALID_FULL_DATA, ({ title }, otherType, arg) => {
     return
   }
 
-  test(`convert (idempotence) | ${title}`, t => {
+  test(`convert (idempotence) | ${title}`, (t) => {
     t.deepEqual(normalize(arg), convert[type](convert[otherType](arg)))
   })
 })

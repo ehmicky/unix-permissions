@@ -4,11 +4,11 @@ import { mapValues } from '../utils.js'
 // Invert a permission's `+` and `-`.
 // Missing permissions are not inverted.
 // Special flags are inverted.
-export const notMap = function(nodesMap) {
+export const notMap = function (nodesMap) {
   return mapValues(nodesMap, notNode)
 }
 
-const notNode = function({ add, ...node }) {
+const notNode = function ({ add, ...node }) {
   return { ...node, add: !add }
 }
 

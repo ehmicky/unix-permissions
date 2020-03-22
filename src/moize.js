@@ -6,7 +6,7 @@ import { mapValues } from './utils.js'
 const kMoize = keepFuncProps(moize)
 
 // Moize a function, or an object containing functions
-export const moizeFuncs = function(value) {
+export const moizeFuncs = function (value) {
   if (typeof value === 'function') {
     return kMoize(value, { isDeepEqual: true })
   }

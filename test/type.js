@@ -7,11 +7,11 @@ import { callCli } from './helpers/cli.js'
 import { FULL_DATA } from './helpers/data/full/main.js'
 
 each(FULL_DATA, ({ title }, arg) => {
-  test(`type (JavaScript) | ${title}`, t => {
+  test(`type (JavaScript) | ${title}`, (t) => {
     t.snapshot(type(arg))
   })
 
-  test(`type (CLI) | ${title}`, async t => {
+  test(`type (CLI) | ${title}`, async (t) => {
     t.snapshot(await callCli('type', arg))
   })
 })

@@ -1,12 +1,12 @@
 // Tokenize `symbolic` string using a RegExp
-export const tokenize = function(symbolic) {
+export const tokenize = function (symbolic) {
   if (typeof symbolic !== 'string') {
     return
   }
 
   const tokens = symbolic.split(COMMA_REGEXP).map(tokenizePart)
 
-  const isMatching = tokens.every(token => token !== undefined)
+  const isMatching = tokens.every((token) => token !== undefined)
 
   if (!isMatching) {
     return
@@ -19,7 +19,7 @@ export const tokenize = function(symbolic) {
 const COMMA_REGEXP = /\s*,\s*/gu
 
 // Tokenize each `symbolic` comma-separated group
-const tokenizePart = function(part) {
+const tokenizePart = function (part) {
   const parts = PART_REGEXP.exec(part)
 
   if (parts === null) {

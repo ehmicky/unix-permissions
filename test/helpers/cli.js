@@ -4,7 +4,7 @@ import { getBinPath } from 'get-bin-path'
 const BINARY_PATH = getBinPath()
 
 // Call CLI command `unix-permissions COMMAND ...ARGS` and return output
-export const callCli = async function(command, ...args) {
+export const callCli = async function (command, ...args) {
   const argsA = args.map(stringifyCliArg)
 
   const { stdout, stderr, exitCode } = await execa(
@@ -18,7 +18,7 @@ export const callCli = async function(command, ...args) {
   return { exitCode, stdout, stderr: stderrA }
 }
 
-const stringifyCliArg = function(arg) {
+const stringifyCliArg = function (arg) {
   // CLI interprets all numbers as `octal` not `number`
   if (typeof arg === 'number') {
     // eslint-disable-next-line no-magic-numbers

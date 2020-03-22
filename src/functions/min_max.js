@@ -5,7 +5,7 @@ import { mapValues } from '../utils.js'
 
 // Returns the minimum|maximum permissions among two permissions.
 // This is done permission bit by permission bit.
-const minMaxMap = function(values, nodesMap, nodesMapA) {
+const minMaxMap = function (values, nodesMap, nodesMapA) {
   const mergedNodes = { ...nodesMap, ...nodesMapA }
   const nodesMapB = mapValues(mergedNodes, (node, nodeKey) =>
     findNode({ values, nodesMap, nodesMapA, nodeKey }),
@@ -21,9 +21,9 @@ const minMaxMap = function(values, nodesMap, nodesMapA) {
 // in comparison order.
 // We iterate over both nodes and the possible values from highest to lowest
 // until finding the right nore.
-const findNode = function({ values, nodesMap, nodesMapA, nodeKey }) {
+const findNode = function ({ values, nodesMap, nodesMapA, nodeKey }) {
   const [nodeB] = values
-    .flatMap(value => [
+    .flatMap((value) => [
       [nodesMap[nodeKey], value],
       [nodesMapA[nodeKey], value],
     ])
@@ -31,11 +31,11 @@ const findNode = function({ values, nodesMap, nodesMapA, nodeKey }) {
   return nodeB
 }
 
-const hasValue = function([{ add } = {}, value]) {
+const hasValue = function ([{ add } = {}, value]) {
   return add === value
 }
 
-const isDefined = function(key, value) {
+const isDefined = function (key, value) {
   return value !== undefined
 }
 

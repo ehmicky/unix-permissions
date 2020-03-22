@@ -11,7 +11,7 @@ import { compareNodes } from './sort.js'
 
 // Serialize from `nodes` to a `object` permission.
 // Never serialize to `all` category so make output more predictable.
-export const serialize = function(nodes) {
+export const serialize = function (nodes) {
   // eslint-disable-next-line fp/no-mutating-methods
   const nodesA = nodes.map(serializeNode).sort(compareNodes)
   const object = groupBy(nodesA, 'category')
@@ -20,7 +20,7 @@ export const serialize = function(nodes) {
 }
 
 // Serialize each node
-const serializeNode = function(node) {
+const serializeNode = function (node) {
   // Handle `special` permissions
   const specialPerm = getSpecialPerm({ node })
 
@@ -34,17 +34,17 @@ const serializeNode = function(node) {
   return { ...node, category, permission }
 }
 
-const getSpecialPerm = function({ node }) {
+const getSpecialPerm = function ({ node }) {
   const nodeKey = getNodeKey(node)
   return SERIALIZE_SPECIAL[nodeKey]
 }
 
 // Convert to object form
-const mergePerms = function(perms) {
+const mergePerms = function (perms) {
   const permsA = perms.map(normalizePerm)
   return Object.assign({}, ...permsA)
 }
 
-const normalizePerm = function({ permission, add }) {
+const normalizePerm = function ({ permission, add }) {
   return { [permission]: add }
 }

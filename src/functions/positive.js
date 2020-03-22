@@ -4,11 +4,11 @@ import { unaryMap } from '../helpers.js'
 
 // Omit all `-` permssions
 // E.g. `a=x` -> `a+x,a-rwst` -> `a+x`
-const positiveMap = function(nodesMap) {
+const positiveMap = function (nodesMap) {
   return filterObj(nodesMap, hasAdd)
 }
 
-const hasAdd = function(key, { add }) {
+const hasAdd = function (key, { add }) {
   return add
 }
 

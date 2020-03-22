@@ -7,11 +7,11 @@ import { callCli } from './helpers/cli.js'
 import { BINARY_DATA } from './helpers/data/binary.js'
 
 each(BINARY_DATA, ({ title }, args) => {
-  test(`max (JavaScript) | ${title}`, t => {
+  test(`max (JavaScript) | ${title}`, (t) => {
     t.snapshot(max(...args))
   })
 
-  test(`max (CLI) | ${title}`, async t => {
+  test(`max (CLI) | ${title}`, async (t) => {
     t.snapshot(await callCli('max', ...args))
   })
 })

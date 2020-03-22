@@ -2,7 +2,7 @@ import { argv } from 'process'
 
 import { escapeArgs } from './escape.js'
 
-export const parseConfig = function({ yargs }) {
+export const parseConfig = function ({ yargs }) {
   const args = escapeArgs(argv.slice(2))
 
   const {
@@ -19,11 +19,11 @@ export const parseConfig = function({ yargs }) {
   return { command, args: argsA }
 }
 
-const isDefined = function(value) {
+const isDefined = function (value) {
   return value !== undefined
 }
 
-const parseArg = function(value) {
+const parseArg = function (value) {
   const object = parseObject(value)
 
   if (object !== undefined) {
@@ -34,7 +34,7 @@ const parseArg = function(value) {
 }
 
 // Allow `object` as input
-const parseObject = function(value) {
+const parseObject = function (value) {
   if (typeof value !== 'string' || !value.startsWith('{')) {
     return
   }

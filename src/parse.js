@@ -9,7 +9,7 @@ import { getNodesMap, NODES_MAP } from './nodes.js'
 // between types.
 // Guesses permission type by trying each `type.parse()` in order, and using
 // the first one that does not return `undefined`
-export const parse = function(perm) {
+export const parse = function (perm) {
   const { type, nodes } = TYPES.reduce(parseReduce.bind(null, perm), {})
 
   validateNodes({ nodes, perm })
@@ -19,7 +19,7 @@ export const parse = function(perm) {
   return { type, nodesMap }
 }
 
-const parseReduce = function(perm, memo, type) {
+const parseReduce = function (perm, memo, type) {
   if (memo.nodes !== undefined) {
     return memo
   }
@@ -29,7 +29,7 @@ const parseReduce = function(perm, memo, type) {
 }
 
 // When we tried each type and none matched, we throw an error
-const validateNodes = function({ nodes, perm }) {
+const validateNodes = function ({ nodes, perm }) {
   if (nodes !== undefined) {
     return
   }
@@ -38,13 +38,13 @@ const validateNodes = function({ nodes, perm }) {
   throw new Error(`Permissions syntax is invalid: ${permA}`)
 }
 
-const normalizeNodes = function({ nodes }) {
+const normalizeNodes = function ({ nodes }) {
   const nodesMap = getNodesMap(nodes)
   const nodesMapA = filterObj(nodesMap, isValidNode)
   return nodesMapA
 }
 
 // Exclude special flags not valid for current category
-const isValidNode = function(nodeKey) {
+const isValidNode = function (nodeKey) {
   return NODES_MAP[nodeKey] !== undefined
 }
