@@ -3,8 +3,8 @@ import { each } from 'test-each'
 
 import { convert, normalize, type as getType } from '../src/main.js'
 
-import { TYPES } from './helpers/data/types.js'
 import { VALID_FULL_DATA } from './helpers/data/full/main.js'
+import { TYPES } from './helpers/data/types.js'
 
 // Conversion between some types loses information
 const isLossy = function (type, otherType) {

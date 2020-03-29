@@ -4,8 +4,8 @@ import { each } from 'test-each'
 import { contain } from '../src/main.js'
 
 import { callCli } from './helpers/cli.js'
-import { VALID_FULL_DATA } from './helpers/data/full/main.js'
 import { BINARY_DATA } from './helpers/data/binary.js'
+import { VALID_FULL_DATA } from './helpers/data/full/main.js'
 
 each(BINARY_DATA, ({ title }, args) => {
   test(`contain (JavaScript) | ${title}`, (t) => {

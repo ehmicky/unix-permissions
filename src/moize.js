@@ -1,5 +1,5 @@
-import moize from 'moize'
 import keepFuncProps from 'keep-func-props'
+import moize from 'moize'
 
 import { mapValues } from './utils.js'
 

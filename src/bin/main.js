@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 import { exit } from 'process'
 
-import UpdateNotifier from 'update-notifier'
 import readPkgUp from 'read-pkg-up'
+import UpdateNotifier from 'update-notifier'
 
 import * as unixPermissions from '../main.js'
 
-import { defineCli } from './top.js'
-import { parseConfig } from './parse.js'
 import { getCommand } from './command.js'
 import { handleOutput } from './output.js'
+import { parseConfig } from './parse.js'
+import { defineCli } from './top.js'
 
 // Parse CLI arguments then run tasks
 const runCli = async function () {

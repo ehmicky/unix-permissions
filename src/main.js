@@ -1,15 +1,15 @@
-import { type } from './type.js'
 import { convert } from './converters.js'
-import { normalize } from './functions/normalize.js'
-import { positive } from './functions/positive.js'
 import { contain } from './functions/contain.js'
 import { equal } from './functions/equal.js'
-import { set } from './functions/set.js'
-import { not } from './functions/not.js'
 import { invert } from './functions/invert.js'
 import { min, max } from './functions/min_max.js'
-// eslint-disable-next-line import/max-dependencies
+import { normalize } from './functions/normalize.js'
+import { not } from './functions/not.js'
+import { positive } from './functions/positive.js'
+import { set } from './functions/set.js'
 import { moizeFuncs } from './moize.js'
+// eslint-disable-next-line import/max-dependencies
+import { type } from './type.js'
 
 // We memoize all exported functions since they:
 //  - are all pure

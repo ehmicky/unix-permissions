@@ -1,8 +1,8 @@
-import isPlainObj from 'is-plain-obj'
 import filterObj from 'filter-obj'
+import isPlainObj from 'is-plain-obj'
 
-import { TYPES } from './types/main.js'
 import { getNodesMap, NODES_MAP } from './nodes.js'
+import { TYPES } from './types/main.js'
 
 // Parse permission to a `nodesMap`
 // `nodesMap` uses an intermediary/internal format to facilitate conversions

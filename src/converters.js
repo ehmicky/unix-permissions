@@ -1,6 +1,6 @@
+import { convert as convertValue } from './helpers.js'
 import { TYPES_MAP } from './types/main.js'
 import { mapValues } from './utils.js'
-import { convert as convertValue } from './helpers.js'
 
 // Retrieve a map of all types' convertion functions
 const getConverters = function () {

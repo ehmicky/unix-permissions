@@ -1,7 +1,7 @@
 import filterObj from 'filter-obj'
 
-import { unaryMap } from '../helpers.js'
 import { SPECIAL_PERMISSIONS } from '../constants.js'
+import { unaryMap } from '../helpers.js'
 
 import { notMap } from './not.js'
 

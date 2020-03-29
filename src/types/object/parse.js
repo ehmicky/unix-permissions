@@ -1,7 +1,7 @@
 import isPlainObj from 'is-plain-obj'
 
-import { mapValues } from '../../utils.js'
 import { SHORT_CATEGORIES } from '../../constants.js'
+import { mapValues } from '../../utils.js'
 
 import {
   SHORT_PERMISSIONS,

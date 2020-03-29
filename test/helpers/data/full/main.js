@@ -1,8 +1,8 @@
-import { OCTAL, INVALID_OCTAL } from './octal.js'
 import { NUMBER, INVALID_NUMBER } from './number.js'
+import { OBJECT, INVALID_OBJECT } from './object.js'
+import { OCTAL, INVALID_OCTAL } from './octal.js'
 import { STAT, INVALID_STAT } from './stat.js'
 import { SYMBOLIC, INVALID_SYMBOLIC } from './symbolic.js'
-import { OBJECT, INVALID_OBJECT } from './object.js'
 
 export const VALID_FULL_DATA = [
   ...OCTAL,

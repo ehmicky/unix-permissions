@@ -1,6 +1,6 @@
 import { LONG_CATEGORIES } from '../../constants.js'
-import { groupBy, mapValues } from '../../utils.js'
 import { getNodeKey } from '../../nodes.js'
+import { groupBy, mapValues } from '../../utils.js'
 
 import {
   LONG_PERMISSIONS,

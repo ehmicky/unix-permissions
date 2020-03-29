@@ -3,9 +3,11 @@ import { each } from 'test-each'
 
 import { equal } from '../src/main.js'
 
+/* jscpd:ignore-start */
 import { callCli } from './helpers/cli.js'
 import { BINARY_DATA } from './helpers/data/binary.js'
 import { VALID_FULL_DATA } from './helpers/data/full/main.js'
+/* jscpd:ignore-end */
 
 each(BINARY_DATA, ({ title }, args) => {
   test(`equal (JavaScript) | ${title}`, (t) => {
