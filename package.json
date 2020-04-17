@@ -5,7 +5,7 @@
   "files": [
     "build/src",
     "examples",
-    "!~"
+    "!*~"
   ],
   "bin": {
     "unix-permissions": "build/src/bin/main.js"
