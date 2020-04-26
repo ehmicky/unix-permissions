@@ -18,4 +18,4 @@ const isNormal = function (key, { permission }) {
   return !SPECIAL_PERMISSIONS.has(permission)
 }
 
-export const invert = unaryMap.bind(null, invertMap)
+export const invert = unaryMap.bind(undefined, invertMap)

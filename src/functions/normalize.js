@@ -5,4 +5,4 @@ const normalizeMap = function (nodesMap) {
   return nodesMap
 }
 
-export const normalize = unaryMap.bind(null, normalizeMap)
+export const normalize = unaryMap.bind(undefined, normalizeMap)

@@ -22,7 +22,10 @@ export const unaryMap = function (mapFunc, perm) {
 // mapping function `(permA, permB[, ...perms]) -> perm`
 export const binaryMap = function (mapFunc, perm, ...perms) {
   const { type, nodesMap } = parse(perm)
-  const nodesMapA = perms.reduce(binaryMapReduce.bind(null, mapFunc), nodesMap)
+  const nodesMapA = perms.reduce(
+    binaryMapReduce.bind(undefined, mapFunc),
+    nodesMap,
+  )
   const permA = serialize(type, nodesMapA)
   return permA
 }

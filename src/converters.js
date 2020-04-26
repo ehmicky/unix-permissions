@@ -8,7 +8,7 @@ const getConverters = function () {
 }
 
 const getConverter = function (type, name) {
-  return convertValue.bind(null, name)
+  return convertValue.bind(undefined, name)
 }
 
 export const convert = getConverters()

@@ -1,10 +1,12 @@
 export const INVALID_OBJECT = [
   // Invalid
   undefined,
+  // eslint-disable-next-line unicorn/no-null
   null,
   false,
   [],
   new Map(),
+  // eslint-disable-next-line unicorn/no-null
   { user: null },
   { user: [] },
   { users: {} },
@@ -15,6 +17,7 @@ export const INVALID_OBJECT = [
   { special: { read: true } },
   { special: { write: true } },
   { special: { execute: true } },
+  // eslint-disable-next-line unicorn/no-null
   { others: { read: null } },
   { others: { read: {} } },
 ]

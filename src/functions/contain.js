@@ -14,4 +14,4 @@ const containNode = function (nodeA, nodeB = {}) {
   return nodeA.add === nodeB.add
 }
 
-export const contain = binaryTest.bind(null, containTest)
+export const contain = binaryTest.bind(undefined, containTest)

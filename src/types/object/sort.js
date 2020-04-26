@@ -22,11 +22,11 @@ const sort = function ({ attrName, order }, nodeA, nodeB) {
 const CATEGORY_ORDER = ['user', 'group', 'others', 'special']
 const PERM_ORDER = ['read', 'write', 'execute', 'setuid', 'setgid', 'sticky']
 
-const sortCategory = sort.bind(null, {
+const sortCategory = sort.bind(undefined, {
   attrName: 'category',
   order: CATEGORY_ORDER,
 })
-const sortPerm = sort.bind(null, {
+const sortPerm = sort.bind(undefined, {
   attrName: 'permission',
   order: PERM_ORDER,
 })

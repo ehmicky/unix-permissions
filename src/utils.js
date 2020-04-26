@@ -8,7 +8,7 @@ export const mapValues = function (object, mapper) {
 
 // Group array of objects together according to a specific key
 export const groupBy = function (array, key) {
-  return array.reduce(groupByReducer.bind(null, key), {})
+  return array.reduce(groupByReducer.bind(undefined, key), {})
 }
 
 const groupByReducer = function (key, groups, obj) {

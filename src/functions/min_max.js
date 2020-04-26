@@ -40,9 +40,9 @@ const isDefined = function (key, value) {
 }
 
 const MIN_VALUES = [false, undefined, true]
-const minMap = minMaxMap.bind(null, MIN_VALUES)
-export const min = variableMap.bind(null, minMap)
+const minMap = minMaxMap.bind(undefined, MIN_VALUES)
+export const min = variableMap.bind(undefined, minMap)
 
 const MAX_VALUES = [true, undefined, false]
-const maxMap = minMaxMap.bind(null, MAX_VALUES)
-export const max = variableMap.bind(null, maxMap)
+const maxMap = minMaxMap.bind(undefined, MAX_VALUES)
+export const max = variableMap.bind(undefined, maxMap)

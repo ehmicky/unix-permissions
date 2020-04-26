@@ -12,4 +12,4 @@ const notNode = function ({ add, ...node }) {
   return { ...node, add: !add }
 }
 
-export const not = unaryMap.bind(null, notMap)
+export const not = unaryMap.bind(undefined, notMap)

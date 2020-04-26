@@ -12,4 +12,4 @@ const hasAdd = function (key, { add }) {
   return add
 }
 
-export const positive = unaryMap.bind(null, positiveMap)
+export const positive = unaryMap.bind(undefined, positiveMap)

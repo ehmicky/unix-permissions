@@ -27,7 +27,7 @@ Convert, test and manipulate Unix permissions.
 ${COMMON_USAGE}`
 
 const addCommand = function (yargsA, { command, describe, examples }) {
-  const builder = buildCommand.bind(null, { command, describe, examples })
+  const builder = buildCommand.bind(undefined, { command, describe, examples })
   const yargsB = yargsA.command({ command, describe, builder })
   const yargsC = addExamples(yargsB, examples)
   return yargsC

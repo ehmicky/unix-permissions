@@ -7,4 +7,4 @@ const setMap = function (nodesMap, nodesMapA) {
   return { ...nodesMap, ...nodesMapA }
 }
 
-export const set = binaryMap.bind(null, setMap)
+export const set = binaryMap.bind(undefined, setMap)
