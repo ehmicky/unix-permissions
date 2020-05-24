@@ -40,6 +40,7 @@ const DASH_REGEXP = /-/gu
 // It is the same as `x` except it is a noop if no categories has `x`.
 // At the moment, we do not support this, so it's just an alias for `x`.
 const expandSpecial = function (part) {
+  // eslint-disable-next-line unicorn/no-reduce
   return EXPAND_REGEXPS.reduce(specialReduce, part)
 }
 
@@ -54,6 +55,7 @@ const EXPAND_REGEXPS = [
 
 // Inverse of `expandSpecial()`
 export const contractSpecial = function (part) {
+  // eslint-disable-next-line unicorn/no-reduce
   return CONTRACT_REGEXPS.reduce(specialReduce, part)
 }
 

@@ -10,6 +10,7 @@ export const defineCli = function () {
     .recommendCommands()
     // Permissions cannot be input as numbers, only as octals
     .parserConfiguration({ 'parse-numbers': false })
+  // eslint-disable-next-line unicorn/no-reduce
   const yargsB = COMMANDS.reduce(addCommand, yargsA)
   const yargsC = yargsB.completion()
   return yargsC
@@ -42,6 +43,7 @@ const buildCommand = function ({ command, describe, examples }, yargsA) {
 }
 
 const addExamples = function (yargsA, examples) {
+  // eslint-disable-next-line unicorn/no-reduce
   return examples.reduce(addExample, yargsA)
 }
 

@@ -4,6 +4,7 @@ import { VALUES } from './constants.js'
 
 // Serialize from `nodes` to a `number` permission
 export const serialize = function (nodes) {
+  // eslint-disable-next-line unicorn/no-reduce
   return nodes.filter(hasAdd).map(serializeNode).reduce(sum, 0)
 }
 
