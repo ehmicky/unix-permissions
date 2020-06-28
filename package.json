@@ -59,7 +59,7 @@
     "filter-obj": "^2.0.1",
     "is-plain-obj": "^2.1.0",
     "keep-func-props": "^3.0.0",
-    "moize": "^5.4.6",
+    "moize": "^5.4.7",
     "read-pkg-up": "^7.0.1",
     "update-notifier": "^4.1.0",
     "yargs": "^15.4.0"
