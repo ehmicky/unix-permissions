@@ -2,7 +2,7 @@
 export const INVALID_NUMBER = [
   // Invalid
   Number.NaN,
-  Infinity,
+  Number.POSITIVE_INFINITY,
   Number.EPSILON,
   Number.MAX_SAFE_INTEGER,
   Number.MAX_VALUE,
