@@ -24,5 +24,5 @@ export const hasDuplicate = function (array) {
 }
 
 const isDuplicate = function (elem, index, elems) {
-  return elems.slice(index + 1).some((elemB) => elem === elemB)
+  return elems.slice(index + 1).includes(elem)
 }
