@@ -3,9 +3,8 @@
   "version": "2.0.0",
   "main": "build/src/main.js",
   "files": [
-    "build/src",
-    "examples",
-    "!*~"
+    "build/src/**/*.{js,ts,map,json,sh,md}",
+    "examples/**/*.{js,ts,map,json,sh,md}"
   ],
   "bin": {
     "unix-permissions": "build/src/bin/main.js"
