@@ -5,9 +5,8 @@
 // An online demo is also available at:
 //   https://repl.it/@ehmicky/unix-permissions
 
-'use strict'
-
-const { convert } = require('unix-permissions')
+// eslint-disable-next-line node/no-missing-import
+import { convert } from 'unix-permissions'
 
 console.log(convert.stat(0)) // '---------'
 

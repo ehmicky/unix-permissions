@@ -5,9 +5,8 @@
 // An online demo is also available at:
 //   https://repl.it/@ehmicky/unix-permissions
 
-'use strict'
-
-const { invert } = require('unix-permissions')
+// eslint-disable-next-line node/no-missing-import
+import { invert } from 'unix-permissions'
 
 console.log(invert('u+xs')) // 'u-x'
 

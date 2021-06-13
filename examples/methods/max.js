@@ -5,8 +5,7 @@
 // An online demo is also available at:
 //   https://repl.it/@ehmicky/unix-permissions
 
-'use strict'
-
-const { max } = require('unix-permissions')
+// eslint-disable-next-line node/no-missing-import
+import { max } from 'unix-permissions'
 
 console.log(max('404', '440', '402')) // '0446'
