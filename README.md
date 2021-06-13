@@ -41,9 +41,11 @@ using those strings.
 
 In JavaScript:
 
-<!-- eslint-disable no-sync -->
+<!-- eslint-disable no-sync, node/no-missing-import -->
 
 ```js
+import { convert } from 'unix-permissions'
+
 // Retrieve a file's permission as an object like
 // `{ user: { write: false, read: true, ... }, ... }` instead of a number
 convert.object(fs.statSync('/etc/passwd').mode)
@@ -89,8 +91,10 @@ npm install unix-permissions
 
 # Usage (JavaScript)
 
+<!-- eslint-disable node/no-missing-import -->
+
 ```js
-const { convert } = require('unix-permissions')
+import { convert } from 'unix-permissions'
 
 // `permission` will be set to `rw-rw----`
 const permission = convert.stat('660')
