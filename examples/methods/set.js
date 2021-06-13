@@ -7,9 +7,6 @@
 
 'use strict'
 
-// Ignore the following line: this is only needed for internal purposes.
-require('../utils.js')
-
 const { set } = require('unix-permissions')
 
 console.log(set('---------', 'a+x')) // '--x--x--x'

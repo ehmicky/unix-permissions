@@ -9,9 +9,6 @@
 
 'use strict'
 
-// Ignore the following line: this is only needed for internal purposes.
-require('../utils.js')
-
 const { contain } = require('unix-permissions')
 
 console.log(contain('--x--x--x', 'a=x')) // `true`

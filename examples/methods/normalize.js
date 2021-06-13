@@ -7,9 +7,6 @@
 
 'use strict'
 
-// Ignore the following line: this is only needed for internal purposes.
-require('../utils.js')
-
 const { normalize } = require('unix-permissions')
 
 console.log(normalize('1')) // '0001'

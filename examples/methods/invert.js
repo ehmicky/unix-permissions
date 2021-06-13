@@ -7,9 +7,6 @@
 
 'use strict'
 
-// Ignore the following line: this is only needed for internal purposes.
-require('../utils.js')
-
 const { invert } = require('unix-permissions')
 
 console.log(invert('u+xs')) // 'u-x'

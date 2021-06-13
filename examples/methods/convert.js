@@ -7,9 +7,6 @@
 
 'use strict'
 
-// Ignore the following line: this is only needed for internal purposes.
-require('../utils.js')
-
 const { convert, positive } = require('unix-permissions')
 
 console.log(convert.symbolic('111')) // 'a=x'

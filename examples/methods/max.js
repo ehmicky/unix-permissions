@@ -7,9 +7,6 @@
 
 'use strict'
 
-// Ignore the following line: this is only needed for internal purposes.
-require('../utils.js')
-
 const { max } = require('unix-permissions')
 
 console.log(max('404', '440', '402')) // '0446'
