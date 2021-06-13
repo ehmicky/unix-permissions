@@ -8,7 +8,7 @@ export const INVALID_NUMBER = [
   Number.MAX_VALUE,
   -1,
   0.5,
-  65536,
+  65_536,
 ]
 
 export const NUMBER = [
@@ -22,6 +22,6 @@ export const NUMBER = [
   3,
 
   // `stat` bits
-  4096, 65535,
+  4096, 65_535,
 ]
 /* eslint-enable no-magic-numbers */

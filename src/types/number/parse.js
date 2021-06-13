@@ -22,7 +22,7 @@ const isValidNumber = function ({ number }) {
 }
 
 const MIN_NUMBER = 0
-const MAX_NUMBER = 65535
+const MAX_NUMBER = 65_535
 
 // Check permissions bit by bit
 const getNode = function ({ number, nodeKey, node }) {
