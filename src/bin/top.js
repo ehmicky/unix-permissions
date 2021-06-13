@@ -1,10 +1,14 @@
+import { argv } from 'process'
+
 import yargs from 'yargs'
+// eslint-disable-next-line node/file-extension-in-import
+import { hideBin } from 'yargs/helpers'
 
 import { COMMANDS } from './commands.js'
 
 export const defineCli = function () {
   return (
-    yargs
+    yargs(hideBin(argv))
       .command(COMMANDS.map(getCommand))
       .demandCommand(1, 1)
       .recommendCommands()
