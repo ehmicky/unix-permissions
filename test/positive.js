@@ -1,7 +1,7 @@
 import test from 'ava'
 import { each } from 'test-each'
-
-import { positive } from '../src/main.js'
+// eslint-disable-next-line import/no-unresolved, node/no-missing-import
+import { positive } from 'unix-permissions'
 
 import { callCli } from './helpers/cli.js'
 import { VALID_FULL_DATA } from './helpers/data/full/main.js'

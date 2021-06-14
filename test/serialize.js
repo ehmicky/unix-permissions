@@ -1,7 +1,7 @@
 import test from 'ava'
 import { each } from 'test-each'
-
-import { convert } from '../src/main.js'
+// eslint-disable-next-line import/no-unresolved, node/no-missing-import
+import { convert } from 'unix-permissions'
 
 import { callCli } from './helpers/cli.js'
 import { TYPES } from './helpers/data/types.js'

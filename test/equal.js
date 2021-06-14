@@ -1,7 +1,7 @@
 import test from 'ava'
 import { each } from 'test-each'
-
-import { equal } from '../src/main.js'
+// eslint-disable-next-line import/no-unresolved, node/no-missing-import
+import { equal } from 'unix-permissions'
 
 /* jscpd:ignore-start */
 import { callCli } from './helpers/cli.js'
