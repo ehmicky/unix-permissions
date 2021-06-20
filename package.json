@@ -53,7 +53,7 @@
   "dependencies": {
     "filter-obj": "^2.0.1",
     "is-plain-obj": "^4.0.0",
-    "keep-func-props": "^4.0.0",
+    "keep-func-props": "^4.0.1",
     "moize": "^6.0.3",
     "read-pkg-up": "^8.0.0",
     "update-notifier": "^5.0.1",
