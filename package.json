@@ -1,6 +1,6 @@
 {
   "name": "unix-permissions",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "type": "module",
   "exports": "./build/src/main.js",
   "files": [
