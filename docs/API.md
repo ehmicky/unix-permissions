@@ -29,8 +29,6 @@ assume `0` in [`number`](types.md#number) and `-` in [`stat`](types.md#stat)
 mean "unset permissions". However you can use
 [`positive()`](#positivepermission) to overcome this issue.
 
-<!-- eslint-disable node/no-missing-import -->
-
 ```js
 import { convert } from 'unix-permissions'
 
@@ -53,8 +51,6 @@ try {
 
 Returns the `permission`'s [`type`](types.md) or `'invalid'`.
 
-<!-- eslint-disable node/no-missing-import -->
-
 ```js
 import { type } from 'unix-permissions'
 
@@ -72,8 +68,6 @@ console.log(type('a+i')) // 'invalid'
 Normalizes a `permission` to its canonical shape.
 
 Throws an exception if `permission` is invalid.
-
-<!-- eslint-disable node/no-missing-import -->
 
 ```js
 import { normalize } from 'unix-permissions'
@@ -100,8 +94,6 @@ Removes all negative permissions. See
 [convert()](#convertoctalnumberstatsymbolicobjectpermission) for more
 explanation.
 
-<!-- eslint-disable node/no-missing-import -->
-
 ```js
 import { positive } from 'unix-permissions'
 
@@ -121,8 +113,6 @@ console.log(invert(positive('660'))) // '-0660'
 Tests whether `permission` includes `permissions`.
 
 Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
-
-<!-- eslint-disable node/no-missing-import -->
 
 ```js
 import { contain } from 'unix-permissions'
@@ -153,8 +143,6 @@ console.log(contain('o+x,o-w', 'o+x', 'o-w')) // `true`
 Tests whether `permission` equals exactly `permissions`.
 
 Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
-
-<!-- eslint-disable node/no-missing-import -->
 
 ```js
 import { equal } from 'unix-permissions'
@@ -190,8 +178,6 @@ This can also be used to remove special permissions using
 `set(permission, 'a-st')` since some functions like
 [`umask`](https://linux.die.net/man/2/umask) do not allow them.
 
-<!-- eslint-disable node/no-missing-import -->
-
 ```js
 import { set } from 'unix-permissions'
 
@@ -212,8 +198,6 @@ Inverts `permission` including special permissions.
 
 This can be used in combination with `set()` to unset `permissions` instead of
 setting them.
-
-<!-- eslint-disable node/no-missing-import -->
 
 ```js
 import { not } from 'unix-permissions'
@@ -246,8 +230,6 @@ Inverts `permission` and removes special permissions.
 For example a [`umask`](https://linux.die.net/man/2/umask) of `117` means new
 files will be created with `661` permissions.
 
-<!-- eslint-disable node/no-missing-import -->
-
 ```js
 import { invert } from 'unix-permissions'
 
@@ -276,8 +258,6 @@ the lowest bits of all arguments.
 This can be useful if you are looking for the lowest permission of a several
 files, e.g. during a directory recursion.
 
-<!-- eslint-disable node/no-missing-import -->
-
 ```js
 import { min } from 'unix-permissions'
 
@@ -287,8 +267,6 @@ console.log(min('404', '440', '402')) // '0400'
 ## max(permissions...)
 
 Inverse of [`min()`](#minpermissions).
-
-<!-- eslint-disable node/no-missing-import -->
 
 ```js
 import { max } from 'unix-permissions'

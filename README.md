@@ -41,7 +41,7 @@ using those strings.
 
 In JavaScript:
 
-<!-- eslint-disable no-sync, node/no-missing-import -->
+<!-- eslint-disable no-sync -->
 
 ```js
 import { convert } from 'unix-permissions'
@@ -90,8 +90,6 @@ npm install unix-permissions
 ```
 
 # Usage (JavaScript)
-
-<!-- eslint-disable node/no-missing-import -->
 
 ```js
 import { convert } from 'unix-permissions'
