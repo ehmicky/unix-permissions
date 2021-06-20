@@ -7,7 +7,6 @@
 // An online demo is also available at:
 //   https://repl.it/@ehmicky/unix-permissions
 
-// eslint-disable-next-line node/no-missing-import
 import { contain } from 'unix-permissions'
 
 console.log(contain('--x--x--x', 'a=x')) // `true`

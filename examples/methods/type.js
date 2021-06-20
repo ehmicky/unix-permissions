@@ -5,7 +5,6 @@
 // An online demo is also available at:
 //   https://repl.it/@ehmicky/unix-permissions
 
-// eslint-disable-next-line node/no-missing-import
 import { type } from 'unix-permissions'
 
 console.log(type('1')) // 'octal'

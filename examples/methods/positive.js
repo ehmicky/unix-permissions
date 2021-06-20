@@ -5,7 +5,6 @@
 // An online demo is also available at:
 //   https://repl.it/@ehmicky/unix-permissions
 
-// eslint-disable-next-line node/no-missing-import
 import { positive, invert } from 'unix-permissions'
 
 console.log(positive('o+x,o-rw')) // 'o+x'
