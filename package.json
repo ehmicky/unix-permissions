@@ -13,11 +13,6 @@
   "scripts": {
     "test": "gulp test"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "gulp -LL check --full"
-    }
-  },
   "description": "Swiss Army knife for Unix permissions",
   "keywords": [
     "unix",
