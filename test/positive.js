@@ -1,6 +1,5 @@
 import test from 'ava'
 import { each } from 'test-each'
-// eslint-disable-next-line import/no-unresolved, node/no-missing-import
 import { positive } from 'unix-permissions'
 
 import { callCli } from './helpers/cli.js'

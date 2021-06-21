@@ -1,6 +1,5 @@
 import test from 'ava'
 import { each } from 'test-each'
-// eslint-disable-next-line import/no-unresolved, node/no-missing-import
 import { convert, normalize, type as getType } from 'unix-permissions'
 
 import { VALID_FULL_DATA } from './helpers/data/full/main.js'
