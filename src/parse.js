@@ -10,7 +10,6 @@ import { TYPES } from './types/main.js'
 // Guesses permission type by trying each `type.parse()` in order, and using
 // the first one that does not return `undefined`
 export const parse = function (perm) {
-  // eslint-disable-next-line unicorn/prefer-object-from-entries
   const { type, nodes } = TYPES.reduce(parseReduce.bind(undefined, perm), {})
 
   validateNodes({ nodes, perm })

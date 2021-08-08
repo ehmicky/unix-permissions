@@ -8,7 +8,6 @@ export const mapValues = function (object, mapper) {
 
 // Group array of objects together according to a specific key
 export const groupBy = function (array, key) {
-  // eslint-disable-next-line unicorn/prefer-object-from-entries
   return array.reduce(groupByReducer.bind(undefined, key), {})
 }
 
