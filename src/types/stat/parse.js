@@ -20,7 +20,7 @@ const hasDuplicates = function ({ tokens }) {
 }
 
 const hasDuplicateChars = function (string) {
-  return hasDuplicate(string.split(''))
+  return hasDuplicate([...string])
 }
 
 // Parse a `stat` character to a single `node`

@@ -29,7 +29,7 @@ const hasDuplicates = function ({ tokens }) {
 }
 
 const hasDuplicatePermissions = function ({ permissions }) {
-  return hasDuplicate(permissions.split(''))
+  return hasDuplicate([...permissions])
 }
 
 // `=rw` defaults to `a=rw`
@@ -55,9 +55,11 @@ const X_REGEXP = /X/gu
 // Several categories can be grouped, e.g. `gu=x`.
 // Duplicates are allowed.
 const splitCategories = function ({ categories, operator, permissions }) {
-  return categories
-    .split('')
-    .map((category) => ({ category, operator, permissions }))
+  return [...categories].map((category) => ({
+    category,
+    operator,
+    permissions,
+  }))
 }
 
 // `a` category is the same as `rwx`
@@ -97,7 +99,5 @@ const splitPermissions = function ({ permissions, add, ...node }) {
     return []
   }
 
-  return permissions
-    .split('')
-    .map((permission) => ({ ...node, permission, add }))
+  return [...permissions].map((permission) => ({ ...node, permission, add }))
 }
