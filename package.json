@@ -57,7 +57,7 @@
     "moize": "^6.1.0",
     "read-pkg-up": "^9.0.0",
     "update-notifier": "^5.0.1",
-    "yargs": "^17.2.1"
+    "yargs": "^17.3.0"
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^1.0.57",
