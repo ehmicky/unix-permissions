@@ -55,7 +55,7 @@
     "is-plain-obj": "^4.0.0",
     "keep-func-props": "^4.0.1",
     "moize": "^6.1.0",
-    "read-pkg-up": "^9.0.0",
+    "read-pkg-up": "^9.1.0",
     "update-notifier": "^5.0.1",
     "yargs": "^17.3.1"
   },
