@@ -249,5 +249,24 @@ export declare const convert: {
    */
   symbolic: (permission: Permission) => PermissionSymbolic
 
-  object: () => void
+  /**
+   * Returns `permission` converted to the object type.
+   *
+   * @example
+   * ```js
+   * convert.object('a+x')
+   * // {
+   * //   user: { execute: true },
+   * //   group: { execute: true },
+   * //   others: { execute: true }
+   * // }
+   *
+   * try {
+   *   convert.object('z+x') // Throws an exception (permission syntax is invalid)
+   * } catch (error) {
+   *   console.log(error.message)
+   * }
+   * ```
+   */
+  object: (permission: Permission) => PermissionObject
 }
