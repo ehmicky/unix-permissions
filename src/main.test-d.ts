@@ -1,5 +1,4 @@
 import {
-  convert,
   PermissionOctal,
   PermissionNumber,
   PermissionStat,
@@ -7,6 +6,8 @@ import {
   PermissionObject,
   Permission,
   PermissionType,
+  convert,
+  type,
 } from 'unix-permissions'
 import {
   expectType,
@@ -175,3 +176,10 @@ expectType<PermissionObject>(convert.object('d--x--x--x'))
 expectType<PermissionObject>(convert.object('a+x'))
 expectType<PermissionObject>(convert.object({ all: { execute: true } }))
 expectError(convert.object(''))
+
+expectType<PermissionType>(type('111'))
+expectType<PermissionType>(type(0o111))
+expectType<PermissionType>(type('d--x--x--x'))
+expectType<PermissionType>(type('a+x'))
+expectType<PermissionType>(type({ all: { execute: true } }))
+expectType<'invalid'>(type(''))

@@ -275,3 +275,17 @@ export declare const convert: {
    */
   object: (permission: Permission) => PermissionObject
 }
+
+/**
+ * Returns the `permission`'s `type` or `'invalid'`.
+ *
+ * @example
+ * ```js
+ * console.log(type('1')) // 'octal'
+ * console.log(type(1)) // 'number'
+ * console.log(type('a+x')) // 'symbolic'
+ * console.log(type('a+i')) // 'invalid'
+ * ```
+ */
+export function type(permission: Permission): PermissionType
+export function type(permission: any): 'invalid'
