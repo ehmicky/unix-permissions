@@ -152,3 +152,12 @@ expectAssignable<PermissionStat>(convert.stat('d--x--x--x'))
 expectAssignable<PermissionStat>(convert.stat('a+x'))
 expectAssignable<PermissionStat>(convert.stat({ all: { execute: true } }))
 expectError(convert.stat(''))
+
+expectAssignable<PermissionSymbolic>(convert.symbolic('111'))
+expectAssignable<PermissionSymbolic>(convert.symbolic(0o111))
+expectAssignable<PermissionSymbolic>(convert.symbolic('d--x--x--x'))
+expectAssignable<PermissionSymbolic>(convert.symbolic('a+x'))
+expectAssignable<PermissionSymbolic>(
+  convert.symbolic({ all: { execute: true } }),
+)
+expectError(convert.symbolic(''))

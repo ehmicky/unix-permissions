@@ -233,7 +233,21 @@ export declare const convert: {
    */
   stat: (permission: Permission) => PermissionStat
 
-  symbolic: () => void
+  /**
+   * Returns `permission` converted to the symbolic type.
+   *
+   * @example
+   * ```js
+   * convert.symbolic('--x--x--x') // 'a=x'
+   *
+   * try {
+   *   convert.symbolic('--o--o--o') // Throws an exception (permission syntax is invalid)
+   * } catch (error) {
+   *   console.log(error.message)
+   * }
+   * ```
+   */
+  symbolic: (permission: Permission) => PermissionSymbolic
 
   object: () => void
 }
