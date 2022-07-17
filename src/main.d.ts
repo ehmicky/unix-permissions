@@ -184,16 +184,28 @@ export type Permission =
   | PermissionSymbolic
   | PermissionObject
 
-/**
- *
- * @example
- * ```js
- * ```
- */
 export declare const convert: {
-  number: () => void
   octal: () => void
+
+  /**
+   * Returns `permission` converted to the number type.
+   *
+   * @example
+   * ```js
+   * convert.number('a+x') // 0o111
+   *
+   * try {
+   *   convert.number('z+x') // Throws an exception (permission syntax is invalid)
+   * } catch (error) {
+   *   console.log(error.message)
+   * }
+   * ```
+   */
+  number: (permission: Permission) => PermissionNumber
+
   stat: () => void
+
   symbolic: () => void
+
   object: () => void
 }
