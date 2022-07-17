@@ -172,6 +172,19 @@ type PermissionObjectSpecial = Partial<{
 type PermissionObjectValue = boolean | undefined
 
 /**
+ * Permissions of a file for:
+ *  - Each user class (user, group, others)
+ *  - Each file operation (read, write, execute), including special operations
+ *    (setuid, setgid, sticky)
+ */
+export type Permission =
+  | PermissionOctal
+  | PermissionNumber
+  | PermissionStat
+  | PermissionSymbolic
+  | PermissionObject
+
+/**
  *
  * @example
  * ```js

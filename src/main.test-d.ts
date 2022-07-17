@@ -5,6 +5,7 @@ import {
   PermissionStat,
   PermissionSymbolic,
   PermissionObject,
+  Permission,
 } from 'unix-permissions'
 import {
   expectType,
@@ -123,3 +124,10 @@ expectNotAssignable<PermissionObject>({ all: { unknown: true } })
 expectNotAssignable<PermissionObject>({ special: { setuid: 'true' } })
 expectNotAssignable<PermissionObject>({ special: { read: true } })
 expectNotAssignable<PermissionObject>({ special: { unknown: true } })
+
+expectAssignable<Permission>('111')
+expectAssignable<Permission>(0o111)
+expectAssignable<Permission>('d--x--x--x')
+expectAssignable<Permission>('a+x')
+expectAssignable<Permission>({ all: { execute: true } })
+expectNotAssignable<Permission>('')
