@@ -6,6 +6,7 @@ import {
   PermissionSymbolic,
   PermissionObject,
   Permission,
+  PermissionType,
 } from 'unix-permissions'
 import {
   expectType,
@@ -131,6 +132,14 @@ expectAssignable<Permission>('d--x--x--x')
 expectAssignable<Permission>('a+x')
 expectAssignable<Permission>({ all: { execute: true } })
 expectNotAssignable<Permission>('')
+
+expectAssignable<PermissionType>('octal')
+expectAssignable<PermissionType>('number')
+expectAssignable<PermissionType>('stat')
+expectAssignable<PermissionType>('symbolic')
+expectAssignable<PermissionType>('object')
+expectNotAssignable<PermissionType>('unknown')
+expectNotAssignable<PermissionType>('')
 
 expectType<PermissionOctal>(convert.octal('111'))
 expectType<PermissionOctal>(convert.octal(0o111))

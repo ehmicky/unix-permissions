@@ -184,6 +184,11 @@ export type Permission =
   | PermissionSymbolic
   | PermissionObject
 
+/**
+ * Type of permission format.
+ */
+export type PermissionType = 'octal' | 'number' | 'stat' | 'symbolic' | 'object'
+
 export declare const convert: {
   /**
    * Returns `permission` converted to the octal type.
