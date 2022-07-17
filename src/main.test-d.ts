@@ -15,6 +15,7 @@ import {
   set,
   not,
   invert,
+  min,
 } from 'unix-permissions'
 import {
   expectType,
@@ -255,3 +256,15 @@ expectType<PermissionStat>(invert('d--x--x--x'))
 expectType<PermissionSymbolic>(invert('a+x'))
 expectType<PermissionObject>(invert({ all: { execute: true } }))
 expectType<never>(invert(''))
+
+expectType<PermissionOctal>(min('111', '111'))
+expectType<PermissionNumber>(min(0o111, 0o111))
+expectType<PermissionStat>(min('d--x--x--x', 'd--x--x--x'))
+expectType<PermissionSymbolic>(min('a+x', 'a+x'))
+expectType<PermissionObject>(
+  min({ all: { execute: true } }, { all: { execute: true } }),
+)
+expectType<undefined>(min())
+expectType<PermissionOctal>(min('111', '111', '111'))
+expectType<PermissionOctal>(min('111', 0o111))
+expectType<never>(min('', '111'))

@@ -476,3 +476,40 @@ export function invert(permission: PermissionStat): PermissionStat
 export function invert(permission: PermissionSymbolic): PermissionSymbolic
 export function invert(permission: PermissionObject): PermissionObject
 export function invert(permission: any): never
+
+/**
+ * Retrieves the lowest permissions among all arguments.
+ *
+ * This does not return the lowest argument. Instead it returns a combination of
+ * the lowest bits of all arguments.
+ *
+ * This can be useful if you are looking for the lowest permission of a several
+ * files, e.g. during a directory recursion.
+ *
+ * @example
+ * ```js
+ * console.log(min('404', '440', '402')) // '0400'
+ * ```
+ */
+export function min(): undefined
+export function min(
+  permission: PermissionOctal,
+  ...otherPermissions: Permission[]
+): PermissionOctal
+export function min(
+  permission: PermissionNumber,
+  ...otherPermissions: Permission[]
+): PermissionNumber
+export function min(
+  permission: PermissionStat,
+  ...otherPermissions: Permission[]
+): PermissionStat
+export function min(
+  permission: PermissionSymbolic,
+  ...otherPermissions: Permission[]
+): PermissionSymbolic
+export function min(
+  permission: PermissionObject,
+  ...otherPermissions: Permission[]
+): PermissionObject
+export function min(permission: any, ...otherPermissions: Permission[]): never
