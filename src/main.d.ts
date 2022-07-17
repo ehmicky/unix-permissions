@@ -357,3 +357,26 @@ export function contain(
   containedPermission: Permission,
   ...alsoContainedPermissions: Permission[]
 ): boolean
+
+/**
+ * Tests whether `permission` equals exactly `permissions`.
+ *
+ * @example
+ * ```js
+ * console.log(equal('--x--x--x', 'a=x')) // `true`
+ * console.log(equal('--x--x--x', 'a+x')) // `false`
+ * console.log(equal('--x--x--x', 'a-x')) // `false`
+ * console.log(equal('--x--x--x', 'a-w')) // `false`
+ * console.log(equal('o+x', 'o+x')) // `true`
+ * console.log(equal('o+x', 'o+x,o+x')) // `true`
+ * console.log(equal('o+x', 'o=w')) // `false`
+ * console.log(equal('o+x,o-w', 'o-w,o+x')) // `true`
+ * console.log(equal('o+x,o-w', 'o-w')) // `false`
+ * console.log(equal('o+x,o-w', 'o+x', 'o-w')) // `false`
+ * ```
+ */
+export function equal(
+  permission: Permission,
+  equaledPermission: Permission,
+  ...alsoEqualedPermissions: Permission[]
+): boolean

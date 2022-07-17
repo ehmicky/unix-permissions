@@ -11,6 +11,7 @@ import {
   normalize,
   positive,
   contain,
+  equal,
 } from 'unix-permissions'
 import {
   expectType,
@@ -213,3 +214,16 @@ expectError(contain('111'))
 expectError(contain('111', ''))
 expectError(contain('', '111'))
 expectError(contain('111', '111', ''))
+
+expectType<boolean>(equal('111', '111'))
+expectType<boolean>(equal(0o111, 0o111))
+expectType<boolean>(equal('d--x--x--x', 'd--x--x--x'))
+expectType<boolean>(equal('a+x', 'a+x'))
+expectType<boolean>(
+  equal({ all: { execute: true } }, { all: { execute: true } }),
+)
+expectType<boolean>(equal('111', '111', '111'))
+expectError(equal('111'))
+expectError(equal('111', ''))
+expectError(equal('', '111'))
+expectError(equal('111', '111', ''))
