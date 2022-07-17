@@ -453,3 +453,26 @@ export function not(permission: PermissionStat): PermissionStat
 export function not(permission: PermissionSymbolic): PermissionSymbolic
 export function not(permission: PermissionObject): PermissionObject
 export function not(permission: any): never
+
+/**
+ * Inverts `permission` and removes special permissions.
+ * For example a [`umask`](https://linux.die.net/man/2/umask) of `117` means new
+ * files will be created with `661` permissions.
+ *
+ * @example
+ * ```js
+ * console.log(invert('u+xs')) // 'u-x'
+ * console.log(invert('u-xs')) // 'u+x'
+ * console.log(invert('u=x')) // 'u+rw,u-x'
+ * console.log(invert('a=x')) // 'a+rw,a-x'
+ * console.log(invert('rws-ws-w-')) // '---r--r-x'
+ * console.log(invert('0660')) // '0117'
+ * console.log(invert('1660')) // '0117'
+ * ```
+ */
+export function invert(permission: PermissionOctal): PermissionOctal
+export function invert(permission: PermissionNumber): PermissionNumber
+export function invert(permission: PermissionStat): PermissionStat
+export function invert(permission: PermissionSymbolic): PermissionSymbolic
+export function invert(permission: PermissionObject): PermissionObject
+export function invert(permission: any): never

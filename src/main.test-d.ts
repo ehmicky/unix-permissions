@@ -14,6 +14,7 @@ import {
   equal,
   set,
   not,
+  invert,
 } from 'unix-permissions'
 import {
   expectType,
@@ -247,3 +248,10 @@ expectType<PermissionStat>(not('d--x--x--x'))
 expectType<PermissionSymbolic>(not('a+x'))
 expectType<PermissionObject>(not({ all: { execute: true } }))
 expectType<never>(not(''))
+
+expectType<PermissionOctal>(invert('111'))
+expectType<PermissionNumber>(invert(0o111))
+expectType<PermissionStat>(invert('d--x--x--x'))
+expectType<PermissionSymbolic>(invert('a+x'))
+expectType<PermissionObject>(invert({ all: { execute: true } }))
+expectType<never>(invert(''))
