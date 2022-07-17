@@ -315,3 +315,22 @@ export function normalize(permission: PermissionStat): PermissionStat
 export function normalize(permission: PermissionSymbolic): PermissionSymbolic
 export function normalize(permission: PermissionObject): PermissionObject
 export function normalize(permission: any): never
+
+/**
+ * Removes all negative permissions.
+ *
+ * @example
+ * ```js
+ * console.log(positive('o+x,o-rw')) // 'o+x'
+ * console.log(positive('o=x')) // 'o+x'
+ * console.log(positive('660')) // '+0660'
+ * console.log(invert('660')) // '0117'
+ * console.log(invert(positive('660'))) // '-0660'
+ * ```
+ */
+export function positive(permission: PermissionOctal): PermissionOctal
+export function positive(permission: PermissionNumber): PermissionNumber
+export function positive(permission: PermissionStat): PermissionStat
+export function positive(permission: PermissionSymbolic): PermissionSymbolic
+export function positive(permission: PermissionObject): PermissionObject
+export function positive(permission: any): never

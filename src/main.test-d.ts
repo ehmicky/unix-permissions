@@ -9,6 +9,7 @@ import {
   convert,
   type,
   normalize,
+  positive,
 } from 'unix-permissions'
 import {
   expectType,
@@ -191,3 +192,10 @@ expectType<PermissionStat>(normalize('d--x--x--x'))
 expectType<PermissionSymbolic>(normalize('a+x'))
 expectType<PermissionObject>(normalize({ all: { execute: true } }))
 expectType<never>(normalize(''))
+
+expectType<PermissionOctal>(positive('111'))
+expectType<PermissionNumber>(positive(0o111))
+expectType<PermissionStat>(positive('d--x--x--x'))
+expectType<PermissionSymbolic>(positive('a+x'))
+expectType<PermissionObject>(positive({ all: { execute: true } }))
+expectType<never>(positive(''))

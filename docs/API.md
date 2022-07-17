@@ -86,7 +86,7 @@ Removes all negative permissions. See
 explanation.
 
 ```js
-import { positive } from 'unix-permissions'
+import { positive, invert } from 'unix-permissions'
 
 console.log(positive('o+x,o-rw')) // 'o+x'
 console.log(positive('o=x')) // 'o+x'
