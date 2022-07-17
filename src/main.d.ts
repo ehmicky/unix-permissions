@@ -289,3 +289,29 @@ export declare const convert: {
  */
 export function type(permission: Permission): PermissionType
 export function type(permission: any): 'invalid'
+
+/**
+ * Normalizes a `permission` to its canonical shape.
+ * Throws an exception if `permission` is invalid.
+ *
+ * @example
+ * ```js
+ * console.log(normalize('1')) // '0001'
+ * console.log(normalize('g+x,o+x')) // 'go+x'
+ * console.log(normalize('d--- --- ---')) // '---------'
+ * console.log(normalize({ user: { read: undefined, write: true } }))
+ * // { user: { write: true } }
+ *
+ * try {
+ *   normalize('z+x') // Throws an exception (permission syntax is invalid)
+ * } catch (error) {
+ *   console.log(error.message)
+ * }
+ * ```
+ */
+export function normalize(permission: PermissionOctal): PermissionOctal
+export function normalize(permission: PermissionNumber): PermissionNumber
+export function normalize(permission: PermissionStat): PermissionStat
+export function normalize(permission: PermissionSymbolic): PermissionSymbolic
+export function normalize(permission: PermissionObject): PermissionObject
+export function normalize(permission: any): never
