@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "filter-obj": "^4.0.0",
+    "handle-cli-error": "^1.0.0",
     "is-plain-obj": "^4.1.0",
     "keep-func-props": "^5.1.0",
     "moize": "^6.1.1",
