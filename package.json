@@ -52,7 +52,7 @@
     "example": "examples"
   },
   "dependencies": {
-    "filter-obj": "^3.0.0",
+    "filter-obj": "^4.0.0",
     "is-plain-obj": "^4.1.0",
     "keep-func-props": "^5.1.0",
     "moize": "^6.1.1",
