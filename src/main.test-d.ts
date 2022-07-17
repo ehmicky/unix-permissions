@@ -16,6 +16,7 @@ import {
   not,
   invert,
   min,
+  max,
 } from 'unix-permissions'
 import {
   expectType,
@@ -268,3 +269,15 @@ expectType<undefined>(min())
 expectType<PermissionOctal>(min('111', '111', '111'))
 expectType<PermissionOctal>(min('111', 0o111))
 expectType<never>(min('', '111'))
+
+expectType<PermissionOctal>(max('111', '111'))
+expectType<PermissionNumber>(max(0o111, 0o111))
+expectType<PermissionStat>(max('d--x--x--x', 'd--x--x--x'))
+expectType<PermissionSymbolic>(max('a+x', 'a+x'))
+expectType<PermissionObject>(
+  max({ all: { execute: true } }, { all: { execute: true } }),
+)
+expectType<undefined>(max())
+expectType<PermissionOctal>(max('111', '111', '111'))
+expectType<PermissionOctal>(max('111', 0o111))
+expectType<never>(max('', '111'))

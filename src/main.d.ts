@@ -513,3 +513,40 @@ export function min(
   ...otherPermissions: Permission[]
 ): PermissionObject
 export function min(permission: any, ...otherPermissions: Permission[]): never
+
+/**
+ * Retrieves the highest permissions among all arguments.
+ *
+ * This does not return the highest argument. Instead it returns a combination
+ * of the highest bits of all arguments.
+ *
+ * This can be useful if you are looking for the highest permission of a several
+ * files, e.g. during a directory recursion.
+ *
+ * @example
+ * ```js
+ * console.log(max('404', '440', '402')) // '04446'
+ * ```
+ */
+export function max(): undefined
+export function max(
+  permission: PermissionOctal,
+  ...otherPermissions: Permission[]
+): PermissionOctal
+export function max(
+  permission: PermissionNumber,
+  ...otherPermissions: Permission[]
+): PermissionNumber
+export function max(
+  permission: PermissionStat,
+  ...otherPermissions: Permission[]
+): PermissionStat
+export function max(
+  permission: PermissionSymbolic,
+  ...otherPermissions: Permission[]
+): PermissionSymbolic
+export function max(
+  permission: PermissionObject,
+  ...otherPermissions: Permission[]
+): PermissionObject
+export function max(permission: any, ...otherPermissions: Permission[]): never
