@@ -185,7 +185,21 @@ export type Permission =
   | PermissionObject
 
 export declare const convert: {
-  octal: () => void
+  /**
+   * Returns `permission` converted to the octal type.
+   *
+   * @example
+   * ```js
+   * convert.octal('a+x') // '+0111'
+   *
+   * try {
+   *   convert.octal('z+x') // Throws an exception (permission syntax is invalid)
+   * } catch (error) {
+   *   console.log(error.message)
+   * }
+   * ```
+   */
+  octal: (permission: Permission) => PermissionOctal
 
   /**
    * Returns `permission` converted to the number type.

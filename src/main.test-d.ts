@@ -132,6 +132,13 @@ expectAssignable<Permission>('a+x')
 expectAssignable<Permission>({ all: { execute: true } })
 expectNotAssignable<Permission>('')
 
+expectAssignable<PermissionOctal>(convert.octal('111'))
+expectAssignable<PermissionOctal>(convert.octal(0o111))
+expectAssignable<PermissionOctal>(convert.octal('d--x--x--x'))
+expectAssignable<PermissionOctal>(convert.octal('a+x'))
+expectAssignable<PermissionOctal>(convert.octal({ all: { execute: true } }))
+expectError(convert.octal(''))
+
 expectAssignable<PermissionNumber>(convert.number('111'))
 expectAssignable<PermissionNumber>(convert.number(0o111))
 expectAssignable<PermissionNumber>(convert.number('d--x--x--x'))
