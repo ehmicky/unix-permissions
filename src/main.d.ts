@@ -38,6 +38,28 @@ type OctalOperator = '' | '=' | '+' | '-'
 type OctalStart = `${OctalOperator}${OctalPrefix}`
 
 /**
+ * Permission type used by Node.js
+ * [`fs.chmod()`](https://nodejs.org/api/fs.html#fs_fs_chmod_path_mode_callback).
+ *
+ * It is the same as `octal` except:
+ *  - as a decimal number.
+ *  - no operator can be used.
+ *  - it can be used as input in [JavaScript](../README.md#usage-javascript) but
+ *    not on the [command line](../README.md#usage-cli), where all numbers
+ *    should be in [`octal`](#octal) form instead.
+ *
+ * @example
+ * ```js
+ * console.log(convert.stat(0)) // '---------'
+ * console.log(convert.stat(1)) // '--------x'
+ * console.log(convert.stat(3)) // '-------wx'
+ * console.log(convert.stat(8)) // '-----x---'
+ * console.log(convert.stat(512)) // '--------T'
+ * ```
+ */
+export type PermissionNumber = number
+
+/**
  *
  * @example
  * ```js
