@@ -217,7 +217,21 @@ export declare const convert: {
    */
   number: (permission: Permission) => PermissionNumber
 
-  stat: () => void
+  /**
+   * Returns `permission` converted to the stat type.
+   *
+   * @example
+   * ```js
+   * convert.stat('a+x') // '--x--x--x'
+   *
+   * try {
+   *   convert.stat('z+x') // Throws an exception (permission syntax is invalid)
+   * } catch (error) {
+   *   console.log(error.message)
+   * }
+   * ```
+   */
+  stat: (permission: Permission) => PermissionStat
 
   symbolic: () => void
 
