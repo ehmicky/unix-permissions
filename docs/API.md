@@ -33,11 +33,8 @@ mean "unset permissions". However you can use
 import { convert } from 'unix-permissions'
 
 console.log(convert.symbolic('111')) // 'a=x'
-
 console.log(positive(convert.symbolic('111'))) // 'a+x'
-
 console.log(convert.octal('o+x')) // '+0001'
-
 console.log(convert.octal('o=x')) // '0001'
 
 try {
@@ -55,11 +52,8 @@ Returns the `permission`'s [`type`](types.md) or `'invalid'`.
 import { type } from 'unix-permissions'
 
 console.log(type('1')) // 'octal'
-
 console.log(type(1)) // 'number'
-
 console.log(type('a+x')) // 'symbolic'
-
 console.log(type('a+i')) // 'invalid'
 ```
 
@@ -73,11 +67,8 @@ Throws an exception if `permission` is invalid.
 import { normalize } from 'unix-permissions'
 
 console.log(normalize('1')) // '0001'
-
 console.log(normalize('g+x,o+x')) // 'go+x'
-
 console.log(normalize('d--- --- ---')) // '---------'
-
 console.log(normalize({ user: { read: undefined, write: true } }))
 // { user: { write: true } }
 
@@ -98,13 +89,9 @@ explanation.
 import { positive } from 'unix-permissions'
 
 console.log(positive('o+x,o-rw')) // 'o+x'
-
 console.log(positive('o=x')) // 'o+x'
-
 console.log(positive('660')) // '+0660'
-
 console.log(invert('660')) // '0117'
-
 console.log(invert(positive('660'))) // '-0660'
 ```
 
@@ -118,23 +105,14 @@ Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
 import { contain } from 'unix-permissions'
 
 console.log(contain('--x--x--x', 'a=x')) // `true`
-
 console.log(contain('--x--x--x', 'a+x')) // `true`
-
 console.log(contain('--x--x--x', 'a-x')) // `false`
-
 console.log(contain('--x--x--x', 'a-w')) // `true`
-
 console.log(contain('o+x', 'o+x')) // `true`
-
 console.log(contain('o+x', 'o+x,o+x')) // `true`
-
 console.log(contain('o+x', 'o=w')) // `false`
-
 console.log(contain('o+x,o-w', 'o-w,o+x')) // `true`
-
 console.log(contain('o+x,o-w', 'o-w')) // `true`
-
 console.log(contain('o+x,o-w', 'o+x', 'o-w')) // `true`
 ```
 
@@ -148,23 +126,14 @@ Returns `true` or `false` or (on the CLI) use the exit code `0` or `1`.
 import { equal } from 'unix-permissions'
 
 console.log(equal('--x--x--x', 'a=x')) // `true`
-
 console.log(equal('--x--x--x', 'a+x')) // `false`
-
 console.log(equal('--x--x--x', 'a-x')) // `false`
-
 console.log(equal('--x--x--x', 'a-w')) // `false`
-
 console.log(equal('o+x', 'o+x')) // `true`
-
 console.log(equal('o+x', 'o+x,o+x')) // `true`
-
 console.log(equal('o+x', 'o=w')) // `false`
-
 console.log(equal('o+x,o-w', 'o-w,o+x')) // `true`
-
 console.log(equal('o+x,o-w', 'o-w')) // `false`
-
 console.log(equal('o+x,o-w', 'o+x', 'o-w')) // `false`
 ```
 
@@ -182,13 +151,9 @@ This can also be used to remove special permissions using
 import { set } from 'unix-permissions'
 
 console.log(set('---------', 'a+x')) // '--x--x--x'
-
 console.log(set('---------', 'a+x', 'a+r')) // 'r-xr-xr-x'
-
 console.log(set('--x--x--x', 'o-x')) // '--x--x---'
-
 console.log(set('a+x', 'a+r')) // 'a+rx'
-
 console.log(set('4660', 'a-st')) // '0660'
 ```
 
@@ -203,23 +168,14 @@ setting them.
 import { not } from 'unix-permissions'
 
 console.log(not('u+xs')) // 'u-xs'
-
 console.log(not('u-xs')) // 'u+xs'
-
 console.log(not('u=x')) // 'u=rws'
-
 console.log(not('a=x')) // 'ug=rws,o=rwt'
-
 console.log(not('rws-ws-w-')) // '---r--r-t'
-
 console.log(not('0660')) // '7117'
-
 console.log(not('1660')) // '6117'
-
 console.log(set('rwxrwxrwx', not('a+x'))) // 'rw-rw-rw-'
-
 console.log(set('---------', not('a-x'))) // '--x--x--x'
-
 console.log(set('a+xr', not('a+r'))) // 'a+x,a-r'
 ```
 
@@ -234,17 +190,11 @@ files will be created with `661` permissions.
 import { invert } from 'unix-permissions'
 
 console.log(invert('u+xs')) // 'u-x'
-
 console.log(invert('u-xs')) // 'u+x'
-
 console.log(invert('u=x')) // 'u+rw,u-x'
-
 console.log(invert('a=x')) // 'a+rw,a-x'
-
 console.log(invert('rws-ws-w-')) // '---r--r-x'
-
 console.log(invert('0660')) // '0117'
-
 console.log(invert('1660')) // '0117'
 ```
 

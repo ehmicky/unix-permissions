@@ -31,19 +31,12 @@ An operator can be prepended:
 import { convert } from 'unix-permissions'
 
 console.log(convert.stat('720')) // 'rwx-w----'
-
 console.log(convert.stat('7000')) // '--S--S--T'
-
 console.log(convert.stat('\\720')) // 'rwx-w----'
-
 console.log(convert.stat('0720')) // 'rwx-w----'
-
 console.log(convert.stat('0o720')) // 'rwx-w----'
-
 console.log(convert.symbolic('+720')) // 'u+rwx,g+w'
-
 console.log(convert.symbolic('-720')) // 'u-rwx,g-w'
-
 console.log(convert.symbolic('=720')) // 'u=rwx,g=w,o='
 ```
 
@@ -64,13 +57,9 @@ It is the same as `octal` except:
 import { convert } from 'unix-permissions'
 
 console.log(convert.stat(0)) // '---------'
-
 console.log(convert.stat(1)) // '--------x'
-
 console.log(convert.stat(3)) // '-------wx'
-
 console.log(convert.stat(8)) // '-----x---'
-
 console.log(convert.stat(512)) // '--------T'
 ```
 
@@ -90,19 +79,12 @@ Optionally a first character can be specified to indicate the file type (e.g.
 import { convert } from 'unix-permissions'
 
 console.log(convert.octal('--------x')) // '0001'
-
 console.log(convert.octal('--x--x--x')) // '0111'
-
 console.log(convert.octal('--------T')) // '1000'
-
 console.log(convert.octal('--------t')) // '1001'
-
 console.log(convert.octal('d--------x')) // '0001'
-
 console.log(convert.octal('--x --x --x')) // '0111'
-
 console.log(convert.octal('rwx --- ---')) // '0700'
-
 console.log(convert.octal('xwr --- ---')) // '0700'
 ```
 
@@ -126,21 +108,13 @@ User classes can be concatenated like `go+x`.
 import { convert } from 'unix-permissions'
 
 console.log(convert.octal('o+wx')) // '+0003'
-
 console.log(convert.octal('o=wx')) // '0003'
-
 console.log(convert.octal('o-wx')) // '-0003'
-
 console.log(convert.octal('go+x')) // '+0011'
-
 console.log(convert.octal('g+x,o+x')) // '+0011'
-
 console.log(convert.octal('a+x')) // '+0111'
-
 console.log(convert.octal('+x')) // '+0111'
-
 console.log(convert.octal('a+s')) // '+6000'
-
 console.log(convert.octal('o+')) // '+0000'
 ```
 
