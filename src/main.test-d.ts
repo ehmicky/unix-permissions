@@ -1,4 +1,9 @@
-import { convert, PermissionOctal, PermissionNumber } from 'unix-permissions'
+import {
+  convert,
+  PermissionOctal,
+  PermissionNumber,
+  PermissionStat,
+} from 'unix-permissions'
 import {
   expectType,
   expectError,
@@ -29,3 +34,8 @@ expectAssignable<PermissionOctal>('-0o1111')
 expectAssignable<PermissionNumber>(0)
 expectAssignable<PermissionNumber>(255)
 expectNotAssignable<PermissionNumber>('255')
+
+expectAssignable<PermissionStat>('----------')
+expectAssignable<PermissionStat>('drwxXsSxtT')
+expectNotAssignable<PermissionStat>('drwxXsSxto')
+expectNotAssignable<PermissionStat>('other')

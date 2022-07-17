@@ -60,6 +60,33 @@ type OctalStart = `${OctalOperator}${OctalPrefix}`
 export type PermissionNumber = number
 
 /**
+ * Permission type used by [`stat`](https://linux.die.net/man/2/stat) and
+ * [`ls`](https://linux.die.net/man/1/ls).
+ *
+ * It is a string where each character represents either the permission
+ * (`r`, `w`, `x`) or no permission (`-`). The special permission are indicated
+ * with `S`, `s`, `T` and `t` where lowercase implies `x` is also present.
+ *
+ * Optionally a first character can be specified to indicate the file type
+ * (e.g. `d` for directories).
+ *
+ * @example
+ * ```js
+ * console.log(convert.octal('--------x')) // '0001'
+ * console.log(convert.octal('--x--x--x')) // '0111'
+ * console.log(convert.octal('--------T')) // '1000'
+ * console.log(convert.octal('--------t')) // '1001'
+ * console.log(convert.octal('d--------x')) // '0001'
+ * console.log(convert.octal('--x --x --x')) // '0111'
+ * console.log(convert.octal('rwx --- ---')) // '0700'
+ * console.log(convert.octal('xwr --- ---')) // '0700'
+ * ```
+ */
+export type PermissionStat =
+  `${string}${PermissionStatOthersBit}${PermissionStatOthersBit}${PermissionStatOthersBit}`
+type PermissionStatOthersBit = '-' | 'r' | 'w' | 'x' | 'X' | 't' | 'T'
+
+/**
  *
  * @example
  * ```js
