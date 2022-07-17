@@ -87,6 +87,45 @@ export type PermissionStat =
 type PermissionStatOthersBit = '-' | 'r' | 'w' | 'x' | 'X' | 't' | 'T'
 
 /**
+ * Permission type used by [`chmod`](https://linux.die.net/man/1/chmod) as a
+ * string like `gu+rx`.
+ *
+ * Starts with the user class (`a` for all, `u` for user, `g` for group, `o` for
+ * others) then the operator (`+`, `-` or `=`) and ends with the permissions
+ * characters.
+ *
+ * While `+` leaves the omitted permissions as is, `=` unsets them. For example
+ * `o=x` is the same as combining `o+x` and `o-rwt`.
+ *
+ * Several groups can be specified using a comma-separated list like `g+x,o+r`.
+ *
+ * User classes can be concatenated like `go+x`.
+ *
+ * @example
+ * ```js
+ * console.log(convert.octal('o+wx')) // '+0003'
+ * console.log(convert.octal('o=wx')) // '0003'
+ * console.log(convert.octal('o-wx')) // '-0003'
+ * console.log(convert.octal('go+x')) // '+0011'
+ * console.log(convert.octal('g+x,o+x')) // '+0011'
+ * console.log(convert.octal('a+x')) // '+0111'
+ * console.log(convert.octal('+x')) // '+0111'
+ * console.log(convert.octal('a+s')) // '+6000'
+ * console.log(convert.octal('o+')) // '+0000'
+ * ```
+ */
+export type PermissionSymbolic =
+  | `${PermissionSymbolicSingle}`
+  | `${string},${PermissionSymbolicSingle}`
+type PermissionSymbolicSingle =
+  `${PermissionSymbolicClasses}${PermissionSymbolicOperator}${PermissionSymbolicActions}`
+type PermissionSymbolicClass = 'a' | 'u' | 'g' | 'o'
+type PermissionSymbolicClasses = '' | `${string}${PermissionSymbolicClass}`
+type PermissionSymbolicOperator = '+' | '=' | '-'
+type PermissionSymbolicAction = 'x' | 'w' | 'r' | 'X' | 's' | 't'
+type PermissionSymbolicActions = '' | `${string}${PermissionSymbolicAction}`
+
+/**
  *
  * @example
  * ```js
