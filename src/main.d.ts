@@ -126,6 +126,52 @@ type PermissionSymbolicAction = 'x' | 'w' | 'r' | 'X' | 's' | 't'
 type PermissionSymbolicActions = '' | `${string}${PermissionSymbolicAction}`
 
 /**
+ * Permission type as an object.
+ * `undefined` leaves permissions as is while `false` unsets them.
+ *
+ * @example
+ * ```js
+ * console.log(convert.symbolic({ others: { read: true, execute: true } }))
+ * // 'o+rx'
+ *
+ * console.log(convert.symbolic({ others: { read: true, execute: false } }))
+ * // 'o+r,o-x'
+ *
+ * console.log(convert.symbolic({ others: { read: true, execute: undefined } }))
+ * // 'o+r'
+ *
+ * console.log(convert.symbolic({ all: { read: true } }))
+ * // 'a+r'
+ *
+ * console.log(convert.symbolic({}))
+ * // 'a+'
+ *
+ * console.log(
+ *   convert.symbolic({ special: { setuid: true, setgid: true, sticky: true } }),
+ * )
+ * // 'ug+s,o+t'
+ * ```
+ */
+export type PermissionObject = Partial<{
+  user: PermissionObjectClass
+  group: PermissionObjectClass
+  others: PermissionObjectClass
+  all: PermissionObjectClass
+  special: PermissionObjectSpecial
+}>
+type PermissionObjectClass = Partial<{
+  read: PermissionObjectValue
+  write: PermissionObjectValue
+  execute: PermissionObjectValue
+}>
+type PermissionObjectSpecial = Partial<{
+  setuid: PermissionObjectValue
+  setgid: PermissionObjectValue
+  sticky: PermissionObjectValue
+}>
+type PermissionObjectValue = boolean | undefined
+
+/**
  *
  * @example
  * ```js
