@@ -380,3 +380,50 @@ export function equal(
   equaledPermission: Permission,
   ...alsoEqualedPermissions: Permission[]
 ): boolean
+
+/**
+ * Returns the result of setting `permissions` on `permission`.
+ * This is useful to avoid error-prone bitwise operations (`|`, `&`, `^`, `~`).
+ * This can also be used to remove special permissions using
+ * `set(permission, 'a-st')` since some functions like
+ * [`umask`](https://linux.die.net/man/2/umask) do not allow them.
+ *
+ * @example
+ * ```js
+ * console.log(set('---------', 'a+x')) // '--x--x--x'
+ * console.log(set('---------', 'a+x', 'a+r')) // 'r-xr-xr-x'
+ * console.log(set('--x--x--x', 'o-x')) // '--x--x---'
+ * console.log(set('a+x', 'a+r')) // 'a+rx'
+ * console.log(set('4660', 'a-st')) // '0660'
+ * ```
+ */
+export function set(
+  permission: PermissionOctal,
+  setPermission: Permission,
+  ...alsoSetPermissions: Permission[]
+): PermissionOctal
+export function set(
+  permission: PermissionNumber,
+  setPermission: Permission,
+  ...alsoSetPermissions: Permission[]
+): PermissionNumber
+export function set(
+  permission: PermissionStat,
+  setPermission: Permission,
+  ...alsoSetPermissions: Permission[]
+): PermissionStat
+export function set(
+  permission: PermissionSymbolic,
+  setPermission: Permission,
+  ...alsoSetPermissions: Permission[]
+): PermissionSymbolic
+export function set(
+  permission: PermissionObject,
+  setPermission: Permission,
+  ...alsoSetPermissions: Permission[]
+): PermissionObject
+export function set(
+  permission: any,
+  setPermission: Permission,
+  ...alsoSetPermissions: Permission[]
+): never

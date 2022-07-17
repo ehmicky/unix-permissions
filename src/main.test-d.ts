@@ -12,6 +12,7 @@ import {
   positive,
   contain,
   equal,
+  set,
 } from 'unix-permissions'
 import {
   expectType,
@@ -227,3 +228,14 @@ expectError(equal('111'))
 expectError(equal('111', ''))
 expectError(equal('', '111'))
 expectError(equal('111', '111', ''))
+
+expectType<PermissionOctal>(set('111', '111'))
+expectType<PermissionNumber>(set(0o111, 0o111))
+expectType<PermissionStat>(set('d--x--x--x', 'd--x--x--x'))
+expectType<PermissionSymbolic>(set('a+x', 'a+x'))
+expectType<PermissionObject>(
+  set({ all: { execute: true } }, { all: { execute: true } }),
+)
+expectType<PermissionOctal>(set('111', '111', '111'))
+expectType<PermissionOctal>(set('111', 0o111))
+expectType<never>(set('', '111'))
