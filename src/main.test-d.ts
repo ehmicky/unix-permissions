@@ -10,6 +10,7 @@ import {
   type,
   normalize,
   positive,
+  contain,
 } from 'unix-permissions'
 import {
   expectType,
@@ -199,3 +200,16 @@ expectType<PermissionStat>(positive('d--x--x--x'))
 expectType<PermissionSymbolic>(positive('a+x'))
 expectType<PermissionObject>(positive({ all: { execute: true } }))
 expectType<never>(positive(''))
+
+expectType<boolean>(contain('111', '111'))
+expectType<boolean>(contain(0o111, 0o111))
+expectType<boolean>(contain('d--x--x--x', 'd--x--x--x'))
+expectType<boolean>(contain('a+x', 'a+x'))
+expectType<boolean>(
+  contain({ all: { execute: true } }, { all: { execute: true } }),
+)
+expectType<boolean>(contain('111', '111', '111'))
+expectError(contain('111'))
+expectError(contain('111', ''))
+expectError(contain('', '111'))
+expectError(contain('111', '111', ''))

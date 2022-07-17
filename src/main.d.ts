@@ -334,3 +334,26 @@ export function positive(permission: PermissionStat): PermissionStat
 export function positive(permission: PermissionSymbolic): PermissionSymbolic
 export function positive(permission: PermissionObject): PermissionObject
 export function positive(permission: any): never
+
+/**
+ * Tests whether `permission` includes `permissions`.
+ *
+ * @example
+ * ```js
+ * console.log(contain('--x--x--x', 'a=x')) // `true`
+ * console.log(contain('--x--x--x', 'a+x')) // `true`
+ * console.log(contain('--x--x--x', 'a-x')) // `false`
+ * console.log(contain('--x--x--x', 'a-w')) // `true`
+ * console.log(contain('o+x', 'o+x')) // `true`
+ * console.log(contain('o+x', 'o+x,o+x')) // `true`
+ * console.log(contain('o+x', 'o=w')) // `false`
+ * console.log(contain('o+x,o-w', 'o-w,o+x')) // `true`
+ * console.log(contain('o+x,o-w', 'o-w')) // `true`
+ * console.log(contain('o+x,o-w', 'o+x', 'o-w')) // `true`
+ * ```
+ */
+export function contain(
+  permission: Permission,
+  containedPermission: Permission,
+  ...alsoContainedPermissions: Permission[]
+): boolean
