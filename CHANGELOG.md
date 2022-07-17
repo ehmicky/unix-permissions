@@ -1,3 +1,9 @@
+# 4.2.0
+
+## Features
+
+- Improve [error handling](https://github.com/ehmicky/handle-cli-error)
+
 # 4.1.0
 
 ## Features
