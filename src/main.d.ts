@@ -427,3 +427,29 @@ export function set(
   setPermission: Permission,
   ...alsoSetPermissions: Permission[]
 ): never
+
+/**
+ * Inverts `permission` including special permissions.
+ * This can be used in combination with `set()` to unset `permissions` instead
+ * of setting them.
+ *
+ * @example
+ * ```js
+ * console.log(not('u+xs')) // 'u-xs'
+ * console.log(not('u-xs')) // 'u+xs'
+ * console.log(not('u=x')) // 'u=rws'
+ * console.log(not('a=x')) // 'ug=rws,o=rwt'
+ * console.log(not('rws-ws-w-')) // '---r--r-t'
+ * console.log(not('0660')) // '7117'
+ * console.log(not('1660')) // '6117'
+ * console.log(set('rwxrwxrwx', not('a+x'))) // 'rw-rw-rw-'
+ * console.log(set('---------', not('a-x'))) // '--x--x--x'
+ * console.log(set('a+xr', not('a+r'))) // 'a+x,a-r'
+ * ```
+ */
+export function not(permission: PermissionOctal): PermissionOctal
+export function not(permission: PermissionNumber): PermissionNumber
+export function not(permission: PermissionStat): PermissionStat
+export function not(permission: PermissionSymbolic): PermissionSymbolic
+export function not(permission: PermissionObject): PermissionObject
+export function not(permission: any): never

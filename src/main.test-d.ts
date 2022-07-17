@@ -13,6 +13,7 @@ import {
   contain,
   equal,
   set,
+  not,
 } from 'unix-permissions'
 import {
   expectType,
@@ -239,3 +240,10 @@ expectType<PermissionObject>(
 expectType<PermissionOctal>(set('111', '111', '111'))
 expectType<PermissionOctal>(set('111', 0o111))
 expectType<never>(set('', '111'))
+
+expectType<PermissionOctal>(not('111'))
+expectType<PermissionNumber>(not(0o111))
+expectType<PermissionStat>(not('d--x--x--x'))
+expectType<PermissionSymbolic>(not('a+x'))
+expectType<PermissionObject>(not({ all: { execute: true } }))
+expectType<never>(not(''))

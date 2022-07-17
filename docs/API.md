@@ -165,7 +165,7 @@ This can be used in combination with `set()` to unset `permissions` instead of
 setting them.
 
 ```js
-import { not } from 'unix-permissions'
+import { not, set } from 'unix-permissions'
 
 console.log(not('u+xs')) // 'u-xs'
 console.log(not('u-xs')) // 'u+xs'
