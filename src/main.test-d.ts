@@ -1,4 +1,11 @@
 import {
+  expectType,
+  expectError,
+  expectAssignable,
+  expectNotAssignable,
+} from 'tsd'
+
+import {
   PermissionOctal,
   PermissionNumber,
   PermissionStat,
@@ -17,13 +24,7 @@ import {
   invert,
   min,
   max,
-} from 'unix-permissions'
-import {
-  expectType,
-  expectError,
-  expectAssignable,
-  expectNotAssignable,
-} from 'tsd'
+} from './main.js'
 
 expectAssignable<PermissionOctal>('1')
 expectAssignable<PermissionOctal>('11')
