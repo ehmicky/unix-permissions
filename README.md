@@ -1,4 +1,7 @@
-<img src="https://raw.githubusercontent.com/ehmicky/design/main/unix-permissions/unix-permissions.png" width="500"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ehmicky/design/main/unix-permissions/unix-permissions_dark.png"/>
+  <img alt="unix-permissions logo" src="https://raw.githubusercontent.com/ehmicky/design/main/unix-permissions/unix-permissions.png" width="500"/>
+</picture>
 
 [![Codecov](https://img.shields.io/codecov/c/github/ehmicky/unix-permissions.svg?label=tested&logo=codecov)](https://codecov.io/gh/ehmicky/unix-permissions)
 [![Node](https://img.shields.io/node/v/unix-permissions.svg?logo=node.js)](https://www.npmjs.com/package/unix-permissions)
