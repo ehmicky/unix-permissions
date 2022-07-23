@@ -1,4 +1,4 @@
-import filterObj from 'filter-obj'
+import { excludeKeys } from 'filter-obj'
 import isPlainObj from 'is-plain-obj'
 
 import { getNodesMap, NODES_MAP } from './nodes.js'
@@ -40,11 +40,11 @@ const validateNodes = function ({ nodes, perm }) {
 
 const normalizeNodes = function ({ nodes }) {
   const nodesMap = getNodesMap(nodes)
-  const nodesMapA = filterObj(nodesMap, isValidNode)
+  const nodesMapA = excludeKeys(nodesMap, isInvalidNode)
   return nodesMapA
 }
 
 // Exclude special flags not valid for current category
-const isValidNode = function (nodeKey) {
-  return NODES_MAP[nodeKey] !== undefined
+const isInvalidNode = function (nodeKey) {
+  return NODES_MAP[nodeKey] === undefined
 }

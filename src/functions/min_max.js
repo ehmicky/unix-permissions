@@ -1,4 +1,4 @@
-import filterObj from 'filter-obj'
+import { excludeKeys } from 'filter-obj'
 
 import { variableMap } from '../helpers.js'
 import { mapValues } from '../utils.js'
@@ -12,7 +12,7 @@ const minMaxMap = function (values, nodesMap, nodesMapA) {
   )
   // `undefined` nodes might be present if they got picked because of being
   // higher|lower than `+` or `-`
-  const nodesMapC = filterObj(nodesMapB, isDefined)
+  const nodesMapC = excludeKeys(nodesMapB, isUndefined)
   return nodesMapC
 }
 
@@ -20,7 +20,7 @@ const minMaxMap = function (values, nodesMap, nodesMapA) {
 // can be either `+` or `-`. In that case, they stand between `+` and `-`
 // in comparison order.
 // We iterate over both nodes and the possible values from highest to lowest
-// until finding the right nore.
+// until finding the right node.
 const findNode = function ({ values, nodesMap, nodesMapA, nodeKey }) {
   const [nodeB] = values
     .flatMap((value) => [
@@ -35,8 +35,8 @@ const hasValue = function ([{ add } = {}, value]) {
   return add === value
 }
 
-const isDefined = function (key, value) {
-  return value !== undefined
+const isUndefined = function (key, value) {
+  return value === undefined
 }
 
 const MIN_VALUES = [false, undefined, true]

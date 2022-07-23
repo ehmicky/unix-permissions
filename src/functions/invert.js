@@ -1,4 +1,4 @@
-import filterObj from 'filter-obj'
+import { excludeKeys } from 'filter-obj'
 
 import { SPECIAL_PERMISSIONS } from '../constants.js'
 import { unaryMap } from '../helpers.js'
@@ -10,12 +10,12 @@ import { notMap } from './not.js'
 // Special flags are inverted.
 const invertMap = function (nodesMap) {
   const nodesMapA = notMap(nodesMap)
-  const nodesMapB = filterObj(nodesMapA, isNormal)
+  const nodesMapB = excludeKeys(nodesMapA, isSpecial)
   return nodesMapB
 }
 
-const isNormal = function (key, { permission }) {
-  return !SPECIAL_PERMISSIONS.has(permission)
+const isSpecial = function (key, { permission }) {
+  return SPECIAL_PERMISSIONS.has(permission)
 }
 
 export const invert = unaryMap.bind(undefined, invertMap)
