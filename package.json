@@ -52,7 +52,7 @@
     "example": "examples"
   },
   "dependencies": {
-    "filter-obj": "^4.0.0",
+    "filter-obj": "^5.0.0",
     "handle-cli-error": "^1.0.1",
     "is-plain-obj": "^4.1.0",
     "keep-func-props": "^5.1.0",
