@@ -39,7 +39,7 @@
     "unix"
   ],
   "license": "Apache-2.0",
-  "homepage": "https://git.io/fppEv",
+  "homepage": "https://www.github.com/ehmicky/unix-permissions",
   "repository": "ehmicky/unix-permissions",
   "bugs": {
     "url": "https://github.com/ehmicky/unix-permissions/issues"
