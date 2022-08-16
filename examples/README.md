@@ -1,15 +1,7 @@
 This directory contains examples of this library. They can be run and edited:
 
-- either directly [in your browser](https://repl.it/@ehmicky/unix-permissions).
-- or in a terminal with the following commands:
-
-```bash
-npm install unix-permissions
-# To run JavaScript examples
-node node_modules/unix-permissions/examples/PATH/TO/FILE.js
-# To run command line examples
-bash node_modules/unix-permissions/examples/PATH/TO/FILE.sh
-```
+- either directly [in your browser](https://repl.it/@ehmicky/unix-permissions)
+- or in a terminal by cloning this repository
 
 # Examples
 

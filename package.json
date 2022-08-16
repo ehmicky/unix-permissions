@@ -6,8 +6,7 @@
   "main": "./build/src/main.js",
   "types": "./build/src/main.d.ts",
   "files": [
-    "build/src/**/*.{js,d.ts,map,json,sh,md}",
-    "examples/**/*.{js,d.ts,map,json,sh,md}"
+    "build/src/**/*.{js,d.ts,json}"
   ],
   "bin": {
     "unix-permissions": "build/src/bin/main.js"
@@ -48,8 +47,7 @@
   "directories": {
     "doc": "docs",
     "lib": "src",
-    "test": "test",
-    "example": "examples"
+    "test": "test"
   },
   "dependencies": {
     "filter-obj": "^5.1.0",
