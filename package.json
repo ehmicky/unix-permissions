@@ -63,7 +63,7 @@
     "@ehmicky/dev-tasks": "^1.0.86",
     "execa": "^6.1.0",
     "get-bin-path": "^7.1.0",
-    "test-each": "^5.3.0"
+    "test-each": "^5.4.0"
   },
   "engines": {
     "node": ">=14.18.0"
