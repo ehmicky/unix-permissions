@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "filter-obj": "^5.1.0",
-    "handle-cli-error": "^2.1.0",
+    "handle-cli-error": "^2.2.0",
     "is-plain-obj": "^4.1.0",
     "keep-func-props": "^5.2.0",
     "moize": "^6.1.1",
