@@ -1,3 +1,9 @@
+# 4.5.0
+
+## Features
+
+- Improve error handling
+
 # 4.4.0
 
 ## Features
