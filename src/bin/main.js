@@ -24,7 +24,7 @@ const runCli = async function () {
     const output = await commandA(...args)
     handleOutput({ output })
   } catch (error) {
-    handleCliError(error, { short: true })
+    handleCliError(error, { stack: false })
   }
 }
 
