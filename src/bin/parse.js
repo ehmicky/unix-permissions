@@ -1,4 +1,4 @@
-import { argv } from 'process'
+import { argv } from 'node:process'
 
 import { escapeArgs } from './escape.js'
 
