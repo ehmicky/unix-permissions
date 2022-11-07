@@ -24,7 +24,7 @@ import {
   invert,
   min,
   max,
-} from './main.js'
+} from 'unix-permissions'
 
 expectAssignable<PermissionOctal>('1')
 expectAssignable<PermissionOctal>('11')
