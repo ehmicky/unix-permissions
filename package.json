@@ -15,6 +15,7 @@
   "bin": {
     "unix-permissions": "build/src/bin/main.js"
   },
+  "sideEffects": false,
   "scripts": {
     "test": "gulp test"
   },
