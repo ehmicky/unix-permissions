@@ -3,6 +3,7 @@ import {
   expectError,
   expectAssignable,
   expectNotAssignable,
+  expectNever,
 } from 'tsd'
 
 import {
@@ -199,14 +200,14 @@ expectType<PermissionNumber>(normalize(0o111))
 expectType<PermissionStat>(normalize('d--x--x--x'))
 expectType<PermissionSymbolic>(normalize('a+x'))
 expectType<PermissionObject>(normalize({ all: { execute: true } }))
-expectType<never>(normalize(''))
+expectNever(normalize(''))
 
 expectType<PermissionOctal>(positive('111'))
 expectType<PermissionNumber>(positive(0o111))
 expectType<PermissionStat>(positive('d--x--x--x'))
 expectType<PermissionSymbolic>(positive('a+x'))
 expectType<PermissionObject>(positive({ all: { execute: true } }))
-expectType<never>(positive(''))
+expectNever(positive(''))
 
 expectType<boolean>(contain('111', '111'))
 expectType<boolean>(contain(0o111, 0o111))
@@ -243,21 +244,21 @@ expectType<PermissionObject>(
 )
 expectType<PermissionOctal>(set('111', '111', '111'))
 expectType<PermissionOctal>(set('111', 0o111))
-expectType<never>(set('', '111'))
+expectNever(set('', '111'))
 
 expectType<PermissionOctal>(not('111'))
 expectType<PermissionNumber>(not(0o111))
 expectType<PermissionStat>(not('d--x--x--x'))
 expectType<PermissionSymbolic>(not('a+x'))
 expectType<PermissionObject>(not({ all: { execute: true } }))
-expectType<never>(not(''))
+expectNever(not(''))
 
 expectType<PermissionOctal>(invert('111'))
 expectType<PermissionNumber>(invert(0o111))
 expectType<PermissionStat>(invert('d--x--x--x'))
 expectType<PermissionSymbolic>(invert('a+x'))
 expectType<PermissionObject>(invert({ all: { execute: true } }))
-expectType<never>(invert(''))
+expectNever(invert(''))
 
 expectType<PermissionOctal>(min('111', '111'))
 expectType<PermissionNumber>(min(0o111, 0o111))
@@ -269,7 +270,7 @@ expectType<PermissionObject>(
 expectType<undefined>(min())
 expectType<PermissionOctal>(min('111', '111', '111'))
 expectType<PermissionOctal>(min('111', 0o111))
-expectType<never>(min('', '111'))
+expectNever(min('', '111'))
 
 expectType<PermissionOctal>(max('111', '111'))
 expectType<PermissionNumber>(max(0o111, 0o111))
@@ -281,4 +282,4 @@ expectType<PermissionObject>(
 expectType<undefined>(max())
 expectType<PermissionOctal>(max('111', '111', '111'))
 expectType<PermissionOctal>(max('111', 0o111))
-expectType<never>(max('', '111'))
+expectNever(max('', '111'))
