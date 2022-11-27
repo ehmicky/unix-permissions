@@ -3,9 +3,9 @@ import { each } from 'test-each'
 import { equal } from 'unix-permissions'
 
 /* jscpd:ignore-start */
-import { callCli } from './helpers/cli.test.js'
-import { BINARY_DATA } from './helpers/data/binary.test.js'
-import { VALID_FULL_DATA } from './helpers/data/full/main.test.js'
+import { callCli } from '../helpers/cli.test.js'
+import { BINARY_DATA } from '../helpers/data/binary.test.js'
+import { VALID_FULL_DATA } from '../helpers/data/full/main.test.js'
 /* jscpd:ignore-end */
 
 each(BINARY_DATA, ({ title }, args) => {
