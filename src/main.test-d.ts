@@ -1,6 +1,5 @@
 import {
   expectType,
-  expectError,
   expectAssignable,
   expectNotAssignable,
   expectNever,
@@ -158,35 +157,40 @@ expectType<PermissionOctal>(convert.octal(0o111))
 expectType<PermissionOctal>(convert.octal('d--x--x--x'))
 expectType<PermissionOctal>(convert.octal('a+x'))
 expectType<PermissionOctal>(convert.octal({ all: { execute: true } }))
-expectError(convert.octal(''))
+// @ts-expect-error
+convert.octal('')
 
 expectType<PermissionNumber>(convert.number('111'))
 expectType<PermissionNumber>(convert.number(0o111))
 expectType<PermissionNumber>(convert.number('d--x--x--x'))
 expectType<PermissionNumber>(convert.number('a+x'))
 expectType<PermissionNumber>(convert.number({ all: { execute: true } }))
-expectError(convert.number(''))
+// @ts-expect-error
+convert.number('')
 
 expectType<PermissionStat>(convert.stat('111'))
 expectType<PermissionStat>(convert.stat(0o111))
 expectType<PermissionStat>(convert.stat('d--x--x--x'))
 expectType<PermissionStat>(convert.stat('a+x'))
 expectType<PermissionStat>(convert.stat({ all: { execute: true } }))
-expectError(convert.stat(''))
+// @ts-expect-error
+convert.stat('')
 
 expectType<PermissionSymbolic>(convert.symbolic('111'))
 expectType<PermissionSymbolic>(convert.symbolic(0o111))
 expectType<PermissionSymbolic>(convert.symbolic('d--x--x--x'))
 expectType<PermissionSymbolic>(convert.symbolic('a+x'))
 expectType<PermissionSymbolic>(convert.symbolic({ all: { execute: true } }))
-expectError(convert.symbolic(''))
+// @ts-expect-error
+convert.symbolic('')
 
 expectType<PermissionObject>(convert.object('111'))
 expectType<PermissionObject>(convert.object(0o111))
 expectType<PermissionObject>(convert.object('d--x--x--x'))
 expectType<PermissionObject>(convert.object('a+x'))
 expectType<PermissionObject>(convert.object({ all: { execute: true } }))
-expectError(convert.object(''))
+// @ts-expect-error
+convert.object('')
 
 expectType<PermissionType>(type('111'))
 expectType<PermissionType>(type(0o111))
@@ -217,10 +221,14 @@ expectType<boolean>(
   contain({ all: { execute: true } }, { all: { execute: true } }),
 )
 expectType<boolean>(contain('111', '111', '111'))
-expectError(contain('111'))
-expectError(contain('111', ''))
-expectError(contain('', '111'))
-expectError(contain('111', '111', ''))
+// @ts-expect-error
+contain('111')
+// @ts-expect-error
+contain('111', '')
+// @ts-expect-error
+contain('', '111')
+// @ts-expect-error
+contain('111', '111', '')
 
 expectType<boolean>(equal('111', '111'))
 expectType<boolean>(equal(0o111, 0o111))
@@ -230,10 +238,14 @@ expectType<boolean>(
   equal({ all: { execute: true } }, { all: { execute: true } }),
 )
 expectType<boolean>(equal('111', '111', '111'))
-expectError(equal('111'))
-expectError(equal('111', ''))
-expectError(equal('', '111'))
-expectError(equal('111', '111', ''))
+// @ts-expect-error
+equal('111')
+// @ts-expect-error
+equal('111', '')
+// @ts-expect-error
+equal('', '111')
+// @ts-expect-error
+equal('111', '111', '')
 
 expectType<PermissionOctal>(set('111', '111'))
 expectType<PermissionNumber>(set(0o111, 0o111))
