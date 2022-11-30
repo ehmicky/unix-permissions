@@ -2,8 +2,8 @@ import test from 'ava'
 import { each } from 'test-each'
 import { type } from 'unix-permissions'
 
-import { callCli } from './helpers/cli.js'
-import { FULL_DATA } from './helpers/data/full/main.js'
+import { callCli } from './helpers/cli.test.js'
+import { FULL_DATA } from './helpers/data/full/main.test.js'
 
 each(FULL_DATA, ({ title }, arg) => {
   test(`type (JavaScript) | ${title}`, (t) => {

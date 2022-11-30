@@ -2,8 +2,8 @@ import test from 'ava'
 import { each } from 'test-each'
 import { convert, normalize, type as getType } from 'unix-permissions'
 
-import { VALID_FULL_DATA } from './helpers/data/full/main.js'
-import { TYPES } from './helpers/data/types.js'
+import { VALID_FULL_DATA } from './helpers/data/full/main.test.js'
+import { TYPES } from './helpers/data/types.test.js'
 
 // Conversion between some types loses information
 const isLossy = function (type, otherType) {

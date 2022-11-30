@@ -3,9 +3,9 @@ import { each } from 'test-each'
 import { not, normalize } from 'unix-permissions'
 
 /* jscpd:ignore-start */
-import { callCli } from './helpers/cli.js'
-import { VALID_FULL_DATA } from './helpers/data/full/main.js'
-import { UNARY_DATA } from './helpers/data/unary.js'
+import { callCli } from './helpers/cli.test.js'
+import { VALID_FULL_DATA } from './helpers/data/full/main.test.js'
+import { UNARY_DATA } from './helpers/data/unary.test.js'
 /* jscpd:ignore-end */
 
 each(UNARY_DATA, ({ title }, arg) => {

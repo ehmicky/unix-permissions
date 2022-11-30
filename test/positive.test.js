@@ -2,9 +2,9 @@ import test from 'ava'
 import { each } from 'test-each'
 import { positive } from 'unix-permissions'
 
-import { callCli } from './helpers/cli.js'
-import { VALID_FULL_DATA } from './helpers/data/full/main.js'
-import { UNARY_DATA } from './helpers/data/unary.js'
+import { callCli } from './helpers/cli.test.js'
+import { VALID_FULL_DATA } from './helpers/data/full/main.test.js'
+import { UNARY_DATA } from './helpers/data/unary.test.js'
 
 each(UNARY_DATA, ({ title }, arg) => {
   test(`positive (JavaScript) | ${title}`, (t) => {
