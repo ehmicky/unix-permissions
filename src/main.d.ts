@@ -298,7 +298,7 @@ export declare const convert: {
  * ```
  */
 export function type(permission: Permission): PermissionType
-export function type(permission: any): 'invalid'
+export function type(permission: unknown): 'invalid'
 
 /**
  * Normalizes a `permission` to its canonical shape.
@@ -324,7 +324,7 @@ export function normalize(permission: PermissionNumber): PermissionNumber
 export function normalize(permission: PermissionStat): PermissionStat
 export function normalize(permission: PermissionSymbolic): PermissionSymbolic
 export function normalize(permission: PermissionObject): PermissionObject
-export function normalize(permission: any): never
+export function normalize(permission: unknown): never
 
 /**
  * Removes all negative permissions.
@@ -343,7 +343,7 @@ export function positive(permission: PermissionNumber): PermissionNumber
 export function positive(permission: PermissionStat): PermissionStat
 export function positive(permission: PermissionSymbolic): PermissionSymbolic
 export function positive(permission: PermissionObject): PermissionObject
-export function positive(permission: any): never
+export function positive(permission: unknown): never
 
 /**
  * Tests whether `permission` includes `permissions`.
@@ -433,7 +433,7 @@ export function set(
   ...alsoSetPermissions: Permission[]
 ): PermissionObject
 export function set(
-  permission: any,
+  permission: unknown,
   setPermission: Permission,
   ...alsoSetPermissions: Permission[]
 ): never
@@ -462,7 +462,7 @@ export function not(permission: PermissionNumber): PermissionNumber
 export function not(permission: PermissionStat): PermissionStat
 export function not(permission: PermissionSymbolic): PermissionSymbolic
 export function not(permission: PermissionObject): PermissionObject
-export function not(permission: any): never
+export function not(permission: unknown): never
 
 /**
  * Inverts `permission` and removes special permissions.
@@ -485,7 +485,7 @@ export function invert(permission: PermissionNumber): PermissionNumber
 export function invert(permission: PermissionStat): PermissionStat
 export function invert(permission: PermissionSymbolic): PermissionSymbolic
 export function invert(permission: PermissionObject): PermissionObject
-export function invert(permission: any): never
+export function invert(permission: unknown): never
 
 /**
  * Retrieves the lowest permissions among all arguments.
@@ -522,7 +522,7 @@ export function min(
   permission: PermissionObject,
   ...otherPermissions: Permission[]
 ): PermissionObject
-export function min(permission: any, ...otherPermissions: Permission[]): never
+export function min(permission: unknown, ...otherPermissions: Permission[]): never
 
 /**
  * Retrieves the highest permissions among all arguments.
@@ -559,4 +559,4 @@ export function max(
   permission: PermissionObject,
   ...otherPermissions: Permission[]
 ): PermissionObject
-export function max(permission: any, ...otherPermissions: Permission[]): never
+export function max(permission: unknown, ...otherPermissions: Permission[]): never
