@@ -522,7 +522,10 @@ export function min(
   permission: PermissionObject,
   ...otherPermissions: Permission[]
 ): PermissionObject
-export function min(permission: unknown, ...otherPermissions: Permission[]): never
+export function min(
+  permission: unknown,
+  ...otherPermissions: Permission[]
+): never
 
 /**
  * Retrieves the highest permissions among all arguments.
@@ -559,4 +562,7 @@ export function max(
   permission: PermissionObject,
   ...otherPermissions: Permission[]
 ): PermissionObject
-export function max(permission: unknown, ...otherPermissions: Permission[]): never
+export function max(
+  permission: unknown,
+  ...otherPermissions: Permission[]
+): never
