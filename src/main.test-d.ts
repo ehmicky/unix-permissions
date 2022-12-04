@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 import {
   expectType,
   expectAssignable,
@@ -6,13 +7,6 @@ import {
 } from 'tsd'
 
 import {
-  PermissionOctal,
-  PermissionNumber,
-  PermissionStat,
-  PermissionSymbolic,
-  PermissionObject,
-  Permission,
-  PermissionType,
   convert,
   type,
   normalize,
@@ -24,6 +18,13 @@ import {
   invert,
   min,
   max,
+  type PermissionOctal,
+  type PermissionNumber,
+  type PermissionStat,
+  type PermissionSymbolic,
+  type PermissionObject,
+  type Permission,
+  type PermissionType,
 } from 'unix-permissions'
 
 expectAssignable<PermissionOctal>('1')
@@ -295,3 +296,4 @@ expectType<undefined>(max())
 expectType<PermissionOctal>(max('111', '111', '111'))
 expectType<PermissionOctal>(max('111', 0o111))
 expectNever(max('', '111'))
+/* eslint-enable @typescript-eslint/no-magic-numbers */

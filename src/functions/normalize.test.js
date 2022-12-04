@@ -1,9 +1,10 @@
 import test from 'ava'
 import { each } from 'test-each'
-import { normalize } from 'unix-permissions'
 
 import { callCli } from '../helpers/cli.test.js'
 import { VALID_FULL_DATA } from '../helpers/data/full/main.test.js'
+
+import { normalize } from 'unix-permissions'
 
 each(VALID_FULL_DATA, ({ title }, arg) => {
   test(`normalize (JavaScript) | ${title}`, (t) => {

@@ -33,8 +33,11 @@ export type PermissionOctal =
   | `${OctalStart}${OctalDigit}${OctalDigit}${OctalDigit}`
   | `${OctalStart}${OctalDigit}${OctalDigit}${OctalDigit}${OctalDigit}`
 type OctalDigit = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7'
+
 type OctalPrefix = '' | '0o' | '0' | '\\'
+
 type OctalOperator = '' | '=' | '+' | '-'
+
 type OctalStart = `${OctalOperator}${OctalPrefix}`
 
 /**
@@ -119,10 +122,15 @@ export type PermissionSymbolic =
   | `${string},${PermissionSymbolicSingle}`
 type PermissionSymbolicSingle =
   `${PermissionSymbolicClasses}${PermissionSymbolicOperator}${PermissionSymbolicActions}`
+
 type PermissionSymbolicClass = 'a' | 'u' | 'g' | 'o'
+
 type PermissionSymbolicClasses = '' | `${string}${PermissionSymbolicClass}`
+
 type PermissionSymbolicOperator = '+' | '=' | '-'
+
 type PermissionSymbolicAction = 'x' | 'w' | 'r' | 'X' | 's' | 't'
+
 type PermissionSymbolicActions = '' | `${string}${PermissionSymbolicAction}`
 
 /**
@@ -164,11 +172,13 @@ type PermissionObjectClass = Partial<{
   write: PermissionObjectValue
   execute: PermissionObjectValue
 }>
+
 type PermissionObjectSpecial = Partial<{
   setuid: PermissionObjectValue
   setgid: PermissionObjectValue
   sticky: PermissionObjectValue
 }>
+
 type PermissionObjectValue = boolean | undefined
 
 /**
