@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 import handleCliError from 'handle-cli-error'
 import { readPackageUp } from 'read-pkg-up'
-import UpdateNotifier from 'update-notifier'
+import updateNotifier from 'update-notifier'
 
 import * as unixPermissions from '../main.js'
 
@@ -32,7 +32,7 @@ const runCli = async function () {
 const checkUpdate = async function () {
   const cwd = dirname(fileURLToPath(import.meta.url))
   const { packageJson } = await readPackageUp({ cwd, normalize: false })
-  UpdateNotifier({ pkg: packageJson }).notify()
+  updateNotifier({ pkg: packageJson }).notify()
 }
 
 // TODO: use `await runCli()` after dropping support for Node <14.19.0
