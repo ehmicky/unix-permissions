@@ -35,4 +35,6 @@ const checkUpdate = async function () {
   UpdateNotifier({ pkg: packageJson }).notify()
 }
 
-await runCli()
+// TODO: use `await runCli()` after dropping support for Node <14.19.0
+// eslint-disable-next-line unicorn/prefer-top-level-await
+runCli()
