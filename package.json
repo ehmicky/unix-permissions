@@ -64,7 +64,7 @@
     "yargs": "^17.5.1"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^2.0.55",
+    "@ehmicky/dev-tasks": "^2.0.56",
     "execa": "^6.1.0",
     "get-bin-path": "^8.0.0",
     "test-each": "^5.7.1"
