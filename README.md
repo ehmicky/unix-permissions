@@ -46,7 +46,7 @@ using those strings.
 
 In JavaScript:
 
-<!-- eslint-disable no-sync -->
+<!-- eslint-disable n/no-sync -->
 
 ```js
 import { convert } from 'unix-permissions'
