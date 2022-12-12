@@ -1,3 +1,9 @@
+# 4.8.0
+
+## Features
+
+- Improve TypeScript types
+
 # 4.7.0
 
 ## Features
