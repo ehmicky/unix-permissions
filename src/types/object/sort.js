@@ -1,5 +1,5 @@
 // Ensure object keys order
-export const compareNodes = function (nodeA, nodeB) {
+export const compareNodes = (nodeA, nodeB) => {
   const result = sortCategory(nodeA, nodeB)
 
   if (result !== 0) {
@@ -9,7 +9,7 @@ export const compareNodes = function (nodeA, nodeB) {
   return sortPerm(nodeA, nodeB)
 }
 
-const sort = function ({ attrName, order }, nodeA, nodeB) {
+const sort = ({ attrName, order }, nodeA, nodeB) => {
   if (nodeA[attrName] === nodeB[attrName]) {
     return 0
   }

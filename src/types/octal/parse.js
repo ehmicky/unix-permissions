@@ -4,7 +4,7 @@ import { OCTAL_BASE, PLUS, MINUS, EQUAL } from './constants.js'
 import { tokenize } from './tokenize.js'
 
 // Parse an `octal` permission to `nodes`
-export const parse = function (octal, category) {
+export const parse = (octal, category) => {
   const { operator, string } = tokenize(octal)
 
   if (string === undefined) {
@@ -20,30 +20,18 @@ export const parse = function (octal, category) {
 }
 
 // From octal string to decimal integer
-const octalToDecimal = function ({ string }) {
-  return Number.parseInt(string, OCTAL_BASE)
-}
+const octalToDecimal = ({ string }) => Number.parseInt(string, OCTAL_BASE)
 
-const parsePlus = function ({ nodes }) {
-  return nodes.filter(hasAdd)
-}
+const parsePlus = ({ nodes }) => nodes.filter(hasAdd)
 
-const parseMinus = function ({ nodes }) {
-  return nodes.filter(hasAdd).map(invertAdd)
-}
+const parseMinus = ({ nodes }) => nodes.filter(hasAdd).map(invertAdd)
 
-const invertAdd = function (node) {
-  return { ...node, add: false }
-}
+const invertAdd = (node) => ({ ...node, add: false })
 
-const hasAdd = function ({ add }) {
-  return add === true
-}
+const hasAdd = ({ add }) => add === true
 
 // =octal means that some permissions are +, others -
-const parseEqual = function ({ nodes }) {
-  return nodes
-}
+const parseEqual = ({ nodes }) => nodes
 
 const parseOperator = {
   [PLUS]: parsePlus,

@@ -10,7 +10,7 @@ import {
 } from './constants.js'
 
 // Parse an `object` permission into nodes
-export const parse = function (object) {
+export const parse = (object) => {
   // Non-plain objects probably indicate a non-intentional error
   if (!isPlainObj(object)) {
     return
@@ -24,7 +24,7 @@ export const parse = function (object) {
 }
 
 // `all` is a shortcut for all categories
-const parseAll = function ({ all, ...object }) {
+const parseAll = ({ all, ...object }) => {
   if (all === undefined) {
     return object
   }
@@ -38,7 +38,7 @@ const parseAll = function ({ all, ...object }) {
 }
 
 // Parse each `object` category's object into nodes
-const parsePermissions = function ([category, permissions]) {
+const parsePermissions = ([category, permissions]) => {
   // Non-plain objects probably indicate a non-intentional error
   if (!isPlainObj(permissions)) {
     return
@@ -60,7 +60,7 @@ const parsePermissions = function ([category, permissions]) {
   return validateNodes({ nodes })
 }
 
-const getCategory = function ({ category }) {
+const getCategory = ({ category }) => {
   if (category === SPECIAL_CATEGORY) {
     return category
   }
@@ -69,11 +69,9 @@ const getCategory = function ({ category }) {
 }
 
 // `undefined` values e.g. `{ user: { read: undefined } }` result is no nodes.
-const hasDefinedValue = function ([, value]) {
-  return value !== undefined
-}
+const hasDefinedValue = ([, value]) => value !== undefined
 
-const parsePermission = function ({ category, permission, add }) {
+const parsePermission = ({ category, permission, add }) => {
   // Permission values must be `undefined`, `true` or `false`
   if (typeof add !== 'boolean') {
     return
@@ -86,7 +84,7 @@ const parsePermission = function ({ category, permission, add }) {
   return parseNormalPerm({ category, permission, add })
 }
 
-const parseSpecialPerm = function ({ permission, add }) {
+const parseSpecialPerm = ({ permission, add }) => {
   const specialNode = PARSE_SPECIAL[permission]
 
   if (specialNode === undefined) {
@@ -96,7 +94,7 @@ const parseSpecialPerm = function ({ permission, add }) {
   return { ...specialNode, add }
 }
 
-const parseNormalPerm = function ({ category, permission, add }) {
+const parseNormalPerm = ({ category, permission, add }) => {
   const permissionA = SHORT_PERMISSIONS[permission]
 
   // Invalid permission name
@@ -107,7 +105,7 @@ const parseNormalPerm = function ({ category, permission, add }) {
   return { category, permission: permissionA, add }
 }
 
-const validateNodes = function ({ nodes }) {
+const validateNodes = ({ nodes }) => {
   if (nodes.some(isInvalidNode)) {
     return
   }
@@ -115,6 +113,4 @@ const validateNodes = function ({ nodes }) {
   return nodes
 }
 
-const isInvalidNode = function (node) {
-  return node === undefined
-}
+const isInvalidNode = (node) => node === undefined

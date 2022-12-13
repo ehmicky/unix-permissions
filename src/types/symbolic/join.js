@@ -1,7 +1,7 @@
 import { CATEGORIES } from '../../constants.js'
 
 // Join categories, e.g. `u+x,g+x` -> `ug+x`
-export const joinCategories = function (node, index, nodes) {
+export const joinCategories = (node, index, nodes) => {
   const sameNodes = nodes.filter((nodeA) => canJoinNodes(node, nodeA))
 
   // Nothing to join
@@ -25,8 +25,5 @@ export const joinCategories = function (node, index, nodes) {
   return { ...node, category: categories.join('') }
 }
 
-const canJoinNodes = function (nodeA, nodeB) {
-  return (
-    nodeA.operator === nodeB.operator && nodeA.permissions === nodeB.permissions
-  )
-}
+const canJoinNodes = (nodeA, nodeB) =>
+  nodeA.operator === nodeB.operator && nodeA.permissions === nodeB.permissions

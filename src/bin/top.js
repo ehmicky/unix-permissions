@@ -6,19 +6,16 @@ import { hideBin } from 'yargs/helpers'
 
 import { COMMANDS } from './commands.js'
 
-export const defineCli = function () {
-  return (
-    yargs(hideBin(argv))
-      .command(COMMANDS.map(getCommand))
-      .demandCommand(1, 1)
-      .recommendCommands()
-      .usage(USAGE)
-      .strict()
-      // Permissions cannot be input as numbers, only as octals
-      .parserConfiguration({ 'parse-numbers': false })
-      .completion()
-  )
-}
+export const defineCli = () =>
+  yargs(hideBin(argv))
+    .command(COMMANDS.map(getCommand))
+    .demandCommand(1, 1)
+    .recommendCommands()
+    .usage(USAGE)
+    .strict()
+    // Permissions cannot be input as numbers, only as octals
+    .parserConfiguration({ 'parse-numbers': false })
+    .completion()
 
 const COMMON_USAGE = `Unix permissions can take several types:
   - octal, e.g. "755"
@@ -31,14 +28,12 @@ Convert, test and manipulate Unix permissions.
 
 ${COMMON_USAGE}`
 
-const getCommand = function ({ command, describe, examples }) {
-  return {
-    command,
-    describe,
-    builder: (commandYargs) =>
-      commandYargs
-        .usage(`$0 ${command}\n\n${describe}\n\n${COMMON_USAGE}`)
-        .example(examples)
-        .strict(),
-  }
-}
+const getCommand = ({ command, describe, examples }) => ({
+  command,
+  describe,
+  builder: (commandYargs) =>
+    commandYargs
+      .usage(`$0 ${command}\n\n${describe}\n\n${COMMON_USAGE}`)
+      .example(examples)
+      .strict(),
+})

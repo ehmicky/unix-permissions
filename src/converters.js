@@ -3,12 +3,8 @@ import { TYPES_MAP } from './types/main.js'
 import { mapValues } from './utils.js'
 
 // Retrieve a map of all types' conversion functions
-const getConverters = function () {
-  return mapValues(TYPES_MAP, getConverter)
-}
+const getConverters = () => mapValues(TYPES_MAP, getConverter)
 
-const getConverter = function (type, name) {
-  return convertValue.bind(undefined, name)
-}
+const getConverter = (type, name) => convertValue.bind(undefined, name)
 
 export const convert = getConverters()

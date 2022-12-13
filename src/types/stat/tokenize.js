@@ -1,5 +1,5 @@
 // Tokenize a `stat` string using a RegExp
-export const tokenize = function (stat) {
+export const tokenize = (stat) => {
   if (typeof stat !== 'string') {
     return
   }
@@ -29,9 +29,7 @@ const STAT_REGEXP =
 
 // We cannot know if `-` means `add: false` (must unset bits) or
 // `add: undefined` (leave bits as is), so we assume the later.
-const removeDashes = function (part) {
-  return part.replace(DASH_REGEXP, '')
-}
+const removeDashes = (part) => part.replace(DASH_REGEXP, '')
 
 const DASH_REGEXP = /-/gu
 
@@ -40,9 +38,7 @@ const DASH_REGEXP = /-/gu
 // `X` permission is a special permission according to chmod behavior.
 // It is the same as `x` except it is a noop if no categories has `x`.
 // At the moment, we do not support this, so it's just an alias for `x`.
-const expandSpecial = function (part) {
-  return EXPAND_REGEXPS.reduce(specialReduce, part)
-}
+const expandSpecial = (part) => EXPAND_REGEXPS.reduce(specialReduce, part)
 
 // Array order matters. E.g. if S -> s was before s -> xs, it would not work
 const EXPAND_REGEXPS = [
@@ -54,9 +50,8 @@ const EXPAND_REGEXPS = [
 ]
 
 // Inverse of `expandSpecial()`
-export const contractSpecial = function (part) {
-  return CONTRACT_REGEXPS.reduce(specialReduce, part)
-}
+export const contractSpecial = (part) =>
+  CONTRACT_REGEXPS.reduce(specialReduce, part)
 
 const CONTRACT_REGEXPS = [
   [/-t/gu, 'T'],
@@ -65,6 +60,4 @@ const CONTRACT_REGEXPS = [
   [/xs/gu, 's'],
 ]
 
-const specialReduce = function (part, [regexp, chars]) {
-  return part.replace(regexp, chars)
-}
+const specialReduce = (part, [regexp, chars]) => part.replace(regexp, chars)

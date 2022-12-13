@@ -7,11 +7,10 @@ import { TYPES } from './helpers/data/types.test.js'
 import { convert, normalize, type as getType } from 'unix-permissions'
 
 // Conversion between some types loses information
-const isLossy = function (type, otherType) {
-  return LOSSY_CONVERSIONS.some(
+const isLossy = (type, otherType) =>
+  LOSSY_CONVERSIONS.some(
     ([typeA, otherTypeA]) => typeA === type && otherTypeA === otherType,
   )
-}
 
 const LOSSY_CONVERSIONS = [
   ['symbolic', 'number'],

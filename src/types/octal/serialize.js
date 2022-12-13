@@ -4,7 +4,7 @@ import { serialize as serializeNumber } from '../number/serialize.js'
 import { OCTAL_BASE, PLUS, MINUS, NONE } from './constants.js'
 
 // Serialize from `nodes` to a `octal` permission
-export const serialize = function (nodes) {
+export const serialize = (nodes) => {
   const operator = serializeOperator({ nodes })
   const string = serializeInteger({ operator, nodes })
   const octal = `${operator}${string}`
@@ -13,7 +13,7 @@ export const serialize = function (nodes) {
 
 // `octal` can be prefixed with `-` or `+` if partial and only negative|positive
 // `=` is the default operator, i.e. is never serialized.
-const serializeOperator = function ({ nodes }) {
+const serializeOperator = ({ nodes }) => {
   if (!isPartial({ nodes })) {
     return NONE
   }
@@ -29,20 +29,15 @@ const serializeOperator = function ({ nodes }) {
   return NONE
 }
 
-const isPartial = function ({ nodes }) {
-  return Object.keys(nodes).length !== Object.keys(NODES_MAP).length
-}
+const isPartial = ({ nodes }) =>
+  Object.keys(nodes).length !== Object.keys(NODES_MAP).length
 
-const isAdded = function ({ add }) {
-  return add === true
-}
+const isAdded = ({ add }) => add === true
 
-const isRemoved = function ({ add }) {
-  return add === false
-}
+const isRemoved = ({ add }) => add === false
 
 // Re-use `number` serialization logic, then stringify to an octal number
-const serializeInteger = function ({ operator, nodes }) {
+const serializeInteger = ({ operator, nodes }) => {
   const nodesA = serializeMinus({ operator, nodes })
   const integer = serializeNumber(nodesA)
   // Always serialize to 4 characters (with leading 0s)
@@ -56,7 +51,7 @@ const SERIALIZE_LENGTH = 4
 const SERIALIZE_PAD = '0'
 
 // When using `-octal`, we need the inverse number
-const serializeMinus = function ({ operator, nodes }) {
+const serializeMinus = ({ operator, nodes }) => {
   if (operator !== MINUS) {
     return nodes
   }

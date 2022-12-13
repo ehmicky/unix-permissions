@@ -8,14 +8,12 @@ import { notMap } from './not.js'
 // Invert a permission's `+` and `-`.
 // Missing permissions are not inverted.
 // Special flags are inverted.
-const invertMap = function (nodesMap) {
+const invertMap = (nodesMap) => {
   const nodesMapA = notMap(nodesMap)
   const nodesMapB = excludeKeys(nodesMapA, isSpecial)
   return nodesMapB
 }
 
-const isSpecial = function (key, { permission }) {
-  return SPECIAL_PERMISSIONS.has(permission)
-}
+const isSpecial = (key, { permission }) => SPECIAL_PERMISSIONS.has(permission)
 
 export const invert = unaryMap.bind(undefined, invertMap)
