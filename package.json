@@ -4,21 +4,26 @@
   "type": "module",
   "exports": {
     "types": "./build/src/main.d.ts",
-    "default": "./build/src/main.js"
+    "default": "./build/src/main.js",
+    "import": "./build/src/main.js",
+    "require": "./cjs/main.cjs"
   },
-  "main": "./build/src/main.js",
+  "main": "./cjs/main.cjs",
+  "module": "./build/src/main.js",
   "types": "./build/src/main.d.ts",
   "files": [
     "build/src/**/*.{js,json,d.ts}",
     "!build/src/**/*.test.js",
-    "!build/src/{helpers,fixtures}"
+    "!build/src/{helpers,fixtures}",
+    "cjs"
   ],
   "bin": {
     "unix-permissions": "build/src/bin/main.js"
   },
   "sideEffects": false,
   "scripts": {
-    "test": "gulp test"
+    "prepare": "rollup -c",
+    "test": "node test.cjs && gulp test"
   },
   "description": "Swiss Army knife for Unix permissions",
   "keywords": [
@@ -64,8 +69,11 @@
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^2.0.60",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "execa": "^6.1.0",
     "get-bin-path": "^8.0.0",
+    "rollup": "^3.10.1",
+    "rollup-plugin-cleanup": "^3.2.1",
     "test-each": "^5.7.1"
   },
   "engines": {
