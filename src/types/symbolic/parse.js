@@ -43,11 +43,9 @@ const DEFAULT_CATEGORIES = 'a'
 // See `stat` type for an explanation on special permission `X`.
 // It is transformed to `x`.
 const normalizeX = ({ permissions, ...node }) => {
-  const permissionsA = permissions.replace(X_REGEXP, 'x')
+  const permissionsA = permissions.replaceAll('X', 'x')
   return { ...node, permissions: permissionsA }
 }
-
-const X_REGEXP = /X/gu
 
 // Several categories can be grouped, e.g. `gu=x`.
 // Duplicates are allowed.

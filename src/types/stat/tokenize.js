@@ -29,9 +29,7 @@ const STAT_REGEXP =
 
 // We cannot know if `-` means `add: false` (must unset bits) or
 // `add: undefined` (leave bits as is), so we assume the later.
-const removeDashes = (part) => part.replace(DASH_REGEXP, '')
-
-const DASH_REGEXP = /-/gu
+const removeDashes = (part) => part.replaceAll('-', '')
 
 // Special permissions have an uppercase and lowercase depending on whether
 // `x` exists.
@@ -51,13 +49,13 @@ const EXPAND_REGEXPS = [
 
 // Inverse of `expandSpecial()`
 export const contractSpecial = (part) =>
-  CONTRACT_REGEXPS.reduce(specialReduce, part)
+  CONTRACT_STRINGS.reduce(specialReduce, part)
 
-const CONTRACT_REGEXPS = [
-  [/-t/gu, 'T'],
-  [/xt/gu, 't'],
-  [/-s/gu, 'S'],
-  [/xs/gu, 's'],
+const CONTRACT_STRINGS = [
+  ['-t', 'T'],
+  ['xt', 't'],
+  ['-s', 'S'],
+  ['xs', 's'],
 ]
 
-const specialReduce = (part, [regexp, chars]) => part.replace(regexp, chars)
+const specialReduce = (part, [before, after]) => part.replaceAll(before, after)
