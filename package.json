@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "filter-obj": "^5.1.0",
-    "handle-cli-error": "^4.0.1",
+    "handle-cli-error": "^4.0.2",
     "is-plain-obj": "^4.1.0",
     "read-pkg-up": "^9.1.0",
     "update-notifier": "^6.0.2",
