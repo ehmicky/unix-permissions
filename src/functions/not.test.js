@@ -2,11 +2,12 @@ import test from 'ava'
 import { each } from 'test-each'
 
 /* jscpd:ignore-start */
-import { not, normalize } from 'unix-permissions'
 
 import { callCli } from '../helpers/cli.test.js'
 import { VALID_FULL_DATA } from '../helpers/data/full/main.test.js'
 import { UNARY_DATA } from '../helpers/data/unary.test.js'
+
+import { not, normalize } from 'unix-permissions'
 
 /* jscpd:ignore-end */
 
