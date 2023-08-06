@@ -45,7 +45,10 @@
   ],
   "license": "Apache-2.0",
   "homepage": "https://www.github.com/ehmicky/unix-permissions",
-  "repository": "ehmicky/unix-permissions",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehmicky/unix-permissions.git"
+  },
   "bugs": {
     "url": "https://github.com/ehmicky/unix-permissions/issues"
   },
