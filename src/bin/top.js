@@ -1,7 +1,6 @@
 import { argv } from 'node:process'
 
 import yargs from 'yargs'
-// eslint-disable-next-line n/file-extension-in-import
 import { hideBin } from 'yargs/helpers'
 
 import { COMMANDS } from './commands.js'
