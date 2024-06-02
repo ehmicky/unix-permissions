@@ -18,7 +18,7 @@ can take many [shapes](#permission-types): [symbolic](docs/types.md#symbolic)
 (`ug+rw`), [octal](docs/types.md#octal) (`660`) or a
 [list of characters](docs/types.md#stat) (`drw-rw----`). This library enables
 using any of [these](#permission-types) (instead of being limited to a single
-one) with any [Node.js](#examples-javascript) or [CLI command](#examples-cli).
+one) with any [Node.js](#examples) or [CLI command](#examples).
 
 This library can also perform operations on Unix permissions such as:
 
