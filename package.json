@@ -62,7 +62,7 @@
     "handle-cli-error": "^5.0.0",
     "is-plain-obj": "^4.1.0",
     "read-package-up": "^11.0.0",
-    "update-notifier": "^7.0.0",
+    "update-notifier": "^7.1.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
