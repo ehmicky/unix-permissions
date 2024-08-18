@@ -4,11 +4,6 @@ The following methods are available both in
 [JavaScript](../README.md#usage-javascript) and on the
 [command line](../README.md#usage-cli).
 
-You can try all the examples below:
-
-- either directly [in your browser](https://repl.it/@ehmicky/unix-permissions).
-- or by executing the [`examples` files](../examples/README.md) in a terminal.
-
 All methods (except [`type()`](#typepermission)) throw an exception if the
 `permission` argument is invalid. Please see the
 [permission types documentation](types.md).

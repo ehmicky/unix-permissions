@@ -4,11 +4,6 @@ You can use any of the following permission types as input. You can also
 [`convert()`](API.md#convertoctalnumberstatsymbolicobjectpermission) between
 them.
 
-You can try all the examples below:
-
-- either directly [in your browser](https://repl.it/@ehmicky/unix-permissions).
-- or by executing the [`examples` files](../examples/README.md) in a terminal.
-
 ## octal
 
 Permission type used by [`chmod`](https://linux.die.net/man/1/chmod).

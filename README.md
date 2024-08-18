@@ -90,13 +90,6 @@ $ unix-permissions convert.symbolic "$(stat -c "%a" /etc/passwd)"
 u=rw,go=r
 ```
 
-# Demo
-
-You can try this library:
-
-- either directly [in your browser](https://repl.it/@ehmicky/unix-permissions).
-- or by executing the [`examples` files](examples/README.md) in a terminal.
-
 # Install
 
 ```bash
