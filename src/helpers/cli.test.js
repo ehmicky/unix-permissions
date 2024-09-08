@@ -1,4 +1,4 @@
-import { execaNode } from 'execa'
+import spawn from 'nano-spawn'
 import { getBinPath } from 'get-bin-path'
 
 const BINARY_PATH = getBinPath()
@@ -7,11 +7,10 @@ const BINARY_PATH = getBinPath()
 export const callCli = async (command, ...args) => {
   const argsA = args.map(stringifyCliArg)
 
-  const { stdout, stderr, exitCode } = await execaNode(
-    await BINARY_PATH,
-    [command, ...argsA],
-    { reject: false },
-  )
+  const [{ reason, value: { stdout, stderr, exitCode } = reason }] =
+    await Promise.allSettled([
+      spawn('node', [await BINARY_PATH, command, ...argsA]),
+    ])
 
   const stderrA = stderr.replace(HELP_MESSAGE_REGEXP, 'Help message')
 
