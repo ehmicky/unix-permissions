@@ -1,5 +1,5 @@
-import spawn from 'nano-spawn'
 import { getBinPath } from 'get-bin-path'
+import spawn from 'nano-spawn'
 
 const BINARY_PATH = getBinPath()
 
