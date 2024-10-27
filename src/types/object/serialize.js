@@ -12,7 +12,6 @@ import { compareNodes } from './sort.js'
 // Serialize from `nodes` to a `object` permission.
 // Never serialize to `all` category so make output more predictable.
 export const serialize = (nodes) => {
-  // eslint-disable-next-line fp/no-mutating-methods
   const nodesA = nodes.map(serializeNode).sort(compareNodes)
   const object = groupBy(nodesA, 'category')
   const objectA = mapValues(object, mergePerms)
