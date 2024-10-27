@@ -30,7 +30,8 @@ each(TYPES, VALID_FULL_DATA, ({ title }, otherType, arg) => {
     return
   }
 
-  test(`convert (idempotence) | ${title}`, (t) => {
+  // Serial, else this test file crashes due to too many tests in parallel
+  test.serial(`convert (idempotence) | ${title}`, (t) => {
     t.deepEqual(normalize(arg), convert[type](convert[otherType](arg)))
   })
 })
