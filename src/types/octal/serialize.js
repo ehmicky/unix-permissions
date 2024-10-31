@@ -1,7 +1,7 @@
 import { NODES_MAP } from '../../nodes.js'
 import { serialize as serializeNumber } from '../number/serialize.js'
 
-import { OCTAL_BASE, PLUS, MINUS, NONE } from './constants.js'
+import { MINUS, NONE, OCTAL_BASE, PLUS } from './constants.js'
 
 // Serialize from `nodes` to a `octal` permission
 export const serialize = (nodes) => {

@@ -1,5 +1,5 @@
 import { SPECIAL_PERMISSIONS } from '../../constants.js'
-import { NODES_MAP, getNodesMap } from '../../nodes.js'
+import { getNodesMap, NODES_MAP } from '../../nodes.js'
 
 import { contractSpecial } from './tokenize.js'
 

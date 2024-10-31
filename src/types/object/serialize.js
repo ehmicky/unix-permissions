@@ -4,8 +4,8 @@ import { groupBy, mapValues } from '../../utils.js'
 
 import {
   LONG_PERMISSIONS,
-  SPECIAL_CATEGORY,
   SERIALIZE_SPECIAL,
+  SPECIAL_CATEGORY,
 } from './constants.js'
 import { compareNodes } from './sort.js'
 

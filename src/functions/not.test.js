@@ -7,7 +7,7 @@ import { callCli } from '../helpers/cli.test.js'
 import { VALID_FULL_DATA } from '../helpers/data/full/main.test.js'
 import { UNARY_DATA } from '../helpers/data/unary.test.js'
 
-import { not, normalize } from 'unix-permissions'
+import { normalize, not } from 'unix-permissions'
 
 /* jscpd:ignore-end */
 

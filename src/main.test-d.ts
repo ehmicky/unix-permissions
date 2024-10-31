@@ -1,29 +1,29 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import {
-  expectType,
   expectAssignable,
-  expectNotAssignable,
   expectNever,
+  expectNotAssignable,
+  expectType,
 } from 'tsd'
 
 import {
-  convert,
-  type,
-  normalize,
-  positive,
   contain,
+  convert,
   equal,
-  set,
-  not,
   invert,
-  min,
   max,
-  type PermissionOctal,
+  min,
+  normalize,
+  not,
+  positive,
+  set,
+  type,
+  type Permission,
   type PermissionNumber,
+  type PermissionObject,
+  type PermissionOctal,
   type PermissionStat,
   type PermissionSymbolic,
-  type PermissionObject,
-  type Permission,
   type PermissionType,
 } from 'unix-permissions'
 

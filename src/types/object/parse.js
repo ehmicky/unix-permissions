@@ -4,9 +4,9 @@ import { SHORT_CATEGORIES } from '../../constants.js'
 import { mapValues } from '../../utils.js'
 
 import {
+  PARSE_SPECIAL,
   SHORT_PERMISSIONS,
   SPECIAL_CATEGORY,
-  PARSE_SPECIAL,
 } from './constants.js'
 
 // Parse an `object` permission into nodes

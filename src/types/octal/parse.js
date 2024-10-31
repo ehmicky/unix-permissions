@@ -1,6 +1,6 @@
 import { parse as parseNumber } from '../number/parse.js'
 
-import { OCTAL_BASE, PLUS, MINUS, EQUAL } from './constants.js'
+import { EQUAL, MINUS, OCTAL_BASE, PLUS } from './constants.js'
 import { tokenize } from './tokenize.js'
 
 // Parse an `octal` permission to `nodes`
