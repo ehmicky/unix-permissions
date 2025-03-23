@@ -12,7 +12,10 @@ export const callCli = async (command, ...args) => {
       spawn('node', [await BINARY_PATH, command, ...argsA]),
     ])
 
-  const stderrA = stderr.replace(HELP_MESSAGE_REGEXP, 'Help message')
+  const stderrA = stderr
+    .replace(HELP_MESSAGE_REGEXP, 'Help message')
+    // Windows support
+    .replaceAll('✘', '×')
 
   return { exitCode, stdout, stderr: stderrA }
 }
