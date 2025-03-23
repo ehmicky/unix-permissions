@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "filter-obj": "^6.1.0",
-    "handle-cli-error": "^5.0.0",
+    "handle-cli-error": "^5.0.1",
     "is-plain-obj": "^4.1.0",
     "read-package-up": "^11.0.0",
     "update-notifier": "^7.3.1",
