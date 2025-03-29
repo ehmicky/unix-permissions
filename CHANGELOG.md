@@ -1,3 +1,9 @@
+# 6.0.1
+
+## Documentation
+
+- Improve documentation in `README.md`
+
 # 6.0.0
 
 ## Breaking changes
