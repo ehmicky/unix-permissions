@@ -36,4 +36,4 @@ const tokenizePart = (part) => {
 // to `a`.
 // The operator can be `=`, `+` or `-`, and is required.
 // The permissions are a string composed of `xwrXst`, and defaults to ''.
-const PART_REGEXP = /^([augo]*)\s?([=+-])\s?([xwrXst]*)$/u
+const PART_REGEXP = /^([augo]{0,4})\s?([=+-])\s?([xwrXst]{0,6})$/u
