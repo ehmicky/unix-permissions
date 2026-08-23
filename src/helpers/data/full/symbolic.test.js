@@ -53,7 +53,11 @@ export const SYMBOLIC = [
 
   // Whitespace
   ' a+x ',
+  '  a+x  ',
+  'a + x',
+  'a  +  x',
   'u+x , u+r',
+  'u+x  ,  u+r',
 
   // `all` category
   'a+x',
