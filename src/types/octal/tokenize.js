@@ -6,7 +6,7 @@ export const tokenize = (octal) => {
     return {}
   }
 
-  const tokens = OCTAL_REGEXP.exec(octal)
+  const tokens = OCTAL_REGEXP.exec(octal.trim())
 
   if (tokens === null) {
     return {}
@@ -22,7 +22,7 @@ export const tokenize = (octal) => {
 // Allow trailing whitespaces
 // Can be prefixed with a backslash, a leading 0 and/or an `o`
 // Can be prefixed with an operator = - or +, e.g. `=544`
-const OCTAL_REGEXP = /^\s*([=+-]?)\\?0?[oO]?([0-7]{1,4})\s*$/u
+const OCTAL_REGEXP = /^([=+-]?)\\?0?[oO]?([0-7]{1,4})$/u
 
 // '022' is same as '+022' (to match chmod behavior)
 const addDefaultOperator = ({ operator }) => {
