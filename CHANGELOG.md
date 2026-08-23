@@ -1,3 +1,13 @@
+# 6.0.2
+
+## Performance
+
+- Faster parsing.
+
+## Security
+
+- Prevent RegExp Denial of Service.
+
 # 6.0.1
 
 ## Documentation
