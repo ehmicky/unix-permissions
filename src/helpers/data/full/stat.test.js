@@ -57,6 +57,9 @@ export const STAT = [
   'cr--------',
   'br--------',
   'Dr--------',
+  'D r--------',
+  'D  r--------',
+  ' D  r-------- ',
 
   // Changing order
   'rxwrwxrwx',
