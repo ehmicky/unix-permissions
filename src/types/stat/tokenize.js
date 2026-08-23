@@ -4,7 +4,7 @@ export const tokenize = (stat) => {
     return
   }
 
-  const tokens = STAT_REGEXP.exec(stat)
+  const tokens = STAT_REGEXP.exec(stat.trim())
 
   if (tokens === null) {
     return
@@ -25,7 +25,7 @@ export const tokenize = (stat) => {
 // File type as a first character is allowed and optional.
 // Each group must have 3 characters, and not have duplicates.
 const STAT_REGEXP =
-  /^\s*[-dlpscbD]?\s*([-rwxXsS]{3})\s*([-rwxXsS]{3})\s*([-rwxXtT]{3})\s*$/u
+  /^[-dlpscbD]?\s*([-rwxXsS]{3})\s*([-rwxXsS]{3})\s*([-rwxXtT]{3})$/u
 
 // We cannot know if `-` means `add: false` (must unset bits) or
 // `add: undefined` (leave bits as is), so we assume the later.
