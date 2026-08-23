@@ -20,7 +20,7 @@ const COMMA_REGEXP = /\s*,\s*/gu
 
 // Tokenize each `symbolic` comma-separated group
 const tokenizePart = (part) => {
-  const parts = PART_REGEXP.exec(part)
+  const parts = PART_REGEXP.exec(part.trim())
 
   if (parts === null) {
     return
@@ -36,4 +36,4 @@ const tokenizePart = (part) => {
 // to `a`.
 // The operator can be `=`, `+` or `-`, and is required.
 // The permissions are a string composed of `xwrXst`, and defaults to ''.
-const PART_REGEXP = /^\s*([augo]*)\s*([=+-])\s*([xwrXst]*)\s*$/u
+const PART_REGEXP = /^([augo]*)\s*([=+-])\s*([xwrXst]*)$/u
