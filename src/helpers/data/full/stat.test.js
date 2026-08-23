@@ -13,6 +13,9 @@ export const INVALID_STAT = [
   '--------',
   '-- ---- ---',
   '-----------',
+  '  ---  ---  --x',
+  'D  r--------',
+  ' D  r-------- ',
 ]
 
 export const STAT = [
@@ -47,7 +50,7 @@ export const STAT = [
 
   // Whitespace
   ' --------x ',
-  '  ---  ---  --x',
+  ' --- --- --x',
 
   // File types
   'drw-------',
@@ -58,8 +61,6 @@ export const STAT = [
   'br--------',
   'Dr--------',
   'D r--------',
-  'D  r--------',
-  ' D  r-------- ',
 
   // Changing order
   'rxwrwxrwx',
