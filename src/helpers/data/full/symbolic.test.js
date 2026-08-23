@@ -7,6 +7,9 @@ export const INVALID_SYMBOLIC = [
   'a~x',
   'a+j',
   'a+xx',
+  '  a+x  ',
+  'a  +  x',
+  'u+x  ,  u+r',
 ]
 
 export const SYMBOLIC = [
@@ -53,11 +56,8 @@ export const SYMBOLIC = [
 
   // Whitespace
   ' a+x ',
-  '  a+x  ',
   'a + x',
-  'a  +  x',
   'u+x , u+r',
-  'u+x  ,  u+r',
 
   // `all` category
   'a+x',

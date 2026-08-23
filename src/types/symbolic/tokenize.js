@@ -16,7 +16,7 @@ export const tokenize = (symbolic) => {
 }
 
 // Allow whitespaces around commas
-const COMMA_REGEXP = /\s*,\s*/gu
+const COMMA_REGEXP = /\s?,\s?/gu
 
 // Tokenize each `symbolic` comma-separated group
 const tokenizePart = (part) => {
@@ -36,4 +36,4 @@ const tokenizePart = (part) => {
 // to `a`.
 // The operator can be `=`, `+` or `-`, and is required.
 // The permissions are a string composed of `xwrXst`, and defaults to ''.
-const PART_REGEXP = /^([augo]*)\s*([=+-])\s*([xwrXst]*)$/u
+const PART_REGEXP = /^([augo]*)\s?([=+-])\s?([xwrXst]*)$/u
